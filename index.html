@@ -262,7 +262,9 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
 .key:focus-visible, .rbtn:focus-visible { outline: 2px solid var(--yellow); outline-offset: 2px; }
 .side { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(5, minmax(0, 76px)); gap: 10px; }
 .fkw { font: inherit; background: none; border: 0; padding: 0; cursor: pointer; display: grid; justify-items: center; gap: 3px; color: var(--dim); }
-.fkw .fl { font-size: .72em; line-height: 1; white-space: nowrap; min-height: 1em; }
+.fkw { min-width: 0; align-content: start; }
+.fkw .fl { font-size: .72em; line-height: 1.1; white-space: nowrap; min-height: 1em; text-align: center; }
+.fkw .fl { white-space: normal; }
 .fkw:hover .fl { color: var(--white); }
 .fkw[aria-current="true"] .fl { color: var(--white); }
 .fkw[aria-current="true"] .fk { outline: 2px solid var(--white); outline-offset: 2px; }
@@ -322,7 +324,7 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
     <div class="entry" id="entry" aria-live="polite">P___</div>
     <div class="keys" id="keys"></div>
     <div class="side" id="side">
-      <button class="fkw" data-go="200" data-sec="200" aria-label="TV and streaming, page 200"><span class="fk red"></span><span class="fl">TV</span></button>
+      <button class="fkw" data-go="200" data-sec="200" aria-label="Movies and TV, page 200"><span class="fk red"></span><span class="fl">Movies &amp; TV</span></button>
       <button class="fkw" data-go="300" data-sec="300" aria-label="Trailers, page 300"><span class="fk yellow"></span><span class="fl">Trailers</span></button>
       <button class="fkw" data-go="400" data-sec="400" aria-label="Sport, page 400"><span class="fk green"></span><span class="fl">Sport</span></button>
       <button class="fkw" data-go="500" data-sec="500" aria-label="Theatre and culture, page 500"><span class="fk magenta"></span><span class="fl">Culture</span></button>
@@ -347,7 +349,7 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
 (() => {
 /* ---------- content ---------- */
 const CH = {
-  200: { name: "TV & STREAMING", title: "TV & STREAMING", short: "TV", colour: "red" },
+  200: { name: "MOVIES & TV", title: "MOVIES & TV", short: "Movies & TV", colour: "red" },
   300: { name: "TRAILERS", title: "TRAILERS", short: "Trailers", colour: "yellow" },
   400: { name: "SPORT", title: "SPORT", short: "Sport", colour: "green" },
   500: { name: "THEATRE & CULTURE", title: "THEATRE & CULTURE", short: "Culture", colour: "magenta" },
@@ -502,7 +504,7 @@ function row(label, colour, text) {
 /* ---------- pages ---------- */
 function pageIndex() {
   const toc = [
-    [101, "About", "white"], [200, "TV & streaming", "red"], [300, "Trailers", "yellow"],
+    [101, "About", "white"], [200, "Movies & TV", "red"], [300, "Trailers", "yellow"],
     [400, "Sport", "green"], [500, "Theatre & culture", "magenta"], [600, "EdTech", "cyan"],
     [700, "Brand voice", "white"], [750, "Leadership", "white"], [800, "Journalism", "white"], [888, "Contact & CV", "yellow"],
   ];
@@ -687,7 +689,7 @@ function render(n) {
 }
 
 /* ---------- fastext ---------- */
-const NAV = { 200: "TV & streaming", 300: "Trailers", 400: "Sport", 500: "Theatre & culture", 600: "EdTech" };
+const NAV = { 200: "Movies & TV", 300: "Trailers", 400: "Sport", 500: "Theatre & culture", 600: "EdTech" };
 const NAMES = { ...NAV, 101: "About", 700: "Brand voice", 750: "Leadership", 800: "Journalism", 888: "Contact & CV" };
 function drawCrumbs(n) {
   const el = $("#crumbs");
