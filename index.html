@@ -304,6 +304,26 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
 @media (prefers-reduced-motion: reduce) {
   .frame canvas { transition: none; }
 }
+
+/* ---------- desktop: use the width, keep the home page above the fold ---------- */
+.wrap { max-width: 1480px; }
+.toc { align-content: start; }
+@media (min-width: 721px) { .cols { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); } }
+.mast canvas.mosaic { width: auto; max-width: 100%; height: clamp(60px, 13vh, 130px); }
+.mast .frame { width: clamp(96px, min(20vw, 18vh), 190px); }
+@media (min-width: 721px) {
+  body { font-size: clamp(17px, min(2.3vw, 2.9vh), 24px); padding-block: 18px 32px; }
+}
+@media (min-width: 1100px) {
+  .wrap { grid-template-columns: minmax(0, 1fr) 236px; align-items: start; }
+  .remote { grid-template-columns: minmax(0, 1fr); position: sticky; top: 18px; padding: 16px; }
+  .entry { justify-self: stretch; }
+  .keys { grid-column: auto; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .keys .key:last-child { grid-column: 2; }
+  .side { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 12px; }
+  .rbtns .rbtn { flex: 1; }
+  .help { margin-left: 0; width: 100%; font-size: .8em; }
+}
 </style>
 </head>
 <body>
@@ -512,14 +532,14 @@ function pageIndex() {
     [700, "Brand voice", "white"], [750, "Leadership", "white"], [800, "Journalism", "white"], [888, "Contact & CV", "yellow"],
   ];
   const heads = [
-    [402, "SPEC", "yellow", "Spec campaign for BBC Sport's Women's World Cup coverage"],
+    [402, "SPEC", "yellow", "BBC Sport Women's World Cup spec campaign"],
     [206, "TRAILER", "yellow", "HBO Max trailers for cinema, TV and radio"],
-    [207, "TRAILER", "yellow", "Boyhood trailer for Universal, with 5.5 million YouTube views"],
-    [501, "TRAILER", "yellow", "Tate Modern trailer starring J-pop star Kyary Pamyu Pamyu"],
-    [502, "TRAILER", "yellow", "Home, I'm Darling trailer for the National Theatre, styled as a 1950s ad"],
-    [201, "TV", "red", "HBO Max UK launch campaign, from radio to King's Cross"],
+    [207, "TRAILER", "yellow", "Boyhood trailer: 5.5 million YouTube views"],
+    [501, "TRAILER", "yellow", "Tate Modern trailer starring Kyary Pamyu Pamyu"],
+    [502, "TRAILER", "yellow", "Home, I'm Darling trailer for the National Theatre"],
+    [201, "TV", "red", "HBO Max UK launch, from radio to King's Cross"],
     [401, "SPORT", "green", "TNT Sports CRM, including Paris 2024"],
-    [750, "LEADERSHIP", "cyan", "Leading the UK retention copy team at HBO Max and TNT Sports"],
+    [750, "LEADERSHIP", "cyan", "Leading HBO Max and TNT Sports retention copy"],
   ];
   return `
     <div class="mast">
