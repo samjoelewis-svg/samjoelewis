@@ -475,9 +475,10 @@ const PIECES = {
   503: { tag: "TRAILER", title: "WHALES: BENEATH THE SURFACE TRAILER FOR THE NATURAL HISTORY MUSEUM", meta: "Natural History Museum · Trailer concept, script & edit · AKA UK",
     body: [
       "For the Natural History Museum's exhibition Whales: Beneath the Surface, which ran from July 2017 to February 2018, I came up with the idea for the trailer, wrote the script and helped with the edit.",
-      "The exhibition brought together more than 100 specimens from the museum's collection, from harbour porpoises to blue whales, and explored how whales evolved, how they live and the threats they face today. The trailer had to give a family audience a sense of the sheer scale of these animals, and a reason to come and see them up close.",
+      "The exhibition brought together more than 100 specimens from the museum's collection, from harbour porpoises to blue whales, and explored how whales evolved, how they live and the threats they face today. The trailer is built around an extract from Heathcote Williams\u2019 poem Whale Nation. It had to give a family audience a sense of the sheer scale of these animals, and a reason to come and see them up close.",
     ],
-    link: ["https://www.youtube.com/watch?v=z_ZonqO_Hn4", "Watch the trailer"] },
+    link: ["https://www.youtube.com/watch?v=z_ZonqO_Hn4", "Watch the trailer"],
+    pics: [["whales", "Whales: Beneath the Surface, Natural History Museum"]] },
   504: { title: "MATILDA THE MUSICAL SOCIAL & VIDEO", meta: "Matilda The Musical · Social & video · AKA UK",
     body: [
       "At AKA UK, for Matilda The Musical, I came up with ideas for social and video content, wrote the scripts, went along to the shoots and edited the films myself in Adobe Premiere Pro.",
@@ -596,7 +597,7 @@ function scoresBlock() {
     <div class="c-dim">Viewers who received the campaigns, compared with a control group who didn't.</div></div>`;
 }
 
-const AR = {"boyhood":1.705,"futurelearn-step":1.634,"halt-catch-fire":1.41,"humans":1.754,"kings-cross":1.77,"matilda":1.78,"mock-the-week":1.531,"national-theatre":1.314,"new-world-building":0.597,"new-world-needs":1,"paris-2024":0.821,"quick-witted":1.604,"results-day":1,"royal-roy":0.735,"tough-cases":0.999,"watercooler":1.333,"westminster-abbey":0.647,"world-goes-pop":1.316,"pogany-indulo":1.783,"hbo-max-trailer":1.79,"milano-cortina":1.867,"wwc-poster":0.667,"skinny-julia-holter":1.732,"skinny-slow-west":1.732,"swallows-amazons":0.681};
+const AR = {"boyhood":1.705,"futurelearn-step":1.634,"halt-catch-fire":1.41,"humans":1.754,"kings-cross":1.77,"matilda":1.78,"mock-the-week":1.531,"national-theatre":1.314,"new-world-building":0.597,"new-world-needs":1,"paris-2024":0.821,"quick-witted":1.604,"results-day":1,"royal-roy":0.735,"tough-cases":0.999,"watercooler":1.333,"westminster-abbey":0.647,"world-goes-pop":1.316,"whales":1.784,"pogany-indulo":1.783,"hbo-max-trailer":1.79,"milano-cortina":1.867,"wwc-poster":0.667,"skinny-julia-holter":1.732,"skinny-slow-west":1.732,"swallows-amazons":0.681};
 function gallery(list) {
   const s = list.reduce((a, [f]) => a + (AR[f] || 1), 0);
   return `<div class="gallery" style="max-width:calc(${s.toFixed(3)} * min(520px, 72vh))">${list.map(x => `<div class="gi" style="flex:${AR[x[0]] || 1} 1 0">${pic(x)}</div>`).join("")}</div>`;
