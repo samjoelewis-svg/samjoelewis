@@ -171,17 +171,8 @@ figure.pic { margin: 0; display: grid; gap: .25em; min-width: 0; }
 .frame canvas { position: absolute; inset: 0; width: 100%; height: 100%; image-rendering: pixelated; transition: opacity .5s steps(5); }
 .frame:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
 .stack { display: grid; gap: 1em; min-width: 0; }
-.beat { gap: .5em; }
-.seq { display: grid; gap: 5px; background: #000; border: 3px solid var(--white); padding: 10px; }
-.seqrow { display: grid; grid-template-columns: 7.5ch repeat(16, minmax(0, 1fr)); gap: 3px; align-items: center; }
-.seqlab { font-size: .8em; line-height: 1; }
-.cell { height: 1.15em; background: #17171d; }
-.cell[data-s="4"], .cell[data-s="8"], .cell[data-s="12"] { margin-left: 4px; }
-.cell.on.r0 { background: var(--yellow); } .cell.on.r1 { background: var(--cyan); } .cell.on.r2 { background: var(--magenta); }
-.cell.on.r3 { background: var(--red); } .cell.on.r4 { background: var(--white); }
-.cell.now { background: #3a3a46; } .cell.on.now { background: var(--white); box-shadow: 0 0 0 2px var(--white); }
-.playbeat { justify-self: start; padding: .2em 1.4ch; }
-@media (max-width: 520px) { .seqrow { grid-template-columns: 6ch repeat(16, minmax(0, 1fr)); gap: 2px; } .cell[data-s="4"], .cell[data-s="8"], .cell[data-s="12"] { margin-left: 2px; } }
+.piece.solo { grid-template-columns: minmax(0, 1fr); }
+.piece.solo .prose { max-width: 68ch; }
 .pics2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2ch; }
 figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
 #email { overflow-wrap: anywhere; }
@@ -387,7 +378,7 @@ const PIECES = {
       "It opens on one thud: a ball against the fence on Hackney Marshes. That becomes the bass drum. Studs on a concrete path become the shaker, rain on a stand roof becomes the snare, and claps from a WSL crowd become the tamborim. A referee\u2019s whistle calls the band in, the way the lead whistle does in a samba school. By 40 seconds it\u2019s a full samba band, and we cut to the Maracan\u00E3 on the peak beat.",
       "It works hardest on radio, 5 Live and BBC Sounds, where the idea needs no picture at all. On social, women\u2019s teams around the UK each record one sound from their own pitch to add to the beat.",
     ],
-    beat: true },
+  },
 
   501: { title: "MOCK THE WEEK", meta: "TLC · Print · Warner Bros. Discovery",
     quote: "Heard we were finished? Fake news.",
@@ -513,13 +504,13 @@ function scoresBlock() {
 function pagePiece(n) {
   const p = PIECES[n];
   const pics = p.pics ? (p.pics.length > 1 ? `<div class="pics2">${p.pics.map(pic).join("")}</div>` : pic(p.pics[0])) : "";
-  const right = p.beat ? beatHTML()
+  const right = p.pitch ? ""
     : pics;
   return `${band(n, p.title)}
     <div class="meta">${esc(p.meta)}</div>
     ${p.spec ? `<div class="spec">SPEC WORK. NOT COMMISSIONED.</div>` : ""}
     ${p.quote ? dh(p.quote, "quote") : ""}${p.quote2 ? dh(p.quote2, "quote") : ""}
-    <div class="piece">
+    <div class="piece${right ? "" : " solo"}">
       <div class="facts">
         <div class="prose">${p.body.map(t => `<p>${esc(t)}</p>`).join("")}</div>
         ${p.q ? qa(p.q, p.a) : ""}
@@ -612,7 +603,6 @@ let current = 100, timer = null;
 function go(n, push = true) {
   n = Number(n);
   clearInterval(timer);
-  stopBeat();
   const hp = $("#hp");
   const finish = () => {
     hp.textContent = "P" + n;
@@ -759,65 +749,8 @@ function pixelIn(frame) {
   if (img.complete) run(); else img.addEventListener("load", run, { once: true });
 }
 
-/* ---------- samba beat (spec page) ---------- */
-const BEAT = [
-  { name: "BALL", part: "bass drum", colour: "yellow", voice: "kick", hits: [0, 3, 4, 8, 11, 12] },
-  { name: "STUDS", part: "shaker", colour: "cyan", voice: "shaker", hits: [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15] },
-  { name: "RAIN", part: "snare", colour: "magenta", voice: "snare", hits: [0, 2, 3, 4, 6, 7, 8, 10, 11, 12, 14, 15] },
-  { name: "CLAPS", part: "tamborim", colour: "red", voice: "clap", hits: [0, 3, 6, 10, 12] },
-  { name: "WHISTLE", part: "apito", colour: "white", voice: "whistle", hits: [12, 14] },
-];
-function beatHTML() {
-  const rows = BEAT.map((r, ri) => `<div class="seqrow"><span class="seqlab c-${r.colour}" title="${r.part}">${r.name}</span>${
-    Array.from({ length: 16 }, (_, i) => `<span class="cell r${ri}${r.hits.includes(i) ? " on" : ""}" data-s="${i}"></span>`).join("")}</div>`).join("");
-  return `<figure class="pic beat"><div class="seq" role="img" aria-label="A 16-step samba rhythm: ball as bass drum, studs as shaker, rain as snare, claps as tamborim and a referee's whistle">${rows}</div>
-    <button class="rbtn playbeat" id="playBeat" aria-pressed="false">\u25B6 PLAY THE BEAT</button>
-    <figcaption>Each row is a sound from women\u2019s football in the UK, playing a samba part. Synthesised stand-ins for the real recordings. Spec work, not commissioned by the BBC.</figcaption></figure>`;
-}
-let ac = null, beatTimer = null, nextTime = 0, stepIdx = 0, noiseBuf = null;
-const STEP = 0.125;
-function noise() {
-  if (!noiseBuf) { noiseBuf = ac.createBuffer(1, ac.sampleRate, ac.sampleRate); const d = noiseBuf.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1; }
-  const n = ac.createBufferSource(); n.buffer = noiseBuf; return n;
-}
-function env(g, t, peak, decay) { g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(peak, t + 0.004); g.gain.exponentialRampToValueAtTime(0.0001, t + decay); }
-const VOICES = {
-  kick(t, acc) { const o = ac.createOscillator(), g = ac.createGain(); o.type = "sine"; o.frequency.setValueAtTime(130, t); o.frequency.exponentialRampToValueAtTime(42, t + 0.3); env(g, t, acc ? 0.9 : 0.55, 0.38); o.connect(g).connect(ac.destination); o.start(t); o.stop(t + 0.4); },
-  shaker(t, acc) { const n = noise(), f = ac.createBiquadFilter(), g = ac.createGain(); f.type = "highpass"; f.frequency.value = 6500; env(g, t, acc ? 0.22 : 0.09, 0.05); n.connect(f).connect(g).connect(ac.destination); n.start(t); n.stop(t + 0.06); },
-  snare(t, acc) { const n = noise(), f = ac.createBiquadFilter(), g = ac.createGain(); f.type = "bandpass"; f.frequency.value = 1900; f.Q.value = 0.8; env(g, t, acc ? 0.3 : 0.14, 0.09); n.connect(f).connect(g).connect(ac.destination); n.start(t); n.stop(t + 0.1); },
-  clap(t) { [0, 0.011, 0.022].forEach(d => { const n = noise(), f = ac.createBiquadFilter(), g = ac.createGain(); f.type = "bandpass"; f.frequency.value = 1150; f.Q.value = 1.2; env(g, t + d, 0.32, 0.07); n.connect(f).connect(g).connect(ac.destination); n.start(t + d); n.stop(t + d + 0.08); }); },
-  whistle(t) { const o = ac.createOscillator(), l = ac.createOscillator(), lg = ac.createGain(), g = ac.createGain(), f = ac.createBiquadFilter(); o.type = "square"; o.frequency.value = 2850; l.frequency.value = 32; lg.gain.value = 70; l.connect(lg).connect(o.frequency); f.type = "lowpass"; f.frequency.value = 5200; env(g, t, 0.05, 0.11); o.connect(f).connect(g).connect(ac.destination); o.start(t); l.start(t); o.stop(t + 0.12); l.stop(t + 0.12); },
-};
-function playStep(i, t) { BEAT.forEach(r => { if (r.hits.includes(i)) VOICES[r.voice](t, i % 4 === 0 || (r.voice === "shaker" && i % 4 === 3)); }); }
-function markStep(s) {
-  if (!beatTimer) return;
-  document.querySelectorAll(".cell.now").forEach(c => c.classList.remove("now"));
-  document.querySelectorAll(`.cell[data-s="${s}"]`).forEach(c => c.classList.add("now"));
-}
-function schedule() {
-  while (nextTime < ac.currentTime + 0.12) {
-    const s = stepIdx, t = nextTime;
-    playStep(s, t);
-    setTimeout(() => markStep(s), Math.max(0, (t - ac.currentTime) * 1000));
-    nextTime += STEP; stepIdx = (stepIdx + 1) % 16;
-  }
-}
-function startBeat() {
-  try { ac = ac || new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { return; }
-  if (ac.resume) ac.resume();
-  stepIdx = 0; nextTime = ac.currentTime + 0.06;
-  beatTimer = setInterval(schedule, 25); schedule();
-  const b = $("#playBeat"); if (b) { b.textContent = "\u25A0 STOP"; b.setAttribute("aria-pressed", "true"); }
-}
-function stopBeat() {
-  if (beatTimer) { clearInterval(beatTimer); beatTimer = null; }
-  document.querySelectorAll(".cell.now").forEach(c => c.classList.remove("now"));
-  const b = $("#playBeat"); if (b) { b.textContent = "\u25B6 PLAY THE BEAT"; b.setAttribute("aria-pressed", "false"); }
-}
-
 function afterRender(n) {
   drawMast(); drawPitch(); drawPortrait($(".portrait"));
-  const pb = $("#playBeat"); if (pb) pb.addEventListener("click", () => beatTimer ? stopBeat() : startBeat());
   document.querySelectorAll(".frame:not(.portrait)").forEach(pixelIn);
   const cp = $("#copyEmail");
   if (cp) cp.addEventListener("click", () => {
