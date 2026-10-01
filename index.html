@@ -96,6 +96,8 @@ table { font-size: inherit; }
 .frac { font-family: "IBM Plex Mono", "Courier New", monospace; font-size: .8em; font-weight: 500; letter-spacing: -.02em; }
 .dh .w { display: inline-block; transform: scaleY(2); transform-origin: 50% 12%; vertical-align: top; line-height: 1; }
 .band .dh { line-height: 2.1; }
+.band.sec { padding: .25em .6ch .05em; }
+.band.sec .dh { font-size: clamp(1.7em, 6vw, 2.6em); line-height: 1.85; padding-bottom: 0; }
 .c-red { color: var(--red); } .c-green { color: var(--green); } .c-yellow { color: var(--yellow); }
 .c-blue { color: #7d8dff; } .c-magenta { color: var(--magenta); } .c-cyan { color: var(--cyan); }
 .c-white { color: var(--white); } .c-dim { color: var(--dim); }
@@ -119,6 +121,19 @@ canvas.mosaic { display: block; width: 100%; height: auto; image-rendering: pixe
 
 /* index lists */
 .toc { display: grid; gap: .12em; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 14em), 1fr)); gap: 1em 1.2ch; margin-top: .3em; }
+.card { display: grid; align-content: start; gap: .1em; color: var(--white); text-decoration: none; }
+.card .th { display: block; aspect-ratio: 16 / 10; overflow: hidden; border: 2px solid var(--white); background: #111; margin-bottom: .2em; }
+.card .th img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; display: block; }
+.card .th.txt { display: grid; place-items: center; padding: .5em; text-align: center; color: var(--black); font-size: 1.5em; line-height: 1.05; }
+.card .tt { display: flex; justify-content: space-between; gap: 1ch; padding: 0 .2ch; }
+.card .tt .n { color: var(--yellow); font-variant-numeric: tabular-nums; }
+.card .m { color: var(--cyan); padding: 0 .2ch; }
+.card .q { color: var(--yellow); padding: 0 .2ch; }
+.card:hover .th, .card:focus-visible .th { border-color: var(--yellow); }
+.card:hover .tt, .card:focus-visible .tt { background: var(--white); color: var(--black); }
+.card:hover .tt .n, .card:focus-visible .tt .n { color: var(--black); }
+.card:focus-visible { outline: none; }
 .toc a {
   display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1ch;
   color: inherit; text-decoration: none; padding: 0 .4ch;
@@ -288,7 +303,7 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
     <div class="keys" id="keys"></div>
     <div class="side" id="side">
       <button class="fkw" data-go="200" data-sec="200" aria-label="TV and streaming, page 200"><span class="fk red"></span><span class="fl">TV</span></button>
-      <button class="fkw" data-go="300" data-sec="300" aria-label="Trailers and film, page 300"><span class="fk yellow"></span><span class="fl">Trailers</span></button>
+      <button class="fkw" data-go="300" data-sec="300" aria-label="Trailers, page 300"><span class="fk yellow"></span><span class="fl">Trailers</span></button>
       <button class="fkw" data-go="400" data-sec="400" aria-label="Sport, page 400"><span class="fk green"></span><span class="fl">Sport</span></button>
       <button class="fkw" data-go="500" data-sec="500" aria-label="Theatre and culture, page 500"><span class="fk magenta"></span><span class="fl">Culture</span></button>
       <button class="fkw" data-go="600" data-sec="600" aria-label="EdTech, page 600"><span class="fk cyan"></span><span class="fl">EdTech</span></button>
@@ -313,7 +328,7 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
 /* ---------- content ---------- */
 const CH = {
   200: { name: "TV & STREAMING", title: "TV & STREAMING", short: "TV", colour: "red" },
-  300: { name: "TRAILERS", title: "TRAILERS & FILM", short: "Trailers", colour: "yellow" },
+  300: { name: "TRAILERS", title: "TRAILERS", short: "Trailers", colour: "yellow" },
   400: { name: "SPORT", title: "SPORT", short: "Sport", colour: "green" },
   500: { name: "THEATRE & CULTURE", title: "THEATRE & CULTURE", short: "Culture", colour: "magenta" },
   600: { name: "EDTECH", title: "EDTECH", short: "EdTech", colour: "cyan" },
@@ -323,7 +338,7 @@ const CH = {
 };
 
 const PIECES = {
-  201: { title: "HBO MAX UK LAUNCH", meta: "HBO Max · OOH · Warner Bros. Discovery",
+  201: { title: "HBO MAX UK LAUNCH CAMPAIGN", meta: "HBO Max · OOH · Warner Bros. Discovery",
     quote: "The best new platform since 9¾.",
     body: [
       "I led copy for the UK launch of HBO Max, writing across radio, outdoor, social, email and display. I pushed for UK-specific lines that spoke to local places and content, and this was one of them.",
@@ -332,28 +347,28 @@ const PIECES = {
     q: "Why does the line work?",
     a: "It speaks to two audiences at once. If you don't know HBO Max, it's a confident claim. If you know your Harry Potter, it's a joke you're already in on.",
     pics: [["kings-cross", "King's Cross tunnel, London"]] },
-  202: { title: "ACCLAIMED, DEBATED", meta: "HBO Max · OOH brand campaign · Warner Bros. Discovery",
+  202: { title: "HBO MAX OUTDOOR CAMPAIGN", meta: "HBO Max · OOH brand campaign · Warner Bros. Discovery",
     quote: "Critically acclaimed, publicly debated.",
     body: ["I wrote this campaign for HBO Max, turning the breadth of the catalogue into a simple promise: there's always something people are talking about."],
     pics: [["watercooler", "“Wall-to-Wall Watercooler” poster"]] },
-  203: { title: "THE ROYAL ROY", meta: "HBO Max · Social & influencer · Warner Bros. Discovery",
+  203: { title: "HBO MAX INFLUENCER SOCIAL", meta: "HBO Max · Social & influencer · Warner Bros. Discovery",
     quote: "Who's up for a pint at The Royal Roy?",
     body: ["I develop social and influencer ideas for HBO Max. This paid collaboration with @hollyandbrookearehooked ran for the UK and Ireland launch, and imagined the Roys from Succession running a British pub."],
     pics: [["royal-roy", "Instagram, @hbomaxuk × @hollyandbrookearehooked"]] },
-  204: { title: "TOUGH CASES", meta: "HBO Max · Display & paid social · Warner Bros. Discovery",
+  204: { title: "HBO MAX DISPLAY ADS", meta: "HBO Max · Display & paid social · Warner Bros. Discovery",
     quote: "Tough cases call for strong leads.",
     body: ["I write display and paid-social copy for HBO Max across EMEA, plus international titles and taglines for European productions. Every word has to earn its place."],
     pics: [["tough-cases", "Display ad, before market pricing was added"]] },
-  205: { title: "DRAMA TAGLINES", meta: "Humans · Halt and Catch Fire · Empire Design",
+  205: { title: "TV DRAMA TAGLINES", meta: "Humans · Halt and Catch Fire · Empire Design",
     quote: "Made in our image. Out of our control.",
     quote2: "The battle for CTRL begins.",
     body: ["I wrote these taglines at Empire Design: the first for Humans, the second for Halt and Catch Fire."],
     pics: [["humans", "Humans"], ["halt-catch-fire", "Halt and Catch Fire"]] },
 
-  301: { title: "THE WORLD GOES POP", meta: "Tate Modern · Trailer · AKA UK",
+  301: { title: "TATE MODERN TRAILER", meta: "Tate Modern · Trailer · AKA UK",
     body: ["For Tate Modern's exhibition The World Goes Pop, I came up with the idea for the trailer: bring in the Japanese pop star Kyary Pamyu Pamyu. I wrote the script and helped on the shoot."],
     pics: [["world-goes-pop", "The World Goes Pop, Tate Modern"]] },
-  302: { title: "BOYHOOD", meta: "Universal · Trailer script · Empire Design",
+  302: { title: "BOYHOOD TRAILER", meta: "Universal · Trailer script · Empire Design",
     body: [
       "I scripted an emotive trailer for Universal's Boyhood that explained its unique filmmaking process: the same cast, filmed over twelve years.",
       "It gained 5.5 million views on YouTube, and was also shown on TV in America.",
@@ -361,19 +376,19 @@ const PIECES = {
     q: "What made it hard?",
     a: "The method is the hook, but nobody cries at a method. The script had to make the process feel like a life going by.",
     pics: [["boyhood", "Boyhood, Universal"]] },
-  303: { title: "NATIONAL THEATRE", meta: "National Theatre · Trailer script · AKA UK",
+  303: { title: "NATIONAL THEATRE TRAILER", meta: "National Theatre · Trailer script · AKA UK",
     quote: "But is their perfect life…",
     body: ["I scripted a National Theatre trailer in the style of a 1950s commercial. It has more than 200,000 views on YouTube."],
     pics: [["national-theatre", "National Theatre trailer"]] },
 
-  401: { title: "TNT SPORTS CRM", meta: "TNT Sports · Paris 2024 · CRM · Warner Bros. Discovery",
+  401: { title: "TNT SPORTS CRM & PARIS 2024", meta: "TNT Sports · Paris 2024 · CRM · Warner Bros. Discovery",
     body: [
       "I lead master CRM for HBO Max and TNT Sports across EMEA, from onboarding to win-back. When we took on TNT Sports' CRM, I worked with their marketing team to rebuild the emails around user data. Our CRM now performs better than any other WBD region.",
       "For Paris 2024, a large batch of Olympics comms landed just before deadline. I used automation to deliver it on time, during what became our highest-ever period for new subscriptions.",
     ],
     scores: true,
     pics: [["paris-2024", "Paris 2024 CRM"]] },
-  402: { title: "WOMEN'S WORLD CUP 2027", meta: "Spec campaign · BBC Sport",
+  402: { title: "WOMEN'S WORLD CUP SPEC CAMPAIGN", meta: "Spec campaign · BBC Sport",
     spec: true,
     quote: "Our game\u2019s got rhythm.",
     body: [
@@ -384,39 +399,39 @@ const PIECES = {
     ],
   },
 
-  501: { title: "MOCK THE WEEK", meta: "TLC · Print · Warner Bros. Discovery",
+  501: { title: "MOCK THE WEEK PRINT AD", meta: "TLC · Print · Warner Bros. Discovery",
     quote: "Heard we were finished? Fake news.",
     body: ["I wrote this print ad for Mock the Week on TLC, turning the idea that the show was ‘finished’ into the punchline."],
     pics: [["mock-the-week", "Print ad for TLC"]] },
-  502: { title: "CULTURE TAGLINES", meta: "Westminster Abbey · Swallows and Amazons · AKA UK",
+  502: { title: "WESTMINSTER ABBEY & FILM TAGLINES", meta: "Westminster Abbey · Swallows and Amazons · AKA UK",
     quote: "Feel wonder first hand.",
     quote2: "Some summers you treasure forever.",
     body: ["I wrote these taglines at AKA UK: the first for Westminster Abbey, the second for the film Swallows and Amazons."],
     pics: [["westminster-abbey", "Westminster Abbey"], ["swallows-amazons", "Swallows and Amazons"]] },
-  503: { title: "MATILDA THE MUSICAL", meta: "Matilda The Musical · Social & video · AKA UK",
+  503: { title: "MATILDA SOCIAL & VIDEO", meta: "Matilda The Musical · Social & video · AKA UK",
     body: [
       "At AKA UK, for Matilda The Musical, I came up with ideas for social and video content, wrote the scripts, went along to the shoots and edited the films myself in Adobe Premiere Pro.",
       "Meet the Matildas introduced the young actors taking on the title role, showing audiences the new cast before they stepped on stage.",
     ],
     pics: [["matilda", "Meet the Matildas, Matilda The Musical"]] },
 
-  601: { title: "THE NEW WORLD NEEDS YOU", meta: "City & Guilds × FutureLearn · Campaign",
+  601: { title: "CITY & GUILDS CAMPAIGN", meta: "City & Guilds × FutureLearn · Campaign",
     quote: "The new world needs you.",
     body: ["For City & Guilds' new skills courses, I created ‘The New World Needs You’, a campaign encouraging young people to see a place for themselves in the post-pandemic world. We extended the idea into sector-specific paid creative."],
     q: "What does the line do?",
     a: "It flips the usual message. Instead of telling young people they lack skills, it tells them they're needed.",
     pics: [["new-world-needs", "The New World Needs…"], ["new-world-building", "Sector-specific paid social"]] },
-  602: { title: "RESULTS DAY", meta: "FutureLearn · OOH",
+  602: { title: "RESULTS DAY OUTDOOR CAMPAIGN", meta: "FutureLearn · OOH",
     quote: "Exam results don't define you.",
     body: ["I wrote copy for a fast-turnaround Results Day OOH campaign aimed at Gen Z, reframing failure as part of the journey rather than the end of it."],
     pics: [["results-day", "Results Day OOH"]] },
 };
 
 const CHAPTERS = {
-  200: { line: "Making people care about a show before they've seen it.", pieces: [201, 202, 203, 204, 205] },
-  300: { line: "Trailers I scripted for art, film and theatre.", pieces: [301, 302, 303] },
-  400: { line: "Sport CRM for TNT Sports and Paris 2024, plus one spec campaign.", pieces: [401, 402] },
-  500: { line: "Comedy, theatre, culture and film.", pieces: [501, 502, 503] },
+  200: { line: "Campaigns, social and ads for HBO Max, plus taglines for TV dramas.", pieces: [201, 202, 203, 204, 205] },
+  300: { line: "Trailers I scripted for Tate Modern, Universal and the National Theatre.", pieces: [301, 302, 303] },
+  400: { line: "CRM for TNT Sports, including Paris 2024, plus a spec campaign for the Women's World Cup.", pieces: [401, 402] },
+  500: { line: "Work for Matilda The Musical, Westminster Abbey, TLC and film.", pieces: [501, 502, 503] },
   600: { line: "Campaigns for FutureLearn, the online learning platform, including work with City & Guilds.", pieces: [601, 602] },
 };
 
@@ -433,7 +448,7 @@ let revealed = false;
 
 function band(n, title) {
   const ch = CH[chapterOf(n)];
-  return `<div class="band b-${ch.colour}">${n !== chapterOf(n) ? `<div class="kicker"><span>${ch.name}</span></div>` : ""}${dh(title)}</div>`;
+  return `<div class="band b-${ch.colour}${n === chapterOf(n) ? " sec" : ""}">${n !== chapterOf(n) ? `<div class="kicker"><span>${ch.name}</span></div>` : ""}${dh(title)}</div>`;
 }
 function qa(q, a) {
   return `<div class="qa"><div class="q">Q. ${esc(q)}</div>
@@ -450,18 +465,18 @@ function row(label, colour, text) {
 /* ---------- pages ---------- */
 function pageIndex() {
   const toc = [
-    [101, "About", "white"], [200, "TV & streaming", "red"], [300, "Trailers & film", "yellow"],
+    [101, "About", "white"], [200, "TV & streaming", "red"], [300, "Trailers", "yellow"],
     [400, "Sport", "green"], [500, "Theatre & culture", "magenta"], [600, "EdTech", "cyan"],
     [700, "Brand voice", "white"], [750, "Leadership", "white"], [800, "Journalism", "white"], [888, "Contact & CV", "yellow"],
   ];
   const heads = [
-    [402, "SPEC", "yellow", "A Women's World Cup pitch for BBC Creative"],
-    [201, "DRAMA", "red", "HBO Max launch runs from radio to King's Cross"],
-    [203, "DRAMA", "red", "Succession's Roys open a British pub"],
-    [301, "CULTURE", "yellow", "Pop star fronts Tate Modern exhibition trailer"],
-    [401, "SPORT", "green", "Olympics and TNT Sports: CRM keeps fans watching"],
-    [501, "COMEDY", "magenta", "Mock the Week jokes about its own cancellation"],
-    [750, "LEADERSHIP", "cyan", "Writer leads HBO Max and TNT Sports copy team"],
+    [402, "SPEC", "yellow", "Spec campaign for BBC Sport's Women's World Cup coverage"],
+    [201, "TV", "red", "HBO Max UK launch campaign, from radio to King's Cross"],
+    [203, "TV", "red", "Succession influencer social for HBO Max"],
+    [301, "TRAILERS", "yellow", "Tate Modern exhibition trailer"],
+    [401, "SPORT", "green", "TNT Sports CRM, including Paris 2024"],
+    [501, "COMEDY", "magenta", "Mock the Week print ad for TLC"],
+    [750, "LEADERSHIP", "cyan", "Leading the UK retention copy team at HBO Max and TNT Sports"],
   ];
   return `
     <div class="mast">
@@ -490,15 +505,19 @@ function pageAbout() {
     "My background is editorial as well as commercial. I started my writing career as a music and film journalist, interviewing artists and filmmakers and writing features and profiles. I later produced long-form editorial and interview pieces at FutureLearn, alongside my campaign work. Writing at length remains an important part of my experience, as does writing scripts for television, radio, theatrical and social.",
     "I enjoy the collaborative side of copywriting just as much as the writing itself. I regularly present and defend ideas to senior stakeholders, work closely with designers and regional teams, and manage two junior writers. Alongside my own writing, I edit and shape their work before it becomes English master copy for multiple markets.",
   ];
-  return `<div class="band b-white">${dh("ABOUT")}</div>
+  return `<div class="band b-white sec">${dh("ABOUT")}</div>
     <div class="prose wide">${paras.map(p => `<p>${esc(p)}</p>`).join("")}</div>`;
 }
 
 function pageChapter(n) {
   const c = CHAPTERS[n];
   return `${band(n, CH[n].title)}
-    <div class="c-${CH[n].colour}">${esc(c.line)}</div>
-    <div class="toc">${c.pieces.map(p => `<a href="#p${p}" data-go="${p}"><span class="t">${esc(PIECES[p].title)}${PIECES[p].spec ? " (SPEC)" : ""}</span><span class="n">${p}</span></a>`).join("")}</div>`;
+    <div class="cards">${c.pieces.map(p => {
+      const x = PIECES[p];
+      const th = x.pics ? `<span class="th"><img src="img/${x.pics[0][0]}.jpg" alt="" decoding="async"></span>`
+        : `<span class="th txt" style="background:var(--${CH[n].colour})">${esc(x.quote || x.title)}</span>`;
+      return `<a class="card" href="#p${p}" data-go="${p}">${th}<span class="tt"><span>${esc(x.title)}</span><span class="n">${p}</span></span><span class="m">${esc(x.meta)}</span>${x.quote ? `<span class="q">“${esc(x.quote.replace(/^“|”$/g, ""))}”</span>` : ""}</a>`;
+    }).join("")}</div>`;
 }
 
 function scoresBlock() {
@@ -583,7 +602,7 @@ function pageSubtitles() {
     ["2005\u201315", "Freelance", "Copywriter, Journalist & Proofreader", [
       "Wrote and proofread for private clients and cultural publications; researched, interviewed and wrote music and film features and reviews."]],
   ];
-  return `<div class="band b-yellow"><div class="kicker"><span>SUBTITLES</span></div>${dh("CONTACT & CV")}</div>
+  return `<div class="band b-yellow sec">${dh("CONTACT & CV")}</div>
     <div class="me"><button class="frame" data-src="img/sam.jpg" data-cap="Sam Lewis" aria-label="Enlarge photo of Sam Lewis"><img src="img/sam.jpg" alt="Sam Lewis"></button>
     <div class="facts">
       <div class="row"><span class="l c-cyan">EMAIL</span><span><span class="c-yellow" id="email">sam.joe.lewis@gmail.com</span> <button class="rbtn" id="copyEmail" style="font-size:.9em;padding:0 1ch">COPY</button> <span class="c-dim" id="copied" hidden>Copied</span></span></div>
@@ -630,7 +649,7 @@ function drawFastext(n) {
   if (n === 100 || i < 0) { $("#fastext").innerHTML = ""; return; }
   const prev = ORDER[i - 1], next = ORDER[i + 1];
   const secN = CHAPTERS[ch] && n !== ch ? ch : 100;
-  const NAV = { 200: "TV & streaming", 300: "Trailers & film", 400: "Sport", 500: "Theatre & culture", 600: "EdTech" };
+  const NAV = { 200: "TV & streaming", 300: "Trailers", 400: "Sport", 500: "Theatre & culture", 600: "EdTech" };
   const secLabel = secN === 100 ? "Home" : NAV[ch];
   $("#fastext").innerHTML =
     (prev ? `<button data-go="${prev}"><span>\u2039 ${prev}</span></button>` : `<span></span>`) +
