@@ -98,6 +98,8 @@ table { font-size: inherit; }
 .band .dh { line-height: 2.1; }
 .band.sec { padding: .25em .6ch .05em; }
 .band.sec .dh { font-size: clamp(1.7em, 6vw, 2.6em); line-height: 1.85; padding-bottom: 0; }
+.band.sec .kicker + .dh { font-size: clamp(1.35em, 4.2vw, 2em); }
+.crumbs .cur { overflow: hidden; text-overflow: ellipsis; min-width: 0; }
 .c-red { color: var(--red); } .c-green { color: var(--green); } .c-yellow { color: var(--yellow); }
 .c-blue { color: #7d8dff; } .c-magenta { color: var(--magenta); } .c-cyan { color: var(--cyan); }
 .c-white { color: var(--white); } .c-dim { color: var(--dim); }
@@ -188,6 +190,10 @@ figure.pic { margin: 0; display: grid; gap: .25em; min-width: 0; }
 .stack { display: grid; gap: 1em; min-width: 0; }
 .piece.solo { grid-template-columns: minmax(0, 1fr); }
 .piece.solo .prose { max-width: 68ch; }
+.gallery { display: flex; gap: 1.5ch; margin-top: 1em; align-items: flex-start; }
+.gallery .gi { min-width: 0; }
+.gallery .frame img { max-height: none; }
+@media (max-width: 560px) { .gallery { flex-direction: column; max-width: none !important; } .gallery .gi { flex: none !important; width: 100%; } }
 .pics2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2ch; }
 figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
 #email { overflow-wrap: anywhere; }
@@ -216,11 +222,12 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
   margin-top: .8em; padding-top: .3em;
 }
 .fastext:empty { display: none; }
-.crumbs { display: flex; align-items: baseline; gap: 1.2ch; flex-wrap: wrap; margin: .15em 0 .5em; text-transform: uppercase; }
+.crumbs { display: flex; align-items: baseline; gap: 1.2ch; flex-wrap: nowrap; white-space: nowrap; min-width: 0; max-width: 100%; overflow: hidden; contain: inline-size; margin: .15em 0 .5em; text-transform: uppercase; }
 .crumbs:empty { display: none; }
 .crumbs button { font: inherit; text-transform: inherit; background: none; border: 0; padding: 0 .3ch; cursor: pointer; color: var(--cyan); }
 .crumbs .back { background: var(--white); color: var(--black); padding: 0 .8ch; }
-.crumbs .path { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 .6ch; min-width: 0; }
+.crumbs .path { display: flex; flex-wrap: nowrap; align-items: baseline; gap: 0 .6ch; min-width: 0; overflow: hidden; }
+.crumbs .back { flex: none; }
 .crumbs .sep { color: var(--dim); }
 .crumbs .here { color: var(--white); }
 .crumbs button:hover, .crumbs button:focus-visible { background: var(--yellow); color: var(--black); outline: none; }
@@ -358,25 +365,28 @@ const PIECES = {
     q: "Why does the line work?",
     a: "It speaks to two audiences at once. If you don't know HBO Max, it's a confident claim. If you know your Harry Potter, it's a joke you're already in on.",
     pics: [["kings-cross", "King's Cross tunnel, London"]] },
-  202: { title: "HBO MAX OUTDOOR CAMPAIGN", meta: "HBO Max · OOH brand campaign · Warner Bros. Discovery",
+  202: { title: "HBO MAX WALL-TO-WALL WATERCOOLER CAMPAIGN", meta: "HBO Max · OOH brand campaign · Warner Bros. Discovery",
     quote: "Critically acclaimed, publicly debated.",
     body: ["I wrote this campaign for HBO Max, turning the breadth of the catalogue into a simple promise: there's always something people are talking about."],
     pics: [["watercooler", "“Wall-to-Wall Watercooler” poster"]] },
-  203: { title: "HBO MAX INFLUENCER SOCIAL", meta: "HBO Max · Social & influencer · Warner Bros. Discovery",
+  203: { title: "SUCCESSION INFLUENCER CAMPAIGN FOR HBO MAX", meta: "HBO Max · Social & influencer · Warner Bros. Discovery",
     quote: "Who's up for a pint at The Royal Roy?",
     body: ["I develop social and influencer ideas for HBO Max. This paid collaboration with @hollyandbrookearehooked ran for the UK and Ireland launch, and imagined the Roys from Succession running a British pub."],
     pics: [["royal-roy", "Instagram, @hbomaxuk × @hollyandbrookearehooked"]] },
-  204: { title: "HBO MAX DISPLAY ADS", meta: "HBO Max · Display & paid social · Warner Bros. Discovery",
+  204: { title: "HBO MAX DISPLAY & PAID SOCIAL ADS", meta: "HBO Max · Display & paid social · Warner Bros. Discovery",
     quote: "Tough cases call for strong leads.",
     body: ["I write display and paid-social copy for HBO Max across EMEA, plus international titles and taglines for European productions. Every word has to earn its place."],
     pics: [["tough-cases", "Display ad, before market pricing was added"]] },
-  205: { title: "TV DRAMA TAGLINES", meta: "Humans · Halt and Catch Fire · Empire Design",
+  205: { title: "HUMANS AND HALT AND CATCH FIRE TAGLINES", meta: "Humans · Halt and Catch Fire · Empire Design",
     quote: "Made in our image. Out of our control.",
     quote2: "The battle for CTRL begins.",
-    body: ["I wrote these taglines at Empire Design: the first for Humans, the second for Halt and Catch Fire."],
+    body: [
+      "At Empire Design, I developed concepts, taglines and scripts for theatrical and home-entertainment campaigns for Universal Studios, Fox, AMC and Canal Plus, and wrote trailer, radio, outdoor, digital and social copy for film and TV launches.",
+      "Two of my lines from that time: the first for Humans, the second for Halt and Catch Fire.",
+    ],
     pics: [["humans", "Humans"], ["halt-catch-fire", "Halt and Catch Fire"]] },
 
-  301: { title: "TATE MODERN TRAILER", meta: "Tate Modern · Trailer · AKA UK",
+  301: { title: "THE WORLD GOES POP TRAILER FOR TATE MODERN", meta: "Tate Modern · Trailer · AKA UK",
     body: ["For Tate Modern's exhibition The World Goes Pop, I came up with the idea for the trailer: bring in the Japanese pop star Kyary Pamyu Pamyu. I wrote the script and helped on the shoot."],
     pics: [["world-goes-pop", "The World Goes Pop, Tate Modern"]] },
   302: { title: "BOYHOOD TRAILER", meta: "Universal · Trailer script · Empire Design",
@@ -387,19 +397,19 @@ const PIECES = {
     q: "What made it hard?",
     a: "The method is the hook, but nobody cries at a method. The script had to make the process feel like a life going by.",
     pics: [["boyhood", "Boyhood, Universal"]] },
-  303: { title: "NATIONAL THEATRE TRAILER", meta: "National Theatre · Trailer script · AKA UK",
+  303: { title: "HOME, I'M DARLING TRAILER FOR THE NATIONAL THEATRE", meta: "National Theatre · Home, I'm Darling · Trailer script · AKA UK",
     quote: "But is their perfect life…",
-    body: ["I scripted a National Theatre trailer in the style of a 1950s commercial. It has more than 200,000 views on YouTube."],
-    pics: [["national-theatre", "National Theatre trailer"]] },
+    body: ["I scripted the National Theatre's trailer for Laura Wade's Home, I'm Darling in the style of a 1950s commercial. It has more than 200,000 views on YouTube."],
+    pics: [["national-theatre", "Home, I'm Darling trailer, National Theatre"]] },
 
-  401: { title: "TNT SPORTS CRM & PARIS 2024", meta: "TNT Sports · Paris 2024 · CRM · Warner Bros. Discovery",
+  401: { title: "TNT SPORTS CRM, INCLUDING PARIS 2024", meta: "TNT Sports · Paris 2024 · CRM · Warner Bros. Discovery",
     body: [
       "I lead master CRM for HBO Max and TNT Sports across EMEA, from onboarding to win-back. When we took on TNT Sports' CRM, I worked with their marketing team to rebuild the emails around user data. Our CRM now performs better than any other WBD region.",
       "For Paris 2024, a large batch of Olympics comms landed just before deadline. I used automation to deliver it on time, during what became our highest-ever period for new subscriptions.",
     ],
     scores: true,
     pics: [["paris-2024", "Paris 2024 CRM"]] },
-  402: { title: "WOMEN'S WORLD CUP SPEC CAMPAIGN", meta: "Spec campaign · BBC Sport",
+  402: { title: "BBC SPORT WOMEN'S WORLD CUP 2027 SPEC CAMPAIGN", meta: "Spec campaign · BBC Sport",
     spec: true,
     quote: "Our game\u2019s got rhythm.",
     body: [
@@ -410,29 +420,32 @@ const PIECES = {
     ],
   },
 
-  501: { title: "MOCK THE WEEK PRINT AD", meta: "TLC · Print · Warner Bros. Discovery",
+  501: { title: "MOCK THE WEEK PRINT AD FOR TLC", meta: "TLC · Print · Warner Bros. Discovery",
     quote: "Heard we were finished? Fake news.",
     body: ["I wrote this print ad for Mock the Week on TLC, turning the idea that the show was ‘finished’ into the punchline."],
     pics: [["mock-the-week", "Print ad for TLC"]] },
-  502: { title: "WESTMINSTER ABBEY & FILM TAGLINES", meta: "Westminster Abbey · Swallows and Amazons · AKA UK",
+  502: { title: "WESTMINSTER ABBEY AND SWALLOWS AND AMAZONS TAGLINES", meta: "Westminster Abbey · Swallows and Amazons · AKA UK",
     quote: "Feel wonder first hand.",
     quote2: "Some summers you treasure forever.",
-    body: ["I wrote these taglines at AKA UK: the first for Westminster Abbey, the second for the film Swallows and Amazons."],
+    body: [
+      "At AKA UK, I came up with integrated campaigns for Tate Modern, the National Theatre, the British Library, the Natural History Museum and Matilda the Musical, taking ideas from brief to finished work across film, radio, outdoor, digital and social.",
+      "Two of my lines from that time: the first for Westminster Abbey, the second for the film Swallows and Amazons.",
+    ],
     pics: [["westminster-abbey", "Westminster Abbey"], ["swallows-amazons", "Swallows and Amazons"]] },
-  503: { title: "MATILDA SOCIAL & VIDEO", meta: "Matilda The Musical · Social & video · AKA UK",
+  503: { title: "MATILDA THE MUSICAL SOCIAL & VIDEO", meta: "Matilda The Musical · Social & video · AKA UK",
     body: [
       "At AKA UK, for Matilda The Musical, I came up with ideas for social and video content, wrote the scripts, went along to the shoots and edited the films myself in Adobe Premiere Pro.",
       "Meet the Matildas introduced the young actors taking on the title role, showing audiences the new cast before they stepped on stage.",
     ],
     pics: [["matilda", "Meet the Matildas, Matilda The Musical"]] },
 
-  601: { title: "CITY & GUILDS CAMPAIGN", meta: "City & Guilds × FutureLearn · Campaign",
+  601: { title: "CITY & GUILDS AND FUTURELEARN SKILLS CAMPAIGN", meta: "City & Guilds × FutureLearn · Campaign",
     quote: "The new world needs you.",
     body: ["For City & Guilds' new skills courses, I created ‘The New World Needs You’, a campaign encouraging young people to see a place for themselves in the post-pandemic world. We extended the idea into sector-specific paid creative."],
     q: "What does the line do?",
     a: "It flips the usual message. Instead of telling young people they lack skills, it tells them they're needed.",
     pics: [["new-world-needs", "The New World Needs…"], ["new-world-building", "Sector-specific paid social"]] },
-  602: { title: "RESULTS DAY OUTDOOR CAMPAIGN", meta: "FutureLearn · OOH",
+  602: { title: "FUTURELEARN RESULTS DAY OUTDOOR CAMPAIGN", meta: "FutureLearn · OOH",
     quote: "Exam results don't define you.",
     body: ["I wrote copy for a fast-turnaround Results Day OOH campaign aimed at Gen Z, reframing failure as part of the journey rather than the end of it."],
     pics: [["results-day", "Results Day OOH"]] },
@@ -459,7 +472,7 @@ let revealed = false;
 
 function band(n, title) {
   const ch = CH[chapterOf(n)];
-  return `<div class="band b-${ch.colour}${n === chapterOf(n) ? " sec" : ""}">${n !== chapterOf(n) ? `<div class="kicker"><span>${ch.name}</span></div>` : ""}${dh(title)}</div>`;
+  return `<div class="band b-${ch.colour} sec">${n !== chapterOf(n) ? `<div class="kicker"><span>${ch.name}</span></div>` : ""}${dh(title)}</div>`;
 }
 function qa(q, a) {
   return `<div class="qa"><div class="q">Q. ${esc(q)}</div>
@@ -483,8 +496,8 @@ function pageIndex() {
   const heads = [
     [402, "SPEC", "yellow", "Spec campaign for BBC Sport's Women's World Cup coverage"],
     [201, "TV", "red", "HBO Max UK launch campaign, from radio to King's Cross"],
-    [203, "TV", "red", "Succession influencer social for HBO Max"],
-    [301, "TRAILERS", "yellow", "Tate Modern exhibition trailer"],
+    [203, "TV", "red", "Succession influencer campaign for HBO Max"],
+    [301, "TRAILERS", "yellow", "The World Goes Pop trailer for Tate Modern"],
     [401, "SPORT", "green", "TNT Sports CRM, including Paris 2024"],
     [501, "COMEDY", "magenta", "Mock the Week print ad for TLC"],
     [750, "LEADERSHIP", "cyan", "Leading the UK retention copy team at HBO Max and TNT Sports"],
@@ -541,9 +554,16 @@ function scoresBlock() {
     <div class="c-dim">Viewers who received the campaigns, compared with a control group who didn't.</div></div>`;
 }
 
+const AR = {"boyhood":1.705,"futurelearn-step":1.634,"halt-catch-fire":1.41,"humans":1.754,"kings-cross":1.77,"matilda":1.78,"mock-the-week":1.531,"national-theatre":1.314,"new-world-building":0.597,"new-world-needs":1,"paris-2024":0.821,"quick-witted":1.604,"results-day":1,"royal-roy":0.735,"tough-cases":0.999,"watercooler":1.333,"westminster-abbey":0.647,"world-goes-pop":1.316,"skinny-julia-holter":1.732,"skinny-slow-west":1.732,"swallows-amazons":0.681};
+function gallery(list) {
+  const s = list.reduce((a, [f]) => a + (AR[f] || 1), 0);
+  return `<div class="gallery" style="max-width:calc(${s.toFixed(3)} * min(520px, 72vh))">${list.map(x => `<div class="gi" style="flex:${AR[x[0]] || 1} 1 0">${pic(x)}</div>`).join("")}</div>`;
+}
+
 function pagePiece(n) {
   const p = PIECES[n];
-  const pics = p.pics ? (p.pics.length > 1 ? `<div class="pics2">${p.pics.map(pic).join("")}</div>` : pic(p.pics[0])) : "";
+  const multi = p.pics && p.pics.length > 1;
+  const pics = p.pics && !multi ? pic(p.pics[0]) : "";
   const right = p.pitch ? ""
     : pics;
   return `${band(n, p.title)}
@@ -556,6 +576,7 @@ function pagePiece(n) {
       </div>
       ${right}
     </div>
+    ${multi ? gallery(p.pics) : ""}
     ${p.scores ? `<div class="scorewide">${scoresBlock()}</div>` : ""}`;
 }
 
@@ -584,10 +605,10 @@ function pageLeadership() {
 function pageOffDuty() {
   return `${band(800, "JOURNALISM")}
     <div class="meta">The Skinny · Drowned in Sound · FutureLearn</div>
-    <div class="piece"><div class="facts"><div class="prose">
+    <div class="piece solo"><div class="facts"><div class="prose">
       <p>I started my writing career as a music and film journalist. For The Skinny, I interviewed filmmakers and musicians and wrote cover features and long-form profiles, including John Maclean on Slow West and Julia Holter on Loud City Song.</p>
       <p>I later produced long-form editorial and interview pieces at FutureLearn, alongside my campaign work.</p>
-    </div></div><div class="pics2">${pic(["skinny-slow-west", "The Skinny: Slow West"])}${pic(["skinny-julia-holter", "The Skinny: Julia Holter"])}</div></div>`;
+    </div></div></div>${gallery([["skinny-slow-west", "The Skinny: Slow West"], ["skinny-julia-holter", "The Skinny: Julia Holter"]])}`;
 }
 
 function pageSubtitles() {
