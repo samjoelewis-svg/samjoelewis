@@ -216,6 +216,14 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
   margin-top: .8em; padding-top: .3em;
 }
 .fastext:empty { display: none; }
+.crumbs { display: flex; align-items: baseline; gap: 1.2ch; flex-wrap: wrap; margin: .15em 0 .5em; text-transform: uppercase; }
+.crumbs:empty { display: none; }
+.crumbs button { font: inherit; text-transform: inherit; background: none; border: 0; padding: 0 .3ch; cursor: pointer; color: var(--cyan); }
+.crumbs .back { background: var(--white); color: var(--black); padding: 0 .8ch; }
+.crumbs .path { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 .6ch; min-width: 0; }
+.crumbs .sep { color: var(--dim); }
+.crumbs .here { color: var(--white); }
+.crumbs button:hover, .crumbs button:focus-visible { background: var(--yellow); color: var(--black); outline: none; }
 .fastext .sec { justify-self: center; }
 .fastext button {
   font: inherit; background: none; border: 0; padding: 0 .3ch; text-align: left; cursor: pointer;
@@ -275,7 +283,9 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
   .help { margin-left: 0; width: 100%; }
   .screen { min-height: 0; }
   .fastext { grid-template-columns: auto minmax(0, 1fr) auto; }
-  .fastext .sec { font-size: .85em; }
+  .fastext { grid-template-columns: auto auto; justify-content: space-between; }
+  .fastext .sec { display: none; }
+  .crumbs .cur, .crumbs .hm { display: none; }
   .bigstats { grid-template-columns: minmax(0, 1fr); }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -293,6 +303,7 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
         <span class="svc">SAM LEWIS</span>
         <span class="clock" id="clock"></span>
       </div>
+      <nav class="crumbs" id="crumbs" aria-label="Breadcrumb"></nav>
       <main class="page" id="page" tabindex="-1" aria-live="polite"></main>
       <nav class="fastext" id="fastext" aria-label="Fastext links"></nav>
     </div>
@@ -642,19 +653,33 @@ function render(n) {
 }
 
 /* ---------- fastext ---------- */
+const NAV = { 200: "TV & streaming", 300: "Trailers", 400: "Sport", 500: "Theatre & culture", 600: "EdTech" };
+const NAMES = { ...NAV, 101: "About", 700: "Brand voice", 750: "Leadership", 800: "Journalism", 888: "Contact & CV" };
+function drawCrumbs(n) {
+  const el = $("#crumbs");
+  if (n === 100 || !(NAMES[n] || PIECES[n])) { el.innerHTML = ""; return; }
+  const ch = chapterOf(n), inSec = !!PIECES[n] && !!NAV[ch];
+  const parent = inSec ? ch : 100;
+  const here = PIECES[n] ? PIECES[n].title : NAMES[n];
+  el.innerHTML = `<button class="back" data-go="${parent}">\u2039 Back</button>` +
+    `<span class="path"><button data-go="100"${inSec ? ' class="hm"' : ""}>Home</button>` +
+    (inSec ? `<span class="sep hm">\u203A</span><button data-go="${ch}">${esc(NAV[ch])}</button>` : "") +
+    `<span class="cur"><span class="sep">\u203A</span> <span class="here" aria-current="page">${esc(here)}</span></span></span>`;
+}
+
 function drawFastext(n) {
+  drawCrumbs(n);
   const ch = chapterOf(n);
   document.querySelectorAll(".fkw").forEach(b => b.setAttribute("aria-current", String(Number(b.dataset.sec) === ch && n !== 100)));
   const i = ORDER.indexOf(n);
   if (n === 100 || i < 0) { $("#fastext").innerHTML = ""; return; }
   const prev = ORDER[i - 1], next = ORDER[i + 1];
   const secN = CHAPTERS[ch] && n !== ch ? ch : 100;
-  const NAV = { 200: "TV & streaming", 300: "Trailers", 400: "Sport", 500: "Theatre & culture", 600: "EdTech" };
   const secLabel = secN === 100 ? "Home" : NAV[ch];
   $("#fastext").innerHTML =
-    (prev ? `<button data-go="${prev}"><span>\u2039 ${prev}</span></button>` : `<span></span>`) +
+    (prev ? `<button data-go="${prev}" aria-label="Previous page, ${prev}"><span>\u2039 Previous</span></button>` : `<span></span>`) +
     `<button class="sec" data-go="${secN}"><span>${esc(secLabel)}</span></button>` +
-    (next ? `<button data-go="${next}"><span>${next} \u203A</span></button>` : `<span></span>`);
+    (next ? `<button data-go="${next}" aria-label="Next page, ${next}"><span>Next \u203A</span></button>` : `<span></span>`);
 }
 
 /* ---------- navigation ---------- */
@@ -671,8 +696,9 @@ function go(n, push = true) {
     current = n;
     drawFastext(n);
     afterRender(n);
-    if (push) { try { history.replaceState(null, "", "#p" + n); } catch (e) {} }
+    if (push && location.hash !== "#p" + n) { try { history.pushState(null, "", "#p" + n); } catch (e) {} }
     pageEl.focus({ preventScroll: true });
+    const sc = $("#screen"); if (sc.getBoundingClientRect().top < 0) sc.scrollIntoView({ block: "start" });
   };
   if (reduced) return finish();
   let k = current, steps = 0;
@@ -835,6 +861,12 @@ function openLb(src, cap) {
 function closeLb() { $("#lb").hidden = true; if (lastFocus) lastFocus.focus(); }
 $("#lbclose").addEventListener("click", closeLb);
 $("#lb").addEventListener("click", e => { if (e.target.id === "lb") closeLb(); });
+
+window.addEventListener("popstate", () => {
+  const h = /^#p(\d{3})$/.exec(location.hash || "");
+  const n = h ? Number(h[1]) : 100;
+  if (n !== current) go(n, false);
+});
 
 /* boot */
 const m = /^#p(\d{3})$/.exec(location.hash || "");
