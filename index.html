@@ -98,7 +98,7 @@ table { font-size: inherit; }
 .band .dh { line-height: 2.1; }
 .band.sec { padding: .25em .6ch .05em; }
 .band.sec .dh { font-size: clamp(1.7em, 6vw, 2.6em); line-height: 1.85; padding-bottom: 0; }
-.band.sec .kicker + .dh { font-size: clamp(1.35em, 4.2vw, 2em); }
+.band.sec .kicker + .dh { font-size: clamp(1.35em, 4.2vw, 2em); margin-top: .12em; }
 .crumbs .cur { overflow: hidden; text-overflow: ellipsis; min-width: 0; }
 .c-red { color: var(--red); } .c-green { color: var(--green); } .c-yellow { color: var(--yellow); }
 .c-blue { color: #7d8dff; } .c-magenta { color: var(--magenta); } .c-cyan { color: var(--cyan); }
@@ -151,6 +151,8 @@ canvas.mosaic { display: block; width: 100%; height: auto; image-rendering: pixe
 .headlines a { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 1ch; color: var(--white); text-decoration: none; padding: 0 .4ch; }
 .headlines a .n { color: var(--yellow); }
 .fullport { display: block; background: var(--yellow); color: var(--black); text-decoration: none; padding: .15em .8ch; margin-top: .2em; }
+.watch { justify-self: start; background: var(--yellow); color: var(--black); text-decoration: none; padding: .05em .8ch; margin-top: .6em; display: inline-block; }
+.watch:hover, .watch:focus-visible { background: var(--white); outline: none; }
 .fullport:hover, .fullport:focus-visible { background: var(--white); outline: none; }
 .headlines { display: grid; gap: .15em; align-content: start; }
 .headlines .tag { font-size: .8em; letter-spacing: .04em; }
@@ -403,7 +405,14 @@ const PIECES = {
   501: { tag: "TRAILER", title: "THE WORLD GOES POP TRAILER FOR TATE MODERN", meta: "Tate Modern · Trailer · AKA UK",
     body: ["For Tate Modern's exhibition The World Goes Pop, I came up with the idea for the trailer: bring in the Japanese pop star Kyary Pamyu Pamyu. I wrote the script and helped on the shoot."],
     pics: [["world-goes-pop", "The World Goes Pop, Tate Modern"]] },
-  207: { tag: "TRAILER", title: "BOYHOOD TRAILER", meta: "Universal · Trailer script · Empire Design",
+  207: { tag: "TRAILER", title: "POGÁNY INDULÓ DOCUMENTARY TRAILER FOR HBO MAX", meta: "HBO Max · Hungarian original documentary series · Trailer concept & script · Warner Bros. Discovery",
+    body: [
+      "For HBO Max's Hungarian original documentary series Pogány Induló: Vajon mit mondana anya (What Would Mum Say?), I came up with the concept for the trailer and wrote the script.",
+      "The four-part series follows the rapper Marcell Szirmai, who performs as Pogány Induló, through the first three years of his career, as he becomes one of Hungary's most popular artists. The trailer had to introduce him to viewers who didn't know his music, while showing fans a side of him they hadn't seen before.",
+    ],
+    link: ["https://www.youtube.com/watch?v=p6dlv8rp49E", "Watch the trailer"],
+    pics: [["pogany-indulo", "Pogány Induló: Vajon mit mondana anya, HBO Max"]] },
+  208: { tag: "TRAILER", title: "BOYHOOD TRAILER", meta: "Universal · Trailer script · Empire Design",
     body: [
       "I scripted an emotive trailer for Universal's Boyhood that explained its unique filmmaking process: the same cast, filmed over twelve years.",
       "It gained 5.5 million views on YouTube, and was also shown on TV in America.",
@@ -450,7 +459,7 @@ const PIECES = {
     wide: true,
     pics: [["milano-cortina", "Pick-your-sports journey, Milano Cortina 2026"]] },
 
-  208: { title: "MOCK THE WEEK PRINT AD FOR TLC", meta: "TLC · Print · Warner Bros. Discovery",
+  209: { title: "MOCK THE WEEK PRINT AD FOR TLC", meta: "TLC · Print · Warner Bros. Discovery",
     quote: "Heard we were finished? Fake news.",
     body: ["I wrote this print ad for Mock the Week on TLC, turning the idea that the show was ‘finished’ into the punchline."],
     pics: [["mock-the-week", "Print ad for TLC"]] },
@@ -482,13 +491,13 @@ const PIECES = {
 };
 
 const CHAPTERS = {
-  200: { line: "Campaigns, social and ads for HBO Max, plus taglines for TV dramas.", pieces: [201, 202, 203, 204, 205, 206, 207, 208] },
+  200: { line: "Campaigns, social and ads for HBO Max, plus taglines for TV dramas.", pieces: [201, 202, 203, 204, 205, 206, 207, 208, 209] },
   400: { line: "CRM for TNT Sports, including Paris 2024, plus a spec campaign for the Women's World Cup.", pieces: [401, 402, 403] },
   500: { line: "Arts and culture.", pieces: [501, 502, 503, 504] },
   600: { line: "Campaigns for FutureLearn, the online learning platform, including work with City & Guilds.", pieces: [601, 602] },
 };
 
-const ORDER = [100, 101, 200, 201, 202, 203, 204, 205, 206, 207, 208, 400, 401, 402, 403, 500, 501, 502, 503, 504, 600, 601, 602, 700, 750, 800, 888];
+const ORDER = [100, 101, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 400, 401, 402, 403, 500, 501, 502, 503, 504, 600, 601, 602, 700, 750, 800, 888];
 
 /* ---------- helpers ---------- */
 const $ = (s, r = document) => r.querySelector(s);
@@ -519,8 +528,8 @@ function pageIndex() {
   ];
   const heads = [
     [402, "SPEC", "yellow", "BBC Sport Women's World Cup spec campaign"],
-    [206, "TRAILER", "yellow", "HBO Max trailers for cinema, TV and radio"],
-    [207, "TRAILER", "yellow", "Boyhood trailer: 5.5 million YouTube views"],
+    [207, "TRAILER", "yellow", "Pogány Induló documentary trailer for HBO Max"],
+    [208, "TRAILER", "yellow", "Boyhood trailer: 5.5 million YouTube views"],
     [501, "TRAILER", "yellow", "Tate Modern trailer starring Kyary Pamyu Pamyu"],
     [502, "TRAILER", "yellow", "Home, I'm Darling trailer for the National Theatre"],
     [201, "TV", "red", "HBO Max UK launch, from radio to King's Cross"],
@@ -580,7 +589,7 @@ function scoresBlock() {
     <div class="c-dim">Viewers who received the campaigns, compared with a control group who didn't.</div></div>`;
 }
 
-const AR = {"boyhood":1.705,"futurelearn-step":1.634,"halt-catch-fire":1.41,"humans":1.754,"kings-cross":1.77,"matilda":1.78,"mock-the-week":1.531,"national-theatre":1.314,"new-world-building":0.597,"new-world-needs":1,"paris-2024":0.821,"quick-witted":1.604,"results-day":1,"royal-roy":0.735,"tough-cases":0.999,"watercooler":1.333,"westminster-abbey":0.647,"world-goes-pop":1.316,"hbo-max-trailer":1.79,"milano-cortina":1.867,"wwc-poster":0.667,"skinny-julia-holter":1.732,"skinny-slow-west":1.732,"swallows-amazons":0.681};
+const AR = {"boyhood":1.705,"futurelearn-step":1.634,"halt-catch-fire":1.41,"humans":1.754,"kings-cross":1.77,"matilda":1.78,"mock-the-week":1.531,"national-theatre":1.314,"new-world-building":0.597,"new-world-needs":1,"paris-2024":0.821,"quick-witted":1.604,"results-day":1,"royal-roy":0.735,"tough-cases":0.999,"watercooler":1.333,"westminster-abbey":0.647,"world-goes-pop":1.316,"pogany-indulo":1.783,"hbo-max-trailer":1.79,"milano-cortina":1.867,"wwc-poster":0.667,"skinny-julia-holter":1.732,"skinny-slow-west":1.732,"swallows-amazons":0.681};
 function gallery(list) {
   const s = list.reduce((a, [f]) => a + (AR[f] || 1), 0);
   return `<div class="gallery" style="max-width:calc(${s.toFixed(3)} * min(520px, 72vh))">${list.map(x => `<div class="gi" style="flex:${AR[x[0]] || 1} 1 0">${pic(x)}</div>`).join("")}</div>`;
@@ -598,6 +607,7 @@ function pagePiece(n) {
     <div class="piece${right ? "" : " solo"}">
       <div class="facts">
         <div class="prose">${p.body.map(t => `<p>${esc(t)}</p>`).join("")}</div>
+        ${p.link ? `<a class="watch" href="${p.link[0]}" target="_blank" rel="noopener">${esc(p.link[1])} <span aria-hidden="true">&rsaquo;</span></a>` : ""}
       </div>
       ${right}
     </div>
