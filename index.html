@@ -177,6 +177,10 @@ figure.pic { margin: 0; display: grid; gap: .25em; min-width: 0; }
 figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
 #email { overflow-wrap: anywhere; }
 .row > span { min-width: 0; overflow-wrap: anywhere; }
+.cvjobs { display: grid; gap: .8em; }
+.cvb { margin: .3em 0 0; padding-left: 10ch; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: clamp(14px, 1.45vw, 15.5px); line-height: 1.5; display: grid; gap: .25em; -webkit-font-smoothing: antialiased; }
+.cvb li::marker { color: var(--dim); }
+@media (max-width: 560px) { .cvb { padding-left: 1.3em; } }
 .cv { display: grid; gap: .1em; font-variant-numeric: tabular-nums; }
 .cvrow { display: grid; grid-template-columns: 8ch minmax(0, 1fr) minmax(0, 1fr); gap: 0 1.5ch; }
 @media (max-width: 560px) { .cvrow { grid-template-columns: 8ch minmax(0, 1fr); } .cvrow > :last-child { grid-column: 2; } }
@@ -551,16 +555,47 @@ function pageOffDuty() {
 }
 
 function pageSubtitles() {
-  const cv = [["2022–now", "Warner Bros. Discovery", "Senior Copywriter"], ["2020–21", "FutureLearn", "Midweight Copywriter"],
-    ["2015–19", "AKA UK", "Concept Copywriter"], ["2012–14", "Empire Design", "Junior Copywriter"], ["2005–15", "Freelance", "Copywriter and journalist"]];
+  const cv = [
+    ["2022\u2013now", "HBO Max (Warner Bros. Discovery)", "Senior Creative & Copy Specialist", [
+      "Lead campaign copy and creative across HBO Max, TNT Sports and discovery+ in EMEA, taking strategic briefs from initial concept to channel-ready execution.",
+      "Develop integrated campaigns across video, social, digital, OOH and radio, including copy for the UK launch of HBO Max.",
+      "Write direct-response CRM, landing-page and upsell copy for subscription journeys, connecting brand ideas to clear customer action.",
+      "Create English master copy for 15+ EMEA markets, working with regional teams to retain the intent and tone through localisation.",
+      "Shape tone of voice across distinct brands and audiences; collaborate with designers, marketers and strategists, presenting creative work to senior stakeholders.",
+      "Line manage and mentor two junior copywriters, giving creative direction and feedback from concept to final copy."]],
+    ["2020\u201321", "FutureLearn", "Copywriter", [
+      "Developed brand, product, CRM and OOH copy across the learner journey, from campaign messaging to product communications.",
+      "Translated complex education subjects into clear, accessible brand, product and long-form editorial copy.",
+      "Worked with Google and LEGO to develop campaign messaging that made complex ideas easy to understand."]],
+    ["2015\u201319", "AKA UK", "Concept Copywriter & Creative", [
+      "Concepted integrated campaigns for Tate Modern, the National Theatre, the British Library, the Natural History Museum and Matilda the Musical.",
+      "Developed ideas from brief to execution across film, radio, OOH, digital and social, writing scripts, headlines and longer-form copy.",
+      "Worked closely with designers and strategists, presenting and selling creative concepts to clients and senior stakeholders."]],
+    ["2012\u201314", "Empire Design", "Junior Copywriter", [
+      "Developed concepts, taglines and scripts for theatrical and home-entertainment campaigns for Universal Studios, Fox, AMC and Canal Plus.",
+      "Wrote trailer, radio, OOH, digital and social copy for film and television launches."]],
+    ["2005\u201315", "Freelance", "Copywriter, Journalist & Proofreader", [
+      "Wrote and proofread for private clients and cultural publications; researched, interviewed and wrote music and film features and reviews."]],
+  ];
   return `<div class="band b-yellow"><div class="kicker"><span>SUBTITLES</span></div>${dh("CONTACT & CV")}</div>
     <div class="me"><button class="frame" data-src="img/sam.jpg" data-cap="Sam Lewis" aria-label="Enlarge photo of Sam Lewis"><img src="img/sam.jpg" alt="Sam Lewis"></button>
     <div class="facts">
       <div class="row"><span class="l c-cyan">EMAIL</span><span><span class="c-yellow" id="email">sam.joe.lewis@gmail.com</span> <button class="rbtn" id="copyEmail" style="font-size:.9em;padding:0 1ch">COPY</button> <span class="c-dim" id="copied" hidden>Copied</span></span></div>
+      <div class="row"><span class="l c-cyan">LINKEDIN</span><span><a class="c-yellow" href="https://www.linkedin.com/in/sam-lewis-495992134/" target="_blank" rel="noopener">sam-lewis-495992134</a></span></div>
       <div class="row"><span class="l c-cyan">BASED</span><span>London</span></div>
     </div></div>
-    <div class="cv">${cv.map(r => `<div class="cvrow"><span class="c-yellow">${r[0]}</span><span>${esc(r[1])}</span><span class="c-cyan">${esc(r[2])}</span></div>`).join("")}</div>
-    <div class="facts">${row("STUDY", "cyan", "MA English Literature, UCL. BA English Literature, University of Manchester.")}</div>
+    <div class="prose wide"><p>Senior copywriter with over a decade of agency and in-house experience turning strategic briefs into integrated campaigns for global brands. Concept and execution across video, social, digital, OOH, radio and CRM, with particular strength in brand voice, multi-market work and conversion-focused subscription journeys. Clients and brands include HBO Max, TNT Sports, Google, LEGO, Tate Modern and the National Theatre.</p></div>
+    <div class="c-cyan">EXPERIENCE</div>
+    <div class="cvjobs">${cv.map(([d, co, role, bs]) => `<div class="cvjob">
+      <div class="cvrow"><span class="c-yellow">${d}</span><span>${esc(co)}</span><span class="c-cyan">${esc(role)}</span></div>
+      <ul class="cvb">${bs.map(b => `<li>${esc(b)}</li>`).join("")}</ul></div>`).join("")}</div>
+    <div class="c-cyan">EDUCATION & TOOLS</div>
+    <div class="cv">
+      <div class="cvrow"><span class="c-yellow">MA</span><span>UCL</span><span class="c-cyan">English Literature</span></div>
+      <div class="cvrow"><span class="c-yellow">BA</span><span>University of Manchester</span><span class="c-cyan">English Literature</span></div>
+      <div class="cvrow"><span class="c-yellow">CERT</span><span>Society for Editors &amp; Proofreaders</span><span class="c-cyan">Proofreading 1</span></div>
+      <div class="cvrow"><span class="c-yellow">TOOLS</span><span>Figma, Google Docs, Google Slides, Adobe</span><span></span></div>
+    </div>
     <div class="c-dim">Thanks for watching. Normal service resumes on page 100.</div>`;
 }
 
