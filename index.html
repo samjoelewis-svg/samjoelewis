@@ -1,0 +1,786 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sam Lewis, Senior Creative (Writer)</title>
+<meta name="description" content="Portfolio of Sam Lewis, senior copywriter and creative. Campaigns, scripts and copy for HBO Max, TNT Sports, Tate Modern and the National Theatre.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sam Lewis, Senior Creative (Writer)">
+<meta property="og:description" content="Campaigns, scripts and copy for HBO Max, TNT Sports, Tate Modern and the National Theatre.">
+<meta property="og:image" content="https://samjoelewis-svg.github.io/samjoelewis/img/sam.jpg">
+<meta property="og:url" content="https://samjoelewis-svg.github.io/samjoelewis/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%232440ff'/%3E%3Cpath fill='%23fff13a' d='M3 3h10v3H6v1h7v6H3v-3h7V9H3z'/%3E%3C/svg%3E">
+<style>body{margin:0} [hidden]{display:none!important} img{max-width:100%}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&family=VT323&display=swap">
+<style>
+/* Layout: one teletext screen in a TV bezel, a remote control underneath. Pages swap inside the screen. */
+:root {
+  color-scheme: dark;
+  --black: #000;
+  --white: #f2f2f2;
+  --red: #ff3434;
+  --green: #35ff5a;
+  --yellow: #fff13a;
+  --blue: #2440ff;
+  --magenta: #ff45ff;
+  --cyan: #33f4ff;
+  --dim: #8c8c8c;
+  --bezel: #16161a;
+  --bezel-edge: #26262c;
+  --remote: #202026;
+  --key: #2e2e36;
+  --tt: "VT323", "Courier New", ui-monospace, monospace;
+  --ui: "VT323", ui-monospace, monospace;
+}
+* { box-sizing: border-box; }
+html, body { background: var(--bezel); }
+body {
+  color: var(--white);
+  font-family: var(--tt);
+  font-size: clamp(19px, 2.3vw, 24px);
+  line-height: 1.18;
+  padding-inline: 16px;
+  padding-block: 24px 40px;
+  -webkit-font-smoothing: none;
+}
+.wrap { max-width: 940px; margin-inline: auto; display: grid; gap: 22px; }
+
+/* ---------- TV ---------- */
+.tv {
+  background: var(--bezel-edge);
+  border-radius: 22px;
+  padding: clamp(10px, 2vw, 22px);
+  box-shadow: 0 1px 0 #34343c inset, 0 20px 50px #000a;
+}
+.screen {
+  position: relative;
+  background: var(--black);
+  border-radius: 10px;
+  padding: clamp(10px, 2.2vw, 22px) clamp(10px, 2.4vw, 26px) 12px;
+  overflow: hidden;
+  min-height: 540px;
+  display: flex; flex-direction: column;
+  box-shadow: 0 0 60px #2440ff18 inset;
+}
+.screen::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: repeating-linear-gradient(to bottom, transparent 0 2px, #0000002e 2px 3px);
+  border-radius: inherit;
+}
+.head {
+  display: flex; flex-wrap: wrap; gap: 0 1.2ch; white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.head .p { color: var(--white); min-width: 4ch; }
+.head .svc { color: var(--yellow); }
+.head .clock { color: var(--yellow); margin-left: auto; }
+.page { flex: 1; display: grid; gap: .7em; align-content: start; padding-top: .6em; }
+.page:focus { outline: none; }
+
+/* bands and double height */
+.band { padding: .15em .6ch .1em; color: var(--black); }
+.band.b-red { background: var(--red); }
+.band.b-yellow { background: var(--yellow); }
+.band.b-green { background: var(--green); }
+.band.b-magenta { background: var(--magenta); }
+.band.b-cyan { background: var(--cyan); }
+.band.b-white { background: var(--white); }
+.band.b-blue { background: var(--blue); color: var(--yellow); }
+.band .kicker { display: flex; justify-content: space-between; gap: 1ch; flex-wrap: wrap; }
+.dh { line-height: 2.25; padding-bottom: .45em; }
+table { font-size: inherit; }
+.frac { font-family: "IBM Plex Mono", "Courier New", monospace; font-size: .8em; font-weight: 500; letter-spacing: -.02em; }
+.dh .w { display: inline-block; transform: scaleY(2); transform-origin: 50% 12%; vertical-align: top; line-height: 1; }
+.band .dh { line-height: 2.1; }
+.c-red { color: var(--red); } .c-green { color: var(--green); } .c-yellow { color: var(--yellow); }
+.c-blue { color: #7d8dff; } .c-magenta { color: var(--magenta); } .c-cyan { color: var(--cyan); }
+.c-white { color: var(--white); } .c-dim { color: var(--dim); }
+.bg-blue { background: var(--blue); color: var(--white); padding: .1em .6ch; }
+.spec { background: var(--yellow); color: var(--black); padding: .1em .6ch; justify-self: start; }
+
+/* mosaic masthead */
+canvas.mosaic { display: block; width: 100%; height: auto; image-rendering: pixelated; }
+.mast { background: var(--blue); display: grid; }
+.mast-body { padding: .35em .8ch .45em; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .3em 2ch; align-items: center; }
+.frame.portrait img.tt-portrait { position: absolute; inset: 0; width: 100%; height: 100%; max-height: none; object-fit: cover; image-rendering: pixelated; transition: opacity 1s steps(6); }
+.portrait.resolved .tt-portrait { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { .portrait .tt-portrait { display: none; } }
+.portrait.resolved:hover .tt-portrait { opacity: 1; transition-duration: .3s; }
+.mast-text { display: grid; gap: .3em; min-width: 0; }
+.mast .frame, .me .frame { width: clamp(110px, 20vw, 190px); cursor: zoom-in; }
+.mast .frame img, .me .frame img { aspect-ratio: 1; object-fit: cover; }
+.me { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1em 2ch; align-items: start; }
+@media (max-width: 520px) { .mast-body { grid-template-columns: minmax(0, 1fr); } .mast .frame { order: -1; } .me { grid-template-columns: minmax(0, 1fr); } }
+.mast .sub { color: var(--white); }
+
+/* index lists */
+.toc { display: grid; gap: .12em; }
+.toc a {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1ch;
+  color: inherit; text-decoration: none; padding: 0 .4ch;
+}
+.toc a .t { overflow: hidden; white-space: nowrap; text-overflow: clip; }
+.toc a .t::after { content: " ........................................................................................."; color: var(--dim); }
+.toc a .n { color: var(--white); font-variant-numeric: tabular-nums; }
+.toc a:hover, .toc a:focus-visible { background: var(--white); color: var(--black); outline: none; }
+.toc a:hover .n, .toc a:focus-visible .n, .toc a:hover .t::after, .toc a:focus-visible .t::after { color: var(--black); }
+.cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6em 3ch; }
+.headlines a { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 1ch; color: var(--white); text-decoration: none; padding: 0 .4ch; }
+.headlines a .n { color: var(--yellow); }
+.fullport { display: block; background: var(--yellow); color: var(--black); text-decoration: none; padding: .15em .8ch; margin-top: .2em; }
+.fullport:hover, .fullport:focus-visible { background: var(--white); outline: none; }
+.headlines { display: grid; gap: .15em; align-content: start; }
+.headlines .tag { font-size: .8em; letter-spacing: .04em; }
+.headlines a:hover .tag, .headlines a:focus-visible .tag { color: var(--black); }
+.headlines a:hover, .headlines a:focus-visible { background: var(--cyan); color: var(--black); outline: none; }
+.headlines a:hover .n, .headlines a:focus-visible .n { color: var(--black); }
+
+/* piece pages */
+.piece { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: .8em 2.4ch; align-items: start; }
+.facts { display: grid; gap: .45em; min-width: 0; }
+.row { display: block; }
+.row .l { margin-right: 1ch; }
+.row .l { font-variant-numeric: tabular-nums; }
+.meta { color: var(--cyan); }
+.quote { color: var(--yellow); }
+.facts .quote { line-height: 1.4; }
+.prose { font-family: "IBM Plex Mono", ui-monospace, "Courier New", monospace; font-size: clamp(15px, 1.55vw, 16.5px); line-height: 1.6; color: var(--white); display: grid; gap: .85em; max-width: 64ch; -webkit-font-smoothing: antialiased; }
+.prose p { margin: 0; text-wrap: pretty; }
+.prose.wide { max-width: 68ch; padding-bottom: .4em; }
+.qa { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: clamp(15px, 1.55vw, 16.5px); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+.qa { border-top: 1px dashed #ffffff30; padding-top: .45em; display: grid; gap: .2em; }
+.qa .q { color: var(--cyan); }
+.qa .a[data-concealed="true"] .txt { display: none; }
+.qa .a[data-concealed="true"] .hint { display: inline; }
+.qa .a .hint { display: none; color: var(--dim); }
+.qa .a .hint b { color: var(--black); background: var(--white); font-weight: normal; padding: 0 .5ch; }
+
+figure.pic { margin: 0; display: grid; gap: .25em; min-width: 0; }
+.frame {
+  position: relative; display: block; width: 100%; max-width: 100%; padding: 0; border: 0;
+  background: #111; cursor: zoom-in; border: 3px solid var(--white);
+}
+.frame img { display: block; width: 100%; height: auto; max-height: 440px; object-fit: contain; background: #000; }
+.frame canvas { position: absolute; inset: 0; width: 100%; height: 100%; image-rendering: pixelated; transition: opacity .5s steps(5); }
+.frame:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
+.stack { display: grid; gap: 1em; min-width: 0; }
+.pics2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2ch; }
+figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
+#email { overflow-wrap: anywhere; }
+.row > span { min-width: 0; overflow-wrap: anywhere; }
+.cv { display: grid; gap: .1em; font-variant-numeric: tabular-nums; }
+.cvrow { display: grid; grid-template-columns: 8ch minmax(0, 1fr) minmax(0, 1fr); gap: 0 1.5ch; }
+@media (max-width: 560px) { .cvrow { grid-template-columns: 8ch minmax(0, 1fr); } .cvrow > :last-child { grid-column: 2; } }
+.scorewide { display: grid; gap: .3em; }
+
+.scores { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.scores td { padding: .1em .6ch; }
+.scores tr:nth-child(odd) td { color: var(--white); }
+.scores tr:nth-child(even) td { color: var(--cyan); }
+.scores td:last-child { text-align: right; color: var(--yellow); }
+.bigstats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1ch; }
+.bigstats.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.bigstats div { background: var(--blue); padding: .3em .8ch .2em; }
+.bigstats b { display: block; font-weight: normal; color: var(--yellow); }
+
+.fastext {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 1ch;
+  margin-top: .8em; padding-top: .3em;
+}
+.fastext:empty { display: none; }
+.fastext .sec { justify-self: center; }
+.fastext button {
+  font: inherit; background: none; border: 0; padding: 0 .3ch; text-align: left; cursor: pointer;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.fastext button { color: var(--white); }
+.fastext button:hover, .fastext button:focus-visible { background: var(--white); color: var(--black); outline: none; }
+.fastext button:hover span, .fastext button:focus-visible span { color: var(--black); }
+
+/* ---------- Remote ---------- */
+.remote {
+  background: var(--remote); border-radius: 18px; padding: 16px clamp(12px, 3vw, 24px);
+  display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px 22px; align-items: center;
+  box-shadow: 0 1px 0 #34343c inset;
+}
+.entry {
+  background: #000; color: var(--yellow); padding: .15em .8ch; min-width: 7ch; text-align: center;
+  font-variant-numeric: tabular-nums; border-radius: 4px; border: 1px solid #333;
+}
+.keys { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 6px; }
+.key, .rbtn {
+  font: inherit; color: var(--white); background: var(--key); border: 0; border-radius: 8px;
+  padding: .25em 0; cursor: pointer; box-shadow: 0 2px 0 #0008;
+}
+.key:hover, .rbtn:hover { background: #3b3b45; }
+.key:active, .rbtn:active { transform: translateY(1px); box-shadow: none; }
+.key:focus-visible, .rbtn:focus-visible { outline: 2px solid var(--yellow); outline-offset: 2px; }
+.side { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(5, minmax(0, 76px)); gap: 10px; }
+.fkw { font: inherit; background: none; border: 0; padding: 0; cursor: pointer; display: grid; justify-items: center; gap: 3px; color: var(--dim); }
+.fkw .fl { font-size: .72em; line-height: 1; white-space: nowrap; min-height: 1em; }
+.fkw:hover .fl { color: var(--white); }
+.fkw[aria-current="true"] .fl { color: var(--white); }
+.fkw[aria-current="true"] .fk { outline: 2px solid var(--white); outline-offset: 2px; }
+.fkw:focus-visible { outline: 2px solid var(--yellow); outline-offset: 3px; border-radius: 6px; }
+.fk { display: block; width: 34px; height: 22px; border: 0; border-radius: 11px; box-shadow: 0 2px 0 #0008; }
+.fk.red { background: var(--red); } .fk.green { background: var(--green); } .fk.yellow { background: var(--yellow); } .fk.magenta { background: var(--magenta); } .fk.cyan { background: var(--cyan); }
+.rbtns { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.rbtn { padding: .2em 1.4ch; }
+.rbtn[aria-pressed="true"] { background: var(--white); color: var(--black); }
+.help { color: var(--dim); margin-left: auto; }
+
+/* lightbox */
+.lb[hidden] { display: none; }
+.lb { position: fixed; inset: 0; background: #000e; display: grid; place-items: center; padding: 24px; z-index: 10; }
+.lb img { max-width: 100%; max-height: calc(100vh - 110px); width: auto; height: auto; border: 3px solid var(--white); }
+.lb .bar { display: flex; justify-content: space-between; gap: 2ch; width: min(100%, 1100px); margin-bottom: 10px; }
+.lb button { font: inherit; background: var(--white); color: var(--black); border: 0; padding: 0 1.2ch; cursor: pointer; }
+.lb-inner { display: grid; justify-items: center; }
+
+@media (max-width: 720px) {
+  .piece { grid-template-columns: minmax(0, 1fr); }
+  .piece figure.pic { order: -1; }
+  .cols { grid-template-columns: minmax(0, 1fr); }
+  .remote { grid-template-columns: minmax(0, 1fr); }
+  .side { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .keys { grid-column: 1 / -1; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .help { margin-left: 0; width: 100%; }
+  .screen { min-height: 0; }
+  .fastext { grid-template-columns: auto minmax(0, 1fr) auto; }
+  .fastext .sec { font-size: .85em; }
+  .bigstats { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .frame canvas { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="tv">
+    <div class="screen" id="screen">
+      <div class="head" aria-hidden="true">
+        <span class="p" id="hp">P100</span>
+        <span class="svc">SAM LEWIS</span>
+        <span class="clock" id="clock"></span>
+      </div>
+      <main class="page" id="page" tabindex="-1" aria-live="polite"></main>
+      <nav class="fastext" id="fastext" aria-label="Fastext links"></nav>
+    </div>
+  </div>
+
+  <div class="remote" aria-label="Remote control">
+    <div class="entry" id="entry" aria-live="polite">P___</div>
+    <div class="keys" id="keys"></div>
+    <div class="side" id="side">
+      <button class="fkw" data-go="200" data-sec="200" aria-label="TV and streaming, page 200"><span class="fk red"></span><span class="fl">TV</span></button>
+      <button class="fkw" data-go="300" data-sec="300" aria-label="Trailers and film, page 300"><span class="fk yellow"></span><span class="fl">Trailers</span></button>
+      <button class="fkw" data-go="400" data-sec="400" aria-label="Sport, page 400"><span class="fk green"></span><span class="fl">Sport</span></button>
+      <button class="fkw" data-go="500" data-sec="500" aria-label="Entertainment and culture, page 500"><span class="fk magenta"></span><span class="fl">Culture</span></button>
+      <button class="fkw" data-go="600" data-sec="600" aria-label="EdTech, page 600"><span class="fk cyan"></span><span class="fl">EdTech</span></button>
+    </div>
+    <div class="rbtns">
+      <button class="rbtn" id="reveal" aria-pressed="false">REVEAL</button>
+      <button class="rbtn" id="toIndex">HOME</button>
+      <span class="help">Type a page number, or press a colour to jump to that section</span>
+    </div>
+  </div>
+</div>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Picture">
+  <div class="lb-inner">
+    <div class="bar"><span class="c-cyan" id="lbcap"></span><button id="lbclose">CLOSE</button></div>
+    <img id="lbimg" alt="">
+  </div>
+</div>
+
+<script>
+(() => {
+/* ---------- content ---------- */
+const CH = {
+  200: { name: "TV & STREAMING", title: "TV & STREAMING", short: "TV", colour: "red" },
+  300: { name: "TRAILERS", title: "TRAILERS & FILM", short: "Trailers", colour: "yellow" },
+  400: { name: "SPORT", title: "SPORT", short: "Sport", colour: "green" },
+  500: { name: "ENTERTAINMENT & CULTURE", title: "ENTERTAINMENT & CULTURE", short: "Culture", colour: "magenta" },
+  600: { name: "EDTECH", title: "EDTECH", short: "EdTech", colour: "cyan" },
+  700: { name: "BRAND VOICE", title: "BRAND VOICE", short: "Voice", colour: "white" },
+  750: { name: "LEADERSHIP", title: "LEADERSHIP", short: "Leadership", colour: "white" },
+  800: { name: "JOURNALISM", title: "JOURNALISM", short: "Journalism", colour: "blue" },
+};
+
+const PIECES = {
+  201: { title: "HBO MAX UK LAUNCH", meta: "HBO Max · OOH · Warner Bros. Discovery",
+    quote: "The best new platform since 9¾.",
+    body: [
+      "I led copy for the UK launch of HBO Max, writing across radio, outdoor, social, email and display. I pushed for UK-specific lines that spoke to local places and content, and this was one of them.",
+      "It ran as a takeover of the tunnel at King's Cross, and the ad went viral on LinkedIn. Across the launch as a whole, UK subscriptions passed the yearly target within four months.",
+    ],
+    q: "Why does the line work?",
+    a: "It speaks to two audiences at once. If you don't know HBO Max, it's a confident claim. If you know your Harry Potter, it's a joke you're already in on.",
+    pics: [["kings-cross", "King's Cross tunnel, London"]] },
+  202: { title: "ACCLAIMED, DEBATED", meta: "HBO Max · OOH brand campaign · Warner Bros. Discovery",
+    quote: "Critically acclaimed, publicly debated.",
+    body: ["I wrote this campaign for HBO Max, turning the breadth of the catalogue into a simple promise: there's always something people are talking about."],
+    pics: [["watercooler", "“Wall-to-Wall Watercooler” poster"]] },
+  203: { title: "THE ROYAL ROY", meta: "HBO Max · Social & influencer · Warner Bros. Discovery",
+    quote: "Who's up for a pint at The Royal Roy?",
+    body: ["I develop social and influencer ideas for HBO Max. This paid collaboration with @hollyandbrookearehooked ran for the UK and Ireland launch, and imagined the Roys from Succession running a British pub."],
+    pics: [["royal-roy", "Instagram, @hbomaxuk × @hollyandbrookearehooked"]] },
+  204: { title: "TOUGH CASES", meta: "HBO Max · Display & paid social · Warner Bros. Discovery",
+    quote: "Tough cases call for strong leads.",
+    body: ["I write display and paid-social copy for HBO Max across EMEA, plus international titles and taglines for European productions. Every word has to earn its place."],
+    pics: [["tough-cases", "Display ad, before market pricing was added"]] },
+  205: { title: "DRAMA TAGLINES", meta: "Humans · Halt and Catch Fire · Empire Design",
+    quote: "Made in our image. Out of our control.",
+    quote2: "The battle for CTRL begins.",
+    body: ["I wrote these taglines at Empire Design: the first for Humans, the second for Halt and Catch Fire."],
+    pics: [["humans", "Humans"], ["halt-catch-fire", "Halt and Catch Fire"]] },
+
+  301: { title: "THE WORLD GOES POP", meta: "Tate Modern · Trailer · AKA UK",
+    body: ["For Tate Modern's exhibition The World Goes Pop, I came up with the idea for the trailer: bring in the Japanese pop star Kyary Pamyu Pamyu. I wrote the script and helped on the shoot."],
+    pics: [["world-goes-pop", "The World Goes Pop, Tate Modern"]] },
+  302: { title: "BOYHOOD", meta: "Universal · Trailer script · Empire Design",
+    body: [
+      "I scripted an emotive trailer for Universal's Boyhood that explained its unique filmmaking process: the same cast, filmed over twelve years.",
+      "It gained 5.5 million views on YouTube, and was also shown on TV in America.",
+    ],
+    q: "What made it hard?",
+    a: "The method is the hook, but nobody cries at a method. The script had to make the process feel like a life going by.",
+    pics: [["boyhood", "Boyhood, Universal"]] },
+  303: { title: "NATIONAL THEATRE", meta: "National Theatre · Trailer script · AKA UK",
+    quote: "But is their perfect life…",
+    body: ["I scripted a National Theatre trailer in the style of a 1950s commercial. It has more than 200,000 views on YouTube."],
+    pics: [["national-theatre", "National Theatre trailer"]] },
+
+  401: { title: "TNT SPORTS CRM", meta: "TNT Sports · Paris 2024 · CRM · Warner Bros. Discovery",
+    body: [
+      "I lead master CRM for HBO Max and TNT Sports across EMEA, from onboarding to win-back. When we took on TNT Sports' CRM, I worked with their marketing team to rebuild the emails around user data. Our CRM now performs better than any other WBD region.",
+      "For Paris 2024, a large batch of Olympics comms landed just before deadline. I used automation to deliver it on time, during what became our highest-ever period for new subscriptions.",
+    ],
+    scores: true,
+    pics: [["paris-2024", "Paris 2024 CRM"]] },
+  402: { title: "WOMEN'S WORLD CUP 2027", meta: "Spec campaign",
+    spec: true,
+    quote: "Mud now. Maracanã later.",
+    body: [
+      "This is a spec idea I developed for this application, for a broadcaster's coverage of the Women's World Cup in Brazil, from 24 June to 25 July 2027. It hasn't been commissioned.",
+      "Every player at the final started on a pitch like yours. The trail follows one ball from a muddy pitch in Glasgow to a cage in Cardiff, a playground in Belfast and a Sunday league game in Manchester, then drops it into the Maracanã. The endline is “Every pitch leads here.”",
+      "Outdoor would run beside real grassroots pitches, with lines like “Pitch 14, Hackney Marshes. 5,772 miles from the World Cup final.” On social, clubs would use a match-cut template: kick a ball out of frame, and it lands in Brazil.",
+    ],
+    pitch: true },
+
+  501: { title: "MOCK THE WEEK", meta: "TLC · Print · Warner Bros. Discovery",
+    quote: "Heard we were finished? Fake news.",
+    body: ["I wrote this print ad for Mock the Week on TLC, turning the idea that the show was ‘finished’ into the punchline."],
+    pics: [["mock-the-week", "Print ad for TLC"]] },
+  502: { title: "CULTURE TAGLINES", meta: "Westminster Abbey · Swallows and Amazons · AKA UK",
+    quote: "Feel wonder first hand.",
+    quote2: "Some summers you treasure forever.",
+    body: ["I wrote these taglines at AKA UK: the first for Westminster Abbey, the second for the film Swallows and Amazons."],
+    pics: [["westminster-abbey", "Westminster Abbey"], ["swallows-amazons", "Swallows and Amazons"]] },
+
+  601: { title: "THE NEW WORLD NEEDS YOU", meta: "City & Guilds × FutureLearn · Campaign",
+    quote: "The new world needs you.",
+    body: ["For City & Guilds' new skills courses, I created ‘The New World Needs You’, a campaign encouraging young people to see a place for themselves in the post-pandemic world. We extended the idea into sector-specific paid creative."],
+    q: "What does the line do?",
+    a: "It flips the usual message. Instead of telling young people they lack skills, it tells them they're needed.",
+    pics: [["new-world-needs", "The New World Needs…"], ["new-world-building", "Sector-specific paid social"]] },
+  602: { title: "RESULTS DAY", meta: "FutureLearn · OOH",
+    quote: "Exam results don't define you.",
+    body: ["I wrote copy for a fast-turnaround Results Day OOH campaign aimed at Gen Z, reframing failure as part of the journey rather than the end of it."],
+    pics: [["results-day", "Results Day OOH"]] },
+};
+
+const CHAPTERS = {
+  200: { line: "Making people care about a show before they've seen it.", pieces: [201, 202, 203, 204, 205] },
+  300: { line: "Trailers I scripted for art, film and theatre.", pieces: [301, 302, 303] },
+  400: { line: "Sport CRM for TNT Sports and Paris 2024, plus one spec campaign.", pieces: [401, 402] },
+  500: { line: "Comedy, culture and film.", pieces: [501, 502] },
+  600: { line: "Campaigns for FutureLearn, the online learning platform, including work with City & Guilds.", pieces: [601, 602] },
+};
+
+const ORDER = [100, 101, 200, 201, 202, 203, 204, 205, 300, 301, 302, 303, 400, 401, 402, 500, 501, 502, 600, 601, 602, 700, 750, 800, 888];
+
+/* ---------- helpers ---------- */
+const $ = (s, r = document) => r.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const frac = s => s.replace(/\u00BE/g, '<span class="frac">\u00BE</span>');
+const dh = (text, cls = "") => `<div class="dh ${cls}">${esc(text).split(" ").map(w => `<span class="w">${frac(w)}</span>`).join(" ")}</div>`;
+const chapterOf = n => n >= 800 && n < 888 ? 800 : n >= 750 && n < 800 ? 750 : Math.floor(n / 100) * 100;
+const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+let revealed = false;
+
+function band(n, title) {
+  const ch = CH[chapterOf(n)];
+  return `<div class="band b-${ch.colour}">${n !== chapterOf(n) ? `<div class="kicker"><span>${ch.name}</span></div>` : ""}${dh(title)}</div>`;
+}
+function qa(q, a) {
+  return `<div class="qa"><div class="q">Q. ${esc(q)}</div>
+    <div class="a" data-concealed="${!revealed}"><span class="txt">A. ${esc(a)}</span><span class="hint">A. Press <b>REVEAL</b> for the answer</span></div></div>`;
+}
+function pic([file, cap]) {
+  return `<figure class="pic"><button class="frame" data-src="img/${file}.jpg" data-cap="${esc(cap)}" aria-label="Enlarge picture: ${esc(cap)}">
+    <img src="img/${file}.jpg" alt="${esc(cap)}" loading="lazy" decoding="async"></button><figcaption>${esc(cap)}</figcaption></figure>`;
+}
+function row(label, colour, text) {
+  return text ? `<div class="row"><span class="l c-${colour}">${label}</span><span>${esc(text)}</span></div>` : "";
+}
+
+/* ---------- pages ---------- */
+function pageIndex() {
+  const toc = [
+    [101, "About", "white"], [200, "TV & streaming", "red"], [300, "Trailers & film", "yellow"],
+    [400, "Sport", "green"], [500, "Entertainment & culture", "magenta"], [600, "EdTech", "cyan"],
+    [700, "Brand voice", "white"], [750, "Leadership", "white"], [800, "Journalism", "white"], [888, "Contact & CV", "yellow"],
+  ];
+  const heads = [
+    [201, "DRAMA", "red", "HBO Max launch runs from radio to King's Cross"],
+    [203, "DRAMA", "red", "Succession's Roys open a British pub"],
+    [301, "CULTURE", "yellow", "Pop star fronts Tate Modern exhibition trailer"],
+    [401, "SPORT", "green", "Olympics and TNT Sports: CRM keeps fans watching"],
+    [501, "COMEDY", "magenta", "Mock the Week jokes about its own cancellation"],
+    [750, "LEADERSHIP", "cyan", "Writer leads HBO Max and TNT Sports copy team"],
+  ];
+  return `
+    <div class="mast">
+      <div class="mast-body"><div class="mast-text"><canvas class="mosaic" id="mastCanvas" role="img" aria-label="Sam Lewis"></canvas>
+      ${dh("SENIOR CREATIVE (WRITER)", "c-yellow")}
+      <div class="sub">Campaigns, scripts and copy for HBO Max, TNT Sports, Tate Modern and the National Theatre.</div></div>
+      <button class="frame portrait" data-src="img/sam.jpg" data-cap="Sam Lewis" aria-label="Enlarge photo of Sam Lewis"><img src="img/sam.jpg" alt="Sam Lewis"><img class="tt-portrait" src="img/sam-teletext.png" alt=""></button></div></div>
+    <div class="cols">
+      <div class="headlines"><div class="c-cyan">TOP STORIES</div>
+        ${heads.map(([n, tag, c, t]) => `<a href="#p${n}" data-go="${n}"><span><span class="tag c-${c}">${tag}</span> ${esc(t)}</span><span class="n">${n}</span></a>`).join("")}
+      </div>
+      <div class="toc"><div class="c-cyan">PAGES</div>
+        ${toc.map(([n, t, c]) => `<a href="#p${n}" data-go="${n}"><span class="t c-${c}">${esc(t)}</span><span class="n">${n}</span></a>`).join("")}
+      </div>
+    </div>
+    <a class="fullport" href="https://drive.google.com/file/d/1r5xFamR4zp2khNYJX592yIl6EYJQu56P/view?usp=sharing" target="_blank" rel="noopener">VIEW FULL PORTFOLIO <span aria-hidden="true">&rsaquo;</span></a>`;
+}
+
+function pageAbout() {
+  const paras = [
+    "I’m a Senior Copywriter and Creative with over a decade of experience turning strategic briefs into ideas and words for brands across entertainment, sport, culture, technology and education.",
+    "In my current role at Warner Bros. Discovery, I develop copy and creative for HBO Max and TNT Sports across EMEA as part of our in-house creative team. I take briefs from initial concept through to execution across social, digital, CRM, outdoor, trailers, radio and wider brand campaigns. Most recently, I led copy for the UK launch of HBO Max.",
+    "I approach every brief as an open problem to be solved, and enjoy the challenge of finding the idea that can unlock it. My work involves moving between the bigger campaign concept and the detail of how it comes through in a script, a headline or an email.",
+    "Much of my role also involves shaping how brands sound. I own HBO Max’s tone-of-voice guides and messaging frameworks, and work across brands with very different personalities. That means developing and adapting the writing for different audiences, channels and markets while keeping each brand’s underlying identity coherent.",
+    "Before Warner Bros. Discovery, I worked at FutureLearn and in agencies, developing work for organisations including Google, LEGO, Tate Modern, the National Theatre, Universal and Fox. Those roles gave me experience moving between campaign ideas, brand narratives, product messaging and long-form editorial. My film work includes scripting trailers for Boyhood and the National Theatre, and developing the idea and script for Tate Modern’s The World Goes Pop.",
+    "My background is editorial as well as commercial. I started my writing career as a music and film journalist, interviewing artists and filmmakers and writing features and profiles. I later produced long-form editorial and interview pieces at FutureLearn, alongside my campaign work. Writing at length remains an important part of my experience, as does writing scripts for television, radio, theatrical and social.",
+    "I enjoy the collaborative side of copywriting just as much as the writing itself. I regularly present and defend ideas to senior stakeholders, work closely with designers and regional teams, and manage two junior writers. Alongside my own writing, I edit and shape their work before it becomes English master copy for multiple markets.",
+  ];
+  return `<div class="band b-white">${dh("ABOUT")}</div>
+    <div class="prose wide">${paras.map(p => `<p>${esc(p)}</p>`).join("")}</div>`;
+}
+
+function pageChapter(n) {
+  const c = CHAPTERS[n];
+  return `${band(n, CH[n].title)}
+    <div class="c-${CH[n].colour}">${esc(c.line)}</div>
+    <div class="toc">${c.pieces.map(p => `<a href="#p${p}" data-go="${p}"><span class="t">${esc(PIECES[p].title)}${PIECES[p].spec ? " (SPEC)" : ""}</span><span class="n">${p}</span></a>`).join("")}</div>`;
+}
+
+function scoresBlock() {
+  return `<div class="facts"><div class="bg-blue">TNT SPORTS CRM: RESULTS</div>
+    <table class="scores"><tbody>
+      <tr><td>Extra viewing a week, vs control group</td><td>1.5–2 hrs</td></tr>
+      <tr><td>Habitual viewing, vs control group</td><td>+10 percentage pts</td></tr>
+      <tr><td>CRM performance across WBD regions</td><td>Highest</td></tr>
+    </tbody></table>
+    <div class="c-dim">Viewers who received the campaigns, compared with a control group who didn't.</div></div>`;
+}
+
+function pagePiece(n) {
+  const p = PIECES[n];
+  const pics = p.pics ? (p.pics.length > 1 ? `<div class="pics2">${p.pics.map(pic).join("")}</div>` : pic(p.pics[0])) : "";
+  const right = p.pitch ? `<figure class="pic"><canvas class="mosaic" id="pitchCanvas" aria-label="A football pitch drawn in teletext blocks"></canvas><figcaption>Spec work. Not commissioned by the BBC.</figcaption></figure>`
+    : pics;
+  return `${band(n, p.title)}
+    <div class="meta">${esc(p.meta)}</div>
+    ${p.spec ? `<div class="spec">SPEC WORK. NOT COMMISSIONED.</div>` : ""}
+    ${p.quote ? dh(p.quote, "quote") : ""}${p.quote2 ? dh(p.quote2, "quote") : ""}
+    <div class="piece">
+      <div class="facts">
+        <div class="prose">${p.body.map(t => `<p>${esc(t)}</p>`).join("")}</div>
+        ${p.q ? qa(p.q, p.a) : ""}
+      </div>
+      ${right}
+    </div>
+    ${p.scores ? `<div class="scorewide">${scoresBlock()}</div>` : ""}`;
+}
+
+function pageVoice() {
+  return `${band(700, "BRAND VOICE")}
+    <div class="meta">HBO Max · Warner Bros. Discovery · FutureLearn</div>
+    <div class="bigstats two"><div><b>10m+</b>people a week</div><div><b>17</b>languages</div></div>
+    <div class="piece"><div class="facts"><div class="prose">
+      <p>I own HBO Max’s tone-of-voice guides and messaging frameworks, and work across brands with very different personalities.</p>
+      <p>My English master copy for HBO Max and TNT Sports is translated into 17 languages and reaches more than 10 million people a week, so the voice has to hold in every market.</p>
+      <p>At FutureLearn, I wrote the company’s first brand tone-of-voice guide. I also created the mnemonic STEP (Social, Transformative, Experimental, Purposeful), inspired by the FutureLearn logo, to help staff remember our brand values.</p>
+    </div></div><div class="stack">${pic(["quick-witted", "HBO Max tone-of-voice guide"])}${pic(["futurelearn-step", "FutureLearn brand guidelines: STEP"])}</div></div>`;
+}
+
+function pageLeadership() {
+  return `${band(750, "LEADERSHIP")}
+    <div class="meta">Warner Bros. Discovery</div>
+    <div class="bigstats two"><div><b>2</b>junior writers I manage</div><div><b>UK</b>retention team I lead</div></div>
+    <div class="prose wide">
+      <p>I lead a small team writing retention copy for HBO Max and TNT Sports in the UK, and manage two junior writers.</p>
+      <p>Alongside my own writing, I edit and shape their work before it becomes English master copy for multiple markets.</p>
+      <p>I regularly present and defend ideas to senior stakeholders, and work closely with designers and regional teams.</p>
+    </div>`;
+}
+
+function pageOffDuty() {
+  return `${band(800, "JOURNALISM")}
+    <div class="meta">The Skinny · Drowned in Sound · FutureLearn</div>
+    <div class="piece"><div class="facts"><div class="prose">
+      <p>I started my writing career as a music and film journalist. For The Skinny, I interviewed filmmakers and musicians and wrote cover features and long-form profiles, including John Maclean on Slow West and Julia Holter on Loud City Song.</p>
+      <p>I later produced long-form editorial and interview pieces at FutureLearn, alongside my campaign work.</p>
+    </div></div><div class="pics2">${pic(["skinny-slow-west", "The Skinny: Slow West"])}${pic(["skinny-julia-holter", "The Skinny: Julia Holter"])}</div></div>`;
+}
+
+function pageSubtitles() {
+  const cv = [["2022–now", "Warner Bros. Discovery", "Senior Copywriter"], ["2020–21", "FutureLearn", "Midweight Copywriter"],
+    ["2015–19", "AKA UK", "Concept Copywriter"], ["2012–14", "Empire Design", "Junior Copywriter"], ["2005–15", "Freelance", "Copywriter and journalist"]];
+  return `<div class="band b-yellow"><div class="kicker"><span>SUBTITLES</span></div>${dh("CONTACT & CV")}</div>
+    <div class="me"><button class="frame" data-src="img/sam.jpg" data-cap="Sam Lewis" aria-label="Enlarge photo of Sam Lewis"><img src="img/sam.jpg" alt="Sam Lewis"></button>
+    <div class="facts">
+      <div class="row"><span class="l c-cyan">EMAIL</span><span><span class="c-yellow" id="email">sam.joe.lewis@gmail.com</span> <button class="rbtn" id="copyEmail" style="font-size:.9em;padding:0 1ch">COPY</button> <span class="c-dim" id="copied" hidden>Copied</span></span></div>
+      <div class="row"><span class="l c-cyan">BASED</span><span>London</span></div>
+    </div></div>
+    <div class="cv">${cv.map(r => `<div class="cvrow"><span class="c-yellow">${r[0]}</span><span>${esc(r[1])}</span><span class="c-cyan">${esc(r[2])}</span></div>`).join("")}</div>
+    <div class="facts">${row("STUDY", "cyan", "MA English Literature, UCL. BA English Literature, University of Manchester.")}</div>
+    <div class="c-dim">Thanks for watching. Normal service resumes on page 100.</div>`;
+}
+
+function pageMissing(n) {
+  return `<div class="band b-red"><div class="kicker"><span>PAGE ${n}</span></div>${dh("PAGE NOT IN SERVICE")}</div>
+    <div>There's nothing on page ${n}. Try the home page on <a class="c-cyan" href="#p100" data-go="100">100</a>.</div>`;
+}
+
+function render(n) {
+  if (n === 100) return pageIndex();
+  if (n === 101) return pageAbout();
+  if (CHAPTERS[n]) return pageChapter(n);
+  if (PIECES[n]) return pagePiece(n);
+  if (n === 700) return pageVoice();
+  if (n === 750) return pageLeadership();
+  if (n === 800) return pageOffDuty();
+  if (n === 888) return pageSubtitles();
+  return null;
+}
+
+/* ---------- fastext ---------- */
+function drawFastext(n) {
+  const ch = chapterOf(n);
+  document.querySelectorAll(".fkw").forEach(b => b.setAttribute("aria-current", String(Number(b.dataset.sec) === ch && n !== 100)));
+  const i = ORDER.indexOf(n);
+  if (n === 100 || i < 0) { $("#fastext").innerHTML = ""; return; }
+  const prev = ORDER[i - 1], next = ORDER[i + 1];
+  const secN = CHAPTERS[ch] && n !== ch ? ch : 100;
+  const NAV = { 200: "TV & streaming", 300: "Trailers & film", 400: "Sport", 500: "Entertainment & culture", 600: "EdTech" };
+  const secLabel = secN === 100 ? "Home" : NAV[ch];
+  $("#fastext").innerHTML =
+    (prev ? `<button data-go="${prev}"><span>\u2039 ${prev}</span></button>` : `<span></span>`) +
+    `<button class="sec" data-go="${secN}"><span>${esc(secLabel)}</span></button>` +
+    (next ? `<button data-go="${next}"><span>${next} \u203A</span></button>` : `<span></span>`);
+}
+
+/* ---------- navigation ---------- */
+let current = 100, timer = null;
+function go(n, push = true) {
+  n = Number(n);
+  clearInterval(timer);
+  const hp = $("#hp");
+  const finish = () => {
+    hp.textContent = "P" + n;
+    const html = render(n);
+    const pageEl = $("#page");
+    pageEl.innerHTML = html ?? pageMissing(n);
+    current = n;
+    drawFastext(n);
+    afterRender(n);
+    if (push) { try { history.replaceState(null, "", "#p" + n); } catch (e) {} }
+    pageEl.focus({ preventScroll: true });
+  };
+  if (reduced) return finish();
+  let k = current, steps = 0;
+  timer = setInterval(() => {
+    k = k >= 899 ? 100 : k + 7 + Math.floor(Math.random() * 13);
+    hp.textContent = "P" + String(k).padStart(3, "0");
+    if (++steps > 6) { clearInterval(timer); finish(); }
+  }, 45);
+}
+
+document.addEventListener("click", e => {
+  const g = e.target.closest("[data-go]");
+  if (g) { e.preventDefault(); go(g.dataset.go); return; }
+  const fr = e.target.closest(".frame");
+  if (fr) { openLb(fr.dataset.src, fr.dataset.cap); return; }
+});
+
+/* page number entry */
+let buf = "";
+function key(d) {
+  buf += d;
+  $("#entry").textContent = "P" + buf.padEnd(3, "_");
+  if (buf.length === 3) {
+    const n = Number(buf); buf = "";
+    setTimeout(() => { $("#entry").textContent = "P___"; }, 400);
+    if (n >= 100) go(n); else go(n);
+  }
+}
+$("#keys").innerHTML = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map(d => `<button class="key" data-k="${d}" aria-label="Number ${d}">${d}</button>`).join("");
+$("#keys").addEventListener("click", e => { const b = e.target.closest("[data-k]"); if (b) key(b.dataset.k); });
+
+function setReveal(v) {
+  revealed = v;
+  $("#reveal").setAttribute("aria-pressed", String(v));
+  document.querySelectorAll(".qa .a").forEach(a => a.dataset.concealed = String(!v));
+}
+$("#reveal").addEventListener("click", () => setReveal(!revealed));
+$("#toIndex").addEventListener("click", () => go(100));
+
+document.addEventListener("keydown", e => {
+  if (!$("#lb").hidden) { if (e.key === "Escape") closeLb(); return; }
+  if (e.target.closest("input, textarea")) return;
+  if (/^[0-9]$/.test(e.key)) { key(e.key); return; }
+  const i = ORDER.indexOf(current);
+  if (e.key === "ArrowRight") go(ORDER[(i + 1) % ORDER.length]);
+  else if (e.key === "ArrowLeft") go(ORDER[(i - 1 + ORDER.length) % ORDER.length]);
+  else if (e.key.toLowerCase() === "r" && !e.metaKey && !e.ctrlKey) setReveal(!revealed);
+});
+
+/* ---------- clock ---------- */
+function tick() {
+  const d = new Date();
+  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"], mons = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const p = x => String(x).padStart(2, "0");
+  $("#clock").textContent = `${days[d.getDay()]} ${p(d.getDate())} ${mons[d.getMonth()]} ${p(d.getHours())}:${p(d.getMinutes())}/${p(d.getSeconds())}`;
+}
+tick(); setInterval(tick, 1000);
+
+/* ---------- mosaics ---------- */
+const FONT = {
+  S: ["####", "#...", "####", "...#", "####"], A: [".##.", "#..#", "####", "#..#", "#..#"],
+  M: ["#...#", "##.##", "#.#.#", "#...#", "#...#"], L: ["#...", "#...", "#...", "#...", "####"],
+  E: ["####", "#...", "###.", "#...", "####"], W: ["#...#", "#...#", "#.#.#", "##.##", "#...#"],
+  I: ["###", ".#.", ".#.", ".#.", "###"], " ": ["..", "..", "..", "..", ".."],
+};
+const ttcol = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+function drawMast() {
+  const c = $("#mastCanvas"); if (!c) return;
+  const text = "SAM LEWIS", sw = 10, sh = 12, pad = 1;
+  const glyphs = [...text].map(ch => FONT[ch]);
+  const w = glyphs.reduce((s, g) => s + g[0].length + 1, 0) - 1 + pad * 2 + 1, h = 5 + pad * 2 + 1;
+  c.width = w * sw; c.height = h * sh;
+  const ctx = c.getContext("2d");
+  ctx.fillStyle = ttcol("--blue"); ctx.fillRect(0, 0, c.width, c.height);
+  const rows = ["--red", "--yellow", "--green", "--cyan", "--white"];
+  const plot = (dx, dy, fill) => {
+    let x = pad;
+    glyphs.forEach(g => {
+      g.forEach((r, y) => [...r].forEach((b, i) => {
+        if (b !== "#") return;
+        ctx.fillStyle = fill(y);
+        ctx.fillRect((x + i + dx) * sw, (y + pad + dy) * sh, sw, sh);
+      }));
+      x += g[0].length + 1;
+    });
+  };
+  plot(1, 1, () => "#000");
+  plot(0, 0, y => ttcol(rows[y]));
+  c.style.maxWidth = (w * 15) + "px";
+}
+function drawPortrait(btn) {
+  if (!btn || reduced) return;
+  setTimeout(() => btn.classList.add("resolved"), 2600);
+}
+function drawPitch() {
+  const c = $("#pitchCanvas"); if (!c) return;
+  const W = 48, H = 30, cell = 8;
+  c.width = W * cell; c.height = H * cell;
+  const ctx = c.getContext("2d"), css = getComputedStyle(document.documentElement);
+  const col = v => css.getPropertyValue(v).trim();
+  const px = (x, y, v) => { ctx.fillStyle = col(v); ctx.fillRect(x * cell, y * cell, cell, cell); };
+  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) px(x, y, (Math.floor(x / 4) % 2) ? "--green" : "--black");
+  ctx.globalAlpha = 1;
+  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) if (Math.floor(x / 4) % 2 === 0) { ctx.fillStyle = "#0a7a1f"; ctx.fillRect(x * cell, y * cell, cell, cell); }
+  const L = (x, y) => px(x, y, "--white");
+  for (let x = 2; x < W - 2; x++) { L(x, 2); L(x, H - 3); }
+  for (let y = 2; y < H - 2; y++) { L(2, y); L(W - 3, y); L(W / 2, y); }
+  for (let a = 0; a < 360; a += 6) { const r = 5; L(Math.round(W / 2 + r * Math.cos(a * Math.PI / 180)), Math.round(H / 2 + r * .9 * Math.sin(a * Math.PI / 180))); }
+  for (let y = 8; y <= H - 9; y++) { L(9, y); L(W - 10, y); }
+  for (let x = 2; x <= 9; x++) { L(x, 8); L(x, H - 9); }
+  for (let x = W - 10; x < W - 2; x++) { L(x, 8); L(x, H - 9); }
+  for (let y = 12; y <= H - 13; y++) { px(1, y, "--yellow"); px(W - 2, y, "--yellow"); }
+  px(W - 14, 12, "--white"); px(W - 13, 12, "--white"); px(W - 14, 13, "--white"); px(W - 13, 13, "--white");
+  const trail = [[6, 26], [12, 22], [19, 19], [26, 16], [31, 14]];
+  trail.forEach(([x, y], i) => { ctx.globalAlpha = .25 + i * .15; px(x, y, "--yellow"); });
+  ctx.globalAlpha = 1;
+}
+
+/* picture reveal: chunky pixels resolve into the real image */
+function pixelIn(frame) {
+  const img = frame.querySelector("img");
+  if (reduced) return;
+  const run = () => {
+    if (!img.naturalWidth) return;
+    const cv = document.createElement("canvas");
+    const w = 36, h = Math.max(1, Math.round(w * img.naturalHeight / img.naturalWidth));
+    cv.width = w; cv.height = h;
+    cv.getContext("2d").drawImage(img, 0, 0, w, h);
+    frame.appendChild(cv);
+    setTimeout(() => { cv.style.opacity = "0"; }, 380);
+    setTimeout(() => cv.remove(), 1000);
+  };
+  if (img.complete) run(); else img.addEventListener("load", run, { once: true });
+}
+
+function afterRender(n) {
+  drawMast(); drawPitch(); drawPortrait($(".portrait"));
+  document.querySelectorAll(".frame:not(.portrait)").forEach(pixelIn);
+  const cp = $("#copyEmail");
+  if (cp) cp.addEventListener("click", () => {
+    const t = $("#email").textContent;
+    const done = () => { const c = $("#copied"); c.hidden = false; setTimeout(() => c.hidden = true, 1500); };
+    try {
+      navigator.clipboard.writeText(t).then(done, () => selectEmail());
+    } catch (e) { selectEmail(); }
+  });
+}
+function selectEmail() {
+  const r = document.createRange(); r.selectNodeContents($("#email"));
+  const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+}
+
+/* lightbox */
+let lastFocus = null;
+function openLb(src, cap) {
+  lastFocus = document.activeElement;
+  $("#lbimg").src = src; $("#lbimg").alt = cap; $("#lbcap").textContent = cap;
+  $("#lb").hidden = false; $("#lbclose").focus();
+}
+function closeLb() { $("#lb").hidden = true; if (lastFocus) lastFocus.focus(); }
+$("#lbclose").addEventListener("click", closeLb);
+$("#lb").addEventListener("click", e => { if (e.target.id === "lb") closeLb(); });
+
+/* boot */
+const m = /^#p(\d{3})$/.exec(location.hash || "");
+const start = m ? Number(m[1]) : 100;
+hnInit();
+function hnInit() { $("#hp").textContent = "P" + start; }
+current = start;
+$("#page").innerHTML = render(start) ?? pageMissing(start);
+drawFastext(start);
+afterRender(start);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { drawMast(); });
+})();
+</script>
+</body>
+</html>
