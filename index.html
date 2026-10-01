@@ -173,13 +173,6 @@ canvas.mosaic { display: block; width: 100%; height: auto; image-rendering: pixe
 .prose { font-family: "IBM Plex Mono", ui-monospace, "Courier New", monospace; font-size: clamp(15px, 1.55vw, 16.5px); line-height: 1.6; color: var(--white); display: grid; gap: .85em; max-width: 64ch; -webkit-font-smoothing: antialiased; }
 .prose p { margin: 0; text-wrap: pretty; }
 .prose.wide { max-width: 68ch; padding-bottom: .4em; }
-.qa { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: clamp(15px, 1.55vw, 16.5px); line-height: 1.55; -webkit-font-smoothing: antialiased; }
-.qa { border-top: 1px dashed #ffffff30; padding-top: .45em; display: grid; gap: .2em; }
-.qa .q { color: var(--cyan); }
-.qa .a[data-concealed="true"] .txt { display: none; }
-.qa .a[data-concealed="true"] .hint { display: inline; }
-.qa .a .hint { display: none; color: var(--dim); }
-.qa .a .hint b { color: var(--black); background: var(--white); font-weight: normal; padding: 0 .5ch; }
 
 figure.pic { margin: 0; display: grid; gap: .25em; min-width: 0; }
 .frame {
@@ -352,7 +345,6 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
       <button class="fkw" data-go="600" data-sec="600" aria-label="EdTech, page 600"><span class="fk cyan"></span><span class="fl">EdTech</span></button>
     </div>
     <div class="rbtns">
-      <button class="rbtn" id="reveal" aria-pressed="false">REVEAL</button>
       <button class="rbtn" id="toIndex">HOME</button>
       <span class="help">Type a page number, or press a colour to jump to that section</span>
     </div>
@@ -385,9 +377,8 @@ const PIECES = {
     body: [
       "I led copy for the UK launch of HBO Max, writing across radio, outdoor, social, email and display. I pushed for UK-specific lines that spoke to local places and content, and this was one of them.",
       "It ran as a takeover of the tunnel at King's Cross, and the ad went viral on LinkedIn. Across the launch as a whole, UK subscriptions passed the yearly target within four months.",
+      "The line speaks to two audiences at once. If you don't know HBO Max, it's a confident claim. If you know your Harry Potter, it's a joke you're already in on.",
     ],
-    q: "Why does the line work?",
-    a: "It speaks to two audiences at once. If you don't know HBO Max, it's a confident claim. If you know your Harry Potter, it's a joke you're already in on.",
     pics: [["kings-cross", "King's Cross tunnel, London"]] },
   202: { title: "HBO MAX WALL-TO-WALL WATERCOOLER CAMPAIGN", meta: "HBO Max · OOH brand campaign · Warner Bros. Discovery",
     quote: "Critically acclaimed, publicly debated.",
@@ -417,9 +408,8 @@ const PIECES = {
     body: [
       "I scripted an emotive trailer for Universal's Boyhood that explained its unique filmmaking process: the same cast, filmed over twelve years.",
       "It gained 5.5 million views on YouTube, and was also shown on TV in America.",
+      "The method was the hook, but nobody cries at a method. The script had to make the process feel like a life going by.",
     ],
-    q: "What made it hard?",
-    a: "The method is the hook, but nobody cries at a method. The script had to make the process feel like a life going by.",
     pics: [["boyhood", "Boyhood, Universal"]] },
   502: { tag: "TRAILER", title: "HOME, I'M DARLING TRAILER FOR THE NATIONAL THEATRE", meta: "National Theatre · Home, I'm Darling · Trailer script · AKA UK",
     quote: "But is their perfect life…",
@@ -483,9 +473,10 @@ const PIECES = {
 
   601: { title: "CITY & GUILDS AND FUTURELEARN SKILLS CAMPAIGN", meta: "City & Guilds × FutureLearn · Campaign",
     quote: "The new world needs you.",
-    body: ["For City & Guilds' new skills courses, I created ‘The New World Needs You’, a campaign encouraging young people to see a place for themselves in the post-pandemic world. We extended the idea into sector-specific paid creative."],
-    q: "What does the line do?",
-    a: "It flips the usual message. Instead of telling young people they lack skills, it tells them they're needed.",
+    body: [
+      "For City & Guilds' new skills courses, I created ‘The New World Needs You’, a campaign encouraging young people to see a place for themselves in the post-pandemic world. We extended the idea into sector-specific paid creative.",
+      "The line flips the usual message. Instead of telling young people they lack skills, it tells them they're needed.",
+    ],
     pics: [["new-world-needs", "The New World Needs…"], ["new-world-building", "Sector-specific paid social"]] },
   602: { title: "FUTURELEARN RESULTS DAY OUTDOOR CAMPAIGN", meta: "FutureLearn · OOH",
     quote: "Exam results don't define you.",
@@ -509,15 +500,10 @@ const frac = s => s.replace(/\u00BE/g, '<span class="frac">\u00BE</span>');
 const dh = (text, cls = "") => `<div class="dh ${cls}">${esc(text).split(" ").map(w => `<span class="w">${frac(w)}</span>`).join(" ")}</div>`;
 const chapterOf = n => n >= 800 && n < 888 ? 800 : n >= 750 && n < 800 ? 750 : Math.floor(n / 100) * 100;
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-let revealed = false;
 
 function band(n, title) {
   const ch = CH[chapterOf(n)];
   return `<div class="band b-${ch.colour} sec">${n !== chapterOf(n) ? `<div class="kicker"><span>${ch.name}</span></div>` : ""}${dh(title)}</div>`;
-}
-function qa(q, a) {
-  return `<div class="qa"><div class="q">Q. ${esc(q)}</div>
-    <div class="a" data-concealed="${!revealed}"><span class="txt">A. ${esc(a)}</span><span class="hint">A. Press <b>REVEAL</b> for the answer</span></div></div>`;
 }
 function pic([file, cap]) {
   return `<figure class="pic"><button class="frame" data-src="img/${file}.jpg" data-cap="${esc(cap)}" aria-label="Enlarge picture: ${esc(cap)}">
@@ -615,7 +601,6 @@ function pagePiece(n) {
     <div class="piece${right ? "" : " solo"}">
       <div class="facts">
         <div class="prose">${p.body.map(t => `<p>${esc(t)}</p>`).join("")}</div>
-        ${p.q ? qa(p.q, p.a) : ""}
       </div>
       ${right}
     </div>
@@ -794,12 +779,6 @@ function key(d) {
 $("#keys").innerHTML = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map(d => `<button class="key" data-k="${d}" aria-label="Number ${d}">${d}</button>`).join("");
 $("#keys").addEventListener("click", e => { const b = e.target.closest("[data-k]"); if (b) key(b.dataset.k); });
 
-function setReveal(v) {
-  revealed = v;
-  $("#reveal").setAttribute("aria-pressed", String(v));
-  document.querySelectorAll(".qa .a").forEach(a => a.dataset.concealed = String(!v));
-}
-$("#reveal").addEventListener("click", () => setReveal(!revealed));
 $("#toIndex").addEventListener("click", () => go(100));
 
 document.addEventListener("keydown", e => {
@@ -809,7 +788,6 @@ document.addEventListener("keydown", e => {
   const i = ORDER.indexOf(current);
   if (e.key === "ArrowRight") go(ORDER[(i + 1) % ORDER.length]);
   else if (e.key === "ArrowLeft") go(ORDER[(i - 1 + ORDER.length) % ORDER.length]);
-  else if (e.key.toLowerCase() === "r" && !e.metaKey && !e.ctrlKey) setReveal(!revealed);
 });
 
 /* ---------- clock ---------- */
