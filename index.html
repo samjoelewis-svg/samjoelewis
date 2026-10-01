@@ -181,6 +181,8 @@ figure.pic { margin: 0; display: grid; gap: .25em; min-width: 0; }
   position: relative; display: block; width: 100%; max-width: 100%; padding: 0; border: 0;
   background: #111; cursor: zoom-in; border: 3px solid var(--white);
 }
+.vframe { border: 2px solid var(--white); background: #000; }
+.vframe video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
 .frame img { display: block; width: 100%; height: auto; max-height: 440px; object-fit: contain; background: #000; }
 .piece > figure.pic .frame { width: fit-content; max-width: 100%; }
 .piece > figure.pic .frame img { width: auto; max-width: 100%; max-height: 600px; }
@@ -641,7 +643,7 @@ function pageVoice() {
       <p>I own HBO Max’s tone-of-voice guides and messaging frameworks, and work across brands with very different personalities.</p>
       <p>My English master copy for HBO Max and TNT Sports is translated into 17 languages and reaches more than 10 million people a week, so the voice has to hold in every market.</p>
       <p>At FutureLearn, I wrote the company’s first brand tone-of-voice guide. I also created the mnemonic STEP (Social, Transformative, Experimental, Purposeful), inspired by the FutureLearn logo, to help staff remember our brand values.</p>
-    </div></div><div class="stack">${pic(["quick-witted", "HBO Max tone-of-voice guide"])}${pic(["futurelearn-step", "FutureLearn brand guidelines: STEP"])}</div></div>`;
+    </div></div><div class="stack">${pic(["quick-witted", "HBO Max tone-of-voice guide"])}<figure class="pic"><div class="vframe"><video controls playsinline preload="none" poster="img/futurelearn-step-video.jpg" aria-label="FutureLearn STEP animation"><source src="video/futurelearn-step.mp4" type="video/mp4"></video></div><figcaption>FutureLearn staff values film: STEP</figcaption></figure></div></div>`;
 }
 
 function pageLeadership() {
