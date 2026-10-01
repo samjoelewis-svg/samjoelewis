@@ -135,6 +135,9 @@ canvas.mosaic { display: block; width: 100%; height: auto; image-rendering: pixe
 .fullport:hover, .fullport:focus-visible { background: var(--white); outline: none; }
 .headlines { display: grid; gap: .15em; align-content: start; }
 .headlines .tag { font-size: .8em; letter-spacing: .04em; }
+.flash { animation: ttflash 2.4s steps(1, end) infinite; }
+@keyframes ttflash { 0% { visibility: visible; } 60% { visibility: hidden; } }
+@media (prefers-reduced-motion: reduce) { .flash { animation: none; } }
 .headlines a:hover .tag, .headlines a:focus-visible .tag { color: var(--black); }
 .headlines a:hover, .headlines a:focus-visible { background: var(--cyan); color: var(--black); outline: none; }
 .headlines a:hover .n, .headlines a:focus-visible .n { color: var(--black); }
@@ -439,6 +442,7 @@ function pageIndex() {
     [700, "Brand voice", "white"], [750, "Leadership", "white"], [800, "Journalism", "white"], [888, "Contact & CV", "yellow"],
   ];
   const heads = [
+    [402, "SPEC", "yellow", "A Women's World Cup pitch for BBC Creative"],
     [201, "DRAMA", "red", "HBO Max launch runs from radio to King's Cross"],
     [203, "DRAMA", "red", "Succession's Roys open a British pub"],
     [301, "CULTURE", "yellow", "Pop star fronts Tate Modern exhibition trailer"],
@@ -454,7 +458,7 @@ function pageIndex() {
       <button class="frame portrait" data-src="img/sam.jpg" data-cap="Sam Lewis" aria-label="Enlarge photo of Sam Lewis"><img src="img/sam.jpg" alt="Sam Lewis"><img class="tt-portrait" src="img/sam-teletext.png" alt=""></button></div></div>
     <div class="cols">
       <div class="headlines"><div class="c-cyan">TOP STORIES</div>
-        ${heads.map(([n, tag, c, t]) => `<a href="#p${n}" data-go="${n}"><span><span class="tag c-${c}">${tag}</span> ${esc(t)}</span><span class="n">${n}</span></a>`).join("")}
+        ${heads.map(([n, tag, c, t]) => `<a href="#p${n}" data-go="${n}"><span><span class="tag c-${c}${tag === "SPEC" ? " flash" : ""}">${tag}</span> ${esc(t)}</span><span class="n">${n}</span></a>`).join("")}
       </div>
       <div class="toc"><div class="c-cyan">PAGES</div>
         ${toc.map(([n, t, c]) => `<a href="#p${n}" data-go="${n}"><span class="t c-${c}">${esc(t)}</span><span class="n">${n}</span></a>`).join("")}
