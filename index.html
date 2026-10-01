@@ -424,6 +424,15 @@ const PIECES = {
     pics: [["wwc-poster", "Spec outdoor poster for BBC Sport"]],
   },
 
+  403: { title: "MILANO CORTINA 2026 INTERACTIVE CAMPAIGN", meta: "HBO Max · TNT Sports · Milano Cortina 2026 · Warner Bros. Discovery",
+    quote: "Your Olympics. Your way.",
+    body: [
+      "I come up with interactive campaigns for TNT Sports users. For the Milano Cortina 2026 Winter Olympics, I created a pick-your-sports journey: users chose the sports they cared about from all 16 on the programme, so we only sent them the notifications that mattered to them.",
+      "The final screen asked them to turn on push notifications, so they were ready for the opening ceremony on 6 February.",
+    ],
+    wide: true,
+    pics: [["milano-cortina", "Pick-your-sports journey, Milano Cortina 2026"]] },
+
   501: { title: "MOCK THE WEEK PRINT AD FOR TLC", meta: "TLC · Print · Warner Bros. Discovery",
     quote: "Heard we were finished? Fake news.",
     body: ["I wrote this print ad for Mock the Week on TLC, turning the idea that the show was ‘finished’ into the punchline."],
@@ -458,12 +467,12 @@ const PIECES = {
 const CHAPTERS = {
   200: { line: "Campaigns, social and ads for HBO Max, plus taglines for TV dramas.", pieces: [201, 202, 203, 204, 205] },
   300: { line: "Trailers I scripted for Tate Modern, Universal and the National Theatre.", pieces: [301, 302, 303] },
-  400: { line: "CRM for TNT Sports, including Paris 2024, plus a spec campaign for the Women's World Cup.", pieces: [401, 402] },
+  400: { line: "CRM for TNT Sports, including Paris 2024, plus a spec campaign for the Women's World Cup.", pieces: [401, 402, 403] },
   500: { line: "Work for Matilda The Musical, Westminster Abbey, TLC and film.", pieces: [501, 502, 503] },
   600: { line: "Campaigns for FutureLearn, the online learning platform, including work with City & Guilds.", pieces: [601, 602] },
 };
 
-const ORDER = [100, 101, 200, 201, 202, 203, 204, 205, 300, 301, 302, 303, 400, 401, 402, 500, 501, 502, 503, 600, 601, 602, 700, 750, 800, 888];
+const ORDER = [100, 101, 200, 201, 202, 203, 204, 205, 300, 301, 302, 303, 400, 401, 402, 403, 500, 501, 502, 503, 600, 601, 602, 700, 750, 800, 888];
 
 /* ---------- helpers ---------- */
 const $ = (s, r = document) => r.querySelector(s);
@@ -558,7 +567,7 @@ function scoresBlock() {
     <div class="c-dim">Viewers who received the campaigns, compared with a control group who didn't.</div></div>`;
 }
 
-const AR = {"boyhood":1.705,"futurelearn-step":1.634,"halt-catch-fire":1.41,"humans":1.754,"kings-cross":1.77,"matilda":1.78,"mock-the-week":1.531,"national-theatre":1.314,"new-world-building":0.597,"new-world-needs":1,"paris-2024":0.821,"quick-witted":1.604,"results-day":1,"royal-roy":0.735,"tough-cases":0.999,"watercooler":1.333,"westminster-abbey":0.647,"world-goes-pop":1.316,"wwc-poster":0.667,"skinny-julia-holter":1.732,"skinny-slow-west":1.732,"swallows-amazons":0.681};
+const AR = {"boyhood":1.705,"futurelearn-step":1.634,"halt-catch-fire":1.41,"humans":1.754,"kings-cross":1.77,"matilda":1.78,"mock-the-week":1.531,"national-theatre":1.314,"new-world-building":0.597,"new-world-needs":1,"paris-2024":0.821,"quick-witted":1.604,"results-day":1,"royal-roy":0.735,"tough-cases":0.999,"watercooler":1.333,"westminster-abbey":0.647,"world-goes-pop":1.316,"milano-cortina":1.867,"wwc-poster":0.667,"skinny-julia-holter":1.732,"skinny-slow-west":1.732,"swallows-amazons":0.681};
 function gallery(list) {
   const s = list.reduce((a, [f]) => a + (AR[f] || 1), 0);
   return `<div class="gallery" style="max-width:calc(${s.toFixed(3)} * min(520px, 72vh))">${list.map(x => `<div class="gi" style="flex:${AR[x[0]] || 1} 1 0">${pic(x)}</div>`).join("")}</div>`;
@@ -566,7 +575,7 @@ function gallery(list) {
 
 function pagePiece(n) {
   const p = PIECES[n];
-  const multi = p.pics && p.pics.length > 1;
+  const multi = p.pics && (p.pics.length > 1 || p.wide);
   const pics = p.pics && !multi ? pic(p.pics[0]) : "";
   const right = p.pitch ? ""
     : pics;
