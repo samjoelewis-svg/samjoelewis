@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Sam Lewis, Senior Creative (Writer)</title>
+<title>Sam Lewis, Senior Writer &amp; Creative</title>
 <meta name="description" content="Portfolio of Sam Lewis, senior copywriter and creative. Campaigns, trailers and copy for HBO Max, TNT Sports, Tate Modern and the National Theatre.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Sam Lewis, Senior Creative (Writer)">
+<meta property="og:title" content="Sam Lewis, Senior Writer & Creative">
 <meta property="og:description" content="Campaigns, trailers and copy for HBO Max, TNT Sports, Tate Modern and the National Theatre.">
 <meta property="og:image" content="https://samlewis.fyi/img/sam.jpg">
 <meta property="og:url" content="https://samlewis.fyi/">
@@ -120,6 +120,7 @@ canvas.mosaic { display: block; width: 100%; height: auto; image-rendering: pixe
 .me { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1em 2ch; align-items: start; }
 @media (max-width: 520px) { .mast-body { grid-template-columns: minmax(0, 1fr); } .mast .frame { order: -1; } .me { grid-template-columns: minmax(0, 1fr); } }
 .mast .sub { color: var(--white); }
+.mast .dh.role { font-size: 1.3em; }
 
 /* index lists */
 .toc { display: grid; gap: .12em; }
@@ -604,7 +605,7 @@ function pageIndex() {
   return `
     <div class="mast">
       <div class="mast-body"><div class="mast-text"><canvas class="mosaic" id="mastCanvas" role="img" aria-label="Sam Lewis"></canvas>
-      ${dh("SENIOR CREATIVE (WRITER)", "c-yellow")}
+      ${dh("SENIOR WRITER & CREATIVE", "c-yellow role")}
       <div class="sub">Campaigns, trailers and copy for HBO Max, TNT Sports, Tate Modern and the National Theatre.</div></div>
       <button class="frame portrait" data-src="img/sam.jpg" data-cap="Sam Lewis" aria-label="Enlarge photo of Sam Lewis"><img src="img/sam.jpg" alt="Sam Lewis"><img class="tt-portrait" src="img/sam-teletext.png" alt=""></button></div></div>
     <div class="cols">
