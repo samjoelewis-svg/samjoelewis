@@ -207,6 +207,21 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
 .cvrow { display: grid; grid-template-columns: 8ch minmax(0, 1fr) minmax(0, 1fr); gap: 0 1.5ch; }
 @media (max-width: 560px) { .cvrow { grid-template-columns: 8ch minmax(0, 1fr); } .cvrow > :last-child { grid-column: 2; } }
 .scorewide { display: grid; gap: .3em; }
+.blk { display: grid; gap: .5em; margin-top: 1.1em; }
+.script { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: .7em 3ch; align-items: start; }
+.script .vo { color: var(--white); }
+.script .act, .collab p { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: clamp(14px, 1.45vw, 15.5px); line-height: 1.5; margin: 0; -webkit-font-smoothing: antialiased; }
+.script .act { color: var(--cyan); font-style: italic; }
+.endline { border-top: 1px dashed #ffffff30; padding-top: .45em; }
+.collabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.4ch; }
+.collab { border-top: 4px solid var(--green); padding-top: .35em; display: grid; gap: .1em; align-content: start; }
+.collab .ch { color: var(--yellow); }
+.collab .role { color: var(--dim); font-size: .85em; margin-bottom: .35em; }
+@media (max-width: 720px) {
+  .script { grid-template-columns: minmax(0, 1fr); gap: .2em; }
+  .script .act { margin-bottom: .7em; }
+  .collabs { grid-template-columns: minmax(0, 1fr); gap: 1em; }
+}
 
 .scores { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
 .scores td { padding: .1em .6ch; }
@@ -451,17 +466,28 @@ const PIECES = {
     ],
     scores: true,
     pics: [["paris-2024", "Paris 2024 CRM"]] },
-  402: { title: "BBC SPORT WOMEN'S WORLD CUP 2027 SPEC CAMPAIGN", meta: "Spec campaign · BBC Sport",
+  402: { title: "BBC SPORT WOMEN'S WORLD CUP 2027 SPEC CAMPAIGN", meta: "Spec campaign · BBC Sport · TV, radio, social & outdoor",
     spec: true,
     quote: "We set the tempo.",
     body: [
-      "This is a spec idea I developed for this application: a campaign for the BBC\u2019s coverage of the Women\u2019s World Cup in Brazil, from 24 June to 25 July 2027.",
-      "The tournament is going to Brazil, and Brazilian football has a sound: samba. So the trail builds that rhythm entirely from the sounds of women\u2019s football in the UK, from Sunday league on Hackney Marshes to the WSL.",
-      "It opens on one thud: a ball against the fence on Hackney Marshes. That becomes the bass drum. Studs on a concrete path become the shaker, rain on a stand roof becomes the snare, and claps from a WSL crowd become the tamborim. A referee\u2019s whistle calls the band in, the way the lead whistle does in a samba school. By 40 seconds it\u2019s a full samba band, and we cut to the Maracan\u00E3 on the peak beat.",
-      "On TV and iPlayer, the trail cuts from pitch to pitch as each sound joins the beat. On 5 Live and BBC Sounds, the same idea works without a single picture. On social, women\u2019s teams around the UK each record one sound from their own pitch to add to the beat.",
-      "The line, \u201cWe set the tempo.\u201d, works two ways: the beat of the samba band, and the pace of the team on the pitch. The outdoor poster puts England players in front of Rio, with the line across their shirts.",
+      "This is a spec campaign I developed for this application, for the BBC\u2019s coverage of the Women\u2019s World Cup in Brazil, from 24 June to 25 July 2027.",
+      "The idea starts with a simple truth: football in Brazil has rhythm. So we build that rhythm from the sounds of women\u2019s football across the UK. A ball against a fence. Studs on concrete. Rain on a stand roof. A packed WSL crowd. Each sound becomes part of a building samba beat.",
+      "As the rhythm builds, so does the scale of the game: from grassroots pitches, through the WSL, to England on the world stage. What begins as one small sound becomes something impossible to ignore.",
+      "\u201cWe set the tempo\u201d captures that momentum: a game growing louder, a team driving it forward, and a World Cup in a country where football and rhythm have always gone together. It\u2019s a simple device that flexes naturally across TV, radio, social and outdoor.",
     ],
-    pics: [["wwc-poster", "Spec outdoor poster for BBC Sport"]],
+    script: [
+      ["From Sunday mornings to Saturday nights.", "A few parents clap from the touchline. CUT to thousands clapping in a WSL stand. A rhythm starts to emerge."],
+      ["From the grassroots to the grand stage.", "A boot thuds on a muddy local pitch. CUT to a WSL star striking the ball under stadium lights. The rhythm is growing."],
+      ["Pitch by pitch, moment by moment, the beat gets louder\u2026", "Claps, studs, ball strikes, whistles and chants begin locking together into samba."],
+      ["Until the tempo\u2019s loud enough for a nation to follow.", "The crowd becomes a roar. England take centre stage. The rhythm reaches full force."],
+    ],
+    endline: ["We set the tempo.", "The FIFA Women\u2019s World Cup 2027. On the BBC."],
+    collabs: [
+      ["PASS THE BEAT.", "GirlsontheBall", "Women\u2019s football platform", "They travel from grassroots pitches to WSL grounds, collecting one match-day sound from each club: a clap, whistle, boot, bounce or chant. Each team records five seconds and passes the beat on."],
+      ["KEEP IT UP.", "Lia Lewis", "Freestyle football world champion", "Lia challenges players and fans to show the piece of skill that feels most like them, then puts her own spin on it. WSL players, grassroots teams and Brazilian creators join in, turning individual styles into a celebration of how differently the game can be played."],
+      ["BUILD THE BAND.", "Vicky O\u2019Neon \u00d7 Tuca Milan", "Percussionists", "Vicky and Tuca turn sounds captured across the women\u2019s game into a samba track. As the rhythm builds, we reveal where each sound came from, before bringing the players, fans and clubs behind them together in the final mix."],
+    ],
+    pics: [["wwc-poster", "Spec key art for outdoor and digital outdoor"]],
   },
 
   403: { tag: "CAMPAIGN", title: "MILANO CORTINA 2026 INTERACTIVE CAMPAIGN", meta: "HBO Max · TNT Sports · Milano Cortina 2026 · Warner Bros. Discovery",
@@ -637,7 +663,12 @@ function pagePiece(n) {
       ${right}
     </div>
     ${multi ? gallery(p.pics) : ""}
-    ${p.scores ? `<div class="scorewide">${scoresBlock()}</div>` : ""}`;
+    ${p.scores ? `<div class="scorewide">${scoresBlock()}</div>` : ""}
+    ${p.script ? `<section class="blk"><div class="bg-blue">SCRIPT</div>
+      <div class="script">${p.script.map(([vo, act]) => `<div class="vo">${esc(vo)}</div><div class="act">${esc(act)}</div>`).join("")}</div>
+      <div class="endline"><span class="c-yellow">${esc(p.endline[0])}</span> ${esc(p.endline[1])}</div></section>` : ""}
+    ${p.collabs ? `<section class="blk"><div class="bg-blue">PROPOSED CREATOR COLLABS</div>
+      <div class="collabs">${p.collabs.map(([h, who, role, txt]) => `<div class="collab"><div class="ch">${esc(h)}</div><div class="who">${esc(who)}</div><div class="role">${esc(role)}</div><p>${esc(txt)}</p></div>`).join("")}</div></section>` : ""}`;
 }
 
 function pageVoice() {
