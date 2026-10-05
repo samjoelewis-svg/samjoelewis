@@ -77,6 +77,7 @@ body {
 }
 .head .p { color: var(--white); min-width: 4ch; }
 .head .svc { color: var(--yellow); }
+#screen[data-home="true"] .head .svc { visibility: hidden; }
 .head .clock { color: var(--yellow); margin-left: auto; }
 .page { flex: 1; display: grid; gap: .7em; align-content: start; padding-top: .6em; }
 .page:focus { outline: none; }
@@ -797,6 +798,7 @@ function drawCrumbs(n) {
 
 function drawFastext(n) {
   drawCrumbs(n);
+  $("#screen").dataset.home = String(n === 100);
   const ch = chapterOf(n);
   document.querySelectorAll(".fkw").forEach(b => b.setAttribute("aria-current", String(Number(b.dataset.sec) === ch && n !== 100)));
   const i = ORDER.indexOf(n);
