@@ -216,6 +216,8 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
 .collabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.4ch; }
 .collab { border-top: 4px solid var(--green); padding-top: .35em; display: grid; gap: .1em; align-content: start; }
 .collab .ch { color: var(--yellow); }
+.collab .who a { color: var(--white); text-decoration: underline; text-underline-offset: .15em; }
+.collab .who a:hover, .collab .who a:focus-visible { background: var(--white); color: var(--black); outline: none; }
 .collab .role { color: var(--dim); font-size: .85em; margin-bottom: .35em; }
 @media (max-width: 720px) {
   .script { grid-template-columns: minmax(0, 1fr); gap: .2em; }
@@ -493,9 +495,9 @@ const PIECES = {
     ],
     endline: ["We set the tempo.", "The FIFA Women\u2019s World Cup 2027. On the BBC."],
     collabs: [
-      ["PASS THE BEAT.", "GirlsontheBall", "Women\u2019s football platform", "They travel from grassroots pitches to WSL grounds, collecting one match-day sound from each club: a clap, whistle, boot, bounce or chant. Each team records five seconds and passes the beat on."],
-      ["KEEP IT UP.", "Lia Lewis", "Freestyle football world champion", "Lia challenges players and fans to show the piece of skill that feels most like them, then puts her own spin on it. WSL players, grassroots teams and Brazilian creators join in, turning individual styles into a celebration of how differently the game can be played."],
-      ["BUILD THE BAND.", "Vicky O\u2019Neon \u00d7 Tuca Milan", "Percussionists", "Vicky and Tuca turn sounds captured across the women\u2019s game into a samba track. As the rhythm builds, we reveal where each sound came from, before bringing the players, fans and clubs behind them together in the final mix."],
+      ["PASS THE BEAT.", [["GirlsontheBall", "https://www.instagram.com/girlsontheball/"]], "Women\u2019s football platform", "They travel from grassroots pitches to WSL grounds, collecting one match-day sound from each club: a clap, whistle, boot, bounce or chant. Each team records five seconds and passes the beat on."],
+      ["KEEP IT UP.", [["Lia Lewis", "https://www.instagram.com/lia.lewis/"]], "Freestyle football world champion", "Lia challenges players and fans to show the piece of skill that feels most like them, then puts her own spin on it. WSL players, grassroots teams and Brazilian creators join in, turning individual styles into a celebration of how differently the game can be played."],
+      ["BUILD THE BAND.", [["Vicky O\u2019Neon", "https://www.instagram.com/vickyoneondrums/"], ["Tuca Milan", "https://www.instagram.com/ursula.tuca.milan/"]], "Percussionists", "Vicky and Tuca turn sounds captured across the women\u2019s game into a samba track. As the rhythm builds, we reveal where each sound came from, before bringing the players, fans and clubs behind them together in the final mix."],
     ],
     pics: [["wwc-poster", "Spec key art for outdoor and digital outdoor"]],
   },
@@ -681,7 +683,7 @@ function pagePiece(n) {
       <div class="script">${p.script.map(([vo, act]) => `<div class="vo">${esc(vo)}</div><div class="act">${esc(act)}</div>`).join("")}</div>
       <div class="endline"><span class="c-yellow">${esc(p.endline[0])}</span> ${esc(p.endline[1])}</div></section>` : ""}
     ${p.collabs ? `<section class="blk"><div class="bg-blue">PROPOSED CREATOR COLLABS</div>
-      <div class="collabs">${p.collabs.map(([h, who, role, txt]) => `<div class="collab"><div class="ch">${esc(h)}</div><div class="who">${esc(who)}</div><div class="role">${esc(role)}</div><p>${esc(txt)}</p></div>`).join("")}</div></section>` : ""}`;
+      <div class="collabs">${p.collabs.map(([h, who, role, txt]) => `<div class="collab"><div class="ch">${esc(h)}</div><div class="who">${who.map(([nm, url]) => `<a href="${url}" target="_blank" rel="noopener">${esc(nm)}</a>`).join(" \u00d7 ")}</div><div class="role">${esc(role)}</div><p>${esc(txt)}</p></div>`).join("")}</div></section>` : ""}`;
 }
 
 function pageVoice() {
