@@ -416,11 +416,11 @@ const CH = {
 
 const PIECES = {
   201: { tag: "CAMPAIGN", title: "HBO MAX UK LAUNCH CAMPAIGN", meta: "HBO Max · OOH · 2026 · Warner Bros. Discovery",
-    quote: "The best new platform since 9¾.",
+    cardQuote: "The best new platform since 9¾.",
     body: [
-      "I led copy for the UK launch of HBO Max in 2026, writing across radio, outdoor, social, email and display. I pushed for UK-specific lines that spoke to local places and content, and this was one of them.",
-      "It ran as a takeover of the tunnel at King's Cross, and the ad went viral on LinkedIn. Across the launch as a whole, UK subscriptions passed the yearly target within four months.",
-      "The same voice ran through the launch emails, like this welcome email for new subscribers.",
+      "I led copy for the UK launch of HBO Max in 2026, writing across radio, outdoor, social, email and display. I pushed for UK-specific lines that spoke to local places and content, like \u201cThe best new platform since 9¾.\u201d",
+      "That line ran as a takeover of the tunnel at King's Cross, and the ad went viral on LinkedIn. Across the launch as a whole, UK subscriptions passed the yearly target within four months.",
+      "The same witty tone ran through the launch emails, like this welcome email for new subscribers.",
     ],
     pics: [["kings-cross", "King's Cross tunnel, London"], ["hbo-max-welcome-email", "Welcome email from the launch"]] },
   202: { tag: "CAMPAIGN", title: "HBO MAX WALL-TO-WALL WATERCOOLER CAMPAIGN", meta: "HBO Max · OOH brand campaign · Autumn 2026 · Warner Bros. Discovery",
@@ -674,7 +674,7 @@ function pageChapter(n) {
       const tg = x.tag ? `<span class="ttag">${esc(x.tag)}</span>` : "";
       const th = x.pics ? `<span class="th">${tg}<img src="img/${x.pics[0][0]}.jpg" alt="" decoding="async"></span>`
         : `<span class="th txt" style="background:var(--${CH[n].colour})">${tg}${esc(x.quote || x.title)}</span>`;
-      return `<a class="card" href="#p${p}" data-go="${p}">${th}<span class="tt"><span>${esc(x.title)}</span><span class="n">${p}</span></span><span class="m">${esc(x.meta)}</span>${x.quote ? `<span class="q">“${frac(esc(x.quote.replace(/^“|”$/g, "")))}”</span>` : ""}</a>`;
+      return `<a class="card" href="#p${p}" data-go="${p}">${th}<span class="tt"><span>${esc(x.title)}</span><span class="n">${p}</span></span><span class="m">${esc(x.meta)}</span>${(x.quote || x.cardQuote) ? `<span class="q">“${frac(esc((x.quote || x.cardQuote).replace(/^“|”$/g, "")))}”</span>` : ""}</a>`;
     }).join("")}</div>`;
 }
 
