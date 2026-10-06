@@ -337,6 +337,7 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
 .toc { align-content: start; }
 @media (min-width: 721px) { .cols { grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr); } }
 .mast canvas.mosaic { width: auto; max-width: 100%; height: clamp(56px, 10.5vh, 112px); }
+@media (max-width: 720px) { .mast canvas.mosaic { width: 100%; height: auto; } }
 .mast .frame { width: clamp(96px, min(20vw, 18vh), 190px); }
 @media (min-width: 721px) {
   body { font-size: clamp(17px, min(2.3vw, 2.9vh), 24px); padding-block: 18px 32px; }
