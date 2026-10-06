@@ -420,8 +420,9 @@ const PIECES = {
     body: [
       "I led copy for the UK launch of HBO Max in 2026, writing across radio, outdoor, social, email and display. I pushed for UK-specific lines that spoke to local places and content, and this was one of them.",
       "It ran as a takeover of the tunnel at King's Cross, and the ad went viral on LinkedIn. Across the launch as a whole, UK subscriptions passed the yearly target within four months.",
+      "The same voice ran through the launch emails, like this welcome email for new subscribers.",
     ],
-    pics: [["kings-cross", "King's Cross tunnel, London"]] },
+    pics: [["kings-cross", "King's Cross tunnel, London"], ["hbo-max-welcome-email", "Welcome email from the launch"]] },
   202: { tag: "CAMPAIGN", title: "HBO MAX WALL-TO-WALL WATERCOOLER CAMPAIGN", meta: "HBO Max · OOH brand campaign · Autumn 2026 · Warner Bros. Discovery",
     body: [
       "This outdoor brand campaign ran in autumn 2026, at a point when HBO Max was between big new releases. With no single launch to shout about, the idea was to remind people how much is already there: a back catalogue full of the shows everyone has talked about for years.",
@@ -687,7 +688,7 @@ function scoresBlock() {
     <div class="c-dim">Viewers who received the campaigns, compared with a control group who didn't.</div></div>`;
 }
 
-const AR = {"boyhood":1.705,"futurelearn-step":1.634,"halt-catch-fire":1.41,"humans":1.754,"kings-cross":1.77,"matilda":1.78,"mock-the-week":1.531,"national-theatre":1.314,"new-world-building":0.597,"new-world-needs":1,"paris-2024":0.821,"quick-witted":1.604,"results-day":1,"royal-roy":0.735,"tough-cases":0.999,"watercooler":1.333,"westminster-abbey":0.647,"world-goes-pop":1.316,"knight-journey":0.6,"hbo-max-halloween":1.2,"whales":1.784,"pogany-indulo":1.783,"hbo-max-trailer":1.79,"milano-cortina":1.867,"wwc-poster":0.667,"skinny-julia-holter":1.732,"skinny-slow-west":1.732,"swallows-amazons":0.681};
+const AR = {"boyhood":1.705,"futurelearn-step":1.634,"halt-catch-fire":1.41,"humans":1.754,"kings-cross":1.77,"matilda":1.78,"mock-the-week":1.531,"national-theatre":1.314,"new-world-building":0.597,"new-world-needs":1,"paris-2024":0.821,"quick-witted":1.604,"results-day":1,"royal-roy":0.735,"tough-cases":0.999,"watercooler":1.333,"westminster-abbey":0.647,"world-goes-pop":1.316,"hbo-max-welcome-email":0.937,"knight-journey":0.6,"hbo-max-halloween":1.2,"whales":1.784,"pogany-indulo":1.783,"hbo-max-trailer":1.79,"milano-cortina":1.867,"wwc-poster":0.667,"skinny-julia-holter":1.732,"skinny-slow-west":1.732,"swallows-amazons":0.681};
 function gallery(list) {
   const s = list.reduce((a, [f]) => a + (AR[f] || 1), 0);
   return `<div class="gallery" style="max-width:calc(${s.toFixed(3)} * min(520px, 72vh))">${list.map(x => `<div class="gi" style="flex:${AR[x[0]] || 1} 1 0">${pic(x)}</div>`).join("")}</div>`;
