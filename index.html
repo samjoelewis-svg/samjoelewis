@@ -620,7 +620,7 @@ function pageIndex() {
     <div class="mast">
       <div class="mast-body"><div class="mast-text"><canvas class="mosaic" id="mastCanvas" role="img" aria-label="Sam Lewis"></canvas>
       ${dh("SENIOR WRITER & CREATIVE", "c-yellow role")}
-      <div class="mastcta"><a class="cta" href="mailto:sam.joe.lewis@gmail.com">EMAIL <span aria-hidden="true">&rsaquo;</span></a><a class="cta" href="#p888" data-go="888">CV <span aria-hidden="true">&rsaquo;</span></a><span class="loc">London</span></div>
+      <div class="mastcta"><a class="cta" href="mailto:sam.joe.lewis@gmail.com">EMAIL <span aria-hidden="true">&rsaquo;</span></a><a class="cta" href="#p888" data-go="888">CV <span aria-hidden="true">&rsaquo;</span></a><a class="cta" href="https://docs.google.com/presentation/d/1mHRjpPoziItjGX_4GrqQJIve7HLaUhjQ/edit?usp=sharing&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">FULL PORTFOLIO <span aria-hidden="true">&rsaquo;</span></a><span class="loc">London</span></div>
       </div>
       <button class="frame portrait" data-src="img/sam.jpg" data-cap="Sam Lewis" aria-label="Enlarge photo of Sam Lewis"><img src="img/sam.jpg" alt="Sam Lewis"><img class="tt-portrait" src="img/sam-teletext.png" alt=""></button>
       <div class="sub">Conceptual campaigns across TV, radio, social and outdoor, for HBO Max, TNT Sports, Tate Modern, the National Theatre and more.</div></div></div>
@@ -631,8 +631,7 @@ function pageIndex() {
       <div class="toc"><div class="c-cyan">PAGES</div>
         ${toc.map(([n, t, c]) => `<a href="#p${n}" data-go="${n}"><span class="t c-${c}">${esc(t)}</span><span class="n">${n}</span></a>`).join("")}
       </div>
-    </div>
-    <a class="fullport" href="https://docs.google.com/presentation/d/1mHRjpPoziItjGX_4GrqQJIve7HLaUhjQ/edit?usp=sharing&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">VIEW PDF PORTFOLIO <span aria-hidden="true">&rsaquo;</span></a>`;
+    </div>`;
 }
 
 function pageAbout() {
