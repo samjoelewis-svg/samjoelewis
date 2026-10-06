@@ -297,7 +297,7 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
 .zenbtn:hover, .zenbtn:focus-visible { color: var(--cyan); outline: none; }
 .zen { position: relative; margin-top: .2em; }
 .zen canvas { border: 2px solid var(--white); }
-.zenface { position: absolute; left: 50%; top: 44%; width: 21%; transform: translate(-50%, -50%); image-rendering: pixelated; border: 3px solid var(--white); animation: zenhue 48s linear infinite; }
+.zenface { position: absolute; left: 50%; top: 42%; width: 25%; transform: translate(-50%, -50%); image-rendering: pixelated; border: 3px solid var(--white); animation: zenhue 48s linear infinite; }
 @keyframes zenhue { to { filter: hue-rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { .zenface { animation: none; } }
 
@@ -969,7 +969,7 @@ function pixelIn(frame) {
 /* ---------- zen mode: London on a sunny day, in teletext blocks ---------- */
 function pageZen() {
   return `<div class="zen"><canvas class="mosaic" id="zenCanvas" role="img" aria-label="Teletext picture of the London skyline on a sunny day"></canvas>
-    <img class="zenface" src="img/sam-teletext.png" alt="Sam Lewis, in teletext blocks"></div>`;
+    <img class="zenface" src="img/sam-zen.png" alt="Sam Lewis, in teletext blocks"></div>`;
 }
 function drawZen() {
   const c = $("#zenCanvas"); if (!c) return;
