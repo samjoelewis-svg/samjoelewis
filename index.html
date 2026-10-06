@@ -198,6 +198,10 @@ figure.pic { margin: 0; display: grid; gap: .25em; min-width: 0; }
 .frame canvas { position: absolute; inset: 0; width: 100%; height: 100%; image-rendering: pixelated; transition: opacity .5s steps(5); }
 .frame:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
 .stack { display: grid; gap: 1em; min-width: 0; }
+.duo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4ch; min-width: 0; align-items: start; }
+.duo .vframe video { aspect-ratio: 280 / 492; }
+.duo .frame { width: 100% !important; }
+.duo .frame img { width: 100% !important; max-height: none !important; }
 .piece.solo { grid-template-columns: minmax(0, 1fr); }
 .piece.solo .prose { max-width: 68ch; }
 .gallery { display: flex; gap: 1.5ch; margin-top: 1em; align-items: flex-start; }
@@ -489,6 +493,16 @@ const PIECES = {
     video: ["hbo-max-halloween", "HBO Max Halloween 2026 trailer"],
     pics: [["hbo-max-halloween", "Display creative: \u201cFear hits home\u201d"]] },
 
+  212: { tag: "CAMPAIGN", title: "A KNIGHT OF THE SEVEN KINGDOMS GAMIFIED JOURNEY", meta: "HBO Max app · A Knight of the Seven Kingdoms · Interactive retention campaign · Warner Bros. Discovery",
+    body: [
+      "We needed to keep A Knight of the Seven Kingdoms viewers watching throughout the show\u2019s debut season.",
+      "My solution was an interactive journey in the HBO Max app. Episode by episode, users took quizzes and played games to work their way up from stable hand to knight.",
+      "The in-season gamification drove an uplift of around 16\u201318% through consistent episode progression.",
+    ],
+    duo: true,
+    video: ["knight-journey", "Episode challenge: take your vows"],
+    pics: [["knight-journey", "Result screen for getting every answer wrong"]] },
+
   401: { title: "TNT SPORTS CRM, INCLUDING PARIS 2024", meta: "TNT Sports · Paris 2024 · CRM · Warner Bros. Discovery",
     body: [
       "I lead master CRM for HBO Max and TNT Sports across EMEA, from onboarding to win-back. When we took on TNT Sports' CRM, I worked with their marketing team to rebuild the emails around user data. Our CRM now performs better than any other WBD region.",
@@ -573,13 +587,13 @@ const PIECES = {
 };
 
 const CHAPTERS = {
-  200: { line: "Campaigns, social and ads for HBO Max, plus taglines for TV dramas.", pieces: [201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211] },
+  200: { line: "Campaigns, social and ads for HBO Max, plus taglines for TV dramas.", pieces: [201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212] },
   400: { line: "CRM for TNT Sports, including Paris 2024, plus a spec campaign for the Women's World Cup.", pieces: [401, 402, 403] },
   500: { line: "Arts and culture.", pieces: [501, 502, 503, 504, 505] },
   600: { line: "Campaigns for FutureLearn, the online learning platform, including work with City & Guilds.", pieces: [601, 602] },
 };
 
-const ORDER = [100, 101, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 400, 401, 402, 403, 500, 501, 502, 503, 504, 505, 600, 601, 602, 700, 750, 800, 888];
+const ORDER = [100, 101, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 400, 401, 402, 403, 500, 501, 502, 503, 504, 505, 600, 601, 602, 700, 750, 800, 888];
 
 /* ---------- helpers ---------- */
 const $ = (s, r = document) => r.querySelector(s);
@@ -610,7 +624,7 @@ function pageIndex() {
   ];
   const heads = [
     [402, "SPEC", "yellow", "BBC Sport Women's World Cup: \u201cWe set the tempo.\u201d"],
-    [211, "CAMPAIGN", "green", "HBO Max Halloween: \u201cFear hits home.\u201d"],
+    [212, "CAMPAIGN", "green", "Westeros gamified journey for HBO Max app users"],
     [201, "CAMPAIGN", "green", "HBO Max UK: \u201cThe best new platform since 9¾.\u201d"],
     [202, "CAMPAIGN", "green", "HBO Max brand campaign: \u201cWall-to-Wall Watercooler.\u201d"],
     [403, "CAMPAIGN", "green", "Milano Cortina 2026: \u201cYour Olympics. Your way.\u201d"],
@@ -673,7 +687,7 @@ function scoresBlock() {
     <div class="c-dim">Viewers who received the campaigns, compared with a control group who didn't.</div></div>`;
 }
 
-const AR = {"boyhood":1.705,"futurelearn-step":1.634,"halt-catch-fire":1.41,"humans":1.754,"kings-cross":1.77,"matilda":1.78,"mock-the-week":1.531,"national-theatre":1.314,"new-world-building":0.597,"new-world-needs":1,"paris-2024":0.821,"quick-witted":1.604,"results-day":1,"royal-roy":0.735,"tough-cases":0.999,"watercooler":1.333,"westminster-abbey":0.647,"world-goes-pop":1.316,"hbo-max-halloween":1.2,"whales":1.784,"pogany-indulo":1.783,"hbo-max-trailer":1.79,"milano-cortina":1.867,"wwc-poster":0.667,"skinny-julia-holter":1.732,"skinny-slow-west":1.732,"swallows-amazons":0.681};
+const AR = {"boyhood":1.705,"futurelearn-step":1.634,"halt-catch-fire":1.41,"humans":1.754,"kings-cross":1.77,"matilda":1.78,"mock-the-week":1.531,"national-theatre":1.314,"new-world-building":0.597,"new-world-needs":1,"paris-2024":0.821,"quick-witted":1.604,"results-day":1,"royal-roy":0.735,"tough-cases":0.999,"watercooler":1.333,"westminster-abbey":0.647,"world-goes-pop":1.316,"knight-journey":0.6,"hbo-max-halloween":1.2,"whales":1.784,"pogany-indulo":1.783,"hbo-max-trailer":1.79,"milano-cortina":1.867,"wwc-poster":0.667,"skinny-julia-holter":1.732,"skinny-slow-west":1.732,"swallows-amazons":0.681};
 function gallery(list) {
   const s = list.reduce((a, [f]) => a + (AR[f] || 1), 0);
   return `<div class="gallery" style="max-width:calc(${s.toFixed(3)} * min(520px, 72vh))">${list.map(x => `<div class="gi" style="flex:${AR[x[0]] || 1} 1 0">${pic(x)}</div>`).join("")}</div>`;
@@ -685,7 +699,7 @@ function pagePiece(n) {
   const pics = p.pics && !multi ? pic(p.pics[0]) : "";
   const vid = p.video ? `<figure class="pic"><div class="vframe"><video controls playsinline preload="none" poster="img/${p.video[0]}-video.jpg" aria-label="${esc(p.video[1])}"><source src="video/${p.video[0]}.mp4" type="video/mp4"></video></div><figcaption>${esc(p.video[1])}</figcaption></figure>` : "";
   const right = p.pitch ? ""
-    : vid ? `<div class="stack">${vid}${pics}</div>` : pics;
+    : vid ? `<div class="${p.duo ? "duo" : "stack"}">${vid}${pics}</div>` : pics;
   return `${band(n, p.title)}
     <div class="meta">${esc(p.meta)}</div>
     ${p.quote ? dh(p.quote, "quote") : ""}${p.quote2 ? dh(p.quote2, "quote") : ""}
