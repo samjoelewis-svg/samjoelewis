@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Sam Lewis, Senior Writer &amp; Creative</title>
-<meta name="description" content="Portfolio of Sam Lewis, senior copywriter and creative. Campaigns, trailers and copy for HBO Max, TNT Sports, Tate Modern, the National Theatre and more.">
+<meta name="description" content="Portfolio of Sam Lewis, senior copywriter and creative. Conceptual campaigns across TV, radio, social and outdoor, for HBO Max, TNT Sports, Tate Modern, the National Theatre and more.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Sam Lewis, Senior Writer & Creative">
-<meta property="og:description" content="Campaigns, trailers and copy for HBO Max, TNT Sports, Tate Modern, the National Theatre and more.">
+<meta property="og:description" content="Conceptual campaigns across TV, radio, social and outdoor, for HBO Max, TNT Sports, Tate Modern, the National Theatre and more.">
 <meta property="og:image" content="https://samlewis.fyi/img/sam.jpg">
 <meta property="og:url" content="https://samlewis.fyi/">
 <meta name="twitter:card" content="summary">
@@ -120,8 +120,12 @@ canvas.mosaic { display: block; width: 100%; height: auto; image-rendering: pixe
 .mast .frame img, .me .frame img { aspect-ratio: 1; object-fit: cover; }
 .me { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1em 2ch; align-items: start; }
 @media (max-width: 520px) { .mast-body { grid-template-columns: minmax(0, 1fr); } .mast .frame { order: -1; } .me { grid-template-columns: minmax(0, 1fr); } }
-.mast .sub { color: var(--white); }
+.mast .sub { color: var(--white); grid-column: 1 / -1; }
 .mast .dh.role { font-size: 1.3em; }
+.mastcta { display: flex; flex-wrap: wrap; align-items: center; gap: .3em 1.2ch; padding-left: .2ch; }
+.mastcta .cta { background: var(--yellow); color: var(--black); text-decoration: none; padding: .02em 1ch; }
+.mastcta .cta:hover, .mastcta .cta:focus-visible { background: var(--white); outline: none; }
+.mastcta .loc { color: var(--cyan); text-transform: uppercase; margin-left: .6ch; }
 
 /* index lists */
 .toc { display: grid; gap: .12em; }
@@ -332,7 +336,7 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
 .wrap { max-width: 1480px; }
 .toc { align-content: start; }
 @media (min-width: 721px) { .cols { grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr); } }
-.mast canvas.mosaic { width: auto; max-width: 100%; height: clamp(60px, 13vh, 130px); }
+.mast canvas.mosaic { width: auto; max-width: 100%; height: clamp(56px, 10.5vh, 112px); }
 .mast .frame { width: clamp(96px, min(20vw, 18vh), 190px); }
 @media (min-width: 721px) {
   body { font-size: clamp(17px, min(2.3vw, 2.9vh), 24px); padding-block: 18px 32px; }
@@ -615,8 +619,10 @@ function pageIndex() {
     <div class="mast">
       <div class="mast-body"><div class="mast-text"><canvas class="mosaic" id="mastCanvas" role="img" aria-label="Sam Lewis"></canvas>
       ${dh("SENIOR WRITER & CREATIVE", "c-yellow role")}
-      <div class="sub">Campaigns, trailers and copy for HBO Max, TNT Sports, Tate Modern, the National Theatre and more.</div></div>
-      <button class="frame portrait" data-src="img/sam.jpg" data-cap="Sam Lewis" aria-label="Enlarge photo of Sam Lewis"><img src="img/sam.jpg" alt="Sam Lewis"><img class="tt-portrait" src="img/sam-teletext.png" alt=""></button></div></div>
+      <div class="mastcta"><a class="cta" href="mailto:sam.joe.lewis@gmail.com">EMAIL <span aria-hidden="true">&rsaquo;</span></a><a class="cta" href="#p888" data-go="888">CV <span aria-hidden="true">&rsaquo;</span></a><span class="loc">London</span></div>
+      </div>
+      <button class="frame portrait" data-src="img/sam.jpg" data-cap="Sam Lewis" aria-label="Enlarge photo of Sam Lewis"><img src="img/sam.jpg" alt="Sam Lewis"><img class="tt-portrait" src="img/sam-teletext.png" alt=""></button>
+      <div class="sub">Conceptual campaigns across TV, radio, social and outdoor, for HBO Max, TNT Sports, Tate Modern, the National Theatre and more.</div></div></div>
     <div class="cols">
       <div class="headlines"><div class="c-cyan">TOP STORIES</div>
         ${heads.map(([n, tag, c, t]) => `<a href="#p${n}" data-go="${n}"><span><span class="tag c-${c}${tag === "SPEC" ? " flash" : ""}">${tag}</span> ${frac(esc(t))}</span><span class="n">${n}</span></a>`).join("")}
