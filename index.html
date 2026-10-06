@@ -94,7 +94,10 @@ body {
 .band .kicker { display: flex; justify-content: space-between; gap: 1ch; flex-wrap: wrap; }
 .dh { line-height: 2.25; padding-bottom: .45em; }
 table { font-size: inherit; }
-.frac { font-family: "IBM Plex Mono", "Courier New", monospace; font-size: .8em; font-weight: 500; letter-spacing: -.02em; }
+.frac { display: inline-flex; align-items: center; font-size: .72em; line-height: 1; vertical-align: .1em; margin-left: .1em; }
+.frac span:first-child { transform: translateY(-.26em); }
+.frac span:last-child { transform: translateY(.26em); }
+.frac i { font-style: normal; margin: 0 -.12em; }
 .dh .w { display: inline-block; transform: scaleY(2); transform-origin: 50% 12%; vertical-align: top; line-height: 1; }
 .band .dh { line-height: 2.1; }
 .band.sec { padding: .25em .6ch .05em; }
@@ -581,7 +584,7 @@ const ORDER = [100, 101, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 
 /* ---------- helpers ---------- */
 const $ = (s, r = document) => r.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-const frac = s => s.replace(/\u00BE/g, '<span class="frac">\u00BE</span>');
+const frac = s => s.replace(/\u00BE/g, '<span class="frac" aria-label="three quarters"><span>3</span><i>/</i><span>4</span></span>');
 const dh = (text, cls = "") => `<div class="dh ${cls}">${esc(text).split(" ").map(w => `<span class="w">${frac(w)}</span>`).join(" ")}</div>`;
 const chapterOf = n => n >= 800 && n < 888 ? 800 : n >= 750 && n < 800 ? 750 : Math.floor(n / 100) * 100;
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -656,7 +659,7 @@ function pageChapter(n) {
       const tg = x.tag ? `<span class="ttag">${esc(x.tag)}</span>` : "";
       const th = x.pics ? `<span class="th">${tg}<img src="img/${x.pics[0][0]}.jpg" alt="" decoding="async"></span>`
         : `<span class="th txt" style="background:var(--${CH[n].colour})">${tg}${esc(x.quote || x.title)}</span>`;
-      return `<a class="card" href="#p${p}" data-go="${p}">${th}<span class="tt"><span>${esc(x.title)}</span><span class="n">${p}</span></span><span class="m">${esc(x.meta)}</span>${x.quote ? `<span class="q">“${esc(x.quote.replace(/^“|”$/g, ""))}”</span>` : ""}</a>`;
+      return `<a class="card" href="#p${p}" data-go="${p}">${th}<span class="tt"><span>${esc(x.title)}</span><span class="n">${p}</span></span><span class="m">${esc(x.meta)}</span>${x.quote ? `<span class="q">“${frac(esc(x.quote.replace(/^“|”$/g, "")))}”</span>` : ""}</a>`;
     }).join("")}</div>`;
 }
 
