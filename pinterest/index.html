@@ -422,6 +422,12 @@ const CH = {
 };
 
 const PIECES = {
+  302: { tag: "B2B", title: "ATG THEATRES: CORPORATE EVENTS", meta: "ATG · B2B · LinkedIn · AKA",
+    quote: "Business deserves a bigger stage.",
+    body: [
+      "A B2B concept for ATG's West End theatres, reframing corporate venue hire as something more memorable than another meeting room. The LinkedIn ad speaks to businesses planning client entertainment, private events and team celebrations."
+    ],
+    pics: [["atg-theatres-linkedin", "ATG West End theatre hire · LinkedIn campaign ad"]] },
   201: { tag: "CAMPAIGN", title: "HBO MAX UK LAUNCH CAMPAIGN", meta: "HBO Max · OOH · 2026 · Warner Bros. Discovery",
     cardQuote: "The best new platform since 9¾.",
     body: [
@@ -585,7 +591,7 @@ const PIECES = {
 };
 
 const CHAPTERS = {
-  200: { line: "Integrated campaigns: an idea that travels from a line to film, outdoor, social and beyond.", pieces: [301, 201, 202, 211, 601, 403, 602] },
+  200: { line: "Integrated campaigns: an idea that travels from a line to film, outdoor, social and beyond.", pieces: [302, 301, 201, 202, 211, 601, 403, 602] },
   400: { line: "Distinctive brands, different audiences and a consistent voice across EMEA markets.", pieces: [700, 401, 204, 212] },
   500: { line: "Work made for real audiences, from creator collaborations to art, music, theatre and popular culture.", pieces: [504, 203, 501, 207, 209] },
   600: { line: "The craft of a good line: concise taglines, scripts, film trailers and longer-form storytelling.", pieces: [205, 505, 210, 208, 502, 503, 206] },
@@ -593,7 +599,7 @@ const CHAPTERS = {
 const FEATURE_CARDS = {
   700: { tag: "BRAND VOICE", title: "BUILDING A BRAND VOICE ACROSS EMEA", meta: "HBO Max · TNT Sports · FutureLearn · Tone of voice, frameworks and localisation", pics: [["quick-witted", "HBO Max tone-of-voice guide"]] },
 };
-const ORDER = [100, 101, 200, 301, 201, 202, 211, 601, 403, 602, 400, 700, 401, 204, 212, 500, 504, 203, 501, 207, 209, 600, 205, 505, 210, 208, 502, 503, 206, 750, 800, 888];
+const ORDER = [100, 101, 200, 302, 301, 201, 202, 211, 601, 403, 602, 400, 700, 401, 204, 212, 500, 504, 203, 501, 207, 209, 600, 205, 505, 210, 208, 502, 503, 206, 750, 800, 888];
 
 /* ---------- helpers ---------- */
 const $ = (s, r = document) => r.querySelector(s);
@@ -616,7 +622,7 @@ function pic([file, cap]) {
   return `<figure class="pic"><button class="frame" data-src="${src}" data-cap="${esc(cap)}" aria-label="Enlarge picture: ${esc(cap)}">
     <img src="${src}" alt="${esc(cap)}" loading="lazy" decoding="async"></button><figcaption>${esc(cap)}</figcaption></figure>`;
 }
-function imageSrc(file) { return file.startsWith("pinterest-") ? "/img/" + file + ".webp" : "/img/" + file + ".jpg"; }
+function imageSrc(file) { return file === "atg-theatres-linkedin" ? "/img/atg-theatres-linkedin.svg" : file.startsWith("pinterest-") ? "/img/" + file + ".webp" : "/img/" + file + ".jpg"; }
 function row(label, colour, text) {
   return text ? `<div class="row"><span class="l c-${colour}">${label}</span><span>${esc(text)}</span></div>` : "";
 }
@@ -630,6 +636,7 @@ function pageIndex() {
     [800, "Editorial writing", "blue"], [888, "Contact & CV", "yellow"],
   ];
   const heads = [
+    [302, "B2B", "cyan", "ATG Theatres: “Business deserves a bigger stage.”"],
     [301, "SPEC", "yellow", "Pinterest Christmas: “Christmas starts with Pinterest.”"],
     [201, "CAMPAIGN", "green", "HBO Max UK: “The best new platform since 9¾.”"],
     [601, "CAMPAIGN", "City & Guilds × FutureLearn: “The new world needs you.”"],
@@ -692,7 +699,7 @@ function scoresBlock() {
     <div class="c-dim">Viewers who received the campaigns, compared with a control group who didn't.</div></div>`;
 }
 
-const AR = {"pinterest-recipe-toast":0.7505,"pinterest-gift-encore":0.7505,"boyhood":1.705,"futurelearn-step":1.634,"halt-catch-fire":1.41,"humans":1.754,"kings-cross":1.77,"matilda":1.78,"mock-the-week":1.531,"national-theatre":1.314,"new-world-building":0.597,"new-world-needs":1,"paris-2024":0.821,"quick-witted":1.604,"results-day":1,"royal-roy":0.735,"tough-cases":0.999,"watercooler":1.333,"westminster-abbey":0.647,"world-goes-pop":1.316,"hbo-max-welcome-email":0.937,"knight-journey":0.6,"hbo-max-halloween":1.2,"whales":1.784,"pogany-indulo":1.783,"hbo-max-trailer":1.79,"milano-cortina":1.867,"wwc-poster":0.667,"skinny-julia-holter":1.732,"skinny-slow-west":1.732,"swallows-amazons":0.681};
+const AR = {"atg-theatres-linkedin":1.911,"pinterest-recipe-toast":0.7505,"pinterest-gift-encore":0.7505,"boyhood":1.705,"futurelearn-step":1.634,"halt-catch-fire":1.41,"humans":1.754,"kings-cross":1.77,"matilda":1.78,"mock-the-week":1.531,"national-theatre":1.314,"new-world-building":0.597,"new-world-needs":1,"paris-2024":0.821,"quick-witted":1.604,"results-day":1,"royal-roy":0.735,"tough-cases":0.999,"watercooler":1.333,"westminster-abbey":0.647,"world-goes-pop":1.316,"hbo-max-welcome-email":0.937,"knight-journey":0.6,"hbo-max-halloween":1.2,"whales":1.784,"pogany-indulo":1.783,"hbo-max-trailer":1.79,"milano-cortina":1.867,"wwc-poster":0.667,"skinny-julia-holter":1.732,"skinny-slow-west":1.732,"swallows-amazons":0.681};
 function gallery(list) {
   const s = list.reduce((a, [f]) => a + (AR[f] || 1), 0);
   return `<div class="gallery" style="max-width:calc(${s.toFixed(3)} * min(520px, 72vh))">${list.map(x => `<div class="gi" style="flex:${AR[x[0]] || 1} 1 0">${pic(x)}</div>`).join("")}</div>`;
