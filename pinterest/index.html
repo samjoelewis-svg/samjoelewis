@@ -397,13 +397,11 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
   .pinterest-story { max-width: 65ch; }
   .pinterest-hero-gallery { max-width: 670px; }
 }
-.westminster-picture-pair { display: flex; gap: 1.1ch; align-items: flex-start; min-width: 0; flex-wrap: wrap; }
-.westminster-picture-pair > figure.pic:first-child { flex: 1 1 205px; max-width: 400px; }
-.westminster-snapshot { flex: 0 0 150px; max-width: 150px; }
+.westminster-snapshot { margin-top: 1.25em; width: min(100%, 370px); }
+.westminster-snapshot figure.pic { width: 100%; }
 .westminster-snapshot .frame { width: 100%; }
-.westminster-snapshot .frame img { width: 150px; max-height: 200px; height: 200px; object-fit: contain; }
-.westminster-snapshot figcaption { font-size: .67em; line-height: 1.25; }
-@media (max-width: 650px) { .westminster-picture-pair { gap: 1em; } }
+.westminster-snapshot .frame img { display: block; width: 100%; height: auto; max-height: none; object-fit: contain; }
+.westminster-snapshot figcaption { font-size: .75em; line-height: 1.3; margin-top: .35em; }
 .section-intro { margin-block: .7em 1em; color: var(--white); }
 .spec-executions { display:grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16em),1fr)); gap: .75em; margin-top: .6em; }
 .spec-execution { padding: .9em 1ch; border: 1px solid var(--yellow); background: #15151c; display:grid; gap: .5em; align-content: start; }
@@ -596,10 +594,9 @@ const PIECES = {
       "For this Westminster Abbey campaign, the visual was doing something lovely: the Abbey appeared to be balanced on an outstretched hand. My job was to find the line that made the image and the idea click together.",
       "I wrote “Feel wonder first hand.” It worked with the visual but also said something about the experience of visiting the Abbey — seeing its history and architecture for yourself.",
       "I love working with designers because the best line doesn't just sit underneath an image. The two make each other better. This was one of those briefs where the collaboration made the idea feel complete.",
-      "I later saw the poster up at Bond Street station, with a tourist posing beside it. A nice moment to see the work out in the world.",
     ],
     pics: [["westminster-abbey", "Westminster Abbey outdoor campaign: Feel wonder first hand"]],
-    snapshot: ["westminster-abbey-bond-street", "The Westminster Abbey poster at Bond Street station, with a visitor posing beside it"] },
+    snapshot: ["westminster-abbey-bond-street", "A tourist posing in front of our campaign."] },
   210: { title: "SWALLOWS AND AMAZONS TAGLINE", meta: "Swallows and Amazons · Film tagline · AKA UK",
     quote: "Some summers you treasure forever.",
     body: ["At AKA UK, I wrote the tagline for the 2016 film of Swallows and Amazons, based on Arthur Ransome's classic children's novel."],
@@ -769,9 +766,7 @@ function pagePiece(n) {
   const multi = p.pics && (p.pics.length > 1 || p.wide);
   const pics = p.pics && !multi ? pic(p.pics[0]) : "";
   const vid = p.video ? `<figure class="pic"><div class="vframe"><video controls playsinline preload="none" poster="/img/${p.video[0]}-video.jpg" aria-label="${esc(p.video[1])}"><source src="/video/${p.video[0]}.mp4" type="video/mp4"></video></div><figcaption>${esc(p.video[1])}</figcaption></figure>` : "";
-  const right = p.snapshot
-    ? `<div class="westminster-picture-pair">${pic(p.pics[0])}<div class="westminster-snapshot">${pic(p.snapshot)}</div></div>`
-    : p.pitch ? ""
+  const right = p.snapshot ? pic(p.pics[0]) : p.pitch ? ""
     : vid ? `<div class="${p.duo ? "duo" : "stack"}">${vid}${pics}</div>` : pics;
   return `${band(n, p.title)}
     <div class="meta">${esc(p.meta)}</div>
@@ -779,6 +774,7 @@ function pagePiece(n) {
     <div class="piece${right ? "" : " solo"}">
       <div class="facts">
         <div class="prose">${p.body.map(t => `<p>${esc(t)}</p>`).join("")}</div>
+        ${p.snapshot ? `<div class="westminster-snapshot">${pic(p.snapshot)}</div>` : ""}
         ${p.link ? `<a class="watch" href="${p.link[0]}" target="_blank" rel="noopener">${esc(p.link[1])} <span aria-hidden="true">&rsaquo;</span></a>` : ""}
       </div>
       ${right}
