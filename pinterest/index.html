@@ -648,10 +648,10 @@ function band(n, title) {
   const ch = CH[chapterOf(n)];
   return `<div class="band b-${ch.colour} sec">${n !== chapterOf(n) ? `<div class="kicker"><span>${ch.name}</span></div>` : ""}${dh(title)}</div>`;
 }
-function pic([file, cap]) {
+function pic([file, cap], showCaption = true) {
   const src = imageSrc(file);
   return `<figure class="pic"><button class="frame" data-src="${src}" data-cap="${esc(cap)}" aria-label="Enlarge picture: ${esc(cap)}">
-    <img src="${src}" alt="${esc(cap)}" loading="${file.startsWith("pinterest-") ? "eager" : "lazy"}" fetchpriority="${file.startsWith("pinterest-") ? "high" : "auto"}" decoding="async"></button><figcaption>${esc(cap)}</figcaption></figure>`;
+    <img src="${src}" alt="${esc(cap)}" loading="${file.startsWith("pinterest-") ? "eager" : "lazy"}" fetchpriority="${file.startsWith("pinterest-") ? "high" : "auto"}" decoding="async"></button>${showCaption ? `<figcaption>${esc(cap)}</figcaption>` : ""}</figure>`;
 }
 function imageSrc(file) { return file.startsWith("pinterest-") ? "/img/" + file + ".webp" : "/img/" + file + ".jpg"; }
 function row(label, colour, text) {
@@ -743,7 +743,7 @@ function pagePinterestChristmas(p) {
         <h1>CHRISTMAS STARTS WITH PINTEREST.</h1>
         <div class="prose wide">${p.body.map(t => `<p>${esc(t)}</p>`).join("")}</div>
       </div>
-      <div class="pinterest-hero-gallery" aria-label="Pinterest Christmas campaign artwork">${p.pics.map(pic).join("")}</div>
+      <div class="pinterest-hero-gallery" aria-label="Pinterest Christmas campaign artwork">${p.pics.map(x => pic(x, false)).join("")}</div>
     </div>
   </section>`;
 }
