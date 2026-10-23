@@ -360,20 +360,42 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
   .rbtns .rbtn { flex: 1; }
   .help { margin-left: 0; width: 100%; font-size: .8em; }
 }
-/* Pinterest case study: images before editorial explanation. */
-.pinterest-case { display: grid; gap: 0; min-width: 0; }
-.pinterest-case-kicker { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1ch; font-size: .83em; color: var(--cyan); margin: .15em 0 .6em; }
-.pinterest-hero-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: clamp(8px, 1.5vw, 18px); width: 100%; min-width: 0; }
-.pinterest-hero-gallery .frame { overflow: hidden; border: 0; border-radius: 9px; width: 100%; }
-.pinterest-hero-gallery .frame img { display: block; width: 100%; max-height: none; height: auto; aspect-ratio: 743 / 990; object-fit: contain; }
-.pinterest-hero-gallery figcaption { font-size: .65em; color: var(--dim); padding-top: .2em; }
-.pinterest-story { margin-top: clamp(18px, 2.4vw, 30px); max-width: 73ch; }
-.pinterest-story h1 { font-family: var(--tt); font-size: clamp(1.45em, 3.6vw, 2.25em); line-height: 1.05; font-weight: normal; margin: 0 0 .42em; color: var(--yellow); }
-.pinterest-story .prose { max-width: 70ch; padding-bottom: .5em; }
-@media (max-width: 560px) {
-  .pinterest-hero-gallery { grid-template-columns: minmax(0, 1fr); gap: 1em; }
-  .pinterest-case-kicker { margin: .1em 0 .5em; }
-  .pinterest-story { margin-top: 1.3em; }
+
+/* Pinterest case study: same text-left, artwork-right pattern as other cases. */
+.pinterest-case { display: grid; min-width: 0; }
+.pinterest-case-kicker {
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 1ch; font-size: .8em; color: var(--cyan); margin: .1em 0 .65em;
+}
+.pinterest-case-body {
+  display: grid;
+  grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+  align-items: start; gap: clamp(14px, 2.6vw, 38px); min-width: 0;
+}
+.pinterest-story { min-width: 0; }
+.pinterest-story h1 {
+  font-family: var(--tt); font-size: clamp(1.4em, 3vw, 2.05em);
+  line-height: 1.02; font-weight: normal; margin: 0 0 .4em; color: var(--yellow);
+}
+.pinterest-story .prose { max-width: 60ch; padding: 0; }
+.pinterest-hero-gallery {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start; gap: clamp(7px, 1vw, 14px); min-width: 0;
+}
+.pinterest-hero-gallery .frame { width: 100%; overflow: hidden; border: 0; border-radius: 6px; }
+.pinterest-hero-gallery .frame img {
+  display: block; width: 100%; height: auto; max-height: none;
+  aspect-ratio: 743 / 990; object-fit: contain;
+}
+.pinterest-hero-gallery figcaption {
+  font-size: .6em; line-height: 1.2; color: var(--dim); margin-top: .25em;
+}
+.pinterest-hero-gallery .frame:hover,
+.pinterest-hero-gallery .frame:focus-visible { outline: 2px solid var(--yellow); outline-offset: 2px; }
+@media (max-width: 760px) {
+  .pinterest-case-body { grid-template-columns: minmax(0, 1fr); gap: 1.2em; }
+  .pinterest-story { max-width: 65ch; }
+  .pinterest-hero-gallery { max-width: 670px; }
 }
 .section-intro { margin-block: .7em 1em; color: var(--white); }
 .spec-executions { display:grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16em),1fr)); gap: .75em; margin-top: .6em; }
@@ -716,10 +738,12 @@ function gallery(list) {
 function pagePinterestChristmas(p) {
   return `<section class="pinterest-case">
     <div class="pinterest-case-kicker"><span>CHRISTMAS CAMPAIGN CONCEPT</span><span class="c-yellow">SPEC / P301</span></div>
-    <div class="pinterest-hero-gallery">${p.pics.map(pic).join("")}</div>
-    <div class="pinterest-story">
-      <h1>CHRISTMAS STARTS WITH PINTEREST.</h1>
-      <div class="prose wide">${p.body.map(t => `<p>${esc(t)}</p>`).join("")}</div>
+    <div class="pinterest-case-body">
+      <div class="pinterest-story">
+        <h1>CHRISTMAS STARTS WITH PINTEREST.</h1>
+        <div class="prose wide">${p.body.map(t => `<p>${esc(t)}</p>`).join("")}</div>
+      </div>
+      <div class="pinterest-hero-gallery" aria-label="Pinterest Christmas campaign artwork">${p.pics.map(pic).join("")}</div>
     </div>
   </section>`;
 }
