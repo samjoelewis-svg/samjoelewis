@@ -695,7 +695,7 @@ function pagePiece(n) {
   const p = PIECES[n];
   const multi = p.pics && (p.pics.length > 1 || p.wide);
   const pics = p.pics && !multi ? pic(p.pics[0]) : "";
-  const vid = p.video ? `<figure class="pic"><div class="vframe"><video controls playsinline preload="none" poster="/img/${p.video[0]}-video.jpg" aria-label="${esc(p.video[1])}"><source src="/video/${p.video[0]}.mp4" type="/video/mp4"></video></div><figcaption>${esc(p.video[1])}</figcaption></figure>` : "";
+  const vid = p.video ? `<figure class="pic"><div class="vframe"><video controls playsinline preload="none" poster="/img/${p.video[0]}-video.jpg" aria-label="${esc(p.video[1])}"><source src="/video/${p.video[0]}.mp4" type="video/mp4"></video></div><figcaption>${esc(p.video[1])}</figcaption></figure>` : "";
   const right = p.pitch ? ""
     : vid ? `<div class="${p.duo ? "duo" : "stack"}">${vid}${pics}</div>` : pics;
   return `${band(n, p.title)}
@@ -709,7 +709,7 @@ function pagePiece(n) {
       ${right}
     </div>
     ${multi ? gallery(p.pics) : ""}
-    ${p.executions ? `<section class="blk"><div class="bg-blue">CAMPAIGN EXECUTIONS</div><div class="spec-executions">${p.executions.map(([setup, payoff, scene]) => `<div class="spec-execution"><div class="setup">${esc(setup)}</div><div class="payoff">${esc(payoff)}</div><div class="scene">${esc(scene)}</div></div>`).join("")}</div><p class="c-dim">Independent speculative work. Visual mock-ups can be added here.</p></section>` : ""}
+    ${p.executions ? `<section class="blk"><div class="bg-blue">CAMPAIGN EXECUTIONS</div><div class="spec-executions">${p.executions.map(([setup, payoff, scene]) => `<div class="spec-execution"><div class="setup">${esc(setup)}</div><div class="payoff">${esc(payoff)}</div><div class="scene">${esc(scene)}</div></div>`).join("")}</div></section>` : ""}
     ${p.scores ? `<div class="scorewide">${scoresBlock()}</div>` : ""}
     ${p.script ? `<section class="blk"><div class="bg-blue">SCRIPT</div>
       <div class="script">${p.script.map(([vo, act]) => `<div class="vo">${esc(vo)}</div><div class="act">${esc(act)}</div>`).join("")}</div>
@@ -726,7 +726,7 @@ function pageVoice() {
       <p>I own HBO Max’s tone-of-voice guides and messaging frameworks, and work across brands with very different personalities.</p>
       <p>My English master copy for HBO Max and TNT Sports is translated into 17 languages and reaches more than 10 million people a week, so the voice has to hold in every market.</p>
       <p>At FutureLearn, I wrote the company’s first brand tone-of-voice guide. I also created the mnemonic STEP (Social, Transformative, Experimental, Purposeful), inspired by the FutureLearn logo, to help staff remember our brand values.</p>
-    </div></div><div class="stack">${pic(["quick-witted", "HBO Max tone-of-voice guide"])}<figure class="pic"><div class="vframe"><video controls playsinline preload="none" poster="/img/futurelearn-step-video.jpg" aria-label="FutureLearn STEP animation"><source src="/video/futurelearn-step.mp4" type="/video/mp4"></video></div><figcaption>FutureLearn staff values film: STEP</figcaption></figure></div></div>`;
+    </div></div><div class="stack">${pic(["quick-witted", "HBO Max tone-of-voice guide"])}<figure class="pic"><div class="vframe"><video controls playsinline preload="none" poster="/img/futurelearn-step-video.jpg" aria-label="FutureLearn STEP animation"><source src="/video/futurelearn-step.mp4" type="video/mp4"></video></div><figcaption>FutureLearn staff values film: STEP</figcaption></figure></div></div>`;
 }
 
 function pageLeadership() {
