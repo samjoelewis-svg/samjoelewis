@@ -511,18 +511,18 @@ const PIECES = {
     video: ["knight-journey", "Episode challenge: take your vows"],
     pics: [["knight-journey", "Result screen for getting every answer wrong"]] },
 
-  301: { tag: "SPEC", title: "PINTEREST CHRISTMAS: CHRISTMAS STARTS HERE", meta: "Pinterest · Christmas · Independent spec concept · Social, OOH and digital",
+  301: { tag: "SPEC", title: "PINTEREST CHRISTMAS: CHRISTMAS STARTS WITH PINTEREST", meta: "Pinterest · Christmas · Independent spec concept · Social, OOH and digital",
     spec: true,
-    quote: "Christmas starts here.",
+    quote: "Christmas starts with Pinterest.",
     body: [
-      "This is an independent campaign idea created for a Pinterest copywriting application, not commissioned work.",
-      "The thought: inspiration happens on Pinterest, but its real value is what people go on to make, do and share. At Christmas, that's rarely the picture-perfect version. It's the lived-in, slightly chaotic moment that follows.",
-      "The platform is “Christmas starts with Pinterest”. The consumer-facing endline is “Christmas starts here.” Two executions trace an idea from something saved online to something memorable offline, with the payoff rooted in real family life.",
-      "The format can work across social, digital and out-of-home: show a recognisable, close-up real-world moment, then connect it back to the small spark that began on Pinterest."
+      "An independent spec campaign developed for a Pinterest copywriting application. This is not commissioned Pinterest work.",
+      "The idea is simple: inspiration starts online, but the best Christmas moments happen in real life. A recipe leads to people raising their glasses. A gift idea leads to an impromptu family performance.",
+      "The creative turns that before-and-after into an easy, repeatable line: “It started with…” / “It ended with…”. The work celebrates the joyful, messy and recognisable result rather than the perfect-looking inspiration.",
+      "The two executions are designed as part of an integrated seasonal campaign, with the platform line “Christmas starts with Pinterest.” The concept can adapt to social, video, digital and outdoor."
     ],
-    executions: [
-      ["It started with a recipe.", "It ended with a toast.", "An everyday Christmas table, made memorable by the people around it."],
-      ["It started with a gift idea.", "It ended with a singalong.", "A karaoke present becomes a family singalong."]
+    pics: [
+      ["pinterest-recipe-toast", "Pinterest Christmas spec ad: It started with a recipe. It ended with a toast."],
+      ["pinterest-gift-encore", "Pinterest Christmas spec ad: It started with a gift idea. It ended with an encore."]
     ] },
 
   401: { title: "TNT SPORTS CRM, INCLUDING PARIS 2024", meta: "TNT Sports · Paris 2024 · CRM · Warner Bros. Discovery",
@@ -612,9 +612,11 @@ function band(n, title) {
   return `<div class="band b-${ch.colour} sec">${n !== chapterOf(n) ? `<div class="kicker"><span>${ch.name}</span></div>` : ""}${dh(title)}</div>`;
 }
 function pic([file, cap]) {
-  return `<figure class="pic"><button class="frame" data-src="/img/${file}.jpg" data-cap="${esc(cap)}" aria-label="Enlarge picture: ${esc(cap)}">
-    <img src="/img/${file}.jpg" alt="${esc(cap)}" loading="lazy" decoding="async"></button><figcaption>${esc(cap)}</figcaption></figure>`;
+  const src = imageSrc(file);
+  return `<figure class="pic"><button class="frame" data-src="${src}" data-cap="${esc(cap)}" aria-label="Enlarge picture: ${esc(cap)}">
+    <img src="${src}" alt="${esc(cap)}" loading="lazy" decoding="async"></button><figcaption>${esc(cap)}</figcaption></figure>`;
 }
+function imageSrc(file) { return file.startsWith("pinterest-") ? "/img/" + file + ".webp" : "/img/" + file + ".jpg"; }
 function row(label, colour, text) {
   return text ? `<div class="row"><span class="l c-${colour}">${label}</span><span>${esc(text)}</span></div>` : "";
 }
@@ -628,7 +630,7 @@ function pageIndex() {
     [800, "Editorial writing", "blue"], [888, "Contact & CV", "yellow"],
   ];
   const heads = [
-    [301, "SPEC", "yellow", "Pinterest Christmas: “Christmas starts here.”"],
+    [301, "SPEC", "yellow", "Pinterest Christmas: “Christmas starts with Pinterest.”"],
     [201, "CAMPAIGN", "green", "HBO Max UK: “The best new platform since 9¾.”"],
     [601, "CAMPAIGN", "City & Guilds × FutureLearn: “The new world needs you.”"],
     [700, "BRAND VOICE", "cyan", "Building a distinctive voice across EMEA"],
@@ -674,7 +676,7 @@ function pageChapter(n) {
     <div class="cards">${c.pieces.map(p => {
       const x = PIECES[p] || FEATURE_CARDS[p];
       const tg = x.tag ? `<span class="ttag">${esc(x.tag)}</span>` : "";
-      const th = x.pics ? `<span class="th">${tg}<img src="/img/${x.pics[0][0]}.jpg" alt="" decoding="async"></span>`
+      const th = x.pics ? `<span class="th">${tg}<img src="${imageSrc(x.pics[0][0])}" alt="" decoding="async"></span>`
         : `<span class="th txt" style="background:var(--${CH[n].colour})">${tg}${esc(x.quote || x.title)}</span>`;
       return `<a class="card" href="#p${p}" data-go="${p}">${th}<span class="tt"><span>${esc(x.title)}</span><span class="n">${p}</span></span><span class="m">${esc(x.meta)}</span>${(x.quote || x.cardQuote) ? `<span class="q">“${frac(esc((x.quote || x.cardQuote).replace(/^“|”$/g, "")))}”</span>` : ""}</a>`;
     }).join("")}</div>`;
@@ -690,7 +692,7 @@ function scoresBlock() {
     <div class="c-dim">Viewers who received the campaigns, compared with a control group who didn't.</div></div>`;
 }
 
-const AR = {"boyhood":1.705,"futurelearn-step":1.634,"halt-catch-fire":1.41,"humans":1.754,"kings-cross":1.77,"matilda":1.78,"mock-the-week":1.531,"national-theatre":1.314,"new-world-building":0.597,"new-world-needs":1,"paris-2024":0.821,"quick-witted":1.604,"results-day":1,"royal-roy":0.735,"tough-cases":0.999,"watercooler":1.333,"westminster-abbey":0.647,"world-goes-pop":1.316,"hbo-max-welcome-email":0.937,"knight-journey":0.6,"hbo-max-halloween":1.2,"whales":1.784,"pogany-indulo":1.783,"hbo-max-trailer":1.79,"milano-cortina":1.867,"wwc-poster":0.667,"skinny-julia-holter":1.732,"skinny-slow-west":1.732,"swallows-amazons":0.681};
+const AR = {"pinterest-recipe-toast":0.7505,"pinterest-gift-encore":0.7505,"boyhood":1.705,"futurelearn-step":1.634,"halt-catch-fire":1.41,"humans":1.754,"kings-cross":1.77,"matilda":1.78,"mock-the-week":1.531,"national-theatre":1.314,"new-world-building":0.597,"new-world-needs":1,"paris-2024":0.821,"quick-witted":1.604,"results-day":1,"royal-roy":0.735,"tough-cases":0.999,"watercooler":1.333,"westminster-abbey":0.647,"world-goes-pop":1.316,"hbo-max-welcome-email":0.937,"knight-journey":0.6,"hbo-max-halloween":1.2,"whales":1.784,"pogany-indulo":1.783,"hbo-max-trailer":1.79,"milano-cortina":1.867,"wwc-poster":0.667,"skinny-julia-holter":1.732,"skinny-slow-west":1.732,"swallows-amazons":0.681};
 function gallery(list) {
   const s = list.reduce((a, [f]) => a + (AR[f] || 1), 0);
   return `<div class="gallery" style="max-width:calc(${s.toFixed(3)} * min(520px, 72vh))">${list.map(x => `<div class="gi" style="flex:${AR[x[0]] || 1} 1 0">${pic(x)}</div>`).join("")}</div>`;
@@ -714,7 +716,7 @@ function pagePiece(n) {
       ${right}
     </div>
     ${multi ? gallery(p.pics) : ""}
-    ${p.executions ? `<section class="blk"><div class="bg-blue">CAMPAIGN EXECUTIONS</div><div class="spec-executions">${p.executions.map(([setup, payoff, scene]) => `<div class="spec-execution"><div class="setup">${esc(setup)}</div><div class="payoff">${esc(payoff)}</div><div class="scene">${esc(scene)}</div></div>`).join("")}</div></section>` : ""}
+
     ${p.scores ? `<div class="scorewide">${scoresBlock()}</div>` : ""}
     ${p.script ? `<section class="blk"><div class="bg-blue">SCRIPT</div>
       <div class="script">${p.script.map(([vo, act]) => `<div class="vo">${esc(vo)}</div><div class="act">${esc(act)}</div>`).join("")}</div>
