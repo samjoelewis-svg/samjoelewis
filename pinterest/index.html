@@ -397,11 +397,30 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
   .pinterest-story { max-width: 65ch; }
   .pinterest-hero-gallery { max-width: 670px; }
 }
-.westminster-snapshot { margin-top: 1.25em; width: min(100%, 370px); }
-.westminster-snapshot figure.pic { width: 100%; }
+/* One campaign hero, then one distinct in-situ proof image. */
+.westminster-primary { min-width: 0; display: flex; align-items: flex-start; }
+.westminster-primary figure.pic { min-width: 0; width: fit-content; max-width: 100%; }
+.westminster-primary .frame { width: fit-content; max-width: 100%; }
+.westminster-primary .frame img { width: auto; max-width: 100%; max-height: min(56vh, 520px); height: auto; object-fit: contain; }
+.westminster-snapshot {
+  margin-top: clamp(24px, 3.5vw, 42px);
+  padding-top: 1em;
+  border-top: 1px solid #ffffff38;
+  display: grid;
+  gap: .55em;
+  align-items: start;
+  justify-items: start;
+  min-width: 0;
+}
+.westminster-snapshot .snapshot-heading { color: var(--cyan); font-size: .84em; }
+.westminster-snapshot figure.pic { width: min(100%, 405px); }
 .westminster-snapshot .frame { width: 100%; }
-.westminster-snapshot .frame img { display: block; width: 100%; height: auto; max-height: none; object-fit: contain; }
-.westminster-snapshot figcaption { font-size: .75em; line-height: 1.3; margin-top: .35em; }
+.westminster-snapshot .frame img { display: block; width: 100%; max-height: none; height: auto; object-fit: contain; }
+.westminster-snapshot figcaption { font-size: .78em; line-height: 1.4; margin-top: .35em; }
+@media (max-width: 720px) {
+  .westminster-primary .frame img { max-height: none; }
+  .westminster-snapshot figure.pic { width: min(100%, 420px); }
+}
 .section-intro { margin-block: .7em 1em; color: var(--white); }
 .spec-executions { display:grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16em),1fr)); gap: .75em; margin-top: .6em; }
 .spec-execution { padding: .9em 1ch; border: 1px solid var(--yellow); background: #15151c; display:grid; gap: .5em; align-content: start; }
@@ -766,7 +785,7 @@ function pagePiece(n) {
   const multi = p.pics && (p.pics.length > 1 || p.wide);
   const pics = p.pics && !multi ? pic(p.pics[0]) : "";
   const vid = p.video ? `<figure class="pic"><div class="vframe"><video controls playsinline preload="none" poster="/img/${p.video[0]}-video.jpg" aria-label="${esc(p.video[1])}"><source src="/video/${p.video[0]}.mp4" type="video/mp4"></video></div><figcaption>${esc(p.video[1])}</figcaption></figure>` : "";
-  const right = p.snapshot ? pic(p.pics[0]) : p.pitch ? ""
+  const right = p.snapshot ? `<div class="westminster-primary">${pic(p.pics[0], false)}</div>` : p.pitch ? ""
     : vid ? `<div class="${p.duo ? "duo" : "stack"}">${vid}${pics}</div>` : pics;
   return `${band(n, p.title)}
     <div class="meta">${esc(p.meta)}</div>
@@ -774,12 +793,12 @@ function pagePiece(n) {
     <div class="piece${right ? "" : " solo"}">
       <div class="facts">
         <div class="prose">${p.body.map(t => `<p>${esc(t)}</p>`).join("")}</div>
-        ${p.snapshot ? `<div class="westminster-snapshot">${pic(p.snapshot)}</div>` : ""}
         ${p.link ? `<a class="watch" href="${p.link[0]}" target="_blank" rel="noopener">${esc(p.link[1])} <span aria-hidden="true">&rsaquo;</span></a>` : ""}
       </div>
       ${right}
     </div>
     ${multi ? gallery(p.pics) : ""}
+    ${p.snapshot ? `<section class="westminster-snapshot" aria-label="Campaign installation at Bond Street station"><div class="snapshot-heading">BOND STREET STATION</div>${pic(p.snapshot)}</section>` : ""}
 
     ${p.scores ? `<div class="scorewide">${scoresBlock()}</div>` : ""}
     ${p.script ? `<section class="blk"><div class="bg-blue">SCRIPT</div>
