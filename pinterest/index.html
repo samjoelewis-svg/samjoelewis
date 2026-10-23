@@ -665,6 +665,7 @@ const PIECES = {
     pics: [["results-day", "FutureLearn Results Day outdoor campaign"]] },
 };
 
+// Each case-study page belongs to one section. Homepage highlights are links, not duplicate case studies.
 const CHAPTERS = {
   200: { line: "Integrated campaigns: an idea that travels from a line to film, outdoor, social and beyond.", pieces: [301, 213, 201, 501, 505, 202, 211, 601, 403, 602] },
   400: { line: "Distinctive brands, different audiences and a consistent voice across EMEA markets.", pieces: [700, 401, 204, 212] },
@@ -755,7 +756,7 @@ function pageChapter(n) {
   const c = CHAPTERS[n];
   return `${band(n, CH[n].title)}
     <div class="prose wide section-intro">${esc(c.line)}</div>
-    <div class="cards">${c.pieces.map(p => {
+    <div class="cards">${c.pieces.filter(p => chapterOf(p) === n).map(p => {
       const x = PIECES[p] || FEATURE_CARDS[p];
       if (!x || typeof x.title !== "string" || !x.title.trim()) { console.error("Missing portfolio case for page", p); return ""; }
       const tg = x.tag ? `<span class="ttag">${esc(x.tag)}</span>` : "";
