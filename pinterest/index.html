@@ -854,6 +854,7 @@ function drawFastext(n) {
 let current = 100, timer = null, zenTimer = null;
 function go(n, push = true) {
   n = Number(n);
+  if (n === 100 && push) { home(); return; }
   clearInterval(timer); clearInterval(zenTimer);
   const hp = $("#hp");
   const finish = () => {
@@ -898,7 +899,15 @@ function key(d) {
 $("#keys").innerHTML = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map(d => `<button class="key" data-k="${d}" aria-label="Number ${d}">${d}</button>`).join("");
 $("#keys").addEventListener("click", e => { const b = e.target.closest("[data-k]"); if (b) key(b.dataset.k); });
 
-$("#toIndex").addEventListener("click", () => go(100));
+function home() {
+  // Use the Pinterest-specific homepage, never the BBC root.
+  const target = "/pinterest/";
+  if (location.pathname !== target || location.hash) {
+    try { history.pushState(null, "", target); } catch (e) { location.href = target; return; }
+  }
+  go(100, false);
+}
+$("#toIndex").addEventListener("click", home);
 
 document.addEventListener("keydown", e => {
   if (!$("#lb").hidden) { if (e.key === "Escape") closeLb(); return; }
@@ -1085,6 +1094,9 @@ window.addEventListener("popstate", () => {
 });
 
 /* boot */
+if (location.pathname === "/pinterest/index.html") {
+  try { history.replaceState(null, "", "/pinterest/" + location.hash); } catch (e) {}
+}
 const m = /^#p(\d{3})$/.exec(location.hash || "");
 const start = m ? Number(m[1]) : 100;
 hnInit();
