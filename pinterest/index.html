@@ -421,6 +421,10 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
   .westminster-primary .frame img { max-height: none; }
   .westminster-snapshot figure.pic { width: min(100%, 420px); }
 }
+.atg-advert { display: grid; justify-items: start; margin-top: .8em; width: 100%; min-width: 0; }
+.atg-advert figure.pic { width: 100%; }
+.atg-advert .frame { width: 100%; border: 0; }
+.atg-advert .frame img { display: block; width: 100%; height: auto; max-height: none; object-fit: contain; }
 .section-intro { margin-block: .7em 1em; color: var(--white); }
 .spec-executions { display:grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16em),1fr)); gap: .75em; margin-top: .6em; }
 .spec-execution { padding: .9em 1ch; border: 1px solid var(--yellow); background: #15151c; display:grid; gap: .5em; align-content: start; }
@@ -574,11 +578,7 @@ const PIECES = {
     pics: [["knight-journey", "Result screen for getting every answer wrong"]] },
 
   213: { tag: "B2B", title: "ATG THEATRES: BUSINESS DESERVES A BIGGER STAGE", meta: "ATG Theatres · Corporate events & venue hire · LinkedIn concept · AKA UK",
-    quote: "Business deserves a bigger stage.",
-    body: [
-      "At AKA, part of ATG, I worked on attracting corporate clients to theatres. The creative challenge was different from selling tickets: I wanted businesses to see a West End theatre as somewhere to host their next event.",
-      "“Business deserves a bigger stage” gives that idea a simple, memorable line. A LinkedIn execution set against the Lyceum Theatre shows how the venue itself can do the selling — a familiar London landmark with a sense of occasion that no ordinary meeting room can match."
-    ],
+    body: [],
     pics: [["atg-lyceum-b2b", "ATG Theatres corporate venue hire LinkedIn advertising concept featuring the Lyceum Theatre"]] },
 
   301: { tag: "SPEC", title: "PINTEREST CHRISTMAS: CHRISTMAS STARTS WITH PINTEREST", meta: "Pinterest · Christmas · Campaign concept · Social, digital & outdoor",
@@ -792,6 +792,9 @@ function pagePinterestChristmas(p) {
 function pagePiece(n) {
   const p = PIECES[n];
   if (n === 301) return pagePinterestChristmas(p);
+  if (n === 213) return `${band(n, p.title)}
+    <div class="meta">${esc(p.meta)}</div>
+    <div class="atg-advert">${pic(p.pics[0], false)}</div>`;
   const multi = p.pics && (p.pics.length > 1 || p.wide);
   const pics = p.pics && !multi ? pic(p.pics[0]) : "";
   const vid = p.video ? `<figure class="pic"><div class="vframe"><video controls playsinline preload="none" poster="/img/${p.video[0]}-video.jpg" aria-label="${esc(p.video[1])}"><source src="/video/${p.video[0]}.mp4" type="video/mp4"></video></div><figcaption>${esc(p.video[1])}</figcaption></figure>` : "";
