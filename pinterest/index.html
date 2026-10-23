@@ -360,6 +360,21 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
   .rbtns .rbtn { flex: 1; }
   .help { margin-left: 0; width: 100%; font-size: .8em; }
 }
+/* Pinterest case study: images before editorial explanation. */
+.pinterest-case { display: grid; gap: 0; min-width: 0; }
+.pinterest-case-kicker { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1ch; font-size: .83em; color: var(--cyan); margin: .15em 0 .6em; }
+.pinterest-hero-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: clamp(8px, 1.5vw, 18px); width: 100%; min-width: 0; }
+.pinterest-hero-gallery .frame { overflow: hidden; border: 0; border-radius: 9px; width: 100%; }
+.pinterest-hero-gallery .frame img { display: block; width: 100%; max-height: none; height: auto; aspect-ratio: 743 / 990; object-fit: contain; }
+.pinterest-hero-gallery figcaption { font-size: .65em; color: var(--dim); padding-top: .2em; }
+.pinterest-story { margin-top: clamp(18px, 2.4vw, 30px); max-width: 73ch; }
+.pinterest-story h1 { font-family: var(--tt); font-size: clamp(1.45em, 3.6vw, 2.25em); line-height: 1.05; font-weight: normal; margin: 0 0 .42em; color: var(--yellow); }
+.pinterest-story .prose { max-width: 70ch; padding-bottom: .5em; }
+@media (max-width: 560px) {
+  .pinterest-hero-gallery { grid-template-columns: minmax(0, 1fr); gap: 1em; }
+  .pinterest-case-kicker { margin: .1em 0 .5em; }
+  .pinterest-story { margin-top: 1.3em; }
+}
 .section-intro { margin-block: .7em 1em; color: var(--white); }
 .spec-executions { display:grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16em),1fr)); gap: .75em; margin-top: .6em; }
 .spec-execution { padding: .9em 1ch; border: 1px solid var(--yellow); background: #15151c; display:grid; gap: .5em; align-content: start; }
@@ -511,14 +526,14 @@ const PIECES = {
     video: ["knight-journey", "Episode challenge: take your vows"],
     pics: [["knight-journey", "Result screen for getting every answer wrong"]] },
 
-  301: { tag: "SPEC", title: "PINTEREST CHRISTMAS: CHRISTMAS STARTS WITH PINTEREST", meta: "Pinterest · Christmas · Independent spec concept · Social, OOH and digital",
+  301: { tag: "SPEC", title: "PINTEREST CHRISTMAS: CHRISTMAS STARTS WITH PINTEREST", meta: "Pinterest · Christmas · Campaign concept · Social, digital & outdoor",
     spec: true,
     quote: "Christmas starts with Pinterest.",
     body: [
-      "An independent spec campaign developed for a Pinterest copywriting application. This is not commissioned Pinterest work.",
-      "The idea is simple: inspiration starts online, but the best Christmas moments happen in real life. A recipe leads to people raising their glasses. A gift idea leads to an impromptu family performance.",
-      "The creative turns that before-and-after into an easy, repeatable line: “It started with…” / “It ended with…”. The work celebrates the joyful, messy and recognisable result rather than the perfect-looking inspiration.",
-      "The two executions are designed as part of an integrated seasonal campaign, with the platform line “Christmas starts with Pinterest.” The concept can adapt to social, video, digital and outdoor."
+      "I wanted to show how I'd approach a Pinterest brief in practice. I was inspired by your recent campaign about finding a reason to go offline, and loved the idea of Pinterest as a jumping-off point for adventures in real life. I wondered what that could look like at Christmas.",
+      "Christmas is full of little ideas that turn into moments you remember. A recipe becomes a toast around a crowded table. A gift idea becomes a full-blown living-room concert.",
+      "So I put those moments front and centre: the slightly chaotic, funny, joyful bits that happen after the inspiration. “It started with…” / “It ended with…” gives the idea a simple, repeatable structure.",
+      "I can see it growing into a series across social, film and outdoor, with each execution celebrating something that started on Pinterest and took on a life of its own."
     ],
     pics: [
       ["pinterest-recipe-toast", "Pinterest Christmas spec ad: It started with a recipe. It ended with a toast."],
@@ -614,7 +629,7 @@ function band(n, title) {
 function pic([file, cap]) {
   const src = imageSrc(file);
   return `<figure class="pic"><button class="frame" data-src="${src}" data-cap="${esc(cap)}" aria-label="Enlarge picture: ${esc(cap)}">
-    <img src="${src}" alt="${esc(cap)}" loading="lazy" decoding="async"></button><figcaption>${esc(cap)}</figcaption></figure>`;
+    <img src="${src}" alt="${esc(cap)}" loading="${file.startsWith("pinterest-") ? "eager" : "lazy"}" fetchpriority="${file.startsWith("pinterest-") ? "high" : "auto"}" decoding="async"></button><figcaption>${esc(cap)}</figcaption></figure>`;
 }
 function imageSrc(file) { return file.startsWith("pinterest-") ? "/img/" + file + ".webp" : "/img/" + file + ".jpg"; }
 function row(label, colour, text) {
@@ -698,8 +713,20 @@ function gallery(list) {
   return `<div class="gallery" style="max-width:calc(${s.toFixed(3)} * min(520px, 72vh))">${list.map(x => `<div class="gi" style="flex:${AR[x[0]] || 1} 1 0">${pic(x)}</div>`).join("")}</div>`;
 }
 
+function pagePinterestChristmas(p) {
+  return `<section class="pinterest-case">
+    <div class="pinterest-case-kicker"><span>CHRISTMAS CAMPAIGN CONCEPT</span><span class="c-yellow">SPEC / P301</span></div>
+    <div class="pinterest-hero-gallery">${p.pics.map(pic).join("")}</div>
+    <div class="pinterest-story">
+      <h1>CHRISTMAS STARTS WITH PINTEREST.</h1>
+      <div class="prose wide">${p.body.map(t => `<p>${esc(t)}</p>`).join("")}</div>
+    </div>
+  </section>`;
+}
+
 function pagePiece(n) {
   const p = PIECES[n];
+  if (n === 301) return pagePinterestChristmas(p);
   const multi = p.pics && (p.pics.length > 1 || p.wide);
   const pics = p.pics && !multi ? pic(p.pics[0]) : "";
   const vid = p.video ? `<figure class="pic"><div class="vframe"><video controls playsinline preload="none" poster="/img/${p.video[0]}-video.jpg" aria-label="${esc(p.video[1])}"><source src="/video/${p.video[0]}.mp4" type="video/mp4"></video></div><figcaption>${esc(p.video[1])}</figcaption></figure>` : "";
@@ -1061,7 +1088,9 @@ function drawZen() {
 
 function afterRender(n) {
   drawMast(); drawPitch(); drawPortrait($(".portrait")); drawZen();
-  document.querySelectorAll(".frame:not(.portrait)").forEach(pixelIn);
+  document.querySelectorAll(".frame:not(.portrait)").forEach(frame => {
+    if (!frame.closest(".pinterest-hero-gallery")) pixelIn(frame);
+  });
   const cp = $("#copyEmail");
   if (cp) cp.addEventListener("click", () => {
     const t = $("#email").textContent;
