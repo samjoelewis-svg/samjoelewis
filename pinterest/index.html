@@ -398,10 +398,10 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
   .pinterest-hero-gallery { max-width: 670px; }
 }
 /* One campaign hero, then one distinct in-situ proof image. */
-.westminster-primary { min-width: 0; display: flex; align-items: flex-start; }
+.westminster-primary { min-width: 0; display: flex; align-items: flex-start; justify-content: center; }
 .westminster-primary figure.pic { min-width: 0; width: fit-content; max-width: 100%; }
 .westminster-primary .frame { width: fit-content; max-width: 100%; }
-.westminster-primary .frame img { width: auto; max-width: 100%; max-height: min(56vh, 520px); height: auto; object-fit: contain; }
+.westminster-primary .frame img { width: auto; max-width: 100%; max-height: min(70vh, 620px); height: auto; object-fit: contain; }
 .westminster-snapshot {
   margin-top: clamp(24px, 3.5vw, 42px);
   padding-top: 1em;
@@ -573,6 +573,14 @@ const PIECES = {
     video: ["knight-journey", "Episode challenge: take your vows"],
     pics: [["knight-journey", "Result screen for getting every answer wrong"]] },
 
+  213: { tag: "B2B", title: "ATG THEATRES: BUSINESS DESERVES A BIGGER STAGE", meta: "ATG Theatres · Corporate events & venue hire · LinkedIn concept · AKA UK",
+    quote: "Business deserves a bigger stage.",
+    body: [
+      "At AKA, part of ATG, I worked on attracting corporate clients to theatres. The creative challenge was different from selling tickets: I wanted businesses to see a West End theatre as somewhere to host their next event.",
+      "“Business deserves a bigger stage” gives that idea a simple, memorable line. A LinkedIn execution set against the Lyceum Theatre shows how the venue itself can do the selling — a familiar London landmark with a sense of occasion that no ordinary meeting room can match."
+    ],
+    pics: [["atg-lyceum-b2b", "ATG Theatres corporate venue hire LinkedIn advertising concept featuring the Lyceum Theatre"]] },
+
   301: { tag: "SPEC", title: "PINTEREST CHRISTMAS: CHRISTMAS STARTS WITH PINTEREST", meta: "Pinterest · Christmas · Campaign concept · Social, digital & outdoor",
     spec: true,
     quote: "Christmas starts with Pinterest.",
@@ -653,7 +661,7 @@ const PIECES = {
 };
 
 const CHAPTERS = {
-  200: { line: "Integrated campaigns: an idea that travels from a line to film, outdoor, social and beyond.", pieces: [301, 201, 501, 505, 202, 211, 601, 403, 602] },
+  200: { line: "Integrated campaigns: an idea that travels from a line to film, outdoor, social and beyond.", pieces: [301, 213, 201, 501, 505, 202, 211, 601, 403, 602] },
   400: { line: "Distinctive brands, different audiences and a consistent voice across EMEA markets.", pieces: [700, 401, 204, 212] },
   500: { line: "Work made for real audiences, from creator collaborations to art, music, theatre and popular culture.", pieces: [504, 203, 207, 209] },
   600: { line: "The craft of a good line: concise taglines, scripts, film trailers and longer-form storytelling.", pieces: [205, 210, 208, 502, 503, 206] },
@@ -661,7 +669,7 @@ const CHAPTERS = {
 const FEATURE_CARDS = {
   700: { tag: "BRAND VOICE", title: "BUILDING A BRAND VOICE ACROSS EMEA", meta: "HBO Max · TNT Sports · FutureLearn · Tone of voice, frameworks and localisation", pics: [["quick-witted", "HBO Max tone-of-voice guide"]] },
 };
-const ORDER = [100, 101, 200, 301, 201, 501, 505, 202, 211, 601, 403, 602, 400, 700, 401, 204, 212, 500, 504, 203, 207, 209, 600, 205, 210, 208, 502, 503, 206, 750, 800, 888];
+const ORDER = [100, 101, 200, 301, 213, 201, 501, 505, 202, 211, 601, 403, 602, 400, 700, 401, 204, 212, 500, 504, 203, 207, 209, 600, 205, 210, 208, 502, 503, 206, 750, 800, 888];
 
 /* ---------- helpers ---------- */
 const $ = (s, r = document) => r.querySelector(s);
@@ -684,7 +692,7 @@ function pic([file, cap], showCaption = true) {
   return `<figure class="pic"><button class="frame" data-src="${src}" data-cap="${esc(cap)}" aria-label="Enlarge picture: ${esc(cap)}">
     <img src="${src}" alt="${esc(cap)}" loading="${file.startsWith("pinterest-") ? "eager" : "lazy"}" fetchpriority="${file.startsWith("pinterest-") ? "high" : "auto"}" decoding="async"></button>${showCaption ? `<figcaption>${esc(cap)}</figcaption>` : ""}</figure>`;
 }
-function imageSrc(file) { return file.startsWith("pinterest-") || file === "westminster-abbey-bond-street" ? "/img/" + file + ".webp" : "/img/" + file + ".jpg"; }
+function imageSrc(file) { return file.startsWith("pinterest-") || file === "westminster-abbey-bond-street" || file === "atg-lyceum-b2b" ? "/img/" + file + ".webp" : "/img/" + file + ".jpg"; }
 function row(label, colour, text) {
   return text ? `<div class="row"><span class="l c-${colour}">${label}</span><span>${esc(text)}</span></div>` : "";
 }
@@ -699,6 +707,7 @@ function pageIndex() {
   ];
   const heads = [
     [301, "SPEC", "yellow", "Pinterest Christmas: “Christmas starts with Pinterest.”"],
+    [213, "B2B", "cyan", "ATG Theatres: “Business deserves a bigger stage.”"],
     [201, "CAMPAIGN", "green", "HBO Max UK: “The best new platform since 9¾.”"],
     [601, "CAMPAIGN", "City & Guilds × FutureLearn: “The new world needs you.”"],
     [700, "BRAND VOICE", "cyan", "Building a distinctive voice across EMEA"],
@@ -743,6 +752,7 @@ function pageChapter(n) {
     <div class="prose wide section-intro">${esc(c.line)}</div>
     <div class="cards">${c.pieces.map(p => {
       const x = PIECES[p] || FEATURE_CARDS[p];
+      if (!x || typeof x.title !== "string" || !x.title.trim()) { console.error("Missing portfolio case for page", p); return ""; }
       const tg = x.tag ? `<span class="ttag">${esc(x.tag)}</span>` : "";
       const th = x.pics ? `<span class="th">${tg}<img src="${imageSrc(x.pics[0][0])}" alt="" decoding="async"></span>`
         : `<span class="th txt" style="background:var(--${CH[n].colour})">${tg}${esc(x.quote || x.title)}</span>`;
