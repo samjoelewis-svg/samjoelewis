@@ -397,6 +397,13 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
   .pinterest-story { max-width: 65ch; }
   .pinterest-hero-gallery { max-width: 670px; }
 }
+.westminster-picture-pair { display: flex; gap: 1.1ch; align-items: flex-start; min-width: 0; flex-wrap: wrap; }
+.westminster-picture-pair > figure.pic:first-child { flex: 1 1 205px; max-width: 400px; }
+.westminster-snapshot { flex: 0 0 150px; max-width: 150px; }
+.westminster-snapshot .frame { width: 100%; }
+.westminster-snapshot .frame img { width: 150px; max-height: 200px; height: 200px; object-fit: contain; }
+.westminster-snapshot figcaption { font-size: .67em; line-height: 1.25; }
+@media (max-width: 650px) { .westminster-picture-pair { gap: 1em; } }
 .section-intro { margin-block: .7em 1em; color: var(--white); }
 .spec-executions { display:grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16em),1fr)); gap: .75em; margin-top: .6em; }
 .spec-execution { padding: .9em 1ch; border: 1px solid var(--yellow); background: #15151c; display:grid; gap: .5em; align-content: start; }
@@ -591,7 +598,8 @@ const PIECES = {
       "I love working with designers because the best line doesn't just sit underneath an image. The two make each other better. This was one of those briefs where the collaboration made the idea feel complete.",
       "I later saw the poster up at Bond Street station, with a tourist posing beside it. A nice moment to see the work out in the world.",
     ],
-    pics: [["westminster-abbey", "Westminster Abbey outdoor campaign: Feel wonder first hand"]] },
+    pics: [["westminster-abbey", "Westminster Abbey outdoor campaign: Feel wonder first hand"]],
+    snapshot: ["westminster-abbey-bond-street", "The Westminster Abbey poster at Bond Street station, with a visitor posing beside it"] },
   210: { title: "SWALLOWS AND AMAZONS TAGLINE", meta: "Swallows and Amazons · Film tagline · AKA UK",
     quote: "Some summers you treasure forever.",
     body: ["At AKA UK, I wrote the tagline for the 2016 film of Swallows and Amazons, based on Arthur Ransome's classic children's novel."],
@@ -660,7 +668,7 @@ function pic([file, cap], showCaption = true) {
   return `<figure class="pic"><button class="frame" data-src="${src}" data-cap="${esc(cap)}" aria-label="Enlarge picture: ${esc(cap)}">
     <img src="${src}" alt="${esc(cap)}" loading="${file.startsWith("pinterest-") ? "eager" : "lazy"}" fetchpriority="${file.startsWith("pinterest-") ? "high" : "auto"}" decoding="async"></button>${showCaption ? `<figcaption>${esc(cap)}</figcaption>` : ""}</figure>`;
 }
-function imageSrc(file) { return file.startsWith("pinterest-") ? "/img/" + file + ".webp" : "/img/" + file + ".jpg"; }
+function imageSrc(file) { return file.startsWith("pinterest-") || file === "westminster-abbey-bond-street" ? "/img/" + file + ".webp" : "/img/" + file + ".jpg"; }
 function row(label, colour, text) {
   return text ? `<div class="row"><span class="l c-${colour}">${label}</span><span>${esc(text)}</span></div>` : "";
 }
@@ -761,7 +769,9 @@ function pagePiece(n) {
   const multi = p.pics && (p.pics.length > 1 || p.wide);
   const pics = p.pics && !multi ? pic(p.pics[0]) : "";
   const vid = p.video ? `<figure class="pic"><div class="vframe"><video controls playsinline preload="none" poster="/img/${p.video[0]}-video.jpg" aria-label="${esc(p.video[1])}"><source src="/video/${p.video[0]}.mp4" type="video/mp4"></video></div><figcaption>${esc(p.video[1])}</figcaption></figure>` : "";
-  const right = p.pitch ? ""
+  const right = p.snapshot
+    ? `<div class="westminster-picture-pair">${pic(p.pics[0])}<div class="westminster-snapshot">${pic(p.snapshot)}</div></div>`
+    : p.pitch ? ""
     : vid ? `<div class="${p.duo ? "duo" : "stack"}">${vid}${pics}</div>` : pics;
   return `${band(n, p.title)}
     <div class="meta">${esc(p.meta)}</div>
