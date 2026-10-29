@@ -427,29 +427,35 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
 .atg-advert .frame { width: 100%; border: 0; }
 .atg-advert .frame img { display: block; width: 100%; height: auto; max-height: none; object-fit: contain; }
 @media (max-width: 720px) { .atg-case { grid-template-columns: minmax(0, 1fr); } }
-.auk-hero-gallery { grid-template-columns: 1fr; }
-.auk-hero-gallery .frame img { display:block;width:100%;height:auto;max-height:none;aspect-ratio:3/2;object-fit:contain; }
-.auk-case .pinterest-story h1 { font-size: clamp(1.4em,2.8vw,2.05em); }
 .noodoll-case { margin-top: .75em; display: grid; gap: 1.1em; }
 .noodoll-case .prose { max-width: 75ch; }
 .noodoll-screenshot { width: 100%; }
 .noodoll-screenshot figure.pic, .noodoll-screenshot .frame { width: 100%; }
 .noodoll-screenshot .frame img { display: block; width: 100%; height: auto; max-height: none; }
-/* Auk: original Christmas and Scandinavian brand executions, text-left / image-right. */
-.auk-campaign { min-width:0; }
-.auk-intro { max-width:83ch; margin:.2em 0 1.3em; }
-.auk-intro h1 { font-family:var(--tt);font-weight:normal;font-size:clamp(1.5em,3.1vw,2.2em);color:var(--yellow);line-height:1.06;margin:0 0 .5em; }
-.auk-intro .prose { max-width:76ch; }
-.auk-execution { display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:clamp(14px,2.4vw,34px);align-items:start;padding:1.4em 0; border-top:1px solid #ffffff35; }
-.auk-execution-copy { min-width:0; }
-.auk-route { font-size:.8em;letter-spacing:.05em;margin-bottom:.65em; }
-.auk-execution-copy h2 { font-family:var(--tt);font-weight:normal;color:var(--yellow);font-size:clamp(1.35em,2.7vw,1.85em);line-height:1.1;margin:.15em 0 .6em; }
-.auk-execution-copy .prose { padding:0; }
-.auk-execution-image { min-width:0; }
-.auk-execution-image figure.pic,.auk-execution-image .frame { display:block;width:100%; }
-.auk-execution-image .frame { border:0;border-radius:6px;overflow:hidden; }
-.auk-execution-image .frame img { display:block;width:100%;height:auto;max-height:none;aspect-ratio:3/2;object-fit:contain; }
-.auk-platform { padding:1.3em 0 0;border-top:1px solid #ffffff35;max-width:83ch; }
+/* Auk: one UK Christmas concept. Display the original artwork cleanly. */
+.auk-single-case { min-width:0; }
+.auk-single-body {
+  display:grid;
+  grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);
+  align-items:start; gap:clamp(14px,2.5vw,32px); min-width:0;
+  margin-top:.3em;
+}
+.auk-single-story { min-width:0; }
+.auk-single-story h1 { font-family:var(--tt);font-weight:normal;font-size:clamp(1.5em,3vw,2.1em);color:var(--yellow);line-height:1.08;margin:0 0 .6em; }
+.auk-single-story .prose { max-width:65ch; padding:0; }
+.auk-single-image { position:relative; z-index:2; min-width:0; isolation:isolate; }
+.auk-single-image figure.pic,.auk-single-image .frame { width:100%; }
+.auk-single-image .frame { border:0; border-radius:6px; overflow:hidden; }
+.auk-single-image .frame img {
+  display:block; width:100%; height:auto; max-height:none;
+  aspect-ratio:3/2; object-fit:contain;
+  image-rendering:auto; filter:none;
+}
+.screen:has(.auk-single-case)::after { display:none; }
+@media(max-width:760px) {
+  .auk-single-body { grid-template-columns:minmax(0,1fr); gap:1em; }
+  .auk-single-image { max-width:720px; }
+}
 .futurelearn-case { grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:start;gap:clamp(15px,2.5vw,32px); }
 .futurelearn-examples { display:grid;grid-template-columns:minmax(0,1fr);gap:1.15em;min-width:0; }
 .futurelearn-examples figure.pic,.futurelearn-examples .frame { width:100%; }
@@ -614,16 +620,13 @@ const PIECES = {
     ],
     pics: [["atg-lyceum-b2b", "ATG Theatres corporate venue hire LinkedIn advertising concept featuring the Lyceum Theatre"]] },
 
-  301: { tag:"SPEC",title:"AUK MINI 2: GOOD GIFTS GROW ON YOU",meta:"Auk Mini 2 · Independent spec · Christmas and brand storytelling",spec:true,
+  301: { tag:"SPEC",title:"AUK MINI 2: GOOD GIFTS GROW ON YOU",meta:"Auk Mini 2 · UK Christmas campaign · Independent spec concept",spec:true,
     body:[
-      "I wanted to show how I'd approach an Auk brief in practice. Auk Mini 2 has an appealing practical promise — fresh greens at home, without the fuss — but I was interested in what the product could mean in someone's everyday life. I explored two complementary directions: a Christmas gift with staying power, and the pleasure of growing something yourself.",
+      "Here, I was imagining a UK Christmas campaign for Auk, built around the line “Good gifts grow on you.” It’s warm, spare and lightly witty, with a slightly dry Scandinavian flavour.",
+      "The supporting line — “Meet Auk Mini 2. Fresh greens, minus the fuss.” — turns the product promise already on the Auk website into something more compact and digestible. It keeps the tone practical and British, while the headline does the more emotional work.",
+      "Together, the lines position Auk Mini 2 as a gift that keeps giving — something useful, distinctive and quietly joyful in everyday life."
     ],
-    executions:[
-      ["GOOD GIFTS GROW ON YOU","For Christmas, I wanted a line that felt warm, spare and gently witty. Rather than focusing on the unboxing, this celebrates a present that keeps giving: fresh herbs, a little more life in the kitchen and something to enjoy long after Christmas Day.","auk-good-gifts-grow-on-you","Auk Mini 2 speculative Christmas advert: Good gifts grow on you, with a family around a warm kitchen table."],
-      ["DYRKEGLEDE","The longer-term idea draws on Auk's Scandinavian roots. Dyrkeglede is a Norwegian word for the joy of growing. The line ‘Meet Auk Mini 2. Fresh greens, minus the fuss.’ explains the product; ‘The simple pleasure of growing something yourself’ captures how it feels. I wanted to unpack the word for an English-speaking audience, not just use it as decoration.","auk-mini2-dyrkeglede","Auk Mini 2 speculative Dyrkeglede advert: a man harvesting herbs in a bright urban kitchen."]
-    ],
-    broader:"I could imagine extending this into a campaign built around Scandinavian words for everyday pleasures: the familiar idea of hygge as a starting point, then more distinctive words like dyrkeglede. Each would open up a different part of Auk's world across product pages, email and advertising, with a voice that feels warm, understated and unmistakably Scandinavian.",
-    pics:[["auk-good-gifts-grow-on-you","Auk Mini 2 spec Christmas campaign: Good gifts grow on you"],["auk-mini2-dyrkeglede","Auk Mini 2 spec brand campaign: Dyrkeglede"]] },
+    pics:[["auk-good-gifts-grow-on-you","Auk Mini 2 speculative UK Christmas advert: Good gifts grow on you, with a family sharing a meal around a warm kitchen table"]] },
   214: { tag:"PRODUCT",title:"NOODOLL: RICESPUD PRODUCT MESSAGING",meta:"Noodoll · Ecommerce · Product descriptions",
     body:[
       "At Noodoll, I wrote product copy designed to bring the characters to life while helping customers understand what they're buying. Ricespud needed a playful, distinctive voice alongside clear descriptions of the product.",
@@ -739,7 +742,7 @@ function pic([file, cap], showCaption = true) {
   return `<figure class="pic"><button class="frame" data-src="${src}" data-cap="${esc(cap)}" aria-label="Enlarge picture: ${esc(cap)}">
     <img src="${src}" alt="${esc(cap)}" loading="${file.startsWith("auk-") ? "eager" : "lazy"}" fetchpriority="${file.startsWith("auk-") ? "high" : "auto"}" decoding="async"></button>${showCaption ? `<figcaption>${esc(cap)}</figcaption>` : ""}</figure>`;
 }
-function imageSrc(file) { return ["auk-mini2-dyrkeglede","auk-good-gifts-grow-on-you","futurelearn-course-seo","futurelearn-editorial-rome","noodoll-ricespud-product-copy","westminster-abbey-bond-street","atg-lyceum-b2b"].includes(file) ? "/img/" + file + ".webp" : "/img/" + file + ".jpg"; }
+function imageSrc(file) { return ["auk-good-gifts-grow-on-you","futurelearn-course-seo","futurelearn-editorial-rome","noodoll-ricespud-product-copy","westminster-abbey-bond-street","atg-lyceum-b2b"].includes(file) ? "/img/" + file + ".webp" : "/img/" + file + ".jpg"; }
 function row(label, colour, text) {
   return text ? `<div class="row"><span class="l c-${colour}">${label}</span><span>${esc(text)}</span></div>` : "";
 }
@@ -823,25 +826,17 @@ function gallery(list) {
 }
 
 function pageAukCampaign(p) {
-  return `<section class="auk-campaign">
-    <div class="pinterest-case-kicker"><span>SPEC CHRISTMAS & BRAND CAMPAIGN</span><span class="c-yellow">P301</span></div>
-    <div class="auk-intro"><h1>GOOD GIFTS GROW ON YOU</h1>
-      <div class="prose wide">${p.body.map(t=>`<p>${esc(t)}</p>`).join("")}</div>
-    </div>
-    ${p.executions.map(([heading,copy,file,alt],i)=>`<section class="auk-execution" aria-label="${esc(heading)}">
-      <div class="auk-execution-copy">
-        <div class="c-cyan auk-route">${i===0?"01 / CHRISTMAS":"02 / EVERGREEN BRAND"}</div>
-        <h2>${esc(heading)}</h2>
-        <div class="prose"><p>${esc(copy)}</p></div>
+  return `<section class="auk-single-case">
+    <div class="pinterest-case-kicker"><span>SPEC CHRISTMAS CAMPAIGN</span><span class="c-yellow">P301</span></div>
+    <div class="auk-single-body">
+      <div class="auk-single-story">
+        <h1>GOOD GIFTS GROW ON YOU</h1>
+        <div class="prose wide">${p.body.map(t => `<p>${esc(t)}</p>`).join("")}</div>
       </div>
-      <div class="auk-execution-image">${pic([file,alt],false)}</div>
-    </section>`).join("")}
-    <div class="auk-platform"><div class="c-cyan auk-route">THE BIGGER IDEA</div>
-      <div class="prose wide"><p>${esc(p.broader)}</p></div>
+      <div class="auk-single-image">${pic(p.pics[0], false)}</div>
     </div>
   </section>`;
 }
-
 function pagePiece(n) {
   const p = PIECES[n];
   if (n === 301) return pageAukCampaign(p);
@@ -1226,7 +1221,7 @@ function drawZen() {
 function afterRender(n) {
   drawMast(); drawPitch(); drawPortrait($(".portrait")); drawZen();
   document.querySelectorAll(".frame:not(.portrait)").forEach(frame => {
-    if (!frame.closest(".pinterest-hero-gallery")) pixelIn(frame);
+    if (!frame.closest(".pinterest-hero-gallery, .auk-single-image")) pixelIn(frame);
   });
   const cp = $("#copyEmail");
   if (cp) cp.addEventListener("click", () => {
