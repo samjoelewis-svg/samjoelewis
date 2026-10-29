@@ -430,6 +430,11 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
 .auk-hero-gallery { grid-template-columns: 1fr; }
 .auk-hero-gallery .frame img { display:block;width:100%;height:auto;max-height:none;aspect-ratio:3/2;object-fit:contain; }
 .auk-case .pinterest-story h1 { font-size: clamp(1.4em,2.8vw,2.05em); }
+.noodoll-case { margin-top: .75em; display: grid; gap: 1.1em; }
+.noodoll-case .prose { max-width: 75ch; }
+.noodoll-screenshot { width: 100%; }
+.noodoll-screenshot figure.pic, .noodoll-screenshot .frame { width: 100%; }
+.noodoll-screenshot .frame img { display: block; width: 100%; height: auto; max-height: none; }
 .section-intro { margin-block: .7em 1em; color: var(--white); }
 .spec-executions { display:grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16em),1fr)); gap: .75em; margin-top: .6em; }
 .spec-execution { padding: .9em 1ch; border: 1px solid var(--yellow); background: #15151c; display:grid; gap: .5em; align-content: start; }
@@ -805,6 +810,12 @@ function pageAukCampaign(p) {
 function pagePiece(n) {
   const p = PIECES[n];
   if (n === 301) return pageAukCampaign(p);
+  if (n === 214) return `${band(n,p.title)}
+    <div class="meta">${esc(p.meta)}</div>
+    <section class="noodoll-case">
+      <div class="prose wide">${p.body.map(t=>`<p>${esc(t)}</p>`).join("")}</div>
+      <div class="noodoll-screenshot">${pic(p.pics[0],false)}</div>
+    </section>`;
   if (n === 213) return `${band(n, p.title)}
     <div class="meta">${esc(p.meta)}</div>
     <div class="piece atg-case">
