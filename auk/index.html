@@ -1,0 +1,1226 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sam Lewis | Campaigns, Copy &amp; Brand Voice | Auk Portfolio</title>
+<meta name="description" content="Sam Lewis’s Auk-focused portfolio: campaign ideas, emails, landing pages, SEO articles and product messaging.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sam Lewis — Auk Portfolio">
+<meta property="og:description" content="Auk Mini 2 campaign concept, Noodoll product copy, HBO Max CRM and FutureLearn SEO writing.">
+<meta property="og:image" content="https://samlewis.fyi/img/sam.jpg">
+<meta property="og:url" content="https://samlewis.fyi/auk/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%232440ff'/%3E%3Cpath fill='%23fff13a' d='M3 3h10v3H6v1h7v6H3v-3h7V9H3z'/%3E%3C/svg%3E">
+<style>body{margin:0} [hidden]{display:none!important} img{max-width:100%}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&family=VT323&display=swap">
+<style>
+/* Layout: one teletext screen in a TV bezel, a remote control underneath. Pages swap inside the screen. */
+:root {
+  color-scheme: dark;
+  --black: #000;
+  --white: #f2f2f2;
+  --red: #ff3434;
+  --green: #35ff5a;
+  --yellow: #fff13a;
+  --blue: #2440ff;
+  --magenta: #ff45ff;
+  --cyan: #33f4ff;
+  --dim: #8c8c8c;
+  --bezel: #16161a;
+  --bezel-edge: #26262c;
+  --remote: #202026;
+  --key: #2e2e36;
+  --tt: "VT323", "Courier New", ui-monospace, monospace;
+  --ui: "VT323", ui-monospace, monospace;
+}
+* { box-sizing: border-box; }
+html, body { background: var(--bezel); }
+body {
+  color: var(--white);
+  font-family: var(--tt);
+  font-size: clamp(19px, 2.3vw, 24px);
+  line-height: 1.18;
+  padding-inline: 16px;
+  padding-block: 24px 40px;
+  -webkit-font-smoothing: none;
+}
+.wrap { max-width: 940px; margin-inline: auto; display: grid; gap: 22px; }
+
+/* ---------- TV ---------- */
+.tv {
+  background: var(--bezel-edge);
+  border-radius: 22px;
+  padding: clamp(10px, 2vw, 22px);
+  box-shadow: 0 1px 0 #34343c inset, 0 20px 50px #000a;
+}
+.screen {
+  position: relative;
+  background: var(--black);
+  border-radius: 10px;
+  padding: clamp(10px, 2.2vw, 22px) clamp(10px, 2.4vw, 26px) 12px;
+  overflow: hidden;
+  min-height: 540px;
+  display: flex; flex-direction: column;
+  box-shadow: 0 0 60px #2440ff18 inset;
+}
+.screen::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: repeating-linear-gradient(to bottom, transparent 0 2px, #0000002e 2px 3px);
+  border-radius: inherit;
+}
+.head {
+  display: flex; flex-wrap: wrap; gap: 0 1.2ch; white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.head .p { color: var(--white); min-width: 4ch; }
+.head .svc { color: var(--yellow); }
+#screen[data-home="true"] .head .svc { visibility: hidden; }
+.head .clock { color: var(--yellow); margin-left: auto; }
+.page { flex: 1; display: grid; gap: .7em; align-content: start; padding-top: .6em; }
+.page:focus { outline: none; }
+
+/* bands and double height */
+.band { padding: .15em .6ch .1em; color: var(--black); }
+.band.b-red { background: var(--red); }
+.band.b-yellow { background: var(--yellow); }
+.band.b-green { background: var(--green); }
+.band.b-magenta { background: var(--magenta); }
+.band.b-cyan { background: var(--cyan); }
+.band.b-white { background: var(--white); }
+.band.b-blue { background: var(--blue); color: var(--yellow); }
+.band .kicker { display: flex; justify-content: space-between; gap: 1ch; flex-wrap: wrap; }
+.dh { line-height: 2.25; padding-bottom: .45em; }
+table { font-size: inherit; }
+.frac { display: inline-flex; align-items: center; font-size: .72em; line-height: 1; vertical-align: .1em; margin-left: .1em; }
+.frac span:first-child { transform: translateY(-.26em); }
+.frac span:last-child { transform: translateY(.26em); }
+.frac i { font-style: normal; margin: 0 -.12em; }
+.dh .w { display: inline-block; transform: scaleY(2); transform-origin: 50% 12%; vertical-align: top; line-height: 1; }
+.band .dh { line-height: 2.1; }
+.band.sec { padding: .25em .6ch .05em; }
+.band.sec .dh { font-size: clamp(1.7em, 6vw, 2.6em); line-height: 1.85; padding-bottom: 0; }
+.band.sec .kicker + .dh { font-size: clamp(1.35em, 4.2vw, 2em); margin-top: .12em; }
+.crumbs .cur { overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.c-red { color: var(--red); } .c-green { color: var(--green); } .c-yellow { color: var(--yellow); }
+.c-blue { color: #7d8dff; } .c-magenta { color: var(--magenta); } .c-cyan { color: var(--cyan); }
+.c-white { color: var(--white); } .c-dim { color: var(--dim); }
+.bg-blue { background: var(--blue); color: var(--white); padding: .1em .6ch; }
+.spec { background: var(--yellow); color: var(--black); padding: .1em .6ch; justify-self: start; }
+
+/* mosaic masthead */
+canvas.mosaic { display: block; width: 100%; height: auto; image-rendering: pixelated; }
+.mast { background: var(--blue); display: grid; }
+.mast-body { padding: .35em .8ch .45em; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .3em 2ch; align-items: center; }
+.frame.portrait img.tt-portrait { position: absolute; inset: 0; width: 100%; height: 100%; max-height: none; object-fit: cover; image-rendering: pixelated; transition: opacity 1s steps(6); }
+.portrait.resolved .tt-portrait { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { .portrait .tt-portrait { display: none; } }
+.portrait.resolved:hover .tt-portrait { opacity: 1; transition-duration: .3s; }
+.mast-text { display: grid; gap: .3em; min-width: 0; }
+.mast .frame, .me .frame { width: clamp(110px, 20vw, 190px); cursor: zoom-in; }
+.mast .frame img, .me .frame img { aspect-ratio: 1; object-fit: cover; }
+.me { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1em 2ch; align-items: start; }
+@media (max-width: 520px) { .mast-body { grid-template-columns: minmax(0, 1fr); } .mast .frame { order: -1; } .me { grid-template-columns: minmax(0, 1fr); } }
+.mast .sub { color: var(--white); grid-column: 1 / -1; }
+.mast .dh.role { font-size: 1.3em; }
+.mastcta { display: flex; flex-wrap: wrap; align-items: center; gap: .3em 1.2ch; padding-left: .2ch; }
+.mastcta .cta { background: var(--yellow); color: var(--black); text-decoration: none; padding: .02em 1ch; }
+.mastcta .cta:hover, .mastcta .cta:focus-visible { background: var(--white); outline: none; }
+.mastcta .loc { color: var(--cyan); text-transform: uppercase; margin-left: .6ch; }
+
+/* index lists */
+.toc { display: grid; gap: .12em; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 14em), 1fr)); gap: 1em 1.2ch; margin-top: .3em; }
+.card { display: grid; align-content: start; gap: .1em; color: var(--white); text-decoration: none; }
+.card .th { display: block; aspect-ratio: 16 / 10; overflow: hidden; border: 2px solid var(--white); background: #111; margin-bottom: .2em; }
+.card .th { position: relative; }
+.card .ttag { position: absolute; left: 0; top: 0; z-index: 1; background: var(--yellow); color: var(--black); padding: .05em .7ch; }
+.card .th img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; display: block; }
+.card .th.txt { display: grid; place-items: center; padding: .5em; text-align: center; color: var(--black); font-size: 1.5em; line-height: 1.05; }
+.card .tt { display: flex; justify-content: space-between; gap: 1ch; padding: 0 .2ch; }
+.card .tt .n { color: var(--yellow); font-variant-numeric: tabular-nums; }
+.card .m { color: var(--cyan); padding: 0 .2ch; }
+.card .q { color: var(--yellow); padding: 0 .2ch; }
+.card:hover .th, .card:focus-visible .th { border-color: var(--yellow); }
+.card:hover .tt, .card:focus-visible .tt { background: var(--white); color: var(--black); }
+.card:hover .tt .n, .card:focus-visible .tt .n { color: var(--black); }
+.card:focus-visible { outline: none; }
+.toc a {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1ch;
+  color: inherit; text-decoration: none; padding: 0 .4ch;
+}
+.toc a .t { overflow: hidden; white-space: nowrap; text-overflow: clip; }
+.toc a .t::after { content: " ........................................................................................."; color: var(--dim); }
+.toc a .n { color: var(--white); font-variant-numeric: tabular-nums; }
+.toc a:hover, .toc a:focus-visible { background: var(--white); color: var(--black); outline: none; }
+.toc a:hover .n, .toc a:focus-visible .n, .toc a:hover .t::after, .toc a:focus-visible .t::after { color: var(--black); }
+.cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6em 3ch; }
+.headlines a { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 1ch; color: var(--white); text-decoration: none; padding: 0 .4ch; }
+.headlines a .n { color: var(--yellow); }
+.fullport { display: block; background: var(--yellow); color: var(--black); text-decoration: none; padding: .15em .8ch; margin-top: .2em; }
+.watch { justify-self: start; background: var(--yellow); color: var(--black); text-decoration: none; padding: .05em .8ch; margin-top: .6em; display: inline-block; }
+.watch:hover, .watch:focus-visible { background: var(--white); outline: none; }
+.fullport:hover, .fullport:focus-visible { background: var(--white); outline: none; }
+.headlines { display: grid; gap: .15em; align-content: start; }
+.headlines .tag { font-size: .8em; letter-spacing: .04em; }
+.flash { animation: ttflash 2.4s steps(1, end) infinite; }
+@keyframes ttflash { 0% { visibility: visible; } 60% { visibility: hidden; } }
+@media (prefers-reduced-motion: reduce) { .flash { animation: none; } }
+.headlines a:hover .tag, .headlines a:focus-visible .tag { color: var(--black); }
+.headlines a:hover, .headlines a:focus-visible { background: var(--cyan); color: var(--black); outline: none; }
+.headlines a:hover .n, .headlines a:focus-visible .n { color: var(--black); }
+
+/* piece pages */
+.piece { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: .8em 2.4ch; align-items: start; }
+.facts { display: grid; gap: .45em; min-width: 0; }
+.row { display: block; }
+.row .l { margin-right: 1ch; }
+.row .l { font-variant-numeric: tabular-nums; }
+.meta { color: var(--cyan); }
+.quote { color: var(--yellow); }
+.facts .quote { line-height: 1.4; }
+.prose { font-family: "IBM Plex Mono", ui-monospace, "Courier New", monospace; font-size: clamp(15px, 1.55vw, 16.5px); line-height: 1.6; color: var(--white); display: grid; gap: .85em; max-width: 64ch; -webkit-font-smoothing: antialiased; }
+.prose p { margin: 0; text-wrap: pretty; }
+.prose.wide { max-width: 68ch; padding-bottom: .4em; }
+
+figure.pic { margin: 0; display: grid; gap: .25em; min-width: 0; }
+.frame {
+  position: relative; display: block; width: 100%; max-width: 100%; padding: 0; border: 0;
+  background: #111; cursor: zoom-in; border: 3px solid var(--white);
+}
+.vframe { border: 2px solid var(--white); background: #000; }
+.vframe video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
+.frame img { display: block; width: 100%; height: auto; max-height: 440px; object-fit: contain; background: #000; }
+.piece > figure.pic .frame { width: fit-content; max-width: 100%; }
+.piece > figure.pic .frame img { width: auto; max-width: 100%; max-height: 600px; }
+.frame canvas { position: absolute; inset: 0; width: 100%; height: 100%; image-rendering: pixelated; transition: opacity .5s steps(5); }
+.frame:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
+.stack { display: grid; gap: 1em; min-width: 0; }
+.duo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4ch; min-width: 0; align-items: start; }
+.duo .vframe video { aspect-ratio: 280 / 492; }
+.duo .frame { width: 100% !important; }
+.duo .frame img { width: 100% !important; max-height: none !important; }
+.piece.solo { grid-template-columns: minmax(0, 1fr); }
+.piece.solo .prose { max-width: 68ch; }
+.gallery { display: flex; gap: 1.5ch; margin-top: 1em; align-items: flex-start; }
+.gallery .gi { min-width: 0; }
+.gallery .frame img { max-height: none; }
+@media (max-width: 560px) { .gallery { flex-direction: column; max-width: none !important; } .gallery .gi { flex: none !important; width: 100%; } }
+.pics2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2ch; }
+figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
+#email { overflow-wrap: anywhere; }
+.row > span { min-width: 0; overflow-wrap: anywhere; }
+.cvjobs { display: grid; gap: .8em; }
+.cvb { margin: .3em 0 0; padding-left: 10ch; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: clamp(14px, 1.45vw, 15.5px); line-height: 1.5; display: grid; gap: .25em; -webkit-font-smoothing: antialiased; }
+.cvb li::marker { color: var(--dim); }
+@media (max-width: 560px) { .cvb { padding-left: 1.3em; } }
+.cv { display: grid; gap: .1em; font-variant-numeric: tabular-nums; }
+.cvrow { display: grid; grid-template-columns: 8ch minmax(0, 1fr) minmax(0, 1fr); gap: 0 1.5ch; }
+@media (max-width: 560px) { .cvrow { grid-template-columns: 8ch minmax(0, 1fr); } .cvrow > :last-child { grid-column: 2; } }
+.scorewide { display: grid; gap: .3em; }
+.blk { display: grid; gap: .5em; margin-top: 1.1em; }
+.script { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: .7em 3ch; align-items: start; }
+.script .vo { color: var(--white); }
+.script .act, .collab p { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: clamp(14px, 1.45vw, 15.5px); line-height: 1.5; margin: 0; -webkit-font-smoothing: antialiased; }
+.script .act { color: var(--cyan); font-style: italic; }
+.endline { border-top: 1px dashed #ffffff30; padding-top: .45em; }
+.collabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.4ch; }
+.collab { border-top: 4px solid var(--green); padding-top: .35em; display: grid; gap: .1em; align-content: start; }
+.collab .ch { color: var(--yellow); }
+.collab .who a { color: var(--white); text-decoration: underline; text-underline-offset: .15em; }
+.collab .who a:hover, .collab .who a:focus-visible { background: var(--white); color: var(--black); outline: none; }
+.collab .role { color: var(--dim); font-size: .85em; margin-bottom: .35em; }
+@media (max-width: 720px) {
+  .script { grid-template-columns: minmax(0, 1fr); gap: .2em; }
+  .script .act { margin-bottom: .7em; }
+  .collabs { grid-template-columns: minmax(0, 1fr); gap: 1em; }
+}
+
+.scores { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.scores td { padding: .1em .6ch; }
+.scores tr:nth-child(odd) td { color: var(--white); }
+.scores tr:nth-child(even) td { color: var(--cyan); }
+.scores td:last-child { text-align: right; color: var(--yellow); }
+.bigstats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1ch; }
+.bigstats.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.bigstats div { background: var(--blue); padding: .3em .8ch .2em; }
+.bigstats b { display: block; font-weight: normal; color: var(--yellow); }
+
+.fastext {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 1ch;
+  margin-top: .8em; padding-top: .3em;
+}
+.fastext:empty { display: none; }
+.crumbs { display: flex; align-items: baseline; gap: 1.2ch; flex-wrap: nowrap; white-space: nowrap; min-width: 0; max-width: 100%; overflow: hidden; contain: inline-size; margin: .15em 0 .5em; text-transform: uppercase; }
+.crumbs:empty { display: none; }
+.crumbs button { font: inherit; text-transform: inherit; background: none; border: 0; padding: 0 .3ch; cursor: pointer; color: var(--cyan); }
+.crumbs .back { background: var(--white); color: var(--black); padding: 0 .8ch; }
+.crumbs .path { display: flex; flex-wrap: nowrap; align-items: baseline; gap: 0 .6ch; min-width: 0; overflow: hidden; }
+.crumbs .back { flex: none; }
+.crumbs .sep { color: var(--dim); }
+.crumbs .here { color: var(--white); }
+.crumbs button:hover, .crumbs button:focus-visible { background: var(--yellow); color: var(--black); outline: none; }
+.fastext .sec { justify-self: center; }
+.fastext button {
+  font: inherit; background: none; border: 0; padding: 0 .3ch; text-align: left; cursor: pointer;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.fastext button { color: var(--white); }
+.fastext button:hover, .fastext button:focus-visible { background: var(--white); color: var(--black); outline: none; }
+.fastext button:hover span, .fastext button:focus-visible span { color: var(--black); }
+
+/* ---------- Remote ---------- */
+.remote {
+  background: var(--remote); border-radius: 18px; padding: 16px clamp(12px, 3vw, 24px);
+  display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px 22px; align-items: center;
+  box-shadow: 0 1px 0 #34343c inset;
+}
+.entry {
+  background: #000; color: var(--yellow); padding: .15em .8ch; min-width: 7ch; text-align: center;
+  font-variant-numeric: tabular-nums; border-radius: 4px; border: 1px solid #333;
+}
+.keys { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 6px; }
+.key, .rbtn {
+  font: inherit; color: var(--white); background: var(--key); border: 0; border-radius: 8px;
+  padding: .25em 0; cursor: pointer; box-shadow: 0 2px 0 #0008;
+}
+.key:hover, .rbtn:hover { background: #3b3b45; }
+.key:active, .rbtn:active { transform: translateY(1px); box-shadow: none; }
+.key:focus-visible, .rbtn:focus-visible { outline: 2px solid var(--yellow); outline-offset: 2px; }
+.side { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, minmax(0, 76px)); gap: 10px; }
+.fkw { font: inherit; background: none; border: 0; padding: 0; cursor: pointer; display: grid; justify-items: center; gap: 3px; color: var(--dim); }
+.fkw { min-width: 0; align-content: start; }
+.fkw .fl { font-size: .72em; line-height: 1.1; white-space: nowrap; min-height: 1em; text-align: center; }
+.fkw .fl { white-space: normal; }
+.fkw:hover .fl { color: var(--white); }
+.fkw[aria-current="true"] .fl { color: var(--white); }
+.fkw[aria-current="true"] .fk { outline: 2px solid var(--white); outline-offset: 2px; }
+.fkw:focus-visible { outline: 2px solid var(--yellow); outline-offset: 3px; border-radius: 6px; }
+.fk { display: block; width: 34px; height: 22px; border: 0; border-radius: 11px; box-shadow: 0 2px 0 #0008; }
+.fk.red { background: var(--red); } .fk.green { background: var(--green); } .fk.yellow { background: var(--yellow); } .fk.magenta { background: var(--magenta); } .fk.cyan { background: var(--cyan); }
+.rbtns { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.rbtn { padding: .2em 1.4ch; }
+.rbtn[aria-pressed="true"] { background: var(--white); color: var(--black); }
+.help { color: var(--dim); margin-left: auto; }
+.zenbtn { font: inherit; font-size: .72em; background: none; border: 0; padding: 0; color: #55555f; cursor: pointer; margin-left: auto; }
+.zenbtn:hover, .zenbtn:focus-visible { color: var(--cyan); outline: none; }
+.zen { position: relative; margin-top: .2em; }
+.zen canvas { border: 2px solid var(--white); }
+.zenface { position: absolute; left: 50%; top: 42%; width: 25%; transform: translate(-50%, -50%); image-rendering: pixelated; border: 3px solid var(--white); animation: zenhue 48s linear infinite; }
+@keyframes zenhue { to { filter: hue-rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .zenface { animation: none; } }
+
+/* lightbox */
+.lb[hidden] { display: none; }
+.lb { position: fixed; inset: 0; background: #000e; display: grid; place-items: center; padding: 24px; z-index: 10; }
+.lb img { max-width: 100%; max-height: calc(100vh - 110px); width: auto; height: auto; border: 3px solid var(--white); }
+.lb .bar { display: flex; justify-content: space-between; gap: 2ch; width: min(100%, 1100px); margin-bottom: 10px; }
+.lb button { font: inherit; background: var(--white); color: var(--black); border: 0; padding: 0 1.2ch; cursor: pointer; }
+.lb-inner { display: grid; justify-items: center; }
+
+@media (max-width: 720px) {
+  .piece { grid-template-columns: minmax(0, 1fr); }
+  .piece figure.pic { order: -1; }
+  .cols { grid-template-columns: minmax(0, 1fr); }
+  .remote { grid-template-columns: minmax(0, 1fr); }
+  .side { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .keys { grid-column: 1 / -1; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .help { margin-left: 0; width: 100%; }
+  .screen { min-height: 0; }
+  .fastext { grid-template-columns: auto minmax(0, 1fr) auto; }
+  .fastext { grid-template-columns: auto auto; justify-content: space-between; }
+  .fastext .sec { display: none; }
+  .crumbs .cur, .crumbs .hm { display: none; }
+  .bigstats { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .frame canvas { transition: none; }
+}
+
+/* ---------- desktop: use the width, keep the home page above the fold ---------- */
+.wrap { max-width: 1480px; }
+.toc { align-content: start; }
+@media (min-width: 721px) { .cols { grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr); } }
+.mast canvas.mosaic { height: auto; width: min(100%, clamp(260px, 84vh, 1000px)); }
+@media (max-width: 720px) { .mast canvas.mosaic { width: 100%; height: auto; } }
+.mast .frame { width: clamp(96px, min(20vw, 24vh), 260px); }
+@media (min-width: 721px) {
+  body { font-size: clamp(16px, min(2.3vw, 2.8vh), 30px); padding-block: 18px 32px; }
+}
+@media (min-width: 1100px) {
+  .wrap { grid-template-columns: minmax(0, 1fr) 236px; align-items: start; }
+  .remote { grid-template-columns: minmax(0, 1fr); position: sticky; top: 18px; padding: 16px; }
+  .entry { justify-self: stretch; }
+  .keys { grid-column: auto; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .keys .key:last-child { grid-column: 2; }
+  .side { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 12px; }
+  .rbtns .rbtn { flex: 1; }
+  .help { margin-left: 0; width: 100%; font-size: .8em; }
+}
+
+/* Pinterest case study: same text-left, artwork-right pattern as other cases. */
+.pinterest-case { display: grid; min-width: 0; }
+.pinterest-case-kicker {
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 1ch; font-size: .8em; color: var(--cyan); margin: .1em 0 .65em;
+}
+.pinterest-case-body {
+  display: grid;
+  grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+  align-items: start; gap: clamp(14px, 2.6vw, 38px); min-width: 0;
+}
+.pinterest-story { min-width: 0; }
+.pinterest-story h1 {
+  font-family: var(--tt); font-size: clamp(1.4em, 3vw, 2.05em);
+  line-height: 1.02; font-weight: normal; margin: 0 0 .4em; color: var(--yellow);
+}
+.pinterest-story .prose { max-width: 60ch; padding: 0; }
+.pinterest-hero-gallery {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start; gap: clamp(7px, 1vw, 14px); min-width: 0;
+}
+.pinterest-hero-gallery .frame { width: 100%; overflow: hidden; border: 0; border-radius: 6px; }
+.pinterest-hero-gallery .frame img {
+  display: block; width: 100%; height: auto; max-height: none;
+  aspect-ratio: 743 / 990; object-fit: contain;
+}
+.pinterest-hero-gallery figcaption {
+  font-size: .6em; line-height: 1.2; color: var(--dim); margin-top: .25em;
+}
+.pinterest-hero-gallery .frame:hover,
+.pinterest-hero-gallery .frame:focus-visible { outline: 2px solid var(--yellow); outline-offset: 2px; }
+@media (max-width: 760px) {
+  .pinterest-case-body { grid-template-columns: minmax(0, 1fr); gap: 1.2em; }
+  .pinterest-story { max-width: 65ch; }
+  .pinterest-hero-gallery { max-width: 670px; }
+}
+/* One campaign hero, then one distinct in-situ proof image. */
+.westminster-primary { min-width: 0; display: flex; align-items: flex-start; justify-content: center; }
+.westminster-primary figure.pic { min-width: 0; width: fit-content; max-width: 100%; }
+.westminster-primary .frame { width: fit-content; max-width: 100%; }
+.westminster-primary .frame img { width: auto; max-width: 100%; max-height: min(70vh, 620px); height: auto; object-fit: contain; }
+.westminster-snapshot {
+  margin-top: clamp(24px, 3.5vw, 42px);
+  padding-top: 1em;
+  border-top: 1px solid #ffffff38;
+  display: grid;
+  gap: .55em;
+  align-items: start;
+  justify-items: start;
+  min-width: 0;
+}
+.westminster-snapshot .snapshot-heading { color: var(--cyan); font-size: .84em; }
+.westminster-snapshot figure.pic { width: min(100%, 405px); }
+.westminster-snapshot .frame { width: 100%; }
+.westminster-snapshot .frame img { display: block; width: 100%; max-height: none; height: auto; object-fit: contain; }
+.westminster-snapshot figcaption { font-size: .78em; line-height: 1.4; margin-top: .35em; }
+@media (max-width: 720px) {
+  .westminster-primary .frame img { max-height: none; }
+  .westminster-snapshot figure.pic { width: min(100%, 420px); }
+}
+.atg-case { margin-top: .8em; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); }
+.atg-advert { min-width: 0; align-self: start; }
+.atg-advert figure.pic { width: 100%; }
+.atg-advert .frame { width: 100%; border: 0; }
+.atg-advert .frame img { display: block; width: 100%; height: auto; max-height: none; object-fit: contain; }
+@media (max-width: 720px) { .atg-case { grid-template-columns: minmax(0, 1fr); } }
+.auk-hero-gallery { grid-template-columns: 1fr; }
+.auk-hero-gallery .frame img { display:block;width:100%;height:auto;max-height:none;aspect-ratio:3/2;object-fit:contain; }
+.auk-case .pinterest-story h1 { font-size: clamp(1.4em,2.8vw,2.05em); }
+.section-intro { margin-block: .7em 1em; color: var(--white); }
+.spec-executions { display:grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16em),1fr)); gap: .75em; margin-top: .6em; }
+.spec-execution { padding: .9em 1ch; border: 1px solid var(--yellow); background: #15151c; display:grid; gap: .5em; align-content: start; }
+.spec-execution .setup { color: var(--white); }
+.spec-execution .payoff { color: var(--yellow); font-size: 1.28em; }
+.spec-execution .scene { color: var(--dim); font-size: .8em; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="tv">
+    <div class="screen" id="screen">
+      <div class="head" aria-hidden="true">
+        <span class="p" id="hp">P100</span>
+        <span class="svc">SAM LEWIS</span>
+        <span class="clock" id="clock"></span>
+      </div>
+      <nav class="crumbs" id="crumbs" aria-label="Breadcrumb"></nav>
+      <main class="page" id="page" tabindex="-1" aria-live="polite"></main>
+      <nav class="fastext" id="fastext" aria-label="Fastext links"></nav>
+    </div>
+  </div>
+
+  <div class="remote" aria-label="Remote control">
+    <div class="entry" id="entry" aria-live="polite">P___</div>
+    <div class="keys" id="keys"></div>
+    <div class="side" id="side">
+      <button class="fkw" data-go="200" data-sec="200" aria-label="Campaigns and big ideas, page 200"><span class="fk red"></span><span class="fl">Campaigns</span></button>
+      <button class="fkw" data-go="400" data-sec="400" aria-label="Email, web and product copy, page 400"><span class="fk green"></span><span class="fl">Product copy</span></button>
+      <button class="fkw" data-go="500" data-sec="500" aria-label="Editorial and SEO, page 500"><span class="fk magenta"></span><span class="fl">Editorial &amp; SEO</span></button>
+      <button class="fkw" data-go="600" data-sec="600" aria-label="Brand voice and audiences, page 600"><span class="fk cyan"></span><span class="fl">Brand voice</span></button>
+    </div>
+    <div class="rbtns">
+      <button class="rbtn" id="toIndex">HOME</button>
+      <span class="help">Type a page number, or press a colour to jump to that section</span>
+      <button class="zenbtn" data-go="900" aria-label="Zen mode, page 900">zen mode</button>
+    </div>
+  </div>
+</div>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Picture">
+  <div class="lb-inner">
+    <div class="bar"><span class="c-cyan" id="lbcap"></span><button id="lbclose">CLOSE</button></div>
+    <img id="lbimg" alt="">
+  </div>
+</div>
+
+<script>
+(() => {
+/* ---------- content ---------- */
+const CH = {
+  200:{name:"CAMPAIGNS & ADS",title:"CAMPAIGNS & SCRIPTS",colour:"red"},
+  400:{name:"EMAIL, WEB & PRODUCT",title:"EMAIL, WEB & PRODUCT COPY",colour:"green"},
+  500:{name:"EDITORIAL & SEO",title:"EDITORIAL, SEO & CONTENT",colour:"magenta"},
+  600:{name:"BRAND VOICE & MARKETS",title:"BRAND VOICE & AUDIENCES",colour:"cyan"},
+  700:{name:"BRAND VOICE",title:"BRAND VOICE",colour:"white"},
+  750:{name:"CREATIVE LEADERSHIP",title:"CREATIVE LEADERSHIP",colour:"white"},
+  800:{name:"EDITORIAL WRITING",title:"EDITORIAL WRITING",colour:"blue"}
+};
+const PIECES = {
+  201: { tag: "CAMPAIGN", title: "HBO MAX UK LAUNCH CAMPAIGN", meta: "HBO Max · OOH · 2026 · Warner Bros. Discovery",
+    cardQuote: "The best new platform since 9¾.",
+    body: [
+      "I led copy for the UK launch of HBO Max in 2026, writing across radio, outdoor, social, email and display. I pushed for UK-specific lines that spoke to local places and content, like \u201cThe best new platform since 9¾.\u201d",
+      "That line ran as a takeover of the tunnel at King's Cross, and the ad went viral on LinkedIn. Across the launch as a whole, UK subscriptions passed the yearly target within four months.",
+      "The same witty tone also carried through the launch emails and product experience.",
+    ],
+    pics: [["kings-cross", "King's Cross tunnel, London"]] },
+  202: { tag: "CAMPAIGN", title: "HBO MAX WALL-TO-WALL WATERCOOLER CAMPAIGN", meta: "HBO Max · OOH brand campaign · Autumn 2026 · Warner Bros. Discovery",
+    body: [
+      "This outdoor brand campaign ran in autumn 2026, at a point when HBO Max was between big new releases. With no single launch to shout about, the idea was to remind people how much is already there: a back catalogue full of the shows everyone has talked about for years.",
+      "\u201cWall-to-Wall Watercooler\u201d was the broader copy concept, turning that breadth into one simple promise: on HBO Max, there\u2019s always something people are talking about. For this update to the campaign I added the subtitle, \u201cCritically acclaimed, publicly debated\u201d, which makes the point that these are shows people argue over as well as admire.",
+      "Each poster put characters from different eras of HBO side by side, keeping the brand front of mind until the next big release.",
+    ],
+    pics: [["watercooler", "“Wall-to-Wall Watercooler” poster"]] },
+  203: { title: "SUCCESSION INFLUENCER CAMPAIGN FOR HBO MAX", meta: "HBO Max · Social & influencer · Warner Bros. Discovery",
+    quote: "Who's up for a pint at The Royal Roy?",
+    body: ["I develop social and influencer ideas for HBO Max. This paid collaboration with @hollyandbrookearehooked ran for the UK and Ireland launch, and imagined the Roys from Succession running a British pub."],
+    pics: [["royal-roy", "Instagram, @hbomaxuk × @hollyandbrookearehooked"]] },
+  204: { title: "HBO MAX DISPLAY & PAID SOCIAL ADS", meta: "HBO Max · Display & paid social · Warner Bros. Discovery",
+    quote: "Tough cases call for strong leads.",
+    body: ["I write display and paid-social copy for HBO Max across EMEA, plus international titles and taglines for European productions. Every word has to earn its place."],
+    pics: [["tough-cases", "Display ad, before market pricing was added"]] },
+  205: { title: "HUMANS AND HALT AND CATCH FIRE TAGLINES", meta: "Humans · Halt and Catch Fire · Empire Design",
+    quote: "Made in our image. Out of our control.",
+    quote2: "The battle for CTRL begins.",
+    body: [
+      "At Empire Design, I developed concepts, taglines and scripts for theatrical and home-entertainment campaigns for Universal Studios, Fox, AMC and Canal Plus, and wrote trailer, radio, outdoor, digital and social copy for film and TV launches.",
+      "Two of my lines from that time: the first for Humans, the second for Halt and Catch Fire.",
+    ],
+    pics: [["humans", "Humans"], ["halt-catch-fire", "Halt and Catch Fire"]] },
+
+  501: { tag: "CAMPAIGN", title: "THE WORLD GOES POP: TATE MODERN CAMPAIGN", meta: "Tate Modern · Campaign concept, trailer & script · AKA UK",
+    body: [
+      "The challenge with Tate Modern's The World Goes Pop was to make an art exhibition feel connected to the culture happening right now. I wanted to take Pop Art out of the gallery and into contemporary pop culture.",
+      "My idea was to bring Japanese pop star Kyary Pamyu Pamyu into the campaign. Her surreal, colourful visual world felt like a natural fit for the exhibition — a way to connect the work on the walls with a pop culture audience.",
+      "I contacted her team and discovered she was coming to London for a show. We managed to bring the idea to life while she was here. I developed the trailer concept, wrote the script and helped on the shoot.",
+    ],
+    link: ["https://www.youtube.com/watch?v=F1pbMBGxvS4", "Watch the trailer"],
+    pics: [["world-goes-pop", "The World Goes Pop, Tate Modern"]] },
+  207: { tag: "TRAILER", title: "POGÁNY INDULÓ DOCUMENTARY TRAILER FOR HBO MAX", meta: "HBO Max · Hungarian original documentary series · Trailer concept & script · Warner Bros. Discovery",
+    body: [
+      "Pogány Induló is a Hungarian rapper, real name Marcell Szirmai, who became one of the country's biggest music stars by the age of twenty.",
+      "For HBO Max's four-part documentary series about him, Pogány Induló: Vajon mit mondana anya (What Would Mum Say?), I came up with the concept for the trailer and wrote the script.",
+      "My concept shows him walking alone against the crowd, with his own lyrics projected onto him. He's a lone wolf, weighed down by his words.",
+    ],
+    link: ["https://www.youtube.com/watch?v=p6dlv8rp49E", "Watch the trailer"],
+    pics: [["pogany-indulo", "Pogány Induló: Vajon mit mondana anya, HBO Max"]] },
+  208: { tag: "TRAILER", title: "BOYHOOD TRAILER", meta: "Universal · Trailer script · Empire Design",
+    body: [
+      "At Empire Design, I scripted an emotive trailer for Universal's release of Boyhood, Richard Linklater's film shot over twelve years with the same cast.",
+      "The film follows one boy, Mason, from the age of six to eighteen, with Patricia Arquette and Ethan Hawke as his parents. That process was what made the film unique, so the script had to explain it quickly, then let the footage do the emotional work as Mason grows up on screen.",
+      "The trailer gained 5.5 million views on YouTube, and was also shown on TV in America.",
+    ],
+    pics: [["boyhood", "Boyhood, Universal"]] },
+  502: { tag: "TRAILER", title: "HOME, I'M DARLING TRAILER FOR THE NATIONAL THEATRE", meta: "National Theatre · Trailer script · AKA UK",
+    body: [
+      "Laura Wade's play Home, I'm Darling follows Judy, a woman who chooses to live as a perfect 1950s housewife in the present day.",
+      "I wrote the National Theatre's trailer to match: a script in the style of a 1950s TV commercial that sells the dream, then hints at the cracks beneath it. It has more than 200,000 views on YouTube.",
+    ],
+    link: ["https://www.youtube.com/watch?v=fDvlSoQ3PY4", "Watch the trailer"],
+    pics: [["national-theatre", "Home, I'm Darling trailer, National Theatre"]] },
+
+  206: { tag: "TRAILER", title: "HBO MAX TRAILERS FOR CINEMA, TV AND RADIO", meta: "HBO Max · Trailers · Cinema, TV & radio · Warner Bros. Discovery",
+    body: [
+      "At HBO Max, I come up with ideas for trailers and write the scripts, for cinema, TV and radio.",
+      "That includes radio trailers for our UK campaigns, scripts for brand campaigns, and trailer ideas for brand campaigns around HBO's local original productions.",
+    ],
+    pics: [["hbo-max-trailer", "HBO Max trailer"]] },
+
+  211: { tag: "CAMPAIGN", title: "HBO MAX HALLOWEEN 2026 CAMPAIGN", meta: "HBO Max · Halloween 2026 · Campaign concept · AV & online · Warner Bros. Discovery",
+    quote: "Fear hits home.",
+    body: [
+      "For Halloween 2026 on HBO Max, I came up with the campaign line: \u201cFear hits home.\u201d",
+      "The line has a double meaning. It speaks to the quality of the horror on HBO Max, the kind that really gets to you, and to the Home in Home Box Office: you don\u2019t have to leave the house to be terrified.",
+      "The line flexed across AV and online assets, from the trailer to display creative.",
+    ],
+    video: ["hbo-max-halloween", "HBO Max Halloween 2026 trailer"],
+    pics: [["hbo-max-halloween", "Display creative: \u201cFear hits home\u201d"]] },
+
+  212: { tag: "CAMPAIGN", title: "A KNIGHT OF THE SEVEN KINGDOMS GAMIFIED JOURNEY", meta: "HBO Max app · A Knight of the Seven Kingdoms · Interactive retention campaign · Warner Bros. Discovery",
+    body: [
+      "We needed to keep A Knight of the Seven Kingdoms viewers watching throughout the show\u2019s debut season.",
+      "My solution was an interactive journey in the HBO Max app. Episode by episode, users took quizzes and played games to work their way up from stable hand to knight.",
+      "The in-season gamification drove an uplift of around 16\u201318% through consistent episode progression.",
+    ],
+    duo: true,
+    video: ["knight-journey", "Episode challenge: take your vows"],
+    pics: [["knight-journey", "Result screen for getting every answer wrong"]] },
+
+  213: { tag: "B2B", title: "ATG THEATRES: BUSINESS DESERVES A BIGGER STAGE", meta: "ATG Theatres · Corporate nights out & venue hire · LinkedIn concept · AKA UK",
+    body: [
+      "At AKA, part of ATG, I worked on attracting corporate clients to theatres. The creative challenge was different from selling tickets: I wanted businesses to see a West End theatre as somewhere special for their next corporate night out.",
+      "“Business deserves a bigger stage” gives that idea a simple, memorable line. A LinkedIn execution set against the Lyceum Theatre shows how the venue itself can do the selling — a famous West End theatre that makes a company night out feel like an occasion."
+    ],
+    pics: [["atg-lyceum-b2b", "ATG Theatres corporate venue hire LinkedIn advertising concept featuring the Lyceum Theatre"]] },
+
+  301: { tag:"SPEC",title:"AUK MINI 2: DYRKEGLEDE",meta:"Auk Mini 2 · Spec Christmas campaign · Product storytelling",spec:true,
+    body:[
+      "I wanted to show how I'd approach an Auk brief in practice, so I explored the idea of Auk Mini 2 as a Christmas gift that keeps giving long after the day itself.",
+      "Its practical promise is compelling: fresh greens at home, minus the fuss. But I wanted to capture how good it feels to grow something yourself. That led me to Dyrkeglede — the Norwegian word for the pleasure of growing.",
+      "“Meet Auk Mini 2. Fresh greens, minus the fuss.” does the functional work, while “Dyrkeglede” adds warmth and character. I pictured it in a real, lived-in kitchen, where herbs go straight from the growing tray to dinner.",
+      "The core product promise could stay consistent for the UK, US and Canada, with examples and language adapted for each audience. This is an independent spec concept, not commissioned Auk advertising."
+    ],pics:[["auk-mini2-dyrkeglede","Auk Mini 2 Dyrkeglede speculative campaign in a London kitchen"]] },
+  214: { tag:"PRODUCT",title:"NOODOLL: RICESPUD PRODUCT MESSAGING",meta:"Noodoll · Ecommerce · Product descriptions",
+    body:[
+      "At Noodoll, I wrote product copy designed to bring the characters to life while helping customers understand what they're buying. Ricespud needed a playful, distinctive voice alongside clear descriptions of the product.",
+      "From “Are you ready for spud at first sight?” to the softness, embroidered features and little arms for hugs, the writing brings the character into the shopping experience."
+    ],pics:[["noodoll-ricespud-product-copy","Noodoll Ricespud product page showing the plush and the product copy I wrote"]] },
+  215: { tag:"EMAIL / WEB",title:"HBO MAX: EMAIL, LANDING PAGES & PRODUCT COPY",meta:"HBO Max · EMEA · CRM, web and product messaging",
+    body:[
+      "At HBO Max, I write English master copy for emails, landing pages and product journeys across EMEA, from launch and onboarding to retention and win-back.",
+      "That includes explaining offers and product features simply, while keeping the brand voice distinctive. I adapt messages for different placements, audiences and markets, and write the CTAs, modules and subject lines that turn a big idea into a working customer journey.",
+      "For the UK launch, I helped keep the same voice consistent across advertising, welcome emails and product copy."
+    ],pics:[["hbo-max-welcome-email","HBO Max UK welcome email"]] },
+  216: { tag:"SEO / EDITORIAL",title:"FUTURELEARN: RESEARCH-LED SEO ARTICLES",meta:"FutureLearn · SEO articles · Research and editorial",
+    body:[
+      "At FutureLearn, I researched and wrote SEO-led articles for people exploring new subjects and learning opportunities. I enjoyed digging into what readers were asking, finding the useful angle and turning research into accessible, engaging copy.",
+      "I also wrote FutureLearn's first brand tone-of-voice guide, making it easier for different writers to speak to learners consistently."
+    ] },
+  401: { title: "TNT SPORTS CRM, INCLUDING PARIS 2024", meta: "TNT Sports · Paris 2024 · CRM · Warner Bros. Discovery",
+    body: [
+      "I lead master CRM for HBO Max and TNT Sports across EMEA, from onboarding to win-back. When we took on TNT Sports' CRM, I worked with their marketing team to rebuild the emails around user data. Our CRM now performs better than any other WBD region.",
+      "For Paris 2024, a large batch of Olympics comms landed just before deadline. I used automation to deliver it on time, during what became our highest-ever period for new subscriptions.",
+    ],
+    scores: true,
+    pics: [["paris-2024", "Paris 2024 CRM"]] },
+  403: { tag: "CAMPAIGN", title: "MILANO CORTINA 2026 INTERACTIVE CAMPAIGN", meta: "HBO Max · TNT Sports · Milano Cortina 2026 · Warner Bros. Discovery",
+    quote: "Your Olympics. Your way.",
+    body: [
+      "I come up with interactive campaigns for TNT Sports users. For the Milano Cortina 2026 Winter Olympics, I created a pick-your-sports journey: users chose the sports they cared about from all 16 on the programme, so we only sent them the notifications that mattered to them.",
+      "The final screen asked them to turn on push notifications, so they were ready for the opening ceremony on 6 February.",
+    ],
+    wide: true,
+    pics: [["milano-cortina", "Pick-your-sports journey, Milano Cortina 2026"]] },
+
+  209: { title: "MOCK THE WEEK PRINT AD FOR TLC", meta: "TLC · Print · Warner Bros. Discovery",
+    quote: "Heard we were finished? Fake news.",
+    body: ["I wrote this print ad for Mock the Week on TLC, turning the idea that the show was ‘finished’ into the punchline."],
+    pics: [["mock-the-week", "Print ad for TLC"]] },
+  505: { tag: "CAMPAIGN", title: "WESTMINSTER ABBEY: FEEL WONDER FIRST HAND", meta: "Westminster Abbey · Outdoor campaign · AKA UK",
+    quote: "FEEL WONDER FIRST HAND",
+    body: [
+      "For this Westminster Abbey campaign, the visual was doing something lovely: the Abbey appeared to be balanced on an outstretched hand. My job was to find the line that made the image and the idea click together.",
+      "I wrote “Feel wonder first hand.” It worked with the visual but also said something about the experience of visiting the Abbey — seeing its history and architecture for yourself.",
+      "I love working with designers because the best line doesn't just sit underneath an image. The two make each other better. This was one of those briefs where the collaboration made the idea feel complete.",
+    ],
+    pics: [["westminster-abbey", "Westminster Abbey outdoor campaign: Feel wonder first hand"]],
+    snapshot: ["westminster-abbey-bond-street", "A tourist posing in front of our campaign."] },
+  210: { title: "SWALLOWS AND AMAZONS TAGLINE", meta: "Swallows and Amazons · Film tagline · AKA UK",
+    quote: "Some summers you treasure forever.",
+    body: ["At AKA UK, I wrote the tagline for the 2016 film of Swallows and Amazons, based on Arthur Ransome's classic children's novel."],
+    pics: [["swallows-amazons", "Swallows and Amazons"]] },
+  503: { tag: "TRAILER", title: "WHALES: BENEATH THE SURFACE TRAILER FOR THE NATURAL HISTORY MUSEUM", meta: "Natural History Museum · Trailer concept, script & edit · AKA UK",
+    body: [
+      "For the Natural History Museum's exhibition Whales: Beneath the Surface, I came up with the idea for the trailer, wrote the script and helped with the edit.",
+      "I wanted to tap into the sense of mystery whales evoke, and found Heathcote Williams\u2019 poem Whale Nation. The trailer is built around an extract from it.",
+    ],
+    link: ["https://www.youtube.com/watch?v=z_ZonqO_Hn4", "Watch the trailer"],
+    pics: [["whales", "Whales: Beneath the Surface, Natural History Museum"]] },
+  504: { tag: "SOCIAL", title: "MATILDA THE MUSICAL SOCIAL, VIDEO & RADIO", meta: "Matilda The Musical · Social, video & radio · AKA UK",
+    body: [
+      "At AKA UK, for Matilda The Musical, I came up with ideas for social and video content, wrote the scripts, went along to the shoots and edited the videos myself in Adobe Premiere Pro.",
+      "Meet the Matildas introduced the young actors taking on the title role, showing audiences the new cast before they stepped on stage.",
+      "I also scripted and edited Matilda\u2019s radio trailers.",
+    ],
+    link: ["https://www.youtube.com/watch?v=w1WAWnm4zLw&amp;list=PLybPI7Yeye3jCdkvCjsYKNvWqBjZdYBzS", "Watch the videos"],
+    pics: [["matilda", "Meet the Matildas, Matilda The Musical"]] },
+
+  601: { tag: "CAMPAIGN", title: "CITY & GUILDS AND FUTURELEARN SKILLS CAMPAIGN", meta: "City & Guilds × FutureLearn · Campaign",
+    quote: "The new world needs you.",
+    body: [
+      "For City & Guilds' new skills courses, I created ‘The New World Needs You’, a campaign encouraging young people to see a place for themselves in the post-pandemic world. We extended the idea into sector-specific paid creative.",
+    ],
+    pics: [["new-world-needs", "The New World Needs…"], ["new-world-building", "Sector-specific paid social"]] },
+  602: { tag: "CAMPAIGN", title: "FUTURELEARN'S FIRST OUTDOOR CAMPAIGN: RESULTS DAY", meta: "FutureLearn · First OOH campaign · Results Day",
+    quote: "Exam results don't define you.",
+    body: [
+      "FutureLearn was preparing its first ever outdoor campaign, timed for Results Day. We needed a line that spoke directly to young people who'd just opened their exam results — whether they were celebrating or wondering what to do next.",
+      "I wanted to cut through the pressure and expectations that come with that day. “Exam results don't define you” was a simple, reassuring message that reflected FutureLearn's belief in learning beyond the classroom, at any age and at your own pace.",
+      "The work went up on the UK's biggest out-of-home screen. It was a big moment for FutureLearn's first step into outdoor advertising — and a chance to say something useful to students on a day when they really needed to hear it.",
+    ],
+    pics: [["results-day", "FutureLearn Results Day outdoor campaign"]] },
+};
+
+// Each case-study page belongs to one section. Homepage highlights are links, not duplicate case studies.
+// Single-section case-study ownership; homepage highlights are links to the same pages.
+const CHAPTERS = {
+  200:{line:"Campaigns and scripts, from concept to copy across channels.",pieces:[301,201,501,505,202,211,601,403,602,213,504]},
+  400:{line:"Email, landing pages, ecommerce descriptions and useful product copy.",pieces:[214,215,401,204,212]},
+  500:{line:"Research-led articles, SEO writing and clear storytelling.",pieces:[216,207,208,502,503,205,210,206]},
+  600:{line:"Tailoring brand voice to different audiences, regions and formats.",pieces:[700,203,209]}
+};
+const FEATURE_CARDS = {
+  700:{tag:"BRAND VOICE",title:"BUILDING A BRAND VOICE ACROSS EMEA",meta:"HBO Max · TNT Sports · FutureLearn · Voice and localisation",pics:[["quick-witted","HBO Max tone-of-voice guide"]]}
+};
+const ORDER = [100,101,200,301,201,501,505,202,211,601,403,602,213,504,400,214,215,401,204,212,500,216,207,208,502,503,205,210,206,600,700,203,209,750,800,888];
+/* ---------- helpers ---------- */
+const $ = (s, r = document) => r.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const frac = s => s.replace(/\u00BE/g, '<span class="frac" aria-label="three quarters"><span>3</span><i>/</i><span>4</span></span>');
+const dh = (text, cls = "") => `<div class="dh ${cls}">${esc(text).split(" ").map(w => `<span class="w">${frac(w)}</span>`).join(" ")}</div>`;
+const chapterOf = n => {
+  if (CHAPTERS[n]) return n;
+  for (const [section, data] of Object.entries(CHAPTERS)) if (data.pieces.includes(n)) return Number(section);
+  return n >= 800 && n < 888 ? 800 : n >= 750 && n < 800 ? 750 : Math.floor(n / 100) * 100;
+};
+const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function band(n, title) {
+  const ch = CH[chapterOf(n)];
+  return `<div class="band b-${ch.colour} sec">${n !== chapterOf(n) ? `<div class="kicker"><span>${ch.name}</span></div>` : ""}${dh(title)}</div>`;
+}
+function pic([file, cap], showCaption = true) {
+  const src = imageSrc(file);
+  return `<figure class="pic"><button class="frame" data-src="${src}" data-cap="${esc(cap)}" aria-label="Enlarge picture: ${esc(cap)}">
+    <img src="${src}" alt="${esc(cap)}" loading="${file === "auk-mini2-dyrkeglede" ? "eager" : "lazy"}" fetchpriority="${file === "auk-mini2-dyrkeglede" ? "high" : "auto"}" decoding="async"></button>${showCaption ? `<figcaption>${esc(cap)}</figcaption>` : ""}</figure>`;
+}
+function imageSrc(file) { return ["auk-mini2-dyrkeglede","noodoll-ricespud-product-copy","westminster-abbey-bond-street","atg-lyceum-b2b"].includes(file) ? "/img/" + file + ".webp" : "/img/" + file + ".jpg"; }
+function row(label, colour, text) {
+  return text ? `<div class="row"><span class="l c-${colour}">${label}</span><span>${esc(text)}</span></div>` : "";
+}
+
+/* ---------- pages ---------- */
+function pageIndex() {
+  const toc = [
+    [101,"About","white"],[200,"Campaigns & scripts","red"],
+    [400,"Email, web & product","green"],[500,"Editorial & SEO","magenta"],
+    [600,"Brand voice & markets","cyan"],[750,"Creative leadership","white"],
+    [800,"Editorial background","blue"],[888,"Contact & CV","yellow"]
+  ];
+  const heads = [
+    [301,"SPEC","yellow","Auk Mini 2: Dyrkeglede"],
+    [214,"PRODUCT","green","Noodoll: Ricespud product copy"],
+    [215,"EMAIL / WEB","green","HBO Max: CRM, landing pages and product copy"],
+    [216,"SEO","magenta","FutureLearn: SEO articles and research"],
+    [401,"CRM","cyan","TNT Sports: EMEA lifecycle emails"],
+    [201,"CAMPAIGN","red","HBO Max UK launch"],
+    [700,"VOICE","cyan","Building brand voice across EMEA"],
+    [504,"SCRIPTS","red","Matilda: Social, video and radio"]
+  ];
+  return `
+    <div class="mast">
+      <div class="mast-body"><div class="mast-text"><canvas class="mosaic" id="mastCanvas" role="img" aria-label="Sam Lewis"></canvas>
+      ${dh("SENIOR COPYWRITER & CREATIVE", "c-yellow role")}
+      <div class="mastcta"><a class="cta" href="mailto:sam.joe.lewis@gmail.com">EMAIL <span aria-hidden="true">&rsaquo;</span></a><a class="cta" href="#p888" data-go="888">CV <span aria-hidden="true">&rsaquo;</span></a><span class="loc">London</span></div>
+      </div>
+      <button class="frame portrait" data-src="/img/sam.jpg" data-cap="Sam Lewis" aria-label="Enlarge photo of Sam Lewis"><img src="/img/sam.jpg" alt="Sam Lewis"><img class="tt-portrait" src="/img/sam-teletext.png" alt=""></button>
+      <div class="sub">I write campaigns, emails, landing pages and product copy for different audiences and markets — with curiosity and research at the heart of it.</div></div></div>
+    <div class="cols">
+      <div class="headlines"><div class="c-cyan">SELECTED WORK</div>
+        ${heads.map(([n, tag, c, t]) => `<a href="#p${n}" data-go="${n}"><span><span class="tag c-${c}${tag === "SPEC" ? " flash" : ""}">${tag}</span> ${frac(esc(t))}</span><span class="n">${n}</span></a>`).join("")}
+      </div>
+      <div class="toc"><div class="c-cyan">EXPLORE</div>
+        ${toc.map(([n, t, c]) => `<a href="#p${n}" data-go="${n}"><span class="t c-${c}">${esc(t)}</span><span class="n">${n}</span></a>`).join("")}
+      </div>
+    </div>`;
+}
+
+function pageAbout() {
+  const paras = [
+    "I'm a Senior Copywriter and Creative with over a decade of experience turning strategic briefs into ideas and words for international brands.",
+    "At Warner Bros. Discovery, I write across HBO Max and TNT Sports in EMEA: campaign concepts, emails, landing pages, display and product copy. I led copy for HBO Max’s 2026 UK launch, adapting messages for different audiences and markets.",
+    "I also lead brand voice work. I develop tone-of-voice guides and messaging frameworks, and write English master copy for multiple markets. I enjoy solving the bigger creative problem as much as finding the right words in a headline, script or email.",
+    "At FutureLearn, I wrote SEO articles and developed brand voice. I have also written product descriptions for Noodoll, and campaigns and scripts for Tate Modern and the National Theatre. My early journalism work taught me to research, ask good questions and edit hard.",
+    "I collaborate closely with art directors, designers, producers and marketers, present ideas to senior stakeholders, and manage two junior writers. The throughline is straightforward: clear thinking, distinctive writing and good work made together.",
+  ];
+  return `<div class="band b-white sec">${dh("ABOUT")}</div>
+    <div class="prose wide">${paras.map(p => `<p>${esc(p)}</p>`).join("")}</div>`;
+}
+
+function pageChapter(n) {
+  const c = CHAPTERS[n];
+  return `${band(n, CH[n].title)}
+    <div class="prose wide section-intro">${esc(c.line)}</div>
+    <div class="cards">${c.pieces.filter(p => chapterOf(p) === n).map(p => {
+      const x = PIECES[p] || FEATURE_CARDS[p];
+      if (!x || typeof x.title !== "string" || !x.title.trim()) { console.error("Missing portfolio case for page", p); return ""; }
+      const tg = x.tag ? `<span class="ttag">${esc(x.tag)}</span>` : "";
+      const th = x.pics ? `<span class="th">${tg}<img src="${imageSrc(x.pics[0][0])}" alt="" decoding="async"></span>`
+        : `<span class="th txt" style="background:var(--${CH[n].colour})">${tg}${esc(x.quote || x.title)}</span>`;
+      return `<a class="card" href="#p${p}" data-go="${p}">${th}<span class="tt"><span>${esc(x.title)}</span><span class="n">${p}</span></span><span class="m">${esc(x.meta)}</span>${(x.quote || x.cardQuote) ? `<span class="q">“${frac(esc((x.quote || x.cardQuote).replace(/^“|”$/g, "")))}”</span>` : ""}</a>`;
+    }).join("")}</div>`;
+}
+
+function scoresBlock() {
+  return `<div class="facts"><div class="bg-blue">TNT SPORTS CRM: RESULTS</div>
+    <table class="scores"><tbody>
+      <tr><td>Extra viewing a week, vs control group</td><td>1.5–2 hrs</td></tr>
+      <tr><td>Habitual viewing, vs control group</td><td>+10 percentage pts</td></tr>
+      <tr><td>CRM performance across WBD regions</td><td>Highest</td></tr>
+    </tbody></table>
+    <div class="c-dim">Viewers who received the campaigns, compared with a control group who didn't.</div></div>`;
+}
+
+const AR = {"pinterest-recipe-toast":0.7505,"pinterest-gift-encore":0.7505,"boyhood":1.705,"futurelearn-step":1.634,"halt-catch-fire":1.41,"humans":1.754,"kings-cross":1.77,"matilda":1.78,"mock-the-week":1.531,"national-theatre":1.314,"new-world-building":0.597,"new-world-needs":1,"paris-2024":0.821,"quick-witted":1.604,"results-day":1,"royal-roy":0.735,"tough-cases":0.999,"watercooler":1.333,"westminster-abbey":0.647,"world-goes-pop":1.316,"hbo-max-welcome-email":0.937,"knight-journey":0.6,"hbo-max-halloween":1.2,"whales":1.784,"pogany-indulo":1.783,"hbo-max-trailer":1.79,"milano-cortina":1.867,"wwc-poster":0.667,"skinny-julia-holter":1.732,"skinny-slow-west":1.732,"swallows-amazons":0.681};
+function gallery(list) {
+  const s = list.reduce((a, [f]) => a + (AR[f] || 1), 0);
+  return `<div class="gallery" style="max-width:calc(${s.toFixed(3)} * min(520px, 72vh))">${list.map(x => `<div class="gi" style="flex:${AR[x[0]] || 1} 1 0">${pic(x)}</div>`).join("")}</div>`;
+}
+
+function pageAukCampaign(p) {
+  return `<section class="pinterest-case auk-case">
+    <div class="pinterest-case-kicker"><span>SPEC CHRISTMAS CAMPAIGN</span><span class="c-yellow">P301</span></div>
+    <div class="pinterest-case-body">
+      <div class="pinterest-story"><h1>AUK MINI 2: DYRKEGLEDE</h1>
+        <div class="prose wide">${p.body.map(t => `<p>${esc(t)}</p>`).join("")}</div></div>
+      <div class="pinterest-hero-gallery auk-hero-gallery">${p.pics.map(x=>pic(x,false)).join("")}</div>
+    </div>
+  </section>`;
+}
+function pagePiece(n) {
+  const p = PIECES[n];
+  if (n === 301) return pageAukCampaign(p);
+  if (n === 213) return `${band(n, p.title)}
+    <div class="meta">${esc(p.meta)}</div>
+    <div class="piece atg-case">
+      <div class="facts"><div class="prose">${p.body.map(t => `<p>${esc(t)}</p>`).join("")}</div></div>
+      <div class="atg-advert">${pic(p.pics[0], false)}</div>
+    </div>`;
+  const multi = p.pics && (p.pics.length > 1 || p.wide);
+  const pics = p.pics && !multi ? pic(p.pics[0]) : "";
+  const vid = p.video ? `<figure class="pic"><div class="vframe"><video controls playsinline preload="none" poster="/img/${p.video[0]}-video.jpg" aria-label="${esc(p.video[1])}"><source src="/video/${p.video[0]}.mp4" type="video/mp4"></video></div><figcaption>${esc(p.video[1])}</figcaption></figure>` : "";
+  const right = p.snapshot ? `<div class="westminster-primary">${pic(p.pics[0], false)}</div>` : p.pitch ? ""
+    : vid ? `<div class="${p.duo ? "duo" : "stack"}">${vid}${pics}</div>` : pics;
+  return `${band(n, p.title)}
+    <div class="meta">${esc(p.meta)}</div>
+    ${p.quote ? dh(p.quote, "quote") : ""}${p.quote2 ? dh(p.quote2, "quote") : ""}
+    <div class="piece${right ? "" : " solo"}">
+      <div class="facts">
+        <div class="prose">${p.body.map(t => `<p>${esc(t)}</p>`).join("")}</div>
+        ${p.link ? `<a class="watch" href="${p.link[0]}" target="_blank" rel="noopener">${esc(p.link[1])} <span aria-hidden="true">&rsaquo;</span></a>` : ""}
+      </div>
+      ${right}
+    </div>
+    ${multi ? gallery(p.pics) : ""}
+    ${p.snapshot ? `<section class="westminster-snapshot" aria-label="Campaign installation at Bond Street station"><div class="snapshot-heading">BOND STREET STATION</div>${pic(p.snapshot)}</section>` : ""}
+
+    ${p.scores ? `<div class="scorewide">${scoresBlock()}</div>` : ""}
+    ${p.script ? `<section class="blk"><div class="bg-blue">SCRIPT</div>
+      <div class="script">${p.script.map(([vo, act]) => `<div class="vo">${esc(vo)}</div><div class="act">${esc(act)}</div>`).join("")}</div>
+      <div class="endline"><span class="c-yellow">${esc(p.endline[0])}</span> ${esc(p.endline[1])}</div></section>` : ""}
+    ${p.collabs ? `<section class="blk"><div class="bg-blue">PROPOSED CREATOR COLLABS</div>
+      <div class="collabs">${p.collabs.map(([h, who, role, txt]) => `<div class="collab"><div class="ch">${esc(h)}</div><div class="who">${who.map(([nm, url]) => `<a href="${url}" target="_blank" rel="noopener">${esc(nm)}</a>`).join(" \u00d7 ")}</div><div class="role">${esc(role)}</div><p>${esc(txt)}</p></div>`).join("")}</div></section>` : ""}`;
+}
+
+function pageVoice() {
+  return `${band(700, "BRAND VOICE")}
+    <div class="meta">HBO Max · Warner Bros. Discovery · FutureLearn</div>
+    <div class="bigstats two"><div><b>10m+</b>people a week</div><div><b>17</b>languages</div></div>
+    <div class="piece"><div class="facts"><div class="prose">
+      <p>I own HBO Max’s tone-of-voice guides and messaging frameworks, and work across brands with very different personalities.</p>
+      <p>My English master copy for HBO Max and TNT Sports is translated into 17 languages and reaches more than 10 million people a week, so the voice has to hold in every market.</p>
+      <p>At FutureLearn, I wrote the company’s first brand tone-of-voice guide. I also created the mnemonic STEP (Social, Transformative, Experimental, Purposeful), inspired by the FutureLearn logo, to help staff remember our brand values.</p>
+    </div></div><div class="stack">${pic(["quick-witted", "HBO Max tone-of-voice guide"])}<figure class="pic"><div class="vframe"><video controls playsinline preload="none" poster="/img/futurelearn-step-video.jpg" aria-label="FutureLearn STEP animation"><source src="/video/futurelearn-step.mp4" type="video/mp4"></video></div><figcaption>FutureLearn staff values film: STEP</figcaption></figure></div></div>`;
+}
+
+function pageLeadership() {
+  return `${band(750, "LEADERSHIP")}
+    <div class="meta">Warner Bros. Discovery</div>
+    <div class="bigstats two"><div><b>2</b>junior writers I manage</div><div><b>UK</b>retention team I lead</div></div>
+    <div class="prose wide">
+      <p>I manage and mentor two junior writers, giving creative direction and feedback from concept to final copy, and lead the UK retention team for HBO Max and TNT Sports.</p>
+      <p>Alongside my own writing, I edit and shape their work before it becomes English master copy for multiple markets.</p>
+      <p>I regularly present and defend ideas to senior stakeholders, and work closely with designers and regional teams.</p>
+    </div>`;
+}
+
+function pageOffDuty() {
+  return `${band(800, "EDITORIAL WRITING")}
+    <div class="meta">The Skinny · Drowned in Sound · FutureLearn</div>
+    <div class="piece solo"><div class="facts"><div class="prose">
+      <p>I started my writing career as a music and film journalist. For The Skinny, I interviewed filmmakers and musicians and wrote cover features and long-form profiles, including John Maclean on Slow West and Julia Holter on Loud City Song.</p>
+      <p>I later produced long-form editorial and interview pieces at FutureLearn, alongside my campaign work.</p>
+    </div></div></div>${gallery([["skinny-slow-west", "The Skinny: Slow West"], ["skinny-julia-holter", "The Skinny: Julia Holter"]])}`;
+}
+
+function pageSubtitles() {
+  const cv = [
+    ["2022\u2013now", "HBO Max (Warner Bros. Discovery)", "Senior Creative & Copy Specialist", [
+      "Lead campaign copy and creative across HBO Max, TNT Sports and discovery+ in EMEA, taking strategic briefs from initial concept to channel-ready execution.",
+      "Develop integrated campaigns across video, social, digital, OOH and radio, including copy for the UK launch of HBO Max.",
+      "Write direct-response CRM, landing-page and upsell copy for subscription journeys, connecting brand ideas to clear customer action.",
+      "Create English master copy for 15+ EMEA markets, working with regional teams to retain the intent and tone through localisation.",
+      "Shape tone of voice across distinct brands and audiences; collaborate with designers, marketers and strategists, presenting creative work to senior stakeholders.",
+      "Line manage and mentor two junior copywriters, giving creative direction and feedback from concept to final copy."]],
+    ["2020\u201321", "FutureLearn", "Copywriter", [
+      "Developed brand, product, CRM and OOH copy across the learner journey, from campaign messaging to product communications.",
+      "Translated complex education subjects into clear, accessible brand, product and long-form editorial copy.",
+      "Worked with Google and LEGO to develop campaign messaging that made complex ideas easy to understand."]],
+    ["2015\u201319", "AKA UK", "Concept Copywriter & Creative", [
+      "Concepted integrated campaigns for Tate Modern, the National Theatre, the British Library, the Natural History Museum and Matilda the Musical.",
+      "Developed ideas from brief to execution across film, radio, OOH, digital and social, writing scripts, headlines and longer-form copy.",
+      "Worked closely with designers and strategists, presenting and selling creative concepts to clients and senior stakeholders."]],
+    ["2012\u201314", "Empire Design", "Junior Copywriter", [
+      "Developed concepts, taglines and scripts for theatrical and home-entertainment campaigns for Universal Studios, Fox, AMC and Canal Plus.",
+      "Wrote trailer, radio, OOH, digital and social copy for film and television launches."]],
+    ["2005\u201315", "Freelance", "Copywriter, Journalist & Proofreader", [
+      "Wrote and proofread for private clients and cultural publications; researched, interviewed and wrote music and film features and reviews."]],
+  ];
+  return `<div class="band b-yellow sec">${dh("CONTACT & CV")}</div>
+    <div class="me"><button class="frame" data-src="/img/sam.jpg" data-cap="Sam Lewis" aria-label="Enlarge photo of Sam Lewis"><img src="/img/sam.jpg" alt="Sam Lewis"></button>
+    <div class="facts">
+      <div class="row"><span class="l c-cyan">EMAIL</span><span><span class="c-yellow" id="email">sam.joe.lewis@gmail.com</span> <button class="rbtn" id="copyEmail" style="font-size:.9em;padding:0 1ch">COPY</button> <span class="c-dim" id="copied" hidden>Copied</span></span></div>
+      <div class="row"><span class="l c-cyan">LINKEDIN</span><span><a class="c-yellow" href="https://www.linkedin.com/in/sam-lewis-495992134/" target="_blank" rel="noopener">sam-lewis-495992134</a></span></div>
+      <div class="row"><span class="l c-cyan">BASED</span><span>London</span></div>
+    </div></div>
+    <div class="prose wide"><p>Senior copywriter with over a decade of agency and in-house experience turning strategic briefs into integrated campaigns for global brands. Concept and execution across video, social, digital, OOH, radio and CRM, with particular strength in brand voice, multi-market work and conversion-focused subscription journeys. Clients and brands include HBO Max, TNT Sports, Google, LEGO, Tate Modern and the National Theatre.</p></div>
+    <div class="c-cyan">EXPERIENCE</div>
+    <div class="cvjobs">${cv.map(([d, co, role, bs]) => `<div class="cvjob">
+      <div class="cvrow"><span class="c-yellow">${d}</span><span>${esc(co)}</span><span class="c-cyan">${esc(role)}</span></div>
+      <ul class="cvb">${bs.map(b => `<li>${esc(b)}</li>`).join("")}</ul></div>`).join("")}</div>
+    <div class="c-cyan">EDUCATION & TOOLS</div>
+    <div class="cv">
+      <div class="cvrow"><span class="c-yellow">MA</span><span>UCL</span><span class="c-cyan">English Literature</span></div>
+      <div class="cvrow"><span class="c-yellow">BA</span><span>University of Manchester</span><span class="c-cyan">English Literature</span></div>
+      <div class="cvrow"><span class="c-yellow">CERT</span><span>Society for Editors &amp; Proofreaders</span><span class="c-cyan">Proofreading 1</span></div>
+      <div class="cvrow"><span class="c-yellow">TOOLS</span><span>Figma, Google Docs, Google Slides, Adobe</span><span></span></div>
+    </div>
+    <div class="c-dim">Thanks for watching. Normal service resumes on page 100.</div>`;
+}
+
+function pageMissing(n) {
+  return `<div class="band b-red"><div class="kicker"><span>PAGE ${n}</span></div>${dh("PAGE NOT IN SERVICE")}</div>
+    <div>There's nothing on page ${n}. Try the home page on <a class="c-cyan" href="#p100" data-go="100">100</a>.</div>`;
+}
+
+function render(n) {
+  if (n === 100) return pageIndex();
+  if (n === 101) return pageAbout();
+  if (CHAPTERS[n]) return pageChapter(n);
+  if (PIECES[n]) return pagePiece(n);
+  if (n === 700) return pageVoice();
+  if (n === 750) return pageLeadership();
+  if (n === 800) return pageOffDuty();
+  if (n === 888) return pageSubtitles();
+  if (n === 900) return pageZen();
+  return null;
+}
+
+/* ---------- fastext ---------- */
+const NAV = { 200: "Campaigns & scripts", 400: "Email, web & product", 500: "Editorial & SEO", 600: "Brand voice & markets" };
+const NAMES = { ...NAV, 101: "About", 700: "Brand voice", 750: "Creative leadership", 800: "Editorial writing", 888: "Contact & CV", 900: "Zen mode" };
+function drawCrumbs(n) {
+  const el = $("#crumbs");
+  if (n === 100 || !(NAMES[n] || PIECES[n])) { el.innerHTML = ""; return; }
+  const ch = chapterOf(n), inSec = !!(PIECES[n] || FEATURE_CARDS[n]) && !!NAV[ch];
+  const parent = inSec ? ch : 100;
+  const here = PIECES[n] ? PIECES[n].title : NAMES[n];
+  el.innerHTML = `<button class="back" data-go="${parent}">\u2039 Back</button>` +
+    `<span class="path"><button data-go="100"${inSec ? ' class="hm"' : ""}>Home</button>` +
+    (inSec ? `<span class="sep hm">\u203A</span><button data-go="${ch}">${esc(NAV[ch])}</button>` : "") +
+    `<span class="cur"><span class="sep">\u203A</span> <span class="here" aria-current="page">${esc(here)}</span></span></span>`;
+}
+
+function drawFastext(n) {
+  drawCrumbs(n);
+  $("#screen").dataset.home = String(n === 100);
+  const ch = chapterOf(n);
+  document.querySelectorAll(".fkw").forEach(b => b.setAttribute("aria-current", String(Number(b.dataset.sec) === ch && n !== 100)));
+  const i = ORDER.indexOf(n);
+  if (n === 100 || i < 0) { $("#fastext").innerHTML = ""; return; }
+  const prev = ORDER[i - 1], next = ORDER[i + 1];
+  const secN = CHAPTERS[ch] && n !== ch ? ch : 100;
+  const secLabel = secN === 100 ? "Home" : NAV[ch];
+  $("#fastext").innerHTML =
+    (prev ? `<button data-go="${prev}" aria-label="Previous page, ${prev}"><span>\u2039 Previous</span></button>` : `<span></span>`) +
+    `<button class="sec" data-go="${secN}"><span>${esc(secLabel)}</span></button>` +
+    (next ? `<button data-go="${next}" aria-label="Next page, ${next}"><span>Next \u203A</span></button>` : `<span></span>`);
+}
+
+/* ---------- navigation ---------- */
+let current = 100, timer = null, zenTimer = null;
+function go(n, push = true) {
+  n = Number(n);
+  if (n === 100 && push) { home(); return; }
+  clearInterval(timer); clearInterval(zenTimer);
+  const hp = $("#hp");
+  const finish = () => {
+    hp.textContent = "P" + n;
+    const html = render(n);
+    const pageEl = $("#page");
+    pageEl.innerHTML = html ?? pageMissing(n);
+    current = n;
+    drawFastext(n);
+    afterRender(n);
+    if (push && location.hash !== "#p" + n) { try { history.pushState(null, "", "#p" + n); } catch (e) {} }
+    pageEl.focus({ preventScroll: true });
+    const sc = $("#screen"); if (sc.getBoundingClientRect().top < 0) sc.scrollIntoView({ block: "start" });
+  };
+  if (reduced) return finish();
+  let k = current, steps = 0;
+  timer = setInterval(() => {
+    k = k >= 899 ? 100 : k + 7 + Math.floor(Math.random() * 13);
+    hp.textContent = "P" + String(k).padStart(3, "0");
+    if (++steps > 6) { clearInterval(timer); finish(); }
+  }, 45);
+}
+
+document.addEventListener("click", e => {
+  const g = e.target.closest("[data-go]");
+  if (g) { e.preventDefault(); go(g.dataset.go); return; }
+  const fr = e.target.closest(".frame");
+  if (fr) { openLb(fr.dataset.src, fr.dataset.cap); return; }
+});
+
+/* page number entry */
+let buf = "";
+function key(d) {
+  buf += d;
+  $("#entry").textContent = "P" + buf.padEnd(3, "_");
+  if (buf.length === 3) {
+    const n = Number(buf); buf = "";
+    setTimeout(() => { $("#entry").textContent = "P___"; }, 400);
+    if (n >= 100) go(n); else go(n);
+  }
+}
+$("#keys").innerHTML = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map(d => `<button class="key" data-k="${d}" aria-label="Number ${d}">${d}</button>`).join("");
+$("#keys").addEventListener("click", e => { const b = e.target.closest("[data-k]"); if (b) key(b.dataset.k); });
+
+function home() {
+  // Use the Auk-specific homepage.
+  const target = "/auk/";
+  if (location.pathname !== target || location.hash) {
+    try { history.pushState(null, "", target); } catch (e) { location.href = target; return; }
+  }
+  go(100, false);
+}
+$("#toIndex").addEventListener("click", home);
+
+document.addEventListener("keydown", e => {
+  if (!$("#lb").hidden) { if (e.key === "Escape") closeLb(); return; }
+  if (e.target.closest("input, textarea")) return;
+  if (/^[0-9]$/.test(e.key)) { key(e.key); return; }
+  const i = ORDER.indexOf(current);
+  if (e.key === "ArrowRight") go(ORDER[(i + 1) % ORDER.length]);
+  else if (e.key === "ArrowLeft") go(ORDER[(i - 1 + ORDER.length) % ORDER.length]);
+});
+
+/* ---------- clock ---------- */
+function tick() {
+  const d = new Date();
+  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"], mons = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const p = x => String(x).padStart(2, "0");
+  $("#clock").textContent = `${days[d.getDay()]} ${p(d.getDate())} ${mons[d.getMonth()]} ${p(d.getHours())}:${p(d.getMinutes())}/${p(d.getSeconds())}`;
+}
+tick(); setInterval(tick, 1000);
+
+/* ---------- mosaics ---------- */
+const FONT = {
+  S: ["####", "#...", "####", "...#", "####"], A: [".##.", "#..#", "####", "#..#", "#..#"],
+  M: ["#...#", "##.##", "#.#.#", "#...#", "#...#"], L: ["#...", "#...", "#...", "#...", "####"],
+  E: ["####", "#...", "###.", "#...", "####"], W: ["#...#", "#...#", "#.#.#", "##.##", "#...#"],
+  I: ["###", ".#.", ".#.", ".#.", "###"], " ": ["..", "..", "..", "..", ".."],
+};
+const ttcol = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+function drawMast() {
+  const c = $("#mastCanvas"); if (!c) return;
+  const text = "SAM LEWIS", sw = 10, sh = 12, pad = 1;
+  const glyphs = [...text].map(ch => FONT[ch]);
+  const w = glyphs.reduce((s, g) => s + g[0].length + 1, 0) - 1 + pad * 2 + 1, h = 5 + pad * 2 + 1;
+  c.width = w * sw; c.height = h * sh;
+  const ctx = c.getContext("2d");
+  ctx.fillStyle = ttcol("--blue"); ctx.fillRect(0, 0, c.width, c.height);
+  const rows = ["--red", "--yellow", "--green", "--cyan", "--white"];
+  const plot = (dx, dy, fill) => {
+    let x = pad;
+    glyphs.forEach(g => {
+      g.forEach((r, y) => [...r].forEach((b, i) => {
+        if (b !== "#") return;
+        ctx.fillStyle = fill(y);
+        ctx.fillRect((x + i + dx) * sw, (y + pad + dy) * sh, sw, sh);
+      }));
+      x += g[0].length + 1;
+    });
+  };
+  plot(1, 1, () => "#000");
+  plot(0, 0, y => ttcol(rows[y]));
+  c.style.maxWidth = (w * 15) + "px";
+}
+function drawPortrait(btn) {
+  if (!btn || reduced) return;
+  setTimeout(() => btn.classList.add("resolved"), 2600);
+}
+function drawPitch() {
+  const c = $("#pitchCanvas"); if (!c) return;
+  const W = 48, H = 30, cell = 8;
+  c.width = W * cell; c.height = H * cell;
+  const ctx = c.getContext("2d"), css = getComputedStyle(document.documentElement);
+  const col = v => css.getPropertyValue(v).trim();
+  const px = (x, y, v) => { ctx.fillStyle = col(v); ctx.fillRect(x * cell, y * cell, cell, cell); };
+  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) px(x, y, (Math.floor(x / 4) % 2) ? "--green" : "--black");
+  ctx.globalAlpha = 1;
+  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) if (Math.floor(x / 4) % 2 === 0) { ctx.fillStyle = "#0a7a1f"; ctx.fillRect(x * cell, y * cell, cell, cell); }
+  const L = (x, y) => px(x, y, "--white");
+  for (let x = 2; x < W - 2; x++) { L(x, 2); L(x, H - 3); }
+  for (let y = 2; y < H - 2; y++) { L(2, y); L(W - 3, y); L(W / 2, y); }
+  for (let a = 0; a < 360; a += 6) { const r = 5; L(Math.round(W / 2 + r * Math.cos(a * Math.PI / 180)), Math.round(H / 2 + r * .9 * Math.sin(a * Math.PI / 180))); }
+  for (let y = 8; y <= H - 9; y++) { L(9, y); L(W - 10, y); }
+  for (let x = 2; x <= 9; x++) { L(x, 8); L(x, H - 9); }
+  for (let x = W - 10; x < W - 2; x++) { L(x, 8); L(x, H - 9); }
+  for (let y = 12; y <= H - 13; y++) { px(1, y, "--yellow"); px(W - 2, y, "--yellow"); }
+  px(W - 14, 12, "--white"); px(W - 13, 12, "--white"); px(W - 14, 13, "--white"); px(W - 13, 13, "--white");
+  const trail = [[6, 26], [12, 22], [19, 19], [26, 16], [31, 14]];
+  trail.forEach(([x, y], i) => { ctx.globalAlpha = .25 + i * .15; px(x, y, "--yellow"); });
+  ctx.globalAlpha = 1;
+}
+
+/* picture reveal: chunky pixels resolve into the real image */
+function pixelIn(frame) {
+  const img = frame.querySelector("img");
+  if (reduced) return;
+  const run = () => {
+    if (!img.naturalWidth) return;
+    const cv = document.createElement("canvas");
+    const w = 36, h = Math.max(1, Math.round(w * img.naturalHeight / img.naturalWidth));
+    cv.width = w; cv.height = h;
+    cv.getContext("2d").drawImage(img, 0, 0, w, h);
+    frame.appendChild(cv);
+    setTimeout(() => { cv.style.opacity = "0"; }, 380);
+    setTimeout(() => cv.remove(), 1000);
+  };
+  if (img.complete) run(); else img.addEventListener("load", run, { once: true });
+}
+
+/* ---------- zen mode: London on a sunny day, in teletext blocks ---------- */
+function pageZen() {
+  return `<div class="zen"><canvas class="mosaic" id="zenCanvas" role="img" aria-label="Teletext picture of the London skyline on a sunny day"></canvas>
+    <img class="zenface" src="/img/sam-zen.png" alt="Sam Lewis, in teletext blocks"></div>`;
+}
+function drawZen() {
+  const c = $("#zenCanvas"); if (!c) return;
+  const W = 96, H = 54, S = 8, G = 43;               // G = ground line
+  c.width = W * S; c.height = H * S;
+  const ctx = c.getContext("2d");
+  const col = { k: "#000", b: ttcol("--blue"), c: ttcol("--cyan"), y: ttcol("--yellow"), w: ttcol("--white"), g: ttcol("--green"), r: ttcol("--red"), m: ttcol("--magenta") };
+  const px = (x, y, k, w = 1, h = 1) => { ctx.fillStyle = col[k]; ctx.fillRect(Math.round(x) * S, y * S, w * S, h * S); };
+  const clouds = [[6, 6, 13], [34, 3, 9], [58, 9, 12], [84, 20, 8]];
+  let tick = 0;
+  const frame = () => {
+    px(0, 0, "c", W, H);
+    // sun and rays
+    for (let y = -7; y <= 7; y++) for (let x = -7; x <= 7; x++) if (x * x + y * y <= 30) px(66 + x, 10 + y, "y");
+    if (tick % 2 === 0) [[-10, 0], [10, 0], [0, -10], [0, 10], [-7, -7], [7, -7], [-7, 7], [7, 7]].forEach(([x, y]) => px(66 + x, 10 + y, "y"));
+    // clouds drift left to right
+    clouds.forEach(([x0, y, w]) => {
+      const x = ((x0 + tick * 0.5) % (W + 20)) - 10;
+      px(x + 2, y - 1, "w", w - 5, 1); px(x, y, "w", w, 2); px(x + 1, y + 2, "w", w - 3, 1);
+    });
+    // skyline
+    const b = (x, top, w) => px(x, top, "b", w, G - top);
+    b(0, 37, 6); b(18, 38, 4); b(36, 36, 5); b(57, 33, 4); b(66, 30, 4); b(79, 36, 4);
+    // Elizabeth Tower and Parliament
+    b(6, 34, 13); b(9, 18, 4); px(10, 15, "b", 2, 3); px(10, 13, "b", 1, 2); px(10, 20, "w", 2, 2);
+    px(7, 31, "b", 1, 3); px(16, 31, "b", 1, 3);
+    // London Eye
+    for (let a = 0; a < 48; a++) { const t = a / 48 * Math.PI * 2; px(27 + Math.cos(t) * 8, Math.round(32 + Math.sin(t) * 8), "b"); }
+    for (let a = 0; a < 8; a++) { const t = a / 8 * Math.PI * 2 + tick * 0.05; for (let r = 2; r < 8; r += 2) px(27 + Math.cos(t) * r, Math.round(32 + Math.sin(t) * r), "b"); }
+    px(27, 32, "b"); px(26, 40, "b", 3, 3);
+    // St Paul's
+    b(44, 37, 12);
+    // Gherkin
+    [2, 4, 4, 6, 6, 6, 6, 6, 6, 6, 6, 4, 4].forEach((w, i) => px(63 - w / 2, 21 + i, "b", w, 1)); b(61, 34, 4);
+    // Shard
+    for (let y = 8; y < G; y++) { const w = Math.max(1, Math.round((y - 8) / 5.2)); px(74 - w / 2, y, "b", w + (y > 9 ? 1 : 0), 1); }
+    // Tower Bridge
+    b(84, 28, 3); b(92, 28, 3); px(85, 25, "b", 1, 3); px(93, 25, "b", 1, 3); px(87, 31, "b", 5, 1); px(82, 39, "b", 14, 1);
+    [[83, 33], [82, 35], [95, 33]].forEach(([x, y]) => px(x, y, "b"));
+    // embankment trees and the Thames
+    px(0, G, "g", W, 2); for (let x = 2; x < W; x += 7) px(x, G - 1, "g", 3, 1);
+    px(0, G + 2, "b", W, H - G - 2);
+    for (let y = G + 3; y < H; y += 2) for (let x = (y * 7 + tick * (y % 4 ? 1 : 2)) % 11 - 4; x < W; x += 11) px(x, y, y % 4 ? "c" : "w", 4, 1);
+    // a boat
+    const bx = W - ((tick * 0.5) % (W + 16)); px(bx, G + 5, "w", 8, 1); px(bx + 1, G + 4, "r", 5, 1); px(bx + 2, G + 3, "w", 2, 1);
+  };
+  frame();
+  clearInterval(zenTimer);
+  if (!reduced) zenTimer = setInterval(() => { tick++; if ($("#zenCanvas")) frame(); else clearInterval(zenTimer); }, 600);
+}
+
+function afterRender(n) {
+  drawMast(); drawPitch(); drawPortrait($(".portrait")); drawZen();
+  document.querySelectorAll(".frame:not(.portrait)").forEach(frame => {
+    if (!frame.closest(".pinterest-hero-gallery")) pixelIn(frame);
+  });
+  const cp = $("#copyEmail");
+  if (cp) cp.addEventListener("click", () => {
+    const t = $("#email").textContent;
+    const done = () => { const c = $("#copied"); c.hidden = false; setTimeout(() => c.hidden = true, 1500); };
+    try {
+      navigator.clipboard.writeText(t).then(done, () => selectEmail());
+    } catch (e) { selectEmail(); }
+  });
+}
+function selectEmail() {
+  const r = document.createRange(); r.selectNodeContents($("#email"));
+  const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+}
+
+/* lightbox */
+let lastFocus = null;
+function openLb(src, cap) {
+  lastFocus = document.activeElement;
+  $("#lbimg").src = src; $("#lbimg").alt = cap; $("#lbcap").textContent = cap;
+  $("#lb").hidden = false; $("#lbclose").focus();
+}
+function closeLb() { $("#lb").hidden = true; if (lastFocus) lastFocus.focus(); }
+$("#lbclose").addEventListener("click", closeLb);
+$("#lb").addEventListener("click", e => { if (e.target.id === "lb") closeLb(); });
+
+window.addEventListener("popstate", () => {
+  const h = /^#p(\d{3})$/.exec(location.hash || "");
+  const n = h ? Number(h[1]) : 100;
+  if (n !== current) go(n, false);
+});
+
+/* boot */
+if (location.pathname === "/auk/index.html") {
+  try { history.replaceState(null, "", "/auk/" + location.hash); } catch (e) {}
+}
+const m = /^#p(\d{3})$/.exec(location.hash || "");
+const start = m ? Number(m[1]) : 100;
+hnInit();
+function hnInit() { $("#hp").textContent = "P" + start; }
+current = start;
+$("#page").innerHTML = render(start) ?? pageMissing(start);
+drawFastext(start);
+afterRender(start);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { drawMast(); });
+})();
+</script>
+</body>
+</html>
