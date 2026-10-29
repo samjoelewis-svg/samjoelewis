@@ -8,7 +8,7 @@
 <meta name="robots" content="noindex, nofollow">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Sam Lewis — Auk Portfolio">
-<meta property="og:description" content="Auk Mini 2 campaign concept, Noodoll product copy, HBO Max CRM and FutureLearn SEO writing.">
+<meta property="og:description" content="Auk Mini 2 speculative Christmas and Scandinavian brand campaigns, Noodoll product copy, and international copywriting.">
 <meta property="og:image" content="https://samlewis.fyi/img/sam.jpg">
 <meta property="og:url" content="https://samlewis.fyi/auk/">
 <meta name="twitter:card" content="summary">
@@ -435,6 +435,27 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
 .noodoll-screenshot { width: 100%; }
 .noodoll-screenshot figure.pic, .noodoll-screenshot .frame { width: 100%; }
 .noodoll-screenshot .frame img { display: block; width: 100%; height: auto; max-height: none; }
+/* Auk: original Christmas and Scandinavian brand executions, text-left / image-right. */
+.auk-campaign { min-width:0; }
+.auk-intro { max-width:83ch; margin:.2em 0 1.3em; }
+.auk-intro h1 { font-family:var(--tt);font-weight:normal;font-size:clamp(1.5em,3.1vw,2.2em);color:var(--yellow);line-height:1.06;margin:0 0 .5em; }
+.auk-intro .prose { max-width:76ch; }
+.auk-execution { display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:clamp(14px,2.4vw,34px);align-items:start;padding:1.4em 0; border-top:1px solid #ffffff35; }
+.auk-execution-copy { min-width:0; }
+.auk-route { font-size:.8em;letter-spacing:.05em;margin-bottom:.65em; }
+.auk-execution-copy h2 { font-family:var(--tt);font-weight:normal;color:var(--yellow);font-size:clamp(1.35em,2.7vw,1.85em);line-height:1.1;margin:.15em 0 .6em; }
+.auk-execution-copy .prose { padding:0; }
+.auk-execution-image { min-width:0; }
+.auk-execution-image figure.pic,.auk-execution-image .frame { display:block;width:100%; }
+.auk-execution-image .frame { border:0;border-radius:6px;overflow:hidden; }
+.auk-execution-image .frame img { display:block;width:100%;height:auto;max-height:none;aspect-ratio:3/2;object-fit:contain; }
+.auk-platform { padding:1.3em 0 0;border-top:1px solid #ffffff35;max-width:83ch; }
+.futurelearn-case { grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:start;gap:clamp(15px,2.5vw,32px); }
+.futurelearn-examples { display:grid;grid-template-columns:minmax(0,1fr);gap:1.15em;min-width:0; }
+.futurelearn-examples figure.pic,.futurelearn-examples .frame { width:100%; }
+.futurelearn-examples .frame img { display:block;width:100%;height:auto;max-height:none;object-fit:contain; }
+.futurelearn-examples figcaption { color:var(--dim);font-size:.78em;line-height:1.4;margin-top:.3em; }
+@media(max-width:760px) { .auk-execution,.futurelearn-case {grid-template-columns:minmax(0,1fr);gap:.85em;} .auk-execution-image {max-width:720px;} }
 .section-intro { margin-block: .7em 1em; color: var(--white); }
 .spec-executions { display:grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16em),1fr)); gap: .75em; margin-top: .6em; }
 .spec-execution { padding: .9em 1ch; border: 1px solid var(--yellow); background: #15151c; display:grid; gap: .5em; align-content: start; }
@@ -593,13 +614,16 @@ const PIECES = {
     ],
     pics: [["atg-lyceum-b2b", "ATG Theatres corporate venue hire LinkedIn advertising concept featuring the Lyceum Theatre"]] },
 
-  301: { tag:"SPEC",title:"AUK MINI 2: DYRKEGLEDE",meta:"Auk Mini 2 · Spec Christmas campaign · Product storytelling",spec:true,
+  301: { tag:"SPEC",title:"AUK MINI 2: GOOD GIFTS GROW ON YOU",meta:"Auk Mini 2 · Independent spec · Christmas and brand storytelling",spec:true,
     body:[
-      "I wanted to show how I'd approach an Auk brief in practice, so I explored the idea of Auk Mini 2 as a Christmas gift that keeps giving long after the day itself.",
-      "Its practical promise is compelling: fresh greens at home, minus the fuss. But I wanted to capture how good it feels to grow something yourself. That led me to Dyrkeglede — the Norwegian word for the pleasure of growing.",
-      "“Meet Auk Mini 2. Fresh greens, minus the fuss.” does the functional work, while “Dyrkeglede” adds warmth and character. I pictured it in a real, lived-in kitchen, where herbs go straight from the growing tray to dinner.",
-      "The core product promise could stay consistent for the UK, US and Canada, with examples and language adapted for each audience. This is an independent spec concept, not commissioned Auk advertising."
-    ],pics:[["auk-mini2-dyrkeglede","Auk Mini 2 Dyrkeglede speculative campaign in a London kitchen"]] },
+      "I wanted to show how I'd approach an Auk brief in practice. Auk Mini 2 has an appealing practical promise — fresh greens at home, without the fuss — but I was interested in what the product could mean in someone's everyday life. I explored two complementary directions: a Christmas gift with staying power, and the pleasure of growing something yourself.",
+    ],
+    executions:[
+      ["GOOD GIFTS GROW ON YOU","For Christmas, I wanted a line that felt warm, spare and gently witty. Rather than focusing on the unboxing, this celebrates a present that keeps giving: fresh herbs, a little more life in the kitchen and something to enjoy long after Christmas Day.","auk-good-gifts-grow-on-you","Auk Mini 2 speculative Christmas advert: Good gifts grow on you, with a family around a warm kitchen table."],
+      ["DYRKEGLEDE","The longer-term idea draws on Auk's Scandinavian roots. Dyrkeglede is a Norwegian word for the joy of growing. The line ‘Meet Auk Mini 2. Fresh greens, minus the fuss.’ explains the product; ‘The simple pleasure of growing something yourself’ captures how it feels. I wanted to unpack the word for an English-speaking audience, not just use it as decoration.","auk-mini2-dyrkeglede","Auk Mini 2 speculative Dyrkeglede advert: a man harvesting herbs in a bright urban kitchen."]
+    ],
+    broader:"I could imagine extending this into a campaign built around Scandinavian words for everyday pleasures: the familiar idea of hygge as a starting point, then more distinctive words like dyrkeglede. Each would open up a different part of Auk's world across product pages, email and advertising, with a voice that feels warm, understated and unmistakably Scandinavian.",
+    pics:[["auk-good-gifts-grow-on-you","Auk Mini 2 spec Christmas campaign: Good gifts grow on you"],["auk-mini2-dyrkeglede","Auk Mini 2 spec brand campaign: Dyrkeglede"]] },
   214: { tag:"PRODUCT",title:"NOODOLL: RICESPUD PRODUCT MESSAGING",meta:"Noodoll · Ecommerce · Product descriptions",
     body:[
       "At Noodoll, I wrote product copy designed to bring the characters to life while helping customers understand what they're buying. Ricespud needed a playful, distinctive voice alongside clear descriptions of the product.",
@@ -611,11 +635,12 @@ const PIECES = {
       "That includes explaining offers and product features simply, while keeping the brand voice distinctive. I adapt messages for different placements, audiences and markets, and write the CTAs, modules and subject lines that turn a big idea into a working customer journey.",
       "For the UK launch, I helped keep the same voice consistent across advertising, welcome emails and product copy."
     ],pics:[["hbo-max-welcome-email","HBO Max UK welcome email"]] },
-  216: { tag:"SEO / EDITORIAL",title:"FUTURELEARN: RESEARCH-LED SEO ARTICLES",meta:"FutureLearn · SEO articles · Research and editorial",
+  216: { tag:"SEO / EDITORIAL",title:"FUTURELEARN: COURSE SEO & EDITORIAL",meta:"FutureLearn · Search-led course titles · Long-form articles",
     body:[
-      "At FutureLearn, I researched and wrote SEO-led articles for people exploring new subjects and learning opportunities. I enjoyed digging into what readers were asking, finding the useful angle and turning research into accessible, engaging copy.",
-      "I also wrote FutureLearn's first brand tone-of-voice guide, making it easier for different writers to speak to learners consistently."
-    ] },
+      "At FutureLearn, I used keyword research and search-results analysis to write course titles that would rank well while still making sense to prospective learners. ‘Power Dressing in the Zoom Era’ is one example of balancing clear search intent with useful, engaging copy.",
+      "I also researched and wrote longer editorial pieces, often based on interviews with educators. These two examples show the range: precise, discovery-led course messaging and more expansive storytelling, including an article exploring Ancient Rome."
+    ],
+    pics:[["futurelearn-course-seo","FutureLearn course page: Power Dressing in the Zoom Era, showing search-informed course-title copy"],["futurelearn-editorial-rome","FutureLearn long-form editorial article: Explore a virtual map of Ancient Rome"]] },
   401: { title: "TNT SPORTS CRM, INCLUDING PARIS 2024", meta: "TNT Sports · Paris 2024 · CRM · Warner Bros. Discovery",
     body: [
       "I lead master CRM for HBO Max and TNT Sports across EMEA, from onboarding to win-back. When we took on TNT Sports' CRM, I worked with their marketing team to rebuild the emails around user data. Our CRM now performs better than any other WBD region.",
@@ -712,9 +737,9 @@ function band(n, title) {
 function pic([file, cap], showCaption = true) {
   const src = imageSrc(file);
   return `<figure class="pic"><button class="frame" data-src="${src}" data-cap="${esc(cap)}" aria-label="Enlarge picture: ${esc(cap)}">
-    <img src="${src}" alt="${esc(cap)}" loading="${file === "auk-mini2-dyrkeglede" ? "eager" : "lazy"}" fetchpriority="${file === "auk-mini2-dyrkeglede" ? "high" : "auto"}" decoding="async"></button>${showCaption ? `<figcaption>${esc(cap)}</figcaption>` : ""}</figure>`;
+    <img src="${src}" alt="${esc(cap)}" loading="${file.startsWith("auk-") ? "eager" : "lazy"}" fetchpriority="${file.startsWith("auk-") ? "high" : "auto"}" decoding="async"></button>${showCaption ? `<figcaption>${esc(cap)}</figcaption>` : ""}</figure>`;
 }
-function imageSrc(file) { return ["auk-mini2-dyrkeglede","noodoll-ricespud-product-copy","westminster-abbey-bond-street","atg-lyceum-b2b"].includes(file) ? "/img/" + file + ".webp" : "/img/" + file + ".jpg"; }
+function imageSrc(file) { return ["auk-mini2-dyrkeglede","auk-good-gifts-grow-on-you","futurelearn-course-seo","futurelearn-editorial-rome","noodoll-ricespud-product-copy","westminster-abbey-bond-street","atg-lyceum-b2b"].includes(file) ? "/img/" + file + ".webp" : "/img/" + file + ".jpg"; }
 function row(label, colour, text) {
   return text ? `<div class="row"><span class="l c-${colour}">${label}</span><span>${esc(text)}</span></div>` : "";
 }
@@ -728,10 +753,10 @@ function pageIndex() {
     [800,"Editorial background","blue"],[888,"Contact & CV","yellow"]
   ];
   const heads = [
-    [301,"SPEC","yellow","Auk Mini 2: Dyrkeglede"],
+    [301,"SPEC","yellow","Auk Mini 2: Good gifts grow on you"],
     [214,"PRODUCT","green","Noodoll: Ricespud product copy"],
     [215,"EMAIL / WEB","green","HBO Max: CRM, landing pages and product copy"],
-    [216,"SEO","magenta","FutureLearn: SEO articles and research"],
+    [216,"SEO","magenta","FutureLearn: Course SEO and editorial"],
     [401,"CRM","cyan","TNT Sports: EMEA lifecycle emails"],
     [201,"CAMPAIGN","red","HBO Max UK launch"],
     [700,"VOICE","cyan","Building brand voice across EMEA"],
@@ -798,15 +823,25 @@ function gallery(list) {
 }
 
 function pageAukCampaign(p) {
-  return `<section class="pinterest-case auk-case">
-    <div class="pinterest-case-kicker"><span>SPEC CHRISTMAS CAMPAIGN</span><span class="c-yellow">P301</span></div>
-    <div class="pinterest-case-body">
-      <div class="pinterest-story"><h1>AUK MINI 2: DYRKEGLEDE</h1>
-        <div class="prose wide">${p.body.map(t => `<p>${esc(t)}</p>`).join("")}</div></div>
-      <div class="pinterest-hero-gallery auk-hero-gallery">${p.pics.map(x=>pic(x,false)).join("")}</div>
+  return `<section class="auk-campaign">
+    <div class="pinterest-case-kicker"><span>SPEC CHRISTMAS & BRAND CAMPAIGN</span><span class="c-yellow">P301</span></div>
+    <div class="auk-intro"><h1>GOOD GIFTS GROW ON YOU</h1>
+      <div class="prose wide">${p.body.map(t=>`<p>${esc(t)}</p>`).join("")}</div>
+    </div>
+    ${p.executions.map(([heading,copy,file,alt],i)=>`<section class="auk-execution" aria-label="${esc(heading)}">
+      <div class="auk-execution-copy">
+        <div class="c-cyan auk-route">${i===0?"01 / CHRISTMAS":"02 / EVERGREEN BRAND"}</div>
+        <h2>${esc(heading)}</h2>
+        <div class="prose"><p>${esc(copy)}</p></div>
+      </div>
+      <div class="auk-execution-image">${pic([file,alt],false)}</div>
+    </section>`).join("")}
+    <div class="auk-platform"><div class="c-cyan auk-route">THE BIGGER IDEA</div>
+      <div class="prose wide"><p>${esc(p.broader)}</p></div>
     </div>
   </section>`;
 }
+
 function pagePiece(n) {
   const p = PIECES[n];
   if (n === 301) return pageAukCampaign(p);
@@ -816,6 +851,12 @@ function pagePiece(n) {
       <div class="prose wide">${p.body.map(t=>`<p>${esc(t)}</p>`).join("")}</div>
       <div class="noodoll-screenshot">${pic(p.pics[0],false)}</div>
     </section>`;
+  if (n === 216) return `${band(n,p.title)}
+    <div class="meta">${esc(p.meta)}</div>
+    <div class="piece futurelearn-case">
+      <div class="facts"><div class="prose">${p.body.map(t=>`<p>${esc(t)}</p>`).join("")}</div></div>
+      <div class="futurelearn-examples">${p.pics.map(x=>pic(x,true)).join("")}</div>
+    </div>`;
   if (n === 213) return `${band(n, p.title)}
     <div class="meta">${esc(p.meta)}</div>
     <div class="piece atg-case">
