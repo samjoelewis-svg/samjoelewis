@@ -708,7 +708,7 @@ function pageIndex() {
       </div>
     </section>
     <section class="home-section" aria-label="Browse work by expertise">
-      <div class="home-heading"><span>BROWSE BY EXPERTISE</span><span class="c-dim">FIND RELEVANT WORK</span></div>
+      <div class="home-heading"><span>BROWSE BY EXPERTISE</span></div>
       <div class="skill-grid">
         ${skills.map(([name, links]) => `<div class="skill-box"><div class="skill-name">${esc(name)}</div>
           ${links.map(([n,title]) => `<a href="#p${n}" data-go="${n}"><span>${esc(title)}</span><span class="skill-num">P${n}</span></a>`).join("")}
