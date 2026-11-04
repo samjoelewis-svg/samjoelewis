@@ -372,6 +372,7 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
 .home-heading > :last-child { font-size: .72em; }
 .feature-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .35em 1.2ch; }
 .feature-card { color: var(--white); text-decoration: none; display: grid; grid-template-columns: minmax(80px, 27%) minmax(0, 1fr) auto; gap: .4em 1ch; padding: .5em .3ch; border-bottom: 1px solid #464653; align-items: start; }
+.feature-placeholder { display: grid; align-content: center; justify-content: center; background: var(--blue); color: var(--yellow); border: 1px solid var(--white); font-size: .95em; line-height: 1.05; text-align: center; aspect-ratio: 4 / 3; }
 .feature-card img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: center; border: 1px solid #858590; background: #111; }
 .feature-info { display: grid; gap: .14em; min-width: 0; }
 .feature-tag { color: var(--green); font-size: .73em; }
@@ -560,6 +561,13 @@ const PIECES = {
     ],
     pics:[["futurelearn-course-seo","FutureLearn course page: Power Dressing in the Zoom Era, showing search-informed course-title copy"],["futurelearn-editorial-rome","FutureLearn long-form editorial article: Explore a virtual map of Ancient Rome"]] },
 
+  305: { tag: "PRODUCT", title: "FUTURELEARN X GOOGLE: COURSE PRODUCT COPY", meta: "FutureLearn × Google for Education · Course landing page · Product copy",
+    body: [
+      "At FutureLearn, I wrote product copy for online courses, including this Google for Education course aimed at teachers and educators.",
+      "The challenge was to make a practical, technology-focused course feel relevant and useful. Rather than listing Google's tools and features, I focused on what educators could actually do with them: save time, stay organised and communicate more effectively with colleagues, students and parents."
+    ],
+    link: ["https://www.futurelearn.com/courses/google-for-education-communicating-and-staying-organised-with-staff-students-and-parents-sc", "See the course"] },
+
   401: { title: "TNT SPORTS CRM, INCLUDING PARIS 2024", meta: "TNT Sports · Paris 2024 · CRM · Warner Bros. Discovery",
     body: [
       "I lead master CRM for HBO Max and TNT Sports across EMEA, from onboarding to win-back. When we took on TNT Sports' CRM, I worked with their marketing team to rebuild the emails around user data. Our CRM now performs better than any other WBD region.",
@@ -621,13 +629,13 @@ const PIECES = {
 
 const CHAPTERS = {
   200: { line: "Campaigns, social, trailers and ads for HBO Max, film and television.", pieces: [201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212] },
-  300: { line: "B2B advertising, ecommerce copy, digital customer journeys and SEO-led content.", pieces: [301, 302, 303, 304] },
+  300: { line: "B2B advertising, ecommerce copy, digital customer journeys and SEO-led content.", pieces: [301, 302, 303, 304, 305] },
   400: { line: "CRM and interactive campaigns for TNT Sports, including Paris 2024 and Milano Cortina 2026.", pieces: [401, 403] },
   500: { line: "Arts and culture.", pieces: [501, 502, 503, 504, 505] },
   600: { line: "Campaigns for FutureLearn, the online learning platform, including work with City & Guilds.", pieces: [601, 602] },
 };
 
-const ORDER = [100, 101, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 300, 301, 302, 303, 304, 400, 401, 403, 500, 501, 502, 503, 504, 505, 600, 601, 602, 700, 750, 800, 888];
+const ORDER = [100, 101, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 300, 301, 302, 303, 304, 305, 400, 401, 403, 500, 501, 502, 503, 504, 505, 600, 601, 602, 700, 750, 800, 888];
 
 /* ---------- helpers ---------- */
 const $ = (s, r = document) => r.querySelector(s);
@@ -656,7 +664,7 @@ function pageIndex() {
   const featured = [
     [201, "CAMPAIGN", "HBO Max UK launch", "Integrated advertising · OOH, radio, digital & CRM", "kings-cross"],
     [301, "B2B", "ATG Theatres", "Corporate venue hire · LinkedIn creative", "atg-lyceum-b2b"],
-    [601, "CAMPAIGN", "FutureLearn × City & Guilds", "Skills campaign · Paid social & digital", "new-world-needs"],
+    [305, "PRODUCT", "FutureLearn x Google", "Course landing page · Product copy", null],
     [401, "CRM", "TNT Sports", "Lifecycle campaigns · Retention & email", "paris-2024"],
     [700, "BRAND VOICE", "HBO Max & FutureLearn", "Tone of voice · EMEA & brand frameworks", "quick-witted"],
     [303, "DIGITAL", "HBO Max email & product copy", "Landing pages · Product journeys · CRM", "hbo-max-welcome-email"],
@@ -668,7 +676,7 @@ function pageIndex() {
     ["B2B & PARTNERSHIPS", [[301, "ATG Theatres LinkedIn"], [601, "City & Guilds campaign"]]],
     ["BRAND VOICE", [[700, "HBO Max & FutureLearn"], [202, "HBO Max brand campaign"]]],
     ["CRM & LIFECYCLE", [[401, "TNT Sports CRM"], [303, "HBO Max email & web"]]],
-    ["DIGITAL, PRODUCT & SEO", [[302, "Noodoll product copy"], [303, "HBO Max product journeys"], [304, "FutureLearn SEO"]]],
+    ["DIGITAL, PRODUCT & SEO", [[302, "Noodoll product copy"], [303, "HBO Max product journeys"], [304, "FutureLearn SEO"], [305, "FutureLearn x Google"]]],
     ["SCRIPTS & EDITORIAL", [[501, "Tate Modern"], [502, "National Theatre"], [304, "FutureLearn editorial"]]]
   ];
   const toc = [
@@ -692,7 +700,7 @@ function pageIndex() {
       <div class="home-heading"><span>SELECTED WORK</span><span class="c-dim">P201—P601</span></div>
       <div class="feature-grid">
         ${featured.map(([n, tag, title, desc, image]) => `<a class="feature-card" href="#p${n}" data-go="${n}">
-          <img src="${imageSrc(image)}" alt="" loading="lazy" decoding="async">
+          ${image ? `<img src="${imageSrc(image)}" alt="" loading="lazy" decoding="async">` : `<span class="feature-placeholder" aria-hidden="true">GOOGLE<br>FOR<br>EDUCATION</span>`}
           <span class="feature-info"><span class="feature-tag">${esc(tag)}</span><span class="feature-title">${esc(title)}</span><span class="feature-desc">${esc(desc)}</span></span><span class="feature-page">P${n}</span>
         </a>`).join("")}
       </div>
