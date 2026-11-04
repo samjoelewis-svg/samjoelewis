@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Sam Lewis, Senior Writer &amp; Creative</title>
-<meta name="description" content="Portfolio of Sam Lewis, senior copywriter and creative. Conceptual campaigns across TV, radio, social and outdoor, for HBO Max, TNT Sports, Tate Modern, the National Theatre and more.">
+<title>Sam Lewis, Senior Copywriter &amp; Creative</title>
+<meta name="description" content="Sam Lewis is a senior copywriter and creative working across campaigns, brand voice, CRM, product, B2B and content. Work for HBO Max, TNT Sports, FutureLearn, Tate Modern and more.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Sam Lewis, Senior Writer & Creative">
-<meta property="og:description" content="Conceptual campaigns across TV, radio, social and outdoor, for HBO Max, TNT Sports, Tate Modern, the National Theatre and more.">
+<meta property="og:title" content="Sam Lewis, Senior Copywriter & Creative">
+<meta property="og:description" content="Campaign ideas, copy and brand voice across advertising, B2B, CRM, product and content for HBO Max, TNT Sports, FutureLearn, Tate Modern and more.">
 <meta property="og:image" content="https://samlewis.fyi/img/sam.jpg">
 <meta property="og:url" content="https://samlewis.fyi/">
 <meta name="twitter:card" content="summary">
@@ -359,6 +359,37 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
   .rbtns .rbtn { flex: 1; }
   .help { margin-left: 0; width: 100%; font-size: .8em; }
 }
+
+/* Homepage: quicker scanning without losing the Teletext layout. */
+.mast canvas.mosaic { width: min(100%, clamp(240px, 66vh, 820px)); }
+.mast .frame { width: clamp(92px, min(17vw, 20vh), 200px); }
+.mast-body { gap: .2em 2ch; }
+.mast .sub { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: clamp(13px, 1.23vw, 16px); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+.mast .deck-link { grid-column: 1 / -1; font-size: .82em; }
+.mast .deck-link a { color: var(--cyan); text-underline-offset: .15em; }
+.home-section { display: grid; gap: .5em; margin-top: .4em; scroll-margin-top: 1em; }
+.home-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 1ch; border-bottom: 2px solid var(--blue); padding-bottom: .15em; color: var(--cyan); }
+.home-heading > :last-child { font-size: .72em; }
+.feature-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .35em 1.2ch; }
+.feature-card { color: var(--white); text-decoration: none; display: grid; grid-template-columns: minmax(80px, 27%) minmax(0, 1fr) auto; gap: .4em 1ch; padding: .5em .3ch; border-bottom: 1px solid #464653; align-items: start; }
+.feature-card img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: center; border: 1px solid #858590; background: #111; }
+.feature-info { display: grid; gap: .14em; min-width: 0; }
+.feature-tag { color: var(--green); font-size: .73em; }
+.feature-title { color: var(--white); font-size: 1.08em; line-height: 1.08; }
+.feature-desc { color: #c9c9ce; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: clamp(12px, 1vw, 14px); line-height: 1.45; -webkit-font-smoothing: antialiased; }
+.feature-page { color: var(--yellow); font-size: .73em; }
+.feature-card:hover, .feature-card:focus-visible { outline: 2px solid var(--yellow); outline-offset: -1px; background: #101019; }
+.feature-card:hover .feature-title, .feature-card:focus-visible .feature-title { color: var(--yellow); }
+.skill-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .6em 1ch; }
+.skill-box { border: 1px solid #535360; padding: .5em .65ch; display: grid; gap: .28em; align-content: start; min-width: 0; }
+.skill-name { color: var(--yellow); font-size: .88em; min-height: 1.2em; }
+.skill-box a { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: .4ch; color: var(--white); text-decoration: none; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: clamp(12px, 1vw, 14px); line-height: 1.35; padding: .2em 0; -webkit-font-smoothing: antialiased; }
+.skill-box a:hover, .skill-box a:focus-visible { background: var(--white); color: var(--black); outline: none; }
+.skill-num { color: var(--cyan); font-family: var(--tt); font-size: 1.15em; }
+.skill-box a:hover .skill-num, .skill-box a:focus-visible .skill-num { color: var(--black); }
+.industry-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .05em 3ch; }
+@media (max-width: 900px) { .feature-grid { grid-template-columns: minmax(0, 1fr); } .skill-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .skill-grid, .industry-nav { grid-template-columns: minmax(0,1fr); } .feature-card { grid-template-columns: 84px minmax(0, 1fr) auto; } .mast .frame { width: 110px; } }
 </style>
 </head>
 <body>
@@ -406,6 +437,7 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
 /* ---------- content ---------- */
 const CH = {
   200: { name: "MOVIES & TV", title: "MOVIES & TV", short: "Movies & TV", colour: "red" },
+  300: { name: "B2B & DIGITAL", title: "B2B & DIGITAL", short: "B2B & digital", colour: "yellow" },
   400: { name: "SPORT", title: "SPORT", short: "Sport", colour: "green" },
   500: { name: "ARTS & CULTURE", title: "ARTS & CULTURE", short: "Culture", colour: "magenta" },
   600: { name: "EDTECH", title: "EDTECH", short: "EdTech", colour: "cyan" },
@@ -504,6 +536,30 @@ const PIECES = {
     video: ["knight-journey", "Episode challenge: take your vows"],
     pics: [["knight-journey", "Result screen for getting every answer wrong"]] },
 
+  301: { tag: "B2B", title: "ATG THEATRES: BUSINESS DESERVES A BIGGER STAGE", meta: "ATG Theatres · Corporate nights out & venue hire · LinkedIn concept · AKA UK",
+    body: [
+      "At AKA, part of ATG, I worked on attracting corporate clients to theatres. The creative challenge was different from selling tickets: I wanted businesses to see a West End theatre as somewhere special for their next corporate night out.",
+      "“Business deserves a bigger stage” gives that idea a simple, memorable line. A LinkedIn execution set against the Lyceum Theatre shows how the venue itself can do the selling — a famous West End theatre that makes a company night out feel like an occasion."
+    ],
+    pics: [["atg-lyceum-b2b", "ATG Theatres corporate venue hire LinkedIn advertising concept featuring the Lyceum Theatre"]] },
+  302: { tag:"PRODUCT",title:"NOODOLL: RICESPUD PRODUCT MESSAGING",meta:"Noodoll · Ecommerce · Product descriptions",
+    body:[
+      "At Noodoll, I wrote product copy designed to bring the characters to life while helping customers understand what they're buying. Ricespud needed a playful, distinctive voice alongside clear descriptions of the product.",
+      "From “Are you ready for spud at first sight?” to the softness, embroidered features and little arms for hugs, the writing brings the character into the shopping experience."
+    ],pics:[["noodoll-ricespud-product-copy","Noodoll Ricespud product page showing the plush and the product copy I wrote"]] },
+  303: { tag:"EMAIL / WEB",title:"HBO MAX: EMAIL, LANDING PAGES & PRODUCT COPY",meta:"HBO Max · EMEA · CRM, web and product messaging",
+    body:[
+      "At HBO Max, I write English master copy for emails, landing pages and product journeys across EMEA, from launch and onboarding to retention and win-back.",
+      "That includes explaining offers and product features simply, while keeping the brand voice distinctive. I adapt messages for different placements, audiences and markets, and write the CTAs, modules and subject lines that turn a big idea into a working customer journey.",
+      "For the UK launch, I helped keep the same voice consistent across advertising, welcome emails and product copy."
+    ],pics:[["hbo-max-welcome-email","HBO Max UK welcome email"]] },
+  304: { tag:"SEO / EDITORIAL",title:"FUTURELEARN: COURSE SEO & EDITORIAL",meta:"FutureLearn · Search-led course titles · Long-form articles",
+    body:[
+      "At FutureLearn, I used keyword research and search-results analysis to write course titles that would rank well while still making sense to prospective learners. ‘Power Dressing in the Zoom Era’ is one example of balancing clear search intent with useful, engaging copy.",
+      "I also researched and wrote longer editorial pieces, often based on interviews with educators. These two examples show the range: precise, discovery-led course messaging and more expansive storytelling, including an article exploring Ancient Rome."
+    ],
+    pics:[["futurelearn-course-seo","FutureLearn course page: Power Dressing in the Zoom Era, showing search-informed course-title copy"],["futurelearn-editorial-rome","FutureLearn long-form editorial article: Explore a virtual map of Ancient Rome"]] },
+
   401: { title: "TNT SPORTS CRM, INCLUDING PARIS 2024", meta: "TNT Sports · Paris 2024 · CRM · Warner Bros. Discovery",
     body: [
       "I lead master CRM for HBO Max and TNT Sports across EMEA, from onboarding to win-back. When we took on TNT Sports' CRM, I worked with their marketing team to rebuild the emails around user data. Our CRM now performs better than any other WBD region.",
@@ -564,13 +620,14 @@ const PIECES = {
 };
 
 const CHAPTERS = {
-  200: { line: "Campaigns, social and ads for HBO Max, plus taglines for TV dramas.", pieces: [201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212] },
+  200: { line: "Campaigns, social, trailers and ads for HBO Max, film and television.", pieces: [201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212] },
+  300: { line: "B2B advertising, ecommerce copy, digital customer journeys and SEO-led content.", pieces: [301, 302, 303, 304] },
   400: { line: "CRM and interactive campaigns for TNT Sports, including Paris 2024 and Milano Cortina 2026.", pieces: [401, 403] },
   500: { line: "Arts and culture.", pieces: [501, 502, 503, 504, 505] },
   600: { line: "Campaigns for FutureLearn, the online learning platform, including work with City & Guilds.", pieces: [601, 602] },
 };
 
-const ORDER = [100, 101, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 400, 401, 403, 500, 501, 502, 503, 504, 505, 600, 601, 602, 700, 750, 800, 888];
+const ORDER = [100, 101, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 300, 301, 302, 303, 304, 400, 401, 403, 500, 501, 502, 503, 504, 505, 600, 601, 602, 700, 750, 800, 888];
 
 /* ---------- helpers ---------- */
 const $ = (s, r = document) => r.querySelector(s);
@@ -584,9 +641,11 @@ function band(n, title) {
   const ch = CH[chapterOf(n)];
   return `<div class="band b-${ch.colour} sec">${n !== chapterOf(n) ? `<div class="kicker"><span>${ch.name}</span></div>` : ""}${dh(title)}</div>`;
 }
+const WEBP = new Set(["atg-lyceum-b2b", "noodoll-ricespud-product-copy", "futurelearn-course-seo", "futurelearn-editorial-rome"]);
+function imageSrc(file) { return "img/" + file + (WEBP.has(file) ? ".webp" : ".jpg"); }
 function pic([file, cap]) {
-  return `<figure class="pic"><button class="frame" data-src="img/${file}.jpg" data-cap="${esc(cap)}" aria-label="Enlarge picture: ${esc(cap)}">
-    <img src="img/${file}.jpg" alt="${esc(cap)}" loading="lazy" decoding="async"></button><figcaption>${esc(cap)}</figcaption></figure>`;
+  return `<figure class="pic"><button class="frame" data-src="${imageSrc(file)}" data-cap="${esc(cap)}" aria-label="Enlarge picture: ${esc(cap)}">
+    <img src="${imageSrc(file)}" alt="${esc(cap)}" loading="lazy" decoding="async"></button><figcaption>${esc(cap)}</figcaption></figure>`;
 }
 function row(label, colour, text) {
   return text ? `<div class="row"><span class="l c-${colour}">${label}</span><span>${esc(text)}</span></div>` : "";
@@ -594,38 +653,66 @@ function row(label, colour, text) {
 
 /* ---------- pages ---------- */
 function pageIndex() {
-  const toc = [
-    [101, "About", "white"], [200, "Movies & TV", "red"],
-    [400, "Sport", "green"], [500, "Arts & culture", "magenta"], [600, "EdTech", "cyan"],
-    [700, "Brand voice", "white"], [750, "Leadership", "white"], [800, "Journalism", "white"], [888, "Contact & CV", "yellow"],
+  const featured = [
+    [201, "CAMPAIGN", "HBO Max UK launch", "Integrated advertising · OOH, radio, digital & CRM", "kings-cross"],
+    [301, "B2B", "ATG Theatres", "Corporate venue hire · LinkedIn creative", "atg-lyceum-b2b"],
+    [601, "CAMPAIGN", "FutureLearn × City & Guilds", "Skills campaign · Paid social & digital", "new-world-needs"],
+    [401, "CRM", "TNT Sports", "Lifecycle campaigns · Retention & email", "paris-2024"],
+    [700, "BRAND VOICE", "HBO Max & FutureLearn", "Tone of voice · EMEA & brand frameworks", "quick-witted"],
+    [303, "DIGITAL", "HBO Max email & product copy", "Landing pages · Product journeys · CRM", "hbo-max-welcome-email"],
+    [501, "TRAILER", "Tate Modern", "Creative concept · Scriptwriting", "world-goes-pop"],
+    [302, "PRODUCT", "Noodoll", "Ecommerce copy · Product personality", "noodoll-ricespud-product-copy"]
   ];
-  const heads = [
-    [201, "CAMPAIGN", "green", "HBO Max UK: \u201cThe best new platform since 9¾.\u201d"],
-    [202, "CAMPAIGN", "green", "HBO Max brand campaign: \u201cWall-to-Wall Watercooler.\u201d"],
-    [211, "CAMPAIGN", "green", "HBO Max Halloween: \u201cFear hits home.\u201d"],
-    [403, "CAMPAIGN", "green", "Milano Cortina 2026: \u201cYour Olympics. Your way.\u201d"],
-    [504, "SOCIAL", "magenta", "Matilda The Musical social content"],
-    [501, "TRAILER", "yellow", "Tate Modern trailer featuring J-pop star"],
-    [208, "TRAILER", "yellow", "Boyhood trailer: 5.5 million YouTube views"],
-    [750, "LEADERSHIP", "cyan", "Leading and mentoring HBO Max and TNT Sports writers"],
+  const skills = [
+    ["CAMPAIGNS & ADVERTISING", [[201, "HBO Max launch"], [601, "FutureLearn campaign"], [403, "Milano Cortina"]]],
+    ["B2B & PARTNERSHIPS", [[301, "ATG Theatres LinkedIn"], [601, "City & Guilds campaign"]]],
+    ["BRAND VOICE", [[700, "HBO Max & FutureLearn"], [202, "HBO Max brand campaign"]]],
+    ["CRM & LIFECYCLE", [[401, "TNT Sports CRM"], [303, "HBO Max email & web"]]],
+    ["DIGITAL, PRODUCT & SEO", [[302, "Noodoll product copy"], [303, "HBO Max product journeys"], [304, "FutureLearn SEO"]]],
+    ["SCRIPTS & EDITORIAL", [[501, "Tate Modern"], [502, "National Theatre"], [304, "FutureLearn editorial"]]]
+  ];
+  const toc = [
+    [101, "About", "white"], [200, "Movies & TV", "red"], [300, "B2B & digital", "yellow"],
+    [400, "Sport", "green"], [500, "Arts & culture", "magenta"], [600, "EdTech", "cyan"],
+    [700, "Brand voice", "white"], [750, "Leadership", "white"], [800, "Journalism", "white"],
+    [888, "Contact & CV", "yellow"]
   ];
   return `
     <div class="mast">
       <div class="mast-body"><div class="mast-text"><canvas class="mosaic" id="mastCanvas" role="img" aria-label="Sam Lewis"></canvas>
-      ${dh("SENIOR WRITER & CREATIVE", "c-yellow role")}
-      <div class="mastcta"><a class="cta" href="mailto:sam.joe.lewis@gmail.com">EMAIL <span aria-hidden="true">&rsaquo;</span></a><a class="cta" href="#p888" data-go="888">CV <span aria-hidden="true">&rsaquo;</span></a><a class="cta" href="https://docs.google.com/presentation/d/1mHRjpPoziItjGX_4GrqQJIve7HLaUhjQ/edit?usp=sharing&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">FULL PORTFOLIO <span aria-hidden="true">&rsaquo;</span></a><span class="loc">London</span></div>
+      ${dh("SENIOR COPYWRITER & CREATIVE", "c-yellow role")}
+      <div class="mastcta"><a class="cta" href="#selected-work">VIEW WORK <span aria-hidden="true">&rsaquo;</span></a><a class="cta" href="#p888" data-go="888">VIEW CV <span aria-hidden="true">&rsaquo;</span></a><a class="cta" href="mailto:sam.joe.lewis@gmail.com">GET IN TOUCH <span aria-hidden="true">&rsaquo;</span></a><span class="loc">London</span></div>
       </div>
       <button class="frame portrait" data-src="img/sam.jpg" data-cap="Sam Lewis" aria-label="Enlarge photo of Sam Lewis"><img src="img/sam.jpg" alt="Sam Lewis"><img class="tt-portrait" src="img/sam-teletext.png" alt=""></button>
-      <div class="sub">Conceptual campaigns across TV, radio, social and outdoor, for HBO Max, TNT Sports, Tate Modern, the National Theatre and more.</div></div></div>
-    <div class="cols">
-      <div class="headlines"><div class="c-cyan">TOP STORIES</div>
-        ${heads.map(([n, tag, c, t]) => `<a href="#p${n}" data-go="${n}"><span><span class="tag c-${c}${tag === "SPEC" ? " flash" : ""}">${tag}</span> ${frac(esc(t))}</span><span class="n">${n}</span></a>`).join("")}
+      <div class="sub">I develop campaign ideas, write copy and shape brand voices for audiences around the world. My work spans advertising, digital, CRM, content and product, for brands including HBO Max, TNT Sports, FutureLearn, Tate Modern and the National Theatre.</div>
+      <div class="deck-link"><a href="https://docs.google.com/presentation/d/1mHRjpPoziItjGX_4GrqQJIve7HLaUhjQ/edit?usp=sharing&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">Presentation portfolio &rsaquo;</a></div>
       </div>
-      <div class="toc"><div class="c-cyan">PAGES</div>
+    </div>
+    <section id="selected-work" class="home-section" aria-label="Selected work">
+      <div class="home-heading"><span>SELECTED WORK</span><span class="c-dim">P201—P601</span></div>
+      <div class="feature-grid">
+        ${featured.map(([n, tag, title, desc, image]) => `<a class="feature-card" href="#p${n}" data-go="${n}">
+          <img src="${imageSrc(image)}" alt="" loading="lazy" decoding="async">
+          <span class="feature-info"><span class="feature-tag">${esc(tag)}</span><span class="feature-title">${esc(title)}</span><span class="feature-desc">${esc(desc)}</span></span><span class="feature-page">P${n}</span>
+        </a>`).join("")}
+      </div>
+    </section>
+    <section class="home-section" aria-label="Browse work by expertise">
+      <div class="home-heading"><span>BROWSE BY EXPERTISE</span><span class="c-dim">FIND RELEVANT WORK</span></div>
+      <div class="skill-grid">
+        ${skills.map(([name, links]) => `<div class="skill-box"><div class="skill-name">${esc(name)}</div>
+          ${links.map(([n,title]) => `<a href="#p${n}" data-go="${n}"><span>${esc(title)}</span><span class="skill-num">P${n}</span></a>`).join("")}
+        </div>`).join("")}
+      </div>
+    </section>
+    <section class="home-section" aria-label="Browse by industry and background">
+      <div class="home-heading"><span>BROWSE BY INDUSTRY</span><span class="c-dim">ALL PAGES</span></div>
+      <div class="toc industry-nav">
         ${toc.map(([n, t, c]) => `<a href="#p${n}" data-go="${n}"><span class="t c-${c}">${esc(t)}</span><span class="n">${n}</span></a>`).join("")}
       </div>
-    </div>`;
+    </section>`;
 }
+
 
 function pageAbout() {
   const paras = [
@@ -647,7 +734,7 @@ function pageChapter(n) {
     <div class="cards">${c.pieces.map(p => {
       const x = PIECES[p];
       const tg = x.tag ? `<span class="ttag">${esc(x.tag)}</span>` : "";
-      const th = x.pics ? `<span class="th">${tg}<img src="img/${x.pics[0][0]}.jpg" alt="" decoding="async"></span>`
+      const th = x.pics ? `<span class="th">${tg}<img src="${imageSrc(x.pics[0][0])}" alt="" decoding="async"></span>`
         : `<span class="th txt" style="background:var(--${CH[n].colour})">${tg}${esc(x.quote || x.title)}</span>`;
       return `<a class="card" href="#p${p}" data-go="${p}">${th}<span class="tt"><span>${esc(x.title)}</span><span class="n">${p}</span></span><span class="m">${esc(x.meta)}</span>${(x.quote || x.cardQuote) ? `<span class="q">“${frac(esc((x.quote || x.cardQuote).replace(/^“|”$/g, "")))}”</span>` : ""}</a>`;
     }).join("")}</div>`;
@@ -663,7 +750,7 @@ function scoresBlock() {
     <div class="c-dim">Viewers who received the campaigns, compared with a control group who didn't.</div></div>`;
 }
 
-const AR = {"boyhood":1.705,"futurelearn-step":1.634,"halt-catch-fire":1.41,"humans":1.754,"kings-cross":1.77,"matilda":1.78,"mock-the-week":1.531,"national-theatre":1.314,"new-world-building":0.597,"new-world-needs":1,"paris-2024":0.821,"quick-witted":1.604,"results-day":1,"royal-roy":0.735,"tough-cases":0.999,"watercooler":1.333,"westminster-abbey":0.647,"world-goes-pop":1.316,"hbo-max-welcome-email":0.937,"knight-journey":0.6,"hbo-max-halloween":1.2,"whales":1.784,"pogany-indulo":1.783,"hbo-max-trailer":1.79,"milano-cortina":1.867,"skinny-julia-holter":1.732,"skinny-slow-west":1.732,"swallows-amazons":0.681};
+const AR = {"atg-lyceum-b2b":1.2,"noodoll-ricespud-product-copy":1.3,"futurelearn-course-seo":1.28,"futurelearn-editorial-rome":1.36,"boyhood":1.705,"futurelearn-step":1.634,"halt-catch-fire":1.41,"humans":1.754,"kings-cross":1.77,"matilda":1.78,"mock-the-week":1.531,"national-theatre":1.314,"new-world-building":0.597,"new-world-needs":1,"paris-2024":0.821,"quick-witted":1.604,"results-day":1,"royal-roy":0.735,"tough-cases":0.999,"watercooler":1.333,"westminster-abbey":0.647,"world-goes-pop":1.316,"hbo-max-welcome-email":0.937,"knight-journey":0.6,"hbo-max-halloween":1.2,"whales":1.784,"pogany-indulo":1.783,"hbo-max-trailer":1.79,"milano-cortina":1.867,"skinny-julia-holter":1.732,"skinny-slow-west":1.732,"swallows-amazons":0.681};
 function gallery(list) {
   const s = list.reduce((a, [f]) => a + (AR[f] || 1), 0);
   return `<div class="gallery" style="max-width:calc(${s.toFixed(3)} * min(520px, 72vh))">${list.map(x => `<div class="gi" style="flex:${AR[x[0]] || 1} 1 0">${pic(x)}</div>`).join("")}</div>`;
@@ -790,7 +877,7 @@ function render(n) {
 }
 
 /* ---------- fastext ---------- */
-const NAV = { 200: "Movies & TV", 400: "Sport", 500: "Arts & culture", 600: "EdTech" };
+const NAV = { 200: "Movies & TV", 300: "B2B & digital", 400: "Sport", 500: "Arts & culture", 600: "EdTech" };
 const NAMES = { ...NAV, 101: "About", 700: "Brand voice", 750: "Leadership", 800: "Journalism", 888: "Contact & CV", 900: "Zen mode" };
 function drawCrumbs(n) {
   const el = $("#crumbs");
