@@ -511,30 +511,6 @@ const PIECES = {
     ],
     scores: true,
     pics: [["paris-2024", "Paris 2024 CRM"]] },
-  402: { title: "BBC SPORT WOMEN'S WORLD CUP 2027 SPEC CAMPAIGN", meta: "Spec campaign · BBC Sport · TV, radio, social & outdoor",
-    spec: true,
-    quote: "We set the tempo.",
-    body: [
-      "This is a spec campaign I developed for this application, for the BBC\u2019s coverage of the Women\u2019s World Cup in Brazil, from 24 June to 25 July 2027.",
-      "The idea starts with a simple truth: football in Brazil has rhythm. So we build that rhythm from the sounds of women\u2019s football across the UK. A ball against a fence. Studs on concrete. Rain on a stand roof. A packed WSL crowd. Each sound becomes part of a building samba beat.",
-      "As the rhythm builds, so does the scale of the game: from grassroots pitches, through the WSL, to England on the world stage. What begins as one small sound becomes something impossible to ignore.",
-      "\u201cWe set the tempo\u201d captures that momentum: a game growing louder, a team driving it forward, and a World Cup in a country where football and rhythm have always gone together. It\u2019s a simple device that flexes naturally across TV, radio, social and outdoor.",
-    ],
-    script: [
-      ["From Sunday mornings to Saturday nights.", "A few parents clap from the touchline. CUT to thousands clapping in a WSL stand. A rhythm starts to emerge."],
-      ["From the grassroots to the grand stage.", "A boot thuds on a muddy local pitch. CUT to a WSL star striking the ball under stadium lights. The rhythm is growing."],
-      ["Pitch by pitch, moment by moment, the beat builds\u2026", "Claps, studs, ball strikes, whistles and chants begin locking together into samba."],
-      ["Until the tempo\u2019s loud enough for a nation to follow.", "The crowd becomes a roar. England take centre stage. The rhythm reaches full force."],
-    ],
-    endline: ["We set the tempo.", "The FIFA Women\u2019s World Cup 2027. On the BBC."],
-    collabs: [
-      ["PASS THE BEAT.", [["GirlsontheBall", "https://www.instagram.com/girlsontheball/"]], "Women\u2019s football platform", "They travel from grassroots pitches to WSL grounds, collecting one match-day sound from each club: a clap, whistle, boot, bounce or chant. Each team records five seconds and passes the beat on."],
-      ["KEEP IT UP.", [["Lia Lewis", "https://www.instagram.com/lia.lewis/"]], "Freestyle football world champion", "Lia challenges players and fans to show the piece of skill that feels most like them, then puts her own spin on it. WSL players, grassroots teams and Brazilian creators join in, turning individual styles into a celebration of how differently the game can be played."],
-      ["BUILD THE BAND.", [["Vicky O\u2019Neon", "https://www.instagram.com/vickyoneondrums/"], ["Tuca Milan", "https://www.instagram.com/ursula.tuca.milan/"]], "Percussionists", "Vicky and Tuca turn sounds captured across the women\u2019s game into a samba track. As the rhythm builds, we reveal where each sound came from, before bringing the players, fans and clubs behind them together in the final mix."],
-    ],
-    pics: [["wwc-poster", "Spec key art for outdoor and digital outdoor"]],
-  },
-
   403: { tag: "CAMPAIGN", title: "MILANO CORTINA 2026 INTERACTIVE CAMPAIGN", meta: "HBO Max · TNT Sports · Milano Cortina 2026 · Warner Bros. Discovery",
     quote: "Your Olympics. Your way.",
     body: [
@@ -589,12 +565,12 @@ const PIECES = {
 
 const CHAPTERS = {
   200: { line: "Campaigns, social and ads for HBO Max, plus taglines for TV dramas.", pieces: [201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212] },
-  400: { line: "CRM for TNT Sports, including Paris 2024, plus a spec campaign for the Women's World Cup.", pieces: [401, 402, 403] },
+  400: { line: "CRM and interactive campaigns for TNT Sports, including Paris 2024 and Milano Cortina 2026.", pieces: [401, 403] },
   500: { line: "Arts and culture.", pieces: [501, 502, 503, 504, 505] },
   600: { line: "Campaigns for FutureLearn, the online learning platform, including work with City & Guilds.", pieces: [601, 602] },
 };
 
-const ORDER = [100, 101, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 400, 401, 402, 403, 500, 501, 502, 503, 504, 505, 600, 601, 602, 700, 750, 800, 888];
+const ORDER = [100, 101, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 400, 401, 403, 500, 501, 502, 503, 504, 505, 600, 601, 602, 700, 750, 800, 888];
 
 /* ---------- helpers ---------- */
 const $ = (s, r = document) => r.querySelector(s);
@@ -624,7 +600,6 @@ function pageIndex() {
     [700, "Brand voice", "white"], [750, "Leadership", "white"], [800, "Journalism", "white"], [888, "Contact & CV", "yellow"],
   ];
   const heads = [
-    [402, "SPEC", "yellow", "BBC Sport Women's World Cup: \u201cWe set the tempo.\u201d"],
     [201, "CAMPAIGN", "green", "HBO Max UK: \u201cThe best new platform since 9¾.\u201d"],
     [202, "CAMPAIGN", "green", "HBO Max brand campaign: \u201cWall-to-Wall Watercooler.\u201d"],
     [211, "CAMPAIGN", "green", "HBO Max Halloween: \u201cFear hits home.\u201d"],
@@ -688,7 +663,7 @@ function scoresBlock() {
     <div class="c-dim">Viewers who received the campaigns, compared with a control group who didn't.</div></div>`;
 }
 
-const AR = {"boyhood":1.705,"futurelearn-step":1.634,"halt-catch-fire":1.41,"humans":1.754,"kings-cross":1.77,"matilda":1.78,"mock-the-week":1.531,"national-theatre":1.314,"new-world-building":0.597,"new-world-needs":1,"paris-2024":0.821,"quick-witted":1.604,"results-day":1,"royal-roy":0.735,"tough-cases":0.999,"watercooler":1.333,"westminster-abbey":0.647,"world-goes-pop":1.316,"hbo-max-welcome-email":0.937,"knight-journey":0.6,"hbo-max-halloween":1.2,"whales":1.784,"pogany-indulo":1.783,"hbo-max-trailer":1.79,"milano-cortina":1.867,"wwc-poster":0.667,"skinny-julia-holter":1.732,"skinny-slow-west":1.732,"swallows-amazons":0.681};
+const AR = {"boyhood":1.705,"futurelearn-step":1.634,"halt-catch-fire":1.41,"humans":1.754,"kings-cross":1.77,"matilda":1.78,"mock-the-week":1.531,"national-theatre":1.314,"new-world-building":0.597,"new-world-needs":1,"paris-2024":0.821,"quick-witted":1.604,"results-day":1,"royal-roy":0.735,"tough-cases":0.999,"watercooler":1.333,"westminster-abbey":0.647,"world-goes-pop":1.316,"hbo-max-welcome-email":0.937,"knight-journey":0.6,"hbo-max-halloween":1.2,"whales":1.784,"pogany-indulo":1.783,"hbo-max-trailer":1.79,"milano-cortina":1.867,"skinny-julia-holter":1.732,"skinny-slow-west":1.732,"swallows-amazons":0.681};
 function gallery(list) {
   const s = list.reduce((a, [f]) => a + (AR[f] || 1), 0);
   return `<div class="gallery" style="max-width:calc(${s.toFixed(3)} * min(520px, 72vh))">${list.map(x => `<div class="gi" style="flex:${AR[x[0]] || 1} 1 0">${pic(x)}</div>`).join("")}</div>`;
