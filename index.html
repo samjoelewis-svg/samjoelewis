@@ -373,6 +373,7 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
 .feature-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .35em 1.2ch; }
 .feature-card { color: var(--white); text-decoration: none; display: grid; grid-template-columns: minmax(80px, 27%) minmax(0, 1fr) auto; gap: .4em 1ch; padding: .5em .3ch; border-bottom: 1px solid #464653; align-items: start; }
 .feature-placeholder { display: grid; align-content: center; justify-content: center; background: var(--blue); color: var(--yellow); border: 1px solid var(--white); font-size: .95em; line-height: 1.05; text-align: center; aspect-ratio: 4 / 3; }
+.feature-card img[src*="ugc.futurelearn.com"] { object-position: center; }
 .feature-card img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: center; border: 1px solid #858590; background: #111; }
 .feature-info { display: grid; gap: .14em; min-width: 0; }
 .feature-tag { color: var(--green); font-size: .73em; }
@@ -566,7 +567,8 @@ const PIECES = {
       "At FutureLearn, I wrote product copy for online courses, including this Google for Education course aimed at teachers and educators.",
       "The challenge was to make a practical, technology-focused course feel relevant and useful. Rather than listing Google's tools and features, I focused on what educators could actually do with them: save time, stay organised and communicate more effectively with colleagues, students and parents."
     ],
-    link: ["https://www.futurelearn.com/courses/google-for-education-communicating-and-staying-organised-with-staff-students-and-parents-sc", "See the course"] },
+    link: ["https://www.futurelearn.com/courses/google-for-education-communicating-and-staying-organised-with-staff-students-and-parents-sc", "See the course"],
+    pics: [["google-course-artwork", "Google for Education course artwork used on the FutureLearn landing page"]] },
 
   401: { title: "TNT SPORTS CRM, INCLUDING PARIS 2024", meta: "TNT Sports · Paris 2024 · CRM · Warner Bros. Discovery",
     body: [
@@ -650,7 +652,7 @@ function band(n, title) {
   return `<div class="band b-${ch.colour} sec">${n !== chapterOf(n) ? `<div class="kicker"><span>${ch.name}</span></div>` : ""}${dh(title)}</div>`;
 }
 const WEBP = new Set(["atg-lyceum-b2b", "noodoll-ricespud-product-copy", "futurelearn-course-seo", "futurelearn-editorial-rome"]);
-function imageSrc(file) { return "img/" + file + (WEBP.has(file) ? ".webp" : ".jpg"); }
+function imageSrc(file) { return file === "google-course-artwork" ? "https://ugc.futurelearn.com/uploads/images/e4/98/header_e498abc1-1429-4c12-9941-a6746fa13efd.jpg" : "img/" + file + (WEBP.has(file) ? ".webp" : ".jpg"); }
 function pic([file, cap]) {
   return `<figure class="pic"><button class="frame" data-src="${imageSrc(file)}" data-cap="${esc(cap)}" aria-label="Enlarge picture: ${esc(cap)}">
     <img src="${imageSrc(file)}" alt="${esc(cap)}" loading="lazy" decoding="async"></button><figcaption>${esc(cap)}</figcaption></figure>`;
@@ -664,7 +666,7 @@ function pageIndex() {
   const featured = [
     [201, "CAMPAIGN", "HBO Max UK launch", "Integrated advertising · OOH, radio, digital & CRM", "kings-cross"],
     [301, "B2B", "ATG Theatres", "Corporate venue hire · LinkedIn creative", "atg-lyceum-b2b"],
-    [305, "PRODUCT", "FutureLearn x Google", "Course landing page · Product copy", null],
+    [305, "PRODUCT", "FutureLearn x Google", "Course landing page · Product copy", "google-course-artwork"],
     [401, "CRM", "TNT Sports", "Lifecycle campaigns · Retention & email", "paris-2024"],
     [700, "BRAND VOICE", "HBO Max & FutureLearn", "Tone of voice · EMEA & brand frameworks", "quick-witted"],
     [303, "DIGITAL", "HBO Max email & product copy", "Landing pages · Product journeys · CRM", "hbo-max-welcome-email"],
