@@ -366,7 +366,14 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
 .landing-example .watch { margin: 0; }
 .landing-example .frame { z-index: 1; border-width: 1px; }
 .landing-example .frame img { max-height: none; }
-.landing-example.flow .pic { width: min(100%, 480px); }
+.landing-example.flow img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: min(100%, 480px);
+  height: auto;
+  border: 1px solid var(--white);
+}
 </style>
 </head>
 <body>
@@ -733,6 +740,7 @@ function gallery(list) {
 }
 
 function landingExamples(pics) {
+  const [flowImage, flowAlt, flowWidth, flowHeight] = pics[2];
   return `<div class="landing-examples">
     <section class="landing-example">
       <header><h2 class="c-cyan">HBO Max</h2><a class="watch" href="https://www.hbomax.com/gb/en" target="_blank" rel="noopener noreferrer" aria-label="View live HBO Max page">View live page <span aria-hidden="true">&rsaquo;</span></a></header>
@@ -744,7 +752,7 @@ function landingExamples(pics) {
     </section>
     <section class="landing-example flow">
       <header><h2 class="c-cyan">HBO Max mobile sign-up flow in Figma</h2></header>
-      ${pic(pics[2], false)}
+      <img src="${imageSrc(flowImage)}" alt="${esc(flowAlt)}" width="${flowWidth}" height="${flowHeight}" loading="lazy" decoding="async">
     </section>
   </div>`;
 }
