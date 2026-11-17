@@ -175,6 +175,13 @@ canvas.mosaic { display: block; width: 100%; height: auto; image-rendering: pixe
 .lp-links { display: flex; flex-wrap: wrap; align-items: start; gap: .2em 1.2ch; }
 .lp-links .watch { margin-top: .35em; }
 
+/* Case study images use the existing picture lightbox, with Figma shown at full width. */
+.lp-images { display: grid; gap: 1em; margin-top: .9em; }
+.lp-pair { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.2ch; }
+.lp-figma { max-width: 100%; }
+.lp-images .pic .frame { width: 100%; }
+.lp-images .pic .frame img { width: 100%; height: auto; max-height: none; object-fit: contain; }
+@media (max-width: 560px) { .lp-pair { grid-template-columns: 1fr; } }
 /* Copy excerpts from the live landing pages: text-led, consistent with the site's teletext design. */
 .lp-examples { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6em 1ch; }
 .lp-example { border: 2px solid var(--white); background: #0c0c0e; padding: .65em 1.2ch; display: grid; gap: .65em; align-content: space-between; min-height: 175px; }
@@ -516,7 +523,8 @@ const PIECES = {
       "I work with designers and product teams in Figma to plan the page and the commerce journey, from the first headline and plan comparison to the CTA and necessary terms. The challenge is to keep the language straightforward without losing each brand’s character.",
       "We use performance data and testing to improve these pages over time, refining headlines, messaging, calls to action and the way information is presented. It is a mix of copy craft, commercial thinking and making something complicated feel simple."
     ],
-    links:[["https://www.hbomax.com/gb/en","HBO Max UK landing page"],["https://www.hbomax.com/gb/en/sports","TNT Sports landing page"]]
+    links:[["https://www.hbomax.com/gb/en","HBO Max UK landing page"],["https://www.hbomax.com/gb/en/sports","TNT Sports landing page"]],
+    pics:[["hbo-max-landing","HBO Max UK subscription landing page"],["tnt-sports-landing","TNT Sports subscription landing page"],["figma-commerce-flows","Figma commerce flows used to plan landing-page journeys and messaging"]]
   },
   304: { tag:"SEO / EDITORIAL",title:"FUTURELEARN: COURSE SEO & EDITORIAL",meta:"FutureLearn · Search-led course titles · Long-form articles",
     body:[
@@ -614,7 +622,7 @@ function band(n, title) {
   const ch = CH[chapterOf(n)];
   return `<div class="band b-${ch.colour} sec">${n !== chapterOf(n) ? `<div class="kicker"><span>${ch.name}</span></div>` : ""}${dh(title)}</div>`;
 }
-const WEBP = new Set(["atg-lyceum-b2b", "noodoll-ricespud-product-copy", "futurelearn-course-seo", "futurelearn-editorial-rome"]);
+const WEBP = new Set(["atg-lyceum-b2b", "noodoll-ricespud-product-copy", "futurelearn-course-seo", "futurelearn-editorial-rome", "hbo-max-landing", "tnt-sports-landing", "figma-commerce-flows"]);
 function imageSrc(file) { return file === "google-course-artwork" ? "https://ugc.futurelearn.com/uploads/images/e4/98/header_e498abc1-1429-4c12-9941-a6746fa13efd.jpg" : "img/" + file + (WEBP.has(file) ? ".webp" : ".jpg"); }
 function pic([file, cap]) {
   return `<figure class="pic"><button class="frame" data-src="${imageSrc(file)}" data-cap="${esc(cap)}" aria-label="Enlarge picture: ${esc(cap)}">
@@ -628,7 +636,7 @@ function row(label, colour, text) {
 function pageIndex() {
   const featured = [
     [201, "CAMPAIGN", "HBO Max UK launch", "Integrated advertising · OOH, radio, digital & CRM", "kings-cross"],
-    [306, "LANDING PAGES", "HBO Max & TNT Sports", "Web copy · Figma · Data & testing", null],
+    [306, "LANDING PAGES", "HBO Max & TNT Sports", "Web copy · Figma · Data & testing", "hbo-max-landing"],
     [301, "B2B", "ATG Theatres", "Corporate venue hire · LinkedIn creative", "atg-lyceum-b2b"],
     [305, "PRODUCT", "FutureLearn x Google", "Course landing page · Product copy", "google-course-artwork"],
     [401, "CRM", "TNT Sports", "Lifecycle campaigns · Retention & email", "paris-2024"],
@@ -748,7 +756,11 @@ function pagePiece(n) {
       </div>
       ${right}
     </div>
-    ${multi ? gallery(p.pics) : ""}
+    ${multi && n !== 306 ? gallery(p.pics) : ""}
+    ${n === 306 ? `<div class="lp-images" aria-label="HBO Max and TNT Sports landing pages and Figma planning screenshot">
+      <div class="lp-pair">${pic(p.pics[0])}${pic(p.pics[1])}</div>
+      <div class="lp-figma">${pic(p.pics[2])}</div>
+      </div>` : ""}
     ${n === 306 ? `<section class="blk" aria-label="Landing page copy excerpts"><div class="bg-blue">COPY IN CONTEXT</div>
       <div class="lp-examples">
         <div class="lp-example"><span class="lp-label">HBO MAX · UK</span><span class="lp-headline">Nothing Hits Like This</span><span class="lp-cta">GET HBO MAX</span></div>
