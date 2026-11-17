@@ -392,12 +392,12 @@ html[data-case-study] {
 .landing-study header { margin: clamp(32px, 5vw, 58px) 0 36px; }
 .landing-study h1 {
   margin: 0;
-  max-width: 21ch;
   font-size: clamp(34px, 5.4vw, 58px);
   letter-spacing: -.045em;
   line-height: 1.08;
   text-wrap: balance;
 }
+.landing-study h1 span { white-space: nowrap; }
 .landing-study header p {
   max-width: 66ch;
   margin: 16px 0 0;
@@ -587,9 +587,9 @@ const PIECES = {
       "That includes explaining offers and product features simply, while keeping the brand voice distinctive. I adapt messages for different placements, audiences and markets, and write the CTAs, modules and subject lines that turn a big idea into a working customer journey.",
       "For the UK launch, I helped keep the same voice consistent across advertising, welcome emails and product copy."
     ],pics:[["hbo-max-welcome-email","HBO Max UK welcome email"]] },
-  306: { tag:"LANDING PAGES",title:"HBO MAX & TNT SPORTS: LANDING PAGES",meta:"Product copy · Figma · EMEA",
+  306: { tag:"LANDING PAGES",title:"HBO MAX & TNT SPORTS: LANDING PAGES",meta:"Product copy · Figma · EMEA",thumb:"hbo-max-landing",
     body:["I write the landing pages for HBO Max and TNT Sports across EMEA. I work with designers in Figma and use testing to make plans, pricing and sign-up clearer."],
-    pics:[["hbo-max-landing","HBO Max UK landing page",1904,890],["tnt-sports-landing","TNT Sports UK landing page",1904,864],["hbo-commerce-account-flow","HBO Max account creation screen from Figma",1366,1024]]
+    pics:[["hbo-max-landing-case","HBO Max UK landing page",1904,890],["tnt-sports-landing-case","TNT Sports UK landing page",1904,864],["hbo-commerce-account-flow","HBO Max account creation screen from Figma",1366,1024]]
   },
   304: { tag:"SEO / EDITORIAL",title:"FUTURELEARN: COURSE SEO & EDITORIAL",meta:"FutureLearn · Search-led course titles · Long-form articles",
     body:[
@@ -687,8 +687,8 @@ function band(n, title) {
   const ch = CH[chapterOf(n)];
   return `<div class="band b-${ch.colour} sec">${n !== chapterOf(n) ? `<div class="kicker"><span>${ch.name}</span></div>` : ""}${dh(title)}</div>`;
 }
-const WEBP = new Set(["atg-lyceum-b2b", "noodoll-ricespud-product-copy", "futurelearn-course-seo", "futurelearn-editorial-rome", "hbo-max-landing", "tnt-sports-landing", "figma-commerce-flows"]);
-function imageSrc(file) { if (file === "hbo-commerce-account-flow") return "img/hbo-commerce-account-flow.svg"; return file === "google-course-artwork" ? "https://ugc.futurelearn.com/uploads/images/e4/98/header_e498abc1-1429-4c12-9941-a6746fa13efd.jpg" : "img/" + file + (WEBP.has(file) ? ".webp" : ".jpg"); }
+const WEBP = new Set(["atg-lyceum-b2b", "noodoll-ricespud-product-copy", "futurelearn-course-seo", "futurelearn-editorial-rome", "hbo-max-landing", "hbo-max-landing-case", "tnt-sports-landing-case", "hbo-commerce-account-flow"]);
+function imageSrc(file) { return file === "google-course-artwork" ? "https://ugc.futurelearn.com/uploads/images/e4/98/header_e498abc1-1429-4c12-9941-a6746fa13efd.jpg" : "img/" + file + (WEBP.has(file) ? ".webp" : ".jpg"); }
 function pic([file, cap, width, height], showCaption = true) {
   const src = imageSrc(file);
   return `<figure class="pic"><button class="frame" data-src="${src}" data-cap="${esc(cap)}" aria-label="Enlarge picture: ${esc(cap)}">
@@ -782,7 +782,7 @@ function pageChapter(n) {
     <div class="cards">${c.pieces.map(p => {
       const x = PIECES[p];
       const tg = x.tag ? `<span class="ttag">${esc(x.tag)}</span>` : "";
-      const th = x.pics ? `<span class="th">${tg}<img src="${imageSrc(x.pics[0][0])}" alt="" decoding="async"></span>`
+      const th = x.pics ? `<span class="th">${tg}<img src="${imageSrc(x.thumb || x.pics[0][0])}" alt="" decoding="async"></span>`
         : `<span class="th txt" style="background:var(--${CH[n].colour})">${tg}${esc(x.quote || x.title)}</span>`;
       return `<a class="card" href="#p${p}" data-go="${p}">${th}<span class="tt"><span>${esc(x.title)}</span><span class="n">${p}</span></span><span class="m">${esc(x.meta)}</span>${(x.quote || x.cardQuote) ? `<span class="q">“${frac(esc((x.quote || x.cardQuote).replace(/^“|”$/g, "")))}”</span>` : ""}</a>`;
     }).join("")}</div>`;
@@ -808,7 +808,7 @@ function pageLandingStudy() {
   const study = PIECES[306];
   return `<article class="landing-study">
     <header>
-      <h1>HBO Max &amp; TNT Sports landing pages</h1>
+      <h1><span>HBO Max</span> &amp; <span>TNT Sports</span> landing pages</h1>
       <p>${esc(study.body[0])}</p>
     </header>
     <div class="landing-examples">
