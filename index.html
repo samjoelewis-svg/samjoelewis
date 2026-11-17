@@ -172,24 +172,6 @@ canvas.mosaic { display: block; width: 100%; height: auto; image-rendering: pixe
 .headlines a:hover, .headlines a:focus-visible { background: var(--cyan); color: var(--black); outline: none; }
 .headlines a:hover .n, .headlines a:focus-visible .n { color: var(--black); }
 
-.lp-links { display: flex; flex-wrap: wrap; align-items: start; gap: .2em 1.2ch; }
-.lp-links .watch { margin-top: .35em; }
-
-/* Case study images use the existing picture lightbox, with Figma shown at full width. */
-/* Landing-page case study: display actual work cleanly, without TV scan lines or image reveal effects. */
-.screen[data-clear-images="true"]::after { display: none; }
-.lp-images { display: grid; gap: 1.2em; margin-top: .6em; }
-.lp-images .pic { margin: 0; }
-.lp-images .frame { display: block; width: 100%; border: 1px solid var(--dim); overflow: hidden; background: #08080a; }
-.lp-images .frame img { display: block; width: 100%; max-height: none; height: auto; object-fit: contain; }
-.lp-images .web-shot .frame { aspect-ratio: 1.91; }
-.lp-images .web-shot .frame img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.035); transform-origin: center center; }
-.lp-images figcaption { margin-top: .35em; color: var(--dim); font-size: .78em; line-height: 1.3; }
-.lp-images .figma-shot { max-width: 100%; }
-.lp-images .figma-shot .frame img { width: 100%; height: auto; }
-.lp-figma-label { font-size: .88em; color: var(--cyan); margin-top: .3em; }
-@media (max-width: 560px) { .lp-images { gap: 1em; } .lp-images .web-shot .frame { aspect-ratio: 16/10; } }
-
 /* piece pages */
 .piece { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: .8em 2.4ch; align-items: start; }
 .facts { display: grid; gap: .45em; min-width: 0; }
@@ -369,6 +351,94 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
 .industry-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .05em 3ch; }
 @media (max-width: 900px) { .feature-grid { grid-template-columns: minmax(0, 1fr); } .skill-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .skill-grid, .industry-nav { grid-template-columns: minmax(0,1fr); } .feature-card { grid-template-columns: 84px minmax(0, 1fr) auto; } .mast .frame { width: 110px; } }
+
+/* Landing-page case study */
+html[data-case-study] {
+  color-scheme: light;
+  --paper: #faf9f6;
+  --ink: #222221;
+  --muted: #565652;
+  --rule: #deddd7;
+  background: var(--paper);
+}
+[data-case-study] body {
+  color: var(--ink);
+  background: var(--paper);
+  font: 16px/1.55 system-ui, sans-serif;
+  -webkit-font-smoothing: auto;
+  padding: 0 clamp(18px, 5vw, 48px) 40px;
+}
+[data-case-study] .wrap { max-width: 1000px; }
+[data-case-study] .tv, [data-case-study] .screen {
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  min-height: 0;
+  overflow: visible;
+}
+[data-case-study] .screen::after, [data-case-study] .head { display: none; }
+[data-case-study] .crumbs {
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--rule);
+  text-transform: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+[data-case-study] .page { padding: 0; }
+.landing-study header { margin: clamp(32px, 5vw, 58px) 0 36px; }
+.landing-study h1 {
+  margin: 0;
+  max-width: 21ch;
+  font-size: clamp(34px, 5.4vw, 58px);
+  letter-spacing: -.045em;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+.landing-study header p {
+  max-width: 66ch;
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: clamp(16px, 2vw, 18px);
+}
+.landing-examples { display: grid; gap: clamp(26px, 5vw, 48px); }
+.landing-example { border-top: 1px solid var(--rule); padding-top: 14px; }
+.landing-example header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  margin: 0 0 12px;
+}
+.landing-example h2 { margin: 0; font-size: 19px; font-weight: 650; }
+.landing-example a, [data-case-study] .crumbs a, [data-case-study] .fastext button {
+  color: var(--ink);
+  text-decoration: none;
+}
+.landing-example a { font-size: 14px; text-decoration: underline; text-underline-offset: 3px; }
+[data-case-study] .crumbs a:hover, [data-case-study] .fastext button:hover { text-decoration: underline; text-underline-offset: 3px; }
+.landing-example .frame {
+  border: 1px solid var(--rule);
+  border-radius: 5px;
+  overflow: hidden;
+  background: #111;
+}
+.landing-example .frame img { width: 100%; max-height: none; height: auto; }
+[data-case-study] .fastext {
+  margin-top: 40px;
+  border-top: 1px solid var(--rule);
+  padding-top: 16px;
+  font-size: 14px;
+}
+[data-case-study] .fastext button { background: none; }
+[data-case-study] :is(a, button):focus-visible { outline: 2px solid #2440c4; outline-offset: 3px; }
+[data-case-study] .lb .bar { color: var(--white); font-size: 14px; align-items: center; }
+[data-case-study] .lb .c-cyan { color: var(--white); }
+[data-case-study] .lb button { border-radius: 4px; padding: .35em .8em; }
 </style>
 </head>
 <body>
@@ -517,13 +587,9 @@ const PIECES = {
       "That includes explaining offers and product features simply, while keeping the brand voice distinctive. I adapt messages for different placements, audiences and markets, and write the CTAs, modules and subject lines that turn a big idea into a working customer journey.",
       "For the UK launch, I helped keep the same voice consistent across advertising, welcome emails and product copy."
     ],pics:[["hbo-max-welcome-email","HBO Max UK welcome email"]] },
-  306: { tag:"LANDING PAGES",title:"HBO MAX & TNT SPORTS: LANDING PAGES",meta:"HBO Max · TNT Sports · EMEA · Product copy, Figma & optimisation",
-    body:[
-      "I write landing pages for HBO Max and TNT Sports across EMEA. The job is to make plans, pricing and product information easy to understand, so people know exactly what they’re signing up for.",
-      "I work with designers and product teams in Figma to plan the pages and sign-up journeys. We use data and testing to keep improving the copy, from headlines and CTAs to how the offers are explained."
-    ],
-    links:[["https://www.hbomax.com/gb/en","HBO Max landing page"],["https://www.hbomax.com/gb/en/sports","TNT Sports landing page"]],
-    pics:[["hbo-max-landing","HBO Max UK landing page — plans and subscription messaging"],["tnt-sports-landing","TNT Sports landing page — product choices and pricing"],["hbo-commerce-account-flow","A commerce sign-up screen exported directly from Figma"]]
+  306: { tag:"LANDING PAGES",title:"HBO MAX & TNT SPORTS: LANDING PAGES",meta:"Product copy · Figma · EMEA",
+    body:["I write the landing pages for HBO Max and TNT Sports across EMEA. I work with designers in Figma and use testing to make plans, pricing and sign-up clearer."],
+    pics:[["hbo-max-landing","HBO Max UK landing page",1904,890],["tnt-sports-landing","TNT Sports UK landing page",1904,864],["hbo-commerce-account-flow","HBO Max account creation screen from Figma",1366,1024]]
   },
   304: { tag:"SEO / EDITORIAL",title:"FUTURELEARN: COURSE SEO & EDITORIAL",meta:"FutureLearn · Search-led course titles · Long-form articles",
     body:[
@@ -623,9 +689,10 @@ function band(n, title) {
 }
 const WEBP = new Set(["atg-lyceum-b2b", "noodoll-ricespud-product-copy", "futurelearn-course-seo", "futurelearn-editorial-rome", "hbo-max-landing", "tnt-sports-landing", "figma-commerce-flows"]);
 function imageSrc(file) { if (file === "hbo-commerce-account-flow") return "img/hbo-commerce-account-flow.svg"; return file === "google-course-artwork" ? "https://ugc.futurelearn.com/uploads/images/e4/98/header_e498abc1-1429-4c12-9941-a6746fa13efd.jpg" : "img/" + file + (WEBP.has(file) ? ".webp" : ".jpg"); }
-function pic([file, cap]) {
-  return `<figure class="pic"><button class="frame" data-src="${imageSrc(file)}" data-cap="${esc(cap)}" aria-label="Enlarge picture: ${esc(cap)}">
-    <img src="${imageSrc(file)}" alt="${esc(cap)}" loading="lazy" decoding="async"></button><figcaption>${esc(cap)}</figcaption></figure>`;
+function pic([file, cap, width, height], showCaption = true) {
+  const src = imageSrc(file);
+  return `<figure class="pic"><button class="frame" data-src="${src}" data-cap="${esc(cap)}" aria-label="Enlarge picture: ${esc(cap)}">
+    <img src="${src}" alt="${esc(cap)}"${width && height ? ` width="${width}" height="${height}"` : ""} loading="lazy" decoding="async"></button>${showCaption ? `<figcaption>${esc(cap)}</figcaption>` : ""}</figure>`;
 }
 function row(label, colour, text) {
   return text ? `<div class="row"><span class="l c-${colour}">${label}</span><span>${esc(text)}</span></div>` : "";
@@ -737,6 +804,30 @@ function gallery(list) {
   return `<div class="gallery" style="max-width:calc(${s.toFixed(3)} * min(520px, 72vh))">${list.map(x => `<div class="gi" style="flex:${AR[x[0]] || 1} 1 0">${pic(x)}</div>`).join("")}</div>`;
 }
 
+function pageLandingStudy() {
+  const study = PIECES[306];
+  return `<article class="landing-study">
+    <header>
+      <h1>HBO Max &amp; TNT Sports landing pages</h1>
+      <p>${esc(study.body[0])}</p>
+    </header>
+    <div class="landing-examples">
+      <section class="landing-example">
+        <header><h2>HBO Max</h2><a href="https://www.hbomax.com/gb/en" target="_blank" rel="noopener noreferrer" aria-label="View live HBO Max page">View live page <span aria-hidden="true">↗</span></a></header>
+        ${pic(study.pics[0], false)}
+      </section>
+      <section class="landing-example">
+        <header><h2>TNT Sports</h2><a href="https://www.hbomax.com/gb/en/sports" target="_blank" rel="noopener noreferrer" aria-label="View live TNT Sports page">View live page <span aria-hidden="true">↗</span></a></header>
+        ${pic(study.pics[1], false)}
+      </section>
+      <section class="landing-example">
+        <header><h2>HBO Max sign-up in Figma</h2></header>
+        ${pic(study.pics[2], false)}
+      </section>
+    </div>
+  </article>`;
+}
+
 function pagePiece(n) {
   const p = PIECES[n];
   const multi = p.pics && (p.pics.length > 1 || p.wide);
@@ -751,17 +842,10 @@ function pagePiece(n) {
       <div class="facts">
         <div class="prose">${p.body.map(t => `<p>${esc(t)}</p>`).join("")}</div>
         ${p.link ? `<a class="watch" href="${p.link[0]}" target="_blank" rel="noopener">${esc(p.link[1])} <span aria-hidden="true">&rsaquo;</span></a>` : ""}
-        ${p.links ? `<div class="lp-links">${p.links.map(([url, label]) => `<a class="watch" href="${url}" target="_blank" rel="noopener noreferrer">${esc(label)} <span aria-hidden="true">&rsaquo;</span></a>`).join("")}</div>` : ""}
       </div>
       ${right}
     </div>
-    ${multi && n !== 306 ? gallery(p.pics) : ""}
-    ${n === 306 ? `<div class="lp-images" aria-label="HBO Max and TNT Sports landing page portfolio examples">
-      <div class="web-shot">${pic(p.pics[0])}</div>
-      <div class="web-shot">${pic(p.pics[1])}</div>
-      <div class="lp-figma-label">FIGMA / COMMERCE FLOW</div>
-      <div class="figma-shot">${pic(p.pics[2])}</div>
-    </div>` : ""}
+    ${multi ? gallery(p.pics) : ""}
     ${p.scores ? `<div class="scorewide">${scoresBlock()}</div>` : ""}
     ${p.script ? `<section class="blk"><div class="bg-blue">SCRIPT</div>
       <div class="script">${p.script.map(([vo, act]) => `<div class="vo">${esc(vo)}</div><div class="act">${esc(act)}</div>`).join("")}</div>
@@ -855,6 +939,7 @@ function render(n) {
   if (n === 100) return pageIndex();
   if (n === 101) return pageAbout();
   if (CHAPTERS[n]) return pageChapter(n);
+  if (n === 306) return pageLandingStudy();
   if (PIECES[n]) return pagePiece(n);
   if (n === 700) return pageVoice();
   if (n === 750) return pageLeadership();
@@ -869,6 +954,10 @@ const NAV = { 200: "Movies & TV", 300: "B2B & digital", 400: "Sport", 500: "Arts
 const NAMES = { ...NAV, 101: "About", 700: "Brand voice", 750: "Leadership", 800: "Journalism", 888: "Contact & CV", 900: "Zen mode" };
 function drawCrumbs(n) {
   const el = $("#crumbs");
+  if (n === 306) {
+    el.innerHTML = `<a href="#p100" data-go="100">Sam Lewis</a><a href="#p300" data-go="300">← B2B &amp; digital</a>`;
+    return;
+  }
   if (n === 100 || !(NAMES[n] || PIECES[n])) { el.innerHTML = ""; return; }
   const ch = chapterOf(n), inSec = !!PIECES[n] && !!NAV[ch];
   const parent = inSec ? ch : 100;
@@ -882,7 +971,7 @@ function drawCrumbs(n) {
 function drawFastext(n) {
   drawCrumbs(n);
   $("#screen").dataset.home = String(n === 100);
-  $("#screen").dataset.clearImages = String(n === 306);
+  document.documentElement.toggleAttribute("data-case-study", n === 306);
   const ch = chapterOf(n);
   const i = ORDER.indexOf(n);
   if (n === 100 || i < 0) { $("#fastext").innerHTML = ""; return; }
@@ -913,7 +1002,7 @@ function go(n, push = true) {
     pageEl.focus({ preventScroll: true });
     const sc = $("#screen"); if (sc.getBoundingClientRect().top < 0) sc.scrollIntoView({ block: "start" });
   };
-  if (reduced) return finish();
+  if (reduced || n === 306 || current === 306) return finish();
   let k = current, steps = 0;
   timer = setInterval(() => {
     k = k >= 899 ? 100 : k + 7 + Math.floor(Math.random() * 13);
