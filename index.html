@@ -172,6 +172,9 @@ canvas.mosaic { display: block; width: 100%; height: auto; image-rendering: pixe
 .headlines a:hover, .headlines a:focus-visible { background: var(--cyan); color: var(--black); outline: none; }
 .headlines a:hover .n, .headlines a:focus-visible .n { color: var(--black); }
 
+.lp-links { display: flex; flex-wrap: wrap; align-items: start; gap: .2em 1.2ch; }
+.lp-links .watch { margin-top: .35em; }
+
 /* piece pages */
 .piece { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: .8em 2.4ch; align-items: start; }
 .facts { display: grid; gap: .45em; min-width: 0; }
@@ -499,6 +502,14 @@ const PIECES = {
       "That includes explaining offers and product features simply, while keeping the brand voice distinctive. I adapt messages for different placements, audiences and markets, and write the CTAs, modules and subject lines that turn a big idea into a working customer journey.",
       "For the UK launch, I helped keep the same voice consistent across advertising, welcome emails and product copy."
     ],pics:[["hbo-max-welcome-email","HBO Max UK welcome email"]] },
+  306: { tag:"LANDING PAGES",title:"HBO MAX & TNT SPORTS: LANDING PAGES",meta:"HBO Max · TNT Sports · EMEA · Web copy, Figma & testing",
+    body:[
+      "I write landing-page copy for HBO Max and TNT Sports across EMEA. My job is to turn complex plans, prices, product features and sports packages into clear, accessible information that helps people understand the offer and decide what to subscribe to.",
+      "I work with designers and product teams in Figma to plan the page and the commerce journey, from the first headline and plan comparison to the CTA and necessary terms. The challenge is to keep the language straightforward without losing each brand’s character.",
+      "We use performance data and testing to improve these pages over time, refining headlines, messaging, calls to action and the way information is presented. It is a mix of copy craft, commercial thinking and making something complicated feel simple."
+    ],
+    links:[["https://www.hbomax.com/gb/en","HBO Max UK landing page"],["https://www.hbomax.com/gb/en/sports","TNT Sports landing page"]]
+  },
   304: { tag:"SEO / EDITORIAL",title:"FUTURELEARN: COURSE SEO & EDITORIAL",meta:"FutureLearn · Search-led course titles · Long-form articles",
     body:[
       "At FutureLearn, I used keyword research and search-results analysis to write course titles that would rank well while still making sense to prospective learners. ‘Power Dressing in the Zoom Era’ is one example of balancing clear search intent with useful, engaging copy.",
@@ -575,13 +586,13 @@ const PIECES = {
 
 const CHAPTERS = {
   200: { line: "Campaigns, social, trailers and ads for HBO Max, film and television.", pieces: [201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212] },
-  300: { line: "B2B advertising, ecommerce copy, digital customer journeys and SEO-led content.", pieces: [301, 302, 303, 304, 305] },
+  300: { line: "B2B advertising, ecommerce copy, digital customer journeys and SEO-led content.", pieces: [301, 302, 303, 304, 305, 306] },
   400: { line: "CRM and interactive campaigns for TNT Sports, including Paris 2024 and Milano Cortina 2026.", pieces: [401, 403] },
   500: { line: "Arts and culture.", pieces: [501, 502, 503, 504, 505] },
   600: { line: "Campaigns for FutureLearn, the online learning platform, including work with City & Guilds.", pieces: [601, 602] },
 };
 
-const ORDER = [100, 101, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 300, 301, 302, 303, 304, 305, 400, 401, 403, 500, 501, 502, 503, 504, 505, 600, 601, 602, 700, 750, 800, 888];
+const ORDER = [100, 101, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 300, 301, 302, 303, 304, 305, 306, 400, 401, 403, 500, 501, 502, 503, 504, 505, 600, 601, 602, 700, 750, 800, 888];
 
 /* ---------- helpers ---------- */
 const $ = (s, r = document) => r.querySelector(s);
@@ -609,11 +620,12 @@ function row(label, colour, text) {
 function pageIndex() {
   const featured = [
     [201, "CAMPAIGN", "HBO Max UK launch", "Integrated advertising · OOH, radio, digital & CRM", "kings-cross"],
+    [306, "LANDING PAGES", "HBO Max & TNT Sports", "Web copy · Figma · Data & testing", null],
     [301, "B2B", "ATG Theatres", "Corporate venue hire · LinkedIn creative", "atg-lyceum-b2b"],
     [305, "PRODUCT", "FutureLearn x Google", "Course landing page · Product copy", "google-course-artwork"],
     [401, "CRM", "TNT Sports", "Lifecycle campaigns · Retention & email", "paris-2024"],
     [700, "BRAND VOICE", "HBO Max & FutureLearn", "Tone of voice · EMEA & brand frameworks", "quick-witted"],
-    [303, "DIGITAL", "HBO Max email & product copy", "Landing pages · Product journeys · CRM", "hbo-max-welcome-email"],
+    [303, "CRM", "HBO Max email & product copy", "Email · Product journeys · CRM", "hbo-max-welcome-email"],
     [501, "TRAILER", "Tate Modern", "Creative concept · Scriptwriting", "world-goes-pop"],
     [302, "PRODUCT", "Noodoll", "Ecommerce copy · Product personality", "noodoll-ricespud-product-copy"]
   ];
@@ -622,7 +634,7 @@ function pageIndex() {
     ["B2B & PARTNERSHIPS", [[301, "ATG Theatres LinkedIn"], [601, "City & Guilds campaign"]]],
     ["BRAND VOICE", [[700, "HBO Max & FutureLearn"], [202, "HBO Max brand campaign"]]],
     ["CRM & LIFECYCLE", [[401, "TNT Sports CRM"], [303, "HBO Max email & web"]]],
-    ["DIGITAL, PRODUCT & SEO", [[302, "Noodoll product copy"], [303, "HBO Max product journeys"], [304, "FutureLearn SEO"], [305, "FutureLearn x Google"]]],
+    ["DIGITAL, PRODUCT & SEO", [[306, "HBO Max & TNT landing pages"], [303, "HBO Max product journeys"], [302, "Noodoll product copy"], [304, "FutureLearn SEO"], [305, "FutureLearn x Google"]]],
     ["SCRIPTS & EDITORIAL", [[501, "Tate Modern"], [502, "National Theatre"], [304, "FutureLearn editorial"]]]
   ];
   const toc = [
@@ -646,7 +658,7 @@ function pageIndex() {
       <div class="home-heading"><span>SELECTED WORK</span><span class="c-dim">P201—P601</span></div>
       <div class="feature-grid">
         ${featured.map(([n, tag, title, desc, image]) => `<a class="feature-card" href="#p${n}" data-go="${n}">
-          ${image ? `<img src="${imageSrc(image)}" alt="" loading="lazy" decoding="async">` : `<span class="feature-placeholder" aria-hidden="true">GOOGLE<br>FOR<br>EDUCATION</span>`}
+          ${image ? `<img src="${imageSrc(image)}" alt="" loading="lazy" decoding="async">` : `<span class="feature-placeholder" aria-hidden="true">${n === 306 ? "HBO MAX<br>&amp; TNT SPORTS" : "GOOGLE<br>FOR<br>EDUCATION"}</span>`}
           <span class="feature-info"><span class="feature-tag">${esc(tag)}</span><span class="feature-title">${esc(title)}</span><span class="feature-desc">${esc(desc)}</span></span><span class="feature-page">P${n}</span>
         </a>`).join("")}
       </div>
@@ -724,6 +736,7 @@ function pagePiece(n) {
       <div class="facts">
         <div class="prose">${p.body.map(t => `<p>${esc(t)}</p>`).join("")}</div>
         ${p.link ? `<a class="watch" href="${p.link[0]}" target="_blank" rel="noopener">${esc(p.link[1])} <span aria-hidden="true">&rsaquo;</span></a>` : ""}
+        ${p.links ? `<div class="lp-links">${p.links.map(([url, label]) => `<a class="watch" href="${url}" target="_blank" rel="noopener noreferrer">${esc(label)} <span aria-hidden="true">&rsaquo;</span></a>`).join("")}</div>` : ""}
       </div>
       ${right}
     </div>
