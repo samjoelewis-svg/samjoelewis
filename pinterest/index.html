@@ -72,6 +72,7 @@ body {
   background: repeating-linear-gradient(to bottom, transparent 0 2px, #0000002e 2px 3px);
   border-radius: inherit;
 }
+:where(.screen) :is(img, video) { position: relative; z-index: 1; }
 .head {
   display: flex; flex-wrap: wrap; gap: 0 1.2ch; white-space: nowrap;
   font-variant-numeric: tabular-nums;
@@ -115,10 +116,6 @@ table { font-size: inherit; }
 canvas.mosaic { display: block; width: 100%; height: auto; image-rendering: pixelated; }
 .mast { background: var(--blue); display: grid; }
 .mast-body { padding: .35em .8ch .45em; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .3em 2ch; align-items: center; }
-.frame.portrait img.tt-portrait { position: absolute; inset: 0; width: 100%; height: 100%; max-height: none; object-fit: cover; image-rendering: pixelated; transition: opacity 1s steps(6); }
-.portrait.resolved .tt-portrait { opacity: 0; }
-@media (prefers-reduced-motion: reduce) { .portrait .tt-portrait { display: none; } }
-.portrait.resolved:hover .tt-portrait { opacity: 1; transition-duration: .3s; }
 .mast-text { display: grid; gap: .3em; min-width: 0; }
 .mast .frame, .me .frame { width: clamp(110px, 20vw, 190px); cursor: zoom-in; }
 .mast .frame img, .me .frame img { aspect-ratio: 1; object-fit: cover; }
@@ -196,7 +193,6 @@ figure.pic { margin: 0; display: grid; gap: .25em; min-width: 0; }
 .frame img { display: block; width: 100%; height: auto; max-height: 440px; object-fit: contain; background: #000; }
 .piece > figure.pic .frame { width: fit-content; max-width: 100%; }
 .piece > figure.pic .frame img { width: auto; max-width: 100%; max-height: 600px; }
-.frame canvas { position: absolute; inset: 0; width: 100%; height: 100%; image-rendering: pixelated; transition: opacity .5s steps(5); }
 .frame:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
 .stack { display: grid; gap: 1em; min-width: 0; }
 .duo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4ch; min-width: 0; align-items: start; }
@@ -309,9 +305,7 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
 .zenbtn:hover, .zenbtn:focus-visible { color: var(--cyan); outline: none; }
 .zen { position: relative; margin-top: .2em; }
 .zen canvas { border: 2px solid var(--white); }
-.zenface { position: absolute; left: 50%; top: 42%; width: 25%; transform: translate(-50%, -50%); image-rendering: pixelated; border: 3px solid var(--white); animation: zenhue 48s linear infinite; }
-@keyframes zenhue { to { filter: hue-rotate(360deg); } }
-@media (prefers-reduced-motion: reduce) { .zenface { animation: none; } }
+.zenface { position: absolute; left: 50%; top: 42%; width: 25%; transform: translate(-50%, -50%); aspect-ratio: 1; object-fit: cover; border: 3px solid var(--white); }
 
 /* lightbox */
 .lb[hidden] { display: none; }
@@ -335,9 +329,6 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
   .fastext .sec { display: none; }
   .crumbs .cur, .crumbs .hm { display: none; }
   .bigstats { grid-template-columns: minmax(0, 1fr); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .frame canvas { transition: none; }
 }
 
 /* ---------- desktop: use the width, keep the home page above the fold ---------- */
@@ -728,7 +719,7 @@ function pageIndex() {
       ${dh("SENIOR COPYWRITER & CREATIVE", "c-yellow role")}
       <div class="mastcta"><a class="cta" href="mailto:sam.joe.lewis@gmail.com">EMAIL <span aria-hidden="true">&rsaquo;</span></a><a class="cta" href="#p888" data-go="888">CV <span aria-hidden="true">&rsaquo;</span></a><span class="loc">London</span></div>
       </div>
-      <button class="frame portrait" data-src="/img/sam.jpg" data-cap="Sam Lewis" aria-label="Enlarge photo of Sam Lewis"><img src="/img/sam.jpg" alt="Sam Lewis"><img class="tt-portrait" src="/img/sam-teletext.png" alt=""></button>
+      <button class="frame portrait" data-src="/img/sam.jpg" data-cap="Sam Lewis" aria-label="Enlarge photo of Sam Lewis"><img src="/img/sam.jpg" alt="Sam Lewis"></button>
       <div class="sub">I develop campaign ideas, scripts and brand voices across markets, from the big creative thought to the exact words that make it work.</div></div></div>
     <div class="cols">
       <div class="headlines"><div class="c-cyan">SELECTED WORK</div>
@@ -1064,10 +1055,6 @@ function drawMast() {
   plot(0, 0, y => ttcol(rows[y]));
   c.style.maxWidth = (w * 15) + "px";
 }
-function drawPortrait(btn) {
-  if (!btn || reduced) return;
-  setTimeout(() => btn.classList.add("resolved"), 2600);
-}
 function drawPitch() {
   const c = $("#pitchCanvas"); if (!c) return;
   const W = 48, H = 30, cell = 8;
@@ -1092,27 +1079,10 @@ function drawPitch() {
   ctx.globalAlpha = 1;
 }
 
-/* picture reveal: chunky pixels resolve into the real image */
-function pixelIn(frame) {
-  const img = frame.querySelector("img");
-  if (reduced) return;
-  const run = () => {
-    if (!img.naturalWidth) return;
-    const cv = document.createElement("canvas");
-    const w = 36, h = Math.max(1, Math.round(w * img.naturalHeight / img.naturalWidth));
-    cv.width = w; cv.height = h;
-    cv.getContext("2d").drawImage(img, 0, 0, w, h);
-    frame.appendChild(cv);
-    setTimeout(() => { cv.style.opacity = "0"; }, 380);
-    setTimeout(() => cv.remove(), 1000);
-  };
-  if (img.complete) run(); else img.addEventListener("load", run, { once: true });
-}
-
 /* ---------- zen mode: London on a sunny day, in teletext blocks ---------- */
 function pageZen() {
   return `<div class="zen"><canvas class="mosaic" id="zenCanvas" role="img" aria-label="Teletext picture of the London skyline on a sunny day"></canvas>
-    <img class="zenface" src="/img/sam-zen.png" alt="Sam Lewis, in teletext blocks"></div>`;
+    <img class="zenface" src="/img/sam.jpg" alt="Sam Lewis"></div>`;
 }
 function drawZen() {
   const c = $("#zenCanvas"); if (!c) return;
@@ -1165,10 +1135,7 @@ function drawZen() {
 }
 
 function afterRender(n) {
-  drawMast(); drawPitch(); drawPortrait($(".portrait")); drawZen();
-  document.querySelectorAll(".frame:not(.portrait)").forEach(frame => {
-    if (!frame.closest(".pinterest-hero-gallery")) pixelIn(frame);
-  });
+  drawMast(); drawPitch(); drawZen();
   const cp = $("#copyEmail");
   if (cp) cp.addEventListener("click", () => {
     const t = $("#email").textContent;
