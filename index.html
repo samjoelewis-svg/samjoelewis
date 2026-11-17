@@ -175,6 +175,14 @@ canvas.mosaic { display: block; width: 100%; height: auto; image-rendering: pixe
 .lp-links { display: flex; flex-wrap: wrap; align-items: start; gap: .2em 1.2ch; }
 .lp-links .watch { margin-top: .35em; }
 
+/* Copy excerpts from the live landing pages: text-led, consistent with the site's teletext design. */
+.lp-examples { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6em 1ch; }
+.lp-example { border: 2px solid var(--white); background: #0c0c0e; padding: .65em 1.2ch; display: grid; gap: .65em; align-content: space-between; min-height: 175px; }
+.lp-example .lp-label { color: var(--cyan); font-size: .85em; }
+.lp-example .lp-headline { font-family: "IBM Plex Mono", monospace; font-weight: 500; font-size: clamp(18px, 2vw, 23px); line-height: 1.25; }
+.lp-example .lp-cta { justify-self: start; background: var(--white); color: var(--black); font-family: "IBM Plex Mono", monospace; padding: .35em .8em; font-size: .65em; font-weight: bold; }
+.lp-context { color: var(--dim); font-size: .85em; }
+@media (max-width: 560px) { .lp-examples { grid-template-columns: 1fr; } }
 /* piece pages */
 .piece { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: .8em 2.4ch; align-items: start; }
 .facts { display: grid; gap: .45em; min-width: 0; }
@@ -741,6 +749,13 @@ function pagePiece(n) {
       ${right}
     </div>
     ${multi ? gallery(p.pics) : ""}
+    ${n === 306 ? `<section class="blk" aria-label="Landing page copy excerpts"><div class="bg-blue">COPY IN CONTEXT</div>
+      <div class="lp-examples">
+        <div class="lp-example"><span class="lp-label">HBO MAX · UK</span><span class="lp-headline">Nothing Hits Like This</span><span class="lp-cta">GET HBO MAX</span></div>
+        <div class="lp-example"><span class="lp-label">TNT SPORTS · UK</span><span class="lp-headline">The New Streaming Home of TNT Sports</span><span class="lp-cta">GET TNT SPORTS</span></div>
+      </div>
+      <div class="lp-context">Headline and CTA excerpts from the landing pages shown above. The live pages may change.</div>
+      </section>` : ""}
     ${p.scores ? `<div class="scorewide">${scoresBlock()}</div>` : ""}
     ${p.script ? `<section class="blk"><div class="bg-blue">SCRIPT</div>
       <div class="script">${p.script.map(([vo, act]) => `<div class="vo">${esc(vo)}</div><div class="act">${esc(act)}</div>`).join("")}</div>
