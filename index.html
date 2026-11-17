@@ -374,6 +374,16 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
 .landing-example .watch { margin: 0; }
 .landing-example .frame { z-index: 1; border-width: 1px; }
 .landing-example .frame img { max-height: none; }
+.landing-process { display: grid; gap: .35em; margin-top: .25em; }
+.landing-process h2, .landing-process p { margin: 0; }
+.landing-process h2 { font: inherit; }
+.landing-process img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  height: auto;
+  border: 1px solid var(--dim);
+}
 </style>
 </head>
 <body>
@@ -749,7 +759,12 @@ function landingExamples(pics) {
       <header><h2 class="c-cyan">TNT Sports</h2><a class="watch" href="https://www.hbomax.com/gb/en/sports" target="_blank" rel="noopener noreferrer" aria-label="View live TNT Sports page">View live page <span aria-hidden="true">&rsaquo;</span></a></header>
       ${pic(pics[1], false)}
     </section>
-  </div>`;
+  </div>
+  <section class="landing-process">
+    <h2 class="c-cyan">Checkout flows in Figma</h2>
+    <p class="prose">I used this board to see what happens after someone clicks through. It helped me decide what to explain on the landing page and what could wait until checkout.</p>
+    <img src="img/hbo-checkout-flow-overview.webp" width="638" height="97" alt="Figma canvas showing several HBO Max mobile checkout flows" loading="lazy" decoding="async">
+  </section>`;
 }
 
 function pagePiece(n) {
