@@ -366,6 +366,7 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
 .landing-example .watch { margin: 0; }
 .landing-example .frame { z-index: 1; border-width: 1px; }
 .landing-example .frame img { max-height: none; }
+.landing-example.flow .pic { width: min(100%, 480px); }
 </style>
 </head>
 <body>
@@ -516,7 +517,7 @@ const PIECES = {
     ],pics:[["hbo-max-welcome-email","HBO Max UK welcome email"]] },
   306: { tag:"LANDING PAGES",title:"HBO MAX & TNT SPORTS",meta:"Landing pages · Product copy · Figma",thumb:"hbo-max-landing",
     body:["I write the landing pages for HBO Max and TNT Sports across EMEA. I work with designers in Figma and use testing to make plans, pricing and sign-up clearer."],
-    pics:[["hbo-max-landing-case","HBO Max UK landing page",1904,890],["tnt-sports-landing-case","TNT Sports UK landing page",1904,864],["hbo-commerce-account-flow","HBO Max account creation screen from Figma",1366,1024]]
+    pics:[["hbo-max-landing-case","HBO Max UK landing page",1904,890],["tnt-sports-landing-case","TNT Sports UK landing page",1904,864],["hbo-mobile-flow-crop","Seven mobile screens from the HBO Max sign-up flow on the Figma canvas",138,55]]
   },
   304: { tag:"SEO / EDITORIAL",title:"FUTURELEARN: COURSE SEO & EDITORIAL",meta:"FutureLearn · Search-led course titles · Long-form articles",
     body:[
@@ -614,7 +615,7 @@ function band(n, title) {
   const ch = CH[chapterOf(n)];
   return `<div class="band b-${ch.colour} sec">${n !== chapterOf(n) ? `<div class="kicker"><span>${ch.name}</span></div>` : ""}${dh(title)}</div>`;
 }
-const WEBP = new Set(["atg-lyceum-b2b", "noodoll-ricespud-product-copy", "futurelearn-course-seo", "futurelearn-editorial-rome", "hbo-max-landing", "hbo-max-landing-case", "tnt-sports-landing-case", "hbo-commerce-account-flow"]);
+const WEBP = new Set(["atg-lyceum-b2b", "noodoll-ricespud-product-copy", "futurelearn-course-seo", "futurelearn-editorial-rome", "hbo-max-landing", "hbo-max-landing-case", "tnt-sports-landing-case", "hbo-mobile-flow-crop"]);
 function imageSrc(file) { return file === "google-course-artwork" ? "https://ugc.futurelearn.com/uploads/images/e4/98/header_e498abc1-1429-4c12-9941-a6746fa13efd.jpg" : "img/" + file + (WEBP.has(file) ? ".webp" : ".jpg"); }
 function pic([file, cap, width, height], showCaption = true) {
   const src = imageSrc(file);
@@ -741,8 +742,8 @@ function landingExamples(pics) {
       <header><h2 class="c-cyan">TNT Sports</h2><a class="watch" href="https://www.hbomax.com/gb/en/sports" target="_blank" rel="noopener noreferrer" aria-label="View live TNT Sports page">View live page <span aria-hidden="true">&rsaquo;</span></a></header>
       ${pic(pics[1], false)}
     </section>
-    <section class="landing-example">
-      <header><h2 class="c-cyan">HBO Max sign-up in Figma</h2></header>
+    <section class="landing-example flow">
+      <header><h2 class="c-cyan">HBO Max mobile sign-up flow in Figma</h2></header>
       ${pic(pics[2], false)}
     </section>
   </div>`;
