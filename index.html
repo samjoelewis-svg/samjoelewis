@@ -176,30 +176,20 @@ canvas.mosaic { display: block; width: 100%; height: auto; image-rendering: pixe
 .lp-links .watch { margin-top: .35em; }
 
 /* Case study images use the existing picture lightbox, with Figma shown at full width. */
-.lp-images { display: grid; gap: 1.2em; margin-top: .9em; }
-.lp-pair { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.2ch; }
-.lp-images .pic .frame { width: 100%; }
-.lp-pair .pic .frame img { width: 100%; height: auto; max-height: none; object-fit: contain; }
-.lp-method { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 1em 2ch; padding: .7em 1.2ch; background: #111116; border: 2px solid var(--white); }
-.lp-method-copy { display: grid; align-content: start; gap: .7em; }
-.lp-method-kicker { color: var(--cyan); }
-.lp-method-title { color: var(--yellow); font-size: 1.25em; line-height: 1; }
-.lp-steps { display: grid; gap: .75em; }
-.lp-step .step-h { font-size: .9em; color: var(--yellow); }
-.lp-step p { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: clamp(14px,1.4vw,15.5px); line-height: 1.5; margin: .25em 0 0; }
-.lp-figma { align-self: start; min-width: 0; }
-.lp-figma .frame { aspect-ratio: 5/4; overflow: hidden; }
-.lp-figma .frame img { width: 100%; height: 100%; object-fit: cover; object-position: 49% 30%; }
-.lp-figma figcaption { font-size: .78em; color: var(--dim); }
-@media (max-width: 650px) { .lp-pair,.lp-method { grid-template-columns: 1fr; } .lp-figma .frame { aspect-ratio: 16/9; } }
-/* Copy excerpts from the live landing pages: text-led, consistent with the site's teletext design. */
-.lp-examples { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6em 1ch; }
-.lp-example { border: 2px solid var(--white); background: #0c0c0e; padding: .65em 1.2ch; display: grid; gap: .65em; align-content: space-between; min-height: 175px; }
-.lp-example .lp-label { color: var(--cyan); font-size: .85em; }
-.lp-example .lp-headline { font-family: "IBM Plex Mono", monospace; font-weight: 500; font-size: clamp(18px, 2vw, 23px); line-height: 1.25; }
-.lp-example .lp-cta { justify-self: start; background: var(--white); color: var(--black); font-family: "IBM Plex Mono", monospace; padding: .35em .8em; font-size: .65em; font-weight: bold; }
-.lp-context { color: var(--dim); font-size: .85em; }
-@media (max-width: 560px) { .lp-examples { grid-template-columns: 1fr; } }
+/* Landing-page case study: display actual work cleanly, without TV scan lines or image reveal effects. */
+.screen[data-clear-images="true"]::after { display: none; }
+.lp-images { display: grid; gap: 1.2em; margin-top: .6em; }
+.lp-images .pic { margin: 0; }
+.lp-images .frame { display: block; width: 100%; border: 1px solid var(--dim); overflow: hidden; background: #08080a; }
+.lp-images .frame img { display: block; width: 100%; max-height: none; height: auto; object-fit: contain; }
+.lp-images .web-shot .frame { aspect-ratio: 1.91; }
+.lp-images .web-shot .frame img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.035); transform-origin: center center; }
+.lp-images figcaption { margin-top: .35em; color: var(--dim); font-size: .78em; line-height: 1.3; }
+.lp-images .figma-shot { max-width: 100%; }
+.lp-images .figma-shot .frame img { width: 100%; height: auto; }
+.lp-figma-label { font-size: .88em; color: var(--cyan); margin-top: .3em; }
+@media (max-width: 560px) { .lp-images { gap: 1em; } .lp-images .web-shot .frame { aspect-ratio: 16/10; } }
+
 /* piece pages */
 .piece { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: .8em 2.4ch; align-items: start; }
 .facts { display: grid; gap: .45em; min-width: 0; }
@@ -527,14 +517,13 @@ const PIECES = {
       "That includes explaining offers and product features simply, while keeping the brand voice distinctive. I adapt messages for different placements, audiences and markets, and write the CTAs, modules and subject lines that turn a big idea into a working customer journey.",
       "For the UK launch, I helped keep the same voice consistent across advertising, welcome emails and product copy."
     ],pics:[["hbo-max-welcome-email","HBO Max UK welcome email"]] },
-  306: { tag:"LANDING PAGES",title:"HBO MAX & TNT SPORTS: LANDING PAGES",meta:"HBO Max · TNT Sports · EMEA · Web copy, Figma & testing",
+  306: { tag:"LANDING PAGES",title:"HBO MAX & TNT SPORTS: LANDING PAGES",meta:"HBO Max · TNT Sports · EMEA · Product copy, Figma & optimisation",
     body:[
-      "I write landing-page copy for HBO Max and TNT Sports across EMEA. My job is to turn complex plans, prices, product features and sports packages into clear, accessible information that helps people understand the offer and decide what to subscribe to.",
-      "I work with designers and product teams in Figma to plan the page and the commerce journey, from the first headline and plan comparison to the CTA and necessary terms. The challenge is to keep the language straightforward without losing each brand’s character.",
-      "We use performance data and testing to improve these pages over time, refining headlines, messaging, calls to action and the way information is presented. It is a mix of copy craft, commercial thinking and making something complicated feel simple."
+      "I write landing pages for HBO Max and TNT Sports across EMEA. The job is to make plans, pricing and product information easy to understand, so people know exactly what they’re signing up for.",
+      "I work with designers and product teams in Figma to plan the pages and sign-up journeys. We use data and testing to keep improving the copy, from headlines and CTAs to how the offers are explained."
     ],
-    links:[["https://www.hbomax.com/gb/en","HBO Max UK landing page"],["https://www.hbomax.com/gb/en/sports","TNT Sports landing page"]],
-    pics:[["hbo-max-landing","HBO Max UK subscription landing page"],["tnt-sports-landing","TNT Sports subscription landing page"],["figma-commerce-flows","Figma commerce flows used to plan landing-page journeys and messaging"]]
+    links:[["https://www.hbomax.com/gb/en","HBO Max landing page"],["https://www.hbomax.com/gb/en/sports","TNT Sports landing page"]],
+    pics:[["hbo-max-landing","HBO Max UK landing page — plans and subscription messaging"],["tnt-sports-landing","TNT Sports landing page — product choices and pricing"],["hbo-commerce-account-flow","A commerce sign-up screen exported directly from Figma"]]
   },
   304: { tag:"SEO / EDITORIAL",title:"FUTURELEARN: COURSE SEO & EDITORIAL",meta:"FutureLearn · Search-led course titles · Long-form articles",
     body:[
@@ -633,7 +622,7 @@ function band(n, title) {
   return `<div class="band b-${ch.colour} sec">${n !== chapterOf(n) ? `<div class="kicker"><span>${ch.name}</span></div>` : ""}${dh(title)}</div>`;
 }
 const WEBP = new Set(["atg-lyceum-b2b", "noodoll-ricespud-product-copy", "futurelearn-course-seo", "futurelearn-editorial-rome", "hbo-max-landing", "tnt-sports-landing", "figma-commerce-flows"]);
-function imageSrc(file) { return file === "google-course-artwork" ? "https://ugc.futurelearn.com/uploads/images/e4/98/header_e498abc1-1429-4c12-9941-a6746fa13efd.jpg" : "img/" + file + (WEBP.has(file) ? ".webp" : ".jpg"); }
+function imageSrc(file) { if (file === "hbo-commerce-account-flow") return "img/hbo-commerce-account-flow.svg"; return file === "google-course-artwork" ? "https://ugc.futurelearn.com/uploads/images/e4/98/header_e498abc1-1429-4c12-9941-a6746fa13efd.jpg" : "img/" + file + (WEBP.has(file) ? ".webp" : ".jpg"); }
 function pic([file, cap]) {
   return `<figure class="pic"><button class="frame" data-src="${imageSrc(file)}" data-cap="${esc(cap)}" aria-label="Enlarge picture: ${esc(cap)}">
     <img src="${imageSrc(file)}" alt="${esc(cap)}" loading="lazy" decoding="async"></button><figcaption>${esc(cap)}</figcaption></figure>`;
@@ -767,28 +756,12 @@ function pagePiece(n) {
       ${right}
     </div>
     ${multi && n !== 306 ? gallery(p.pics) : ""}
-    ${n === 306 ? `<div class="lp-images" aria-label="HBO Max and TNT Sports landing pages and Figma planning">
-      <div class="lp-pair">${pic(p.pics[0])}${pic(p.pics[1])}</div>
-      <section class="lp-method" aria-label="How I plan and improve landing pages">
-        <div class="lp-method-copy">
-          <div class="lp-method-kicker">BEHIND THE LANDING PAGES</div>
-          <div class="lp-method-title">PLAN. WRITE. TEST. REFINE.</div>
-          <div class="lp-steps">
-            <div class="lp-step"><span class="step-h">01 / MAP THE JOURNEY</span><p>Use Figma to work through subscriber journeys, screen layouts and information hierarchy with design and product teams.</p></div>
-            <div class="lp-step"><span class="step-h">02 / MAKE IT CLEAR</span><p>Turn plan options, pricing and product details into straightforward copy, with a clear next step for the customer.</p></div>
-            <div class="lp-step"><span class="step-h">03 / TEST AND IMPROVE</span><p>Use performance data and testing to refine messaging, hierarchy and calls to action over time.</p></div>
-          </div>
-        </div>
-        <figure class="pic lp-figma"><button class="frame" data-src="${imageSrc(p.pics[2][0])}" data-cap="${esc(p.pics[2][1])}" aria-label="Enlarge Figma commerce-flow overview"><img src="${imageSrc(p.pics[2][0])}" alt="${esc(p.pics[2][1])}" loading="lazy" decoding="async"></button><figcaption>Figma commerce-flow overview. Click to enlarge.</figcaption></figure>
-      </section>
+    ${n === 306 ? `<div class="lp-images" aria-label="HBO Max and TNT Sports landing page portfolio examples">
+      <div class="web-shot">${pic(p.pics[0])}</div>
+      <div class="web-shot">${pic(p.pics[1])}</div>
+      <div class="lp-figma-label">FIGMA / COMMERCE FLOW</div>
+      <div class="figma-shot">${pic(p.pics[2])}</div>
     </div>` : ""}
-    ${n === 306 ? `<section class="blk" aria-label="Landing page copy excerpts"><div class="bg-blue">COPY IN CONTEXT</div>
-      <div class="lp-examples">
-        <div class="lp-example"><span class="lp-label">HBO MAX · UK</span><span class="lp-headline">Nothing Hits Like This</span><span class="lp-cta">GET HBO MAX</span></div>
-        <div class="lp-example"><span class="lp-label">TNT SPORTS · UK</span><span class="lp-headline">The New Streaming Home of TNT Sports</span><span class="lp-cta">GET TNT SPORTS</span></div>
-      </div>
-      <div class="lp-context">Headline and CTA excerpts from the landing pages shown above. The live pages may change.</div>
-      </section>` : ""}
     ${p.scores ? `<div class="scorewide">${scoresBlock()}</div>` : ""}
     ${p.script ? `<section class="blk"><div class="bg-blue">SCRIPT</div>
       <div class="script">${p.script.map(([vo, act]) => `<div class="vo">${esc(vo)}</div><div class="act">${esc(act)}</div>`).join("")}</div>
@@ -909,6 +882,7 @@ function drawCrumbs(n) {
 function drawFastext(n) {
   drawCrumbs(n);
   $("#screen").dataset.home = String(n === 100);
+  $("#screen").dataset.clearImages = String(n === 306);
   const ch = chapterOf(n);
   const i = ORDER.indexOf(n);
   if (n === 100 || i < 0) { $("#fastext").innerHTML = ""; return; }
@@ -1106,7 +1080,7 @@ function drawZen() {
 
 function afterRender(n) {
   drawMast(); drawPitch(); drawPortrait($(".portrait")); drawZen();
-  document.querySelectorAll(".frame:not(.portrait)").forEach(pixelIn);
+  if (n !== 306) document.querySelectorAll(".frame:not(.portrait)").forEach(pixelIn);
   const cp = $("#copyEmail");
   if (cp) cp.addEventListener("click", () => {
     const t = $("#email").textContent;
