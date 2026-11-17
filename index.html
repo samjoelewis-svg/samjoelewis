@@ -353,7 +353,15 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
 @media (max-width: 560px) { .skill-grid, .industry-nav { grid-template-columns: minmax(0,1fr); } .feature-card { grid-template-columns: 84px minmax(0, 1fr) auto; } .mast .frame { width: 110px; } }
 
 /* Keep the work above the screen's scanline overlay. */
-.landing-examples { display: grid; gap: 1em; }
+.landing-examples {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .8em 1.5ch;
+  max-width: 920px;
+}
+@media (max-width: 720px) {
+  .landing-examples { grid-template-columns: minmax(0, 1fr); max-width: 450px; }
+}
 .landing-example header {
   display: flex;
   justify-content: space-between;
@@ -366,14 +374,6 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
 .landing-example .watch { margin: 0; }
 .landing-example .frame { z-index: 1; border-width: 1px; }
 .landing-example .frame img { max-height: none; }
-.landing-example.flow img {
-  position: relative;
-  z-index: 1;
-  display: block;
-  width: min(100%, 480px);
-  height: auto;
-  border: 1px solid var(--white);
-}
 </style>
 </head>
 <body>
@@ -524,7 +524,7 @@ const PIECES = {
     ],pics:[["hbo-max-welcome-email","HBO Max UK welcome email"]] },
   306: { tag:"LANDING PAGES",title:"HBO MAX & TNT SPORTS",meta:"Landing pages · Product copy · Figma",thumb:"hbo-max-landing",
     body:["I write the landing pages for HBO Max and TNT Sports across EMEA. I work with designers in Figma and use testing to make plans, pricing and sign-up clearer."],
-    pics:[["hbo-max-landing-case","HBO Max UK landing page",1904,890],["tnt-sports-landing-case","TNT Sports UK landing page",1904,864],["hbo-mobile-flow-crop","Seven mobile screens from the HBO Max sign-up flow on the Figma canvas",138,55]]
+    pics:[["hbo-max-landing-case","HBO Max UK landing page",1904,890],["tnt-sports-landing-case","TNT Sports UK landing page",1904,864]]
   },
   304: { tag:"SEO / EDITORIAL",title:"FUTURELEARN: COURSE SEO & EDITORIAL",meta:"FutureLearn · Search-led course titles · Long-form articles",
     body:[
@@ -622,7 +622,7 @@ function band(n, title) {
   const ch = CH[chapterOf(n)];
   return `<div class="band b-${ch.colour} sec">${n !== chapterOf(n) ? `<div class="kicker"><span>${ch.name}</span></div>` : ""}${dh(title)}</div>`;
 }
-const WEBP = new Set(["atg-lyceum-b2b", "noodoll-ricespud-product-copy", "futurelearn-course-seo", "futurelearn-editorial-rome", "hbo-max-landing", "hbo-max-landing-case", "tnt-sports-landing-case", "hbo-mobile-flow-crop"]);
+const WEBP = new Set(["atg-lyceum-b2b", "noodoll-ricespud-product-copy", "futurelearn-course-seo", "futurelearn-editorial-rome", "hbo-max-landing", "hbo-max-landing-case", "tnt-sports-landing-case"]);
 function imageSrc(file) { return file === "google-course-artwork" ? "https://ugc.futurelearn.com/uploads/images/e4/98/header_e498abc1-1429-4c12-9941-a6746fa13efd.jpg" : "img/" + file + (WEBP.has(file) ? ".webp" : ".jpg"); }
 function pic([file, cap, width, height], showCaption = true) {
   const src = imageSrc(file);
@@ -740,7 +740,6 @@ function gallery(list) {
 }
 
 function landingExamples(pics) {
-  const [flowImage, flowAlt, flowWidth, flowHeight] = pics[2];
   return `<div class="landing-examples">
     <section class="landing-example">
       <header><h2 class="c-cyan">HBO Max</h2><a class="watch" href="https://www.hbomax.com/gb/en" target="_blank" rel="noopener noreferrer" aria-label="View live HBO Max page">View live page <span aria-hidden="true">&rsaquo;</span></a></header>
@@ -749,10 +748,6 @@ function landingExamples(pics) {
     <section class="landing-example">
       <header><h2 class="c-cyan">TNT Sports</h2><a class="watch" href="https://www.hbomax.com/gb/en/sports" target="_blank" rel="noopener noreferrer" aria-label="View live TNT Sports page">View live page <span aria-hidden="true">&rsaquo;</span></a></header>
       ${pic(pics[1], false)}
-    </section>
-    <section class="landing-example flow">
-      <header><h2 class="c-cyan">HBO Max mobile sign-up flow in Figma</h2></header>
-      <img src="${imageSrc(flowImage)}" alt="${esc(flowAlt)}" width="${flowWidth}" height="${flowHeight}" loading="lazy" decoding="async">
     </section>
   </div>`;
 }
