@@ -400,7 +400,7 @@ figcaption { color: var(--dim); font-size: .8em; line-height: 1.2; }
 (() => {
 /* ---------- content ---------- */
 const CH = {
-  200: { short: "Campaign concepts & headlines", colour: "red" },
+  200: { short: "Campaign concepts & taglines", colour: "red" },
   300: { short: "Web & app journeys", colour: "yellow" },
   400: { short: "Email & lifecycle", colour: "green" },
   500: { short: "Film, scripts & taglines", colour: "magenta" },
@@ -593,7 +593,7 @@ const PIECES = {
 };
 
 const CHAPTERS = {
-  200: [[201, "HBO Max UK launch"], [202, "Wall-to-Wall Watercooler"], [203, "Succession social campaign"], [204, "HBO Max display & paid social"], [209, "Mock the Week"], [211, "HBO Max Halloween"], [301, "ATG Theatres"], [504, "Matilda the Musical"], [505, "Westminster Abbey"], [601, "City & Guilds × FutureLearn"], [602, "FutureLearn Results Day"]],
+  200: [[201, "HBO Max UK launch"], [203, "Succession social campaign"], [211, "HBO Max Halloween"], [505, "Westminster Abbey"], [601, "City & Guilds × FutureLearn"], [202, "Wall-to-Wall Watercooler"], [204, "HBO Max display & paid social"], [209, "Mock the Week"], [301, "ATG Theatres"], [504, "Matilda the Musical"], [602, "FutureLearn Results Day"]],
   300: [[306, "HBO Max & TNT Sports landing pages"], [212, "A Knight of the Seven Kingdoms"], [403, "Milano Cortina preferences"], [305, "FutureLearn × Google"], [302, "Noodoll ecommerce copy"]],
   400: [[401, "TNT Sports CRM"], [303, "HBO Max lifecycle email"]],
   500: [[501, "Tate Modern"], [207, "Pogány Induló"], [208, "Boyhood"], [502, "Home, I’m Darling"], [503, "Whales"], [205, "Humans & Halt and Catch Fire"], [210, "Swallows and Amazons"]],
@@ -639,8 +639,8 @@ function pageIndex() {
     [CH[400].short, CHAPTERS[400]],
     [CH[300].short, CHAPTERS[300]],
     ["Brand voice & leadership", [[700, "HBO Max & FutureLearn brand voice"], [750, "Mentoring & team leadership"]]],
-    [CH[200].short, CHAPTERS[200]],
-    [CH[500].short, CHAPTERS[500]],
+    [CH[200].short, CHAPTERS[200], 200],
+    [CH[500].short, CHAPTERS[500], 500],
     [CH[600].short, CHAPTERS[600]],
   ];
   return `
@@ -666,8 +666,9 @@ function pageIndex() {
     <section class="home-section" id="all-work" aria-label="All work">
       <div class="home-heading"><span>ALL WORK</span></div>
       <div class="skill-grid">
-        ${work.map(([name, links]) => `<div class="skill-box"><div class="skill-name">${esc(name.toUpperCase())}</div>
-          ${links.map(([n,title]) => `<a href="#p${n}" data-go="${n}"><span>${esc(title)}</span><span class="skill-num">P${n}</span></a>`).join("")}
+        ${work.map(([name, links, chapter]) => `<div class="skill-box"><div class="skill-name">${esc(name.toUpperCase())}</div>
+          ${(chapter ? links.slice(0, 5) : links).map(([n,title]) => `<a href="#p${n}" data-go="${n}"><span>${esc(title)}</span><span class="skill-num">P${n}</span></a>`).join("")}
+          ${chapter ? `<a href="#p${chapter}" data-go="${chapter}" aria-label="View all ${links.length} ${esc(name.toLowerCase())} projects"><span>View all ${links.length} projects</span><span class="skill-num">P${chapter}</span></a>` : ""}
         </div>`).join("")}
       </div>
     </section>`;
