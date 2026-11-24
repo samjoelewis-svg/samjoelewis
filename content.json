@@ -52,24 +52,110 @@
       "navLabel": "",
       "bg": "sky",
       "label": "Work for",
-      "duration": 45,
+      "duration": 70,
       "items": [
-        "HBO Max",
-        "TNT Sports",
-        "Tate Modern",
-        "National Theatre",
-        "Universal",
-        "Google",
-        "LEGO",
-        "FutureLearn",
-        "Natural History Museum",
-        "Fox",
-        "Westminster Abbey",
-        "AMC",
-        "British Library",
-        "Matilda The Musical",
-        "City & Guilds"
-      ]
+        {
+          "name": "Tate",
+          "logo": null
+        },
+        {
+          "name": "HBO Max",
+          "logo": null
+        },
+        {
+          "name": "TNT Sports",
+          "logo": null
+        },
+        {
+          "name": "Discovery",
+          "logo": null
+        },
+        {
+          "name": "The Olympic Games",
+          "logo": null
+        },
+        {
+          "name": "Harry Potter",
+          "logo": null
+        },
+        {
+          "name": "20th Century Fox",
+          "logo": null
+        },
+        {
+          "name": "Universal Studios",
+          "logo": null
+        },
+        {
+          "name": "Canal+",
+          "logo": null
+        },
+        {
+          "name": "Westminster Abbey",
+          "logo": null
+        },
+        {
+          "name": "British Library",
+          "logo": null
+        },
+        {
+          "name": "FutureLearn",
+          "logo": null
+        },
+        {
+          "name": "UCL",
+          "logo": null
+        },
+        {
+          "name": "Google",
+          "logo": null
+        },
+        {
+          "name": "LEGO",
+          "logo": null
+        },
+        {
+          "name": "Noodoll",
+          "logo": null
+        },
+        {
+          "name": "AMC",
+          "logo": null
+        },
+        {
+          "name": "Game of Thrones",
+          "logo": null
+        },
+        {
+          "name": "Warner Bros. Studios",
+          "logo": null
+        },
+        {
+          "name": "Royal Shakespeare Company",
+          "logo": null
+        },
+        {
+          "name": "Matilda The Musical",
+          "logo": null
+        },
+        {
+          "name": "ATG Theatres",
+          "logo": null
+        },
+        {
+          "name": "National Theatre",
+          "logo": null
+        },
+        {
+          "name": "Disney",
+          "logo": null
+        },
+        {
+          "name": "Natural History Museum",
+          "logo": null
+        }
+      ],
+      "mono": true
     },
     {
       "id": "intro",

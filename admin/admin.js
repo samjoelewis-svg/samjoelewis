@@ -372,7 +372,7 @@ async function sectionAction(i, act) {
   }
 }
 function scrollToSection(i) { setTimeout(() => { const el = $(`main > section[data-section="${i}"]`, D()); el && el.scrollIntoView({ behavior: "smooth", block: "start" }); }, 60); }
-function sectionName(s) { return s.navLabel || s.headline || s.text || s.quote || (s.type === "ticker" && (s.items || []).slice(0, 3).join(", ")) || (TYPES[s.type] || {}).name || s.type; }
+function sectionName(s) { return s.navLabel || s.headline || s.text || s.quote || (s.type === "ticker" && (s.items || []).slice(0, 3).map(x => typeof x === "string" ? x : x.name).join(", ")) || (TYPES[s.type] || {}).name || s.type; }
 function newSection(type) {
   const first = C.projects.slice(0, 3);
   const T = {
@@ -381,7 +381,7 @@ function newSection(type) {
     featured: { headline: "Featured Work", intro: "", items: first.map(p => ({ project: p.id, tag: p.tag, title: p.cardTitle || p.title, desc: p.meta, image: null })) },
     projects: { kicker: "", headline: "New Project Section", intro: "A short line about this group of work.", projects: [] },
     tabs: { kicker: "", headline: "More Work", intro: "", groups: [{ id: "tab-1", name: "First tab", intro: "", projects: first.map(p => p.id) }] },
-    ticker: { label: "Work for", items: ["Client one", "Client two", "Client three"], duration: 40 },
+    ticker: { label: "Work for", items: [{ name: "Client one", logo: null }, { name: "Client two", logo: null }, { name: "Client three", logo: null }], mono: true, duration: 40 },
     text: { headline: "A Heading", paragraphs: ["Write something here. Press Enter to start a new paragraph."], links: [] },
     curved: { text: "Let’s work together", speed: 40, showSocial: true },
     gallery: { kicker: "", headline: "Gallery", intro: "", images: [] },
@@ -543,7 +543,11 @@ const SECTION_FIELDS = {
     { k: "groups", t: "list", label: "Tabs", item: "Tab", help: "Drag tabs to reorder them. Open a tab to choose its projects.", title: g => `${g.name} (${(g.projects || []).length})`,
       fields: [{ k: "name", t: "text", label: "Tab name" }, { k: "intro", t: "textarea", label: "Line above the projects" }, { k: "projects", t: "refs", label: "Projects in this tab", help: "Drag to change the order." }, { k: "id", t: "text", label: "Short name for links" }],
       make: () => ({ id: "tab-" + Math.random().toString(36).slice(2, 6), name: "New tab", intro: "", projects: [] }) }],
-  ticker: [{ k: "label", t: "text", label: "Small label above" }, { k: "items", t: "paras", lines: true, label: "Names", help: "One per line." }, { k: "duration", t: "number", label: "Seconds for one loop", help: "Bigger is slower." }],
+  ticker: [{ k: "label", t: "text", label: "Small label above" },
+    { k: "items", t: "list", label: "Names and logos", item: "Name", help: "Upload a logo to show it instead of the name. PNG with a transparent background or SVG works best.", title: x => (typeof x === "string" ? x : x.name) + (x && x.logo ? " ✓ logo" : ""),
+      fields: [{ k: "name", t: "text", label: "Name", help: "Read out to screen readers, and shown when there’s no logo." }, { k: "logo", t: "image", label: "Logo" }], make: () => ({ name: "New name", logo: null }) },
+    { k: "mono", t: "check", label: "Show all logos in one dark colour", help: "Makes mixed logos look like a set." },
+    { k: "duration", t: "number", label: "Seconds for one loop", help: "Bigger is slower." }],
   cta: [{ k: "headline", t: "text", label: "Headline" }, { k: "text", t: "textarea", label: "Text" }, BUTTONS],
   cv: [{ k: "headline", t: "text", label: "Headline" }, { k: "intro", t: "textarea", label: "Intro" },
     { k: "jobs", t: "list", label: "Jobs", item: "Job", title: j => `${j.company} · ${j.dates}`, fields: [{ k: "dates", t: "text", label: "Dates" }, { k: "company", t: "text", label: "Company" }, { k: "role", t: "text", label: "Role" }, { k: "points", t: "paras", label: "Bullet points", help: "One per line." , lines: true }],
