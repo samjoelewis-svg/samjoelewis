@@ -57,7 +57,8 @@ S.feature = (s, i) => `
     <figure class="feature-media rv">${IMG(`sections.${i}.image`, s.image, "zoom", ' fetchpriority="high"')}</figure>
     <div class="feature-copy rv">
       ${s.kicker || O.edit ? T("p", `sections.${i}.kicker`, s.kicker, "kicker") : ""}
-      ${T("h2", `sections.${i}.line`, s.line, "display feature-line")}
+      ${s.headline || O.edit ? T("h2", `sections.${i}.headline`, s.headline, "display feature-title") : ""}
+      ${s.line || O.edit ? T("p", `sections.${i}.line`, s.line, "display feature-line") : ""}
       ${P(`sections.${i}.paragraphs`, s.paragraphs, "prose feature-text")}
       ${buttons(s.buttons, `sections.${i}.buttons`)}
     </div>

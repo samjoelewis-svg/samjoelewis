@@ -367,7 +367,8 @@ body.locked { overflow: hidden; }
 .feature-media img { width: 100%; height: auto; border-radius: 6px; box-shadow: 0 30px 60px -30px rgba(40,20,22,.55); transform: rotate(-1deg); transition: transform .5s cubic-bezier(.3,1.5,.5,1); }
 .feature-media img:hover { transform: rotate(0) scale(1.01); }
 .feature.right .feature-media img { transform: rotate(1deg); }
-.feature-line { font-size: clamp(34px, 3.6vw, 64px); line-height: 1; margin: 0 0 .5em; }
+.feature-title { font-size: clamp(34px, 3.4vw, 60px); line-height: 1; margin: 0 0 .3em; }
+.feature-line { font-size: clamp(21px, 1.7vw, 30px); line-height: 1.2; margin: 0 0 1em; font-weight: 600; font-style: italic; font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 72; }
 .feature-text { font-size: clamp(17px, 1.2vw, 20px); }
 .feature-text p { margin: 0 0 .8em; }
 .feature .btns { margin-top: 1.4em; }

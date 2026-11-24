@@ -359,7 +359,7 @@ function toBlocks(s) {
   if (s.type === "hero") { out.push(B("heading", { text: s.headline, align: "center", width: "full" })); if (s.image) out.push(B("image", { image: s.image, width: "full" })); if (s.caption) out.push(B("text", { paragraphs: [s.caption] })); }
   if (s.type === "split") { if (s.image) out.push(B("image", { image: s.image, width: "narrow" })); out.push(B("heading", { text: s.headline })); if ((s.columns || []).length) out.push(B("text", { paragraphs: s.columns })); btns(s.buttons); }
   if (s.type === "text") { out.push(B("heading", { text: s.headline })); out.push(B("text", { paragraphs: s.paragraphs || [] })); btns(s.links); }
-  if (s.type === "feature") { if (s.kicker) out.push(B("subheading", { text: s.kicker })); if (s.image) out.push(B("image", { image: s.image, width: "full" })); out.push(B("heading", { text: s.line })); if ((s.paragraphs || []).length) out.push(B("text", { paragraphs: s.paragraphs })); btns(s.buttons); }
+  if (s.type === "feature") { if (s.image) out.push(B("image", { image: s.image, width: "full" })); if (s.headline) out.push(B("heading", { text: s.headline })); if (s.line) out.push(B("subheading", { text: s.line })); if ((s.paragraphs || []).length) out.push(B("text", { paragraphs: s.paragraphs })); btns(s.buttons); }
   if (s.type === "quote") out.push(B("quote", { text: s.quote, by: s.by, align: "center", width: "full" }));
   if (s.type === "cta") { out.push(B("heading", { text: s.headline, align: "center" })); if (s.text) out.push(B("text", { paragraphs: [s.text], align: "center" })); btns(s.buttons); out.slice(-((s.buttons || []).length)).forEach(b => b.align = "center"); }
   return { id: s.id, type: "custom", navLabel: s.navLabel, bg: s.bg, hidden: s.hidden, blocks: [...out, ...(s.blocks || [])] };
@@ -574,7 +574,7 @@ function newSection(type) {
   const first = C.projects.slice(0, 3);
   const T = {
     hero: { headline: "A Big Bold Headline", image: { src: "img/sam.jpg", caption: "" }, caption: "A line or two to sit over the picture." },
-    feature: { kicker: "Client · Campaign", line: "Your best line goes here.", paragraphs: ["A few words about the idea and what it did."], image: { src: "img/kings-cross-hero.jpg", caption: "" }, imageSide: "left", buttons: [{ label: "See the campaign", link: "#all-work" }] },
+    feature: { kicker: "Format · Place", headline: "Project Name", line: "“Your best line goes here.”", paragraphs: ["A few words about the idea and what it did."], image: { src: "img/kings-cross-hero.jpg", caption: "" }, imageSide: "left", buttons: [{ label: "See the campaign", link: "#all-work" }] },
     split: { imageSide: "left", image: { src: "img/sam.jpg", caption: "" }, headline: "A Headline Here", columns: ["Write a few sentences here.", "And a few more here, if you like."], buttons: [{ label: "Get in touch", link: "#contact" }] },
     featured: { headline: "Featured Work", intro: "", items: first.map(p => ({ project: p.id, tag: p.tag, title: p.cardTitle || p.title, desc: p.meta, image: null })) },
     projects: { kicker: "", headline: "New Project Section", intro: "A short line about this group of work.", projects: [] },
@@ -754,7 +754,7 @@ const SECTION_FIELDS = {
   gallery: [{ k: "kicker", t: "text", label: "Small label" }, { k: "headline", t: "text", label: "Headline" }, { k: "intro", t: "textarea", label: "Intro" },
     { k: "images", t: "list", label: "Pictures", item: "Picture", title: x => x.caption || (x.src || "").split("/").pop(), fields: IMGITEM, addImage: true }],
   quote: [{ k: "quote", t: "textarea", label: "Quote" }, { k: "by", t: "text", label: "Who said it" }],
-  feature: [{ k: "kicker", t: "text", label: "Small label", help: "What and where, like “HBO Max UK launch · King’s Cross”." }, { k: "line", t: "textarea", label: "The line", help: "Your headline or tagline, shown big." },
+  feature: [{ k: "kicker", t: "text", label: "Small label", help: "Like the format and place: “Out of home · King’s Cross”." }, { k: "headline", t: "text", label: "Headline", help: "The project, like “HBO Max UK Launch”." }, { k: "line", t: "textarea", label: "The line", help: "Your tagline, shown under the headline in italics." },
     { k: "paragraphs", t: "paras", label: "Text", help: "Leave a blank line between paragraphs." }, { k: "image", t: "image", label: "Picture", help: "Shown whole, never cropped." },
     { k: "imageSide", t: "select", label: "Picture side", opts: [["left", "Left"], ["right", "Right"]] }, BUTTONS],
   tabs: [{ k: "kicker", t: "text", label: "Small label above the headline" }, { k: "headline", t: "text", label: "Headline" }, { k: "intro", t: "textarea", label: "Intro" },
