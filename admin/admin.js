@@ -466,12 +466,13 @@ function bindResize(d) {
 function bindCardDrag(d) {
   let st = null, ghost = null, scrollT = 0;
   const W2 = d.defaultView;
-  const clear = () => $$(".ed-drop-l, .ed-drop-r", d).forEach(x => x.classList.remove("ed-drop-l", "ed-drop-r"));
+  const clear = () => $$(".ed-drop-l, .ed-drop-r, .ed-replace", d).forEach(x => x.classList.remove("ed-drop-l", "ed-drop-r", "ed-replace"));
+  const isFeatured = l => /\.items$/.test(l);
   d.addEventListener("dragstart", e => { if (e.target.closest && e.target.closest("[data-list]")) e.preventDefault(); });
   d.addEventListener("pointerdown", e => {
     const card = e.target.closest && e.target.closest("[data-list][data-idx]");
     if (!card || e.button !== 0 || previewing || e.target.closest("[data-path], [data-paras], .ed-resize, .ed-bar, .ed-bbar")) return;
-    st = { card, x: e.clientX, y: e.clientY, list: card.dataset.list, from: +card.dataset.idx, moved: false, to: null };
+    st = { card, x: e.clientX, y: e.clientY, list: card.dataset.list, from: +card.dataset.idx, moved: false, to: null, replace: null };
   });
   d.addEventListener("pointermove", e => {
     if (!st) return;
@@ -486,8 +487,10 @@ function bindCardDrag(d) {
     ghost.style.left = (e.clientX + 14) + "px"; ghost.style.top = (e.clientY + 14) + "px";
     ghost.style.display = "none"; const under = d.elementFromPoint(e.clientX, e.clientY); ghost.style.display = "";
     const tgt = under && under.closest(`[data-list="${st.list}"][data-idx]`);
-    clear(); st.to = null;
-    if (tgt) {
+    clear(); st.to = null; st.replace = null;
+    const feat = !isFeatured(st.list) && under && under.closest('[data-list$=".items"][data-idx]');
+    if (feat) { feat.classList.add("ed-replace"); st.replace = { list: feat.dataset.list, idx: +feat.dataset.idx }; }
+    else if (tgt) {
       const r = tgt.getBoundingClientRect(), after = e.clientX > r.left + r.width / 2;
       tgt.classList.add(after ? "ed-drop-r" : "ed-drop-l"); st.to = +tgt.dataset.idx + (after ? 1 : 0);
     }
@@ -504,6 +507,16 @@ function bindCardDrag(d) {
     clear(); d.body.classList.remove("ed-dragging"); s2.card.classList.remove("ed-dragsrc");
     if (!s2.moved) return;
     d.__suppressClick = true; setTimeout(() => { d.__suppressClick = false; }, 60);
+    if (s2.replace) {
+      const items = getAt(s2.replace.list), id = s2.card.dataset.project, p = C.projects.find(x => x.id === id);
+      if (!items || !p) return;
+      const at = items.findIndex(x => x.project === id);
+      snap();
+      if (at === s2.replace.idx) return;
+      if (at >= 0) { [items[at], items[s2.replace.idx]] = [items[s2.replace.idx], items[at]]; toast("Already in Selected Work, so I swapped their places."); }
+      else { items[s2.replace.idx] = { project: id, tag: p.tag || "", title: p.cardTitle || p.title, desc: p.meta || "", image: null }; toast(`“${p.cardTitle || p.title}” is now in Selected Work. It’s still in All Work too.`); }
+      changed({ side: true }); return;
+    }
     if (s2.to == null) return;
     let to = s2.to; if (s2.from < to) to--;
     if (to === s2.from) return;
