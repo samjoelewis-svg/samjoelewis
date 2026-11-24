@@ -152,7 +152,7 @@ S.contact = (s, i) => `
     <div class="rv">${T("h2", `sections.${i}.headline`, s.headline, "display h2")}
       ${T("p", `sections.${i}.text`, s.text, "lede")}
       <a class="bigmail" href="mailto:${esc(C.site.email)}">${esc(C.site.email)}</a>
-      <div class="footer-icons" style="margin-top:28px">${socials("")}</div>
+      ${C.site.linkedin ? `<p style="margin-top:20px"><a class="textlink" href="${esc(safeUrl(C.site.linkedin))}" target="_blank" rel="noopener">Find me on LinkedIn →</a></p>` : ""}
     </div>
     ${s.showForm ? `<form class="form rv" data-contact>
       <label>Name<input name="name" autocomplete="name" required></label>
@@ -188,6 +188,7 @@ function render() {
   }
   const nav = visibleSections().filter(([x]) => x.navLabel && !x.hidden);
   const first = visibleSections()[0];
+  const hasContact = visibleSections().some(([x]) => x.type === "contact" && !x.hidden);
   const ann = s.announcement && s.announcement.enabled && s.announcement.text
     ? `<div class="announce" data-path="site.announcement.text">${s.announcement.link ? `<a href="${esc(safeUrl(s.announcement.link))}">${esc(s.announcement.text)}</a>` : esc(s.announcement.text)}</div>` : "";
   const body = visibleSections().map(([x, i]) => {
@@ -203,9 +204,10 @@ function render() {
       </div>
     </header>
     <main id="main">${body}</main>
-    <footer class="footer bg-${first ? first[0].bg : "sky"}">
+    <footer class="footer bg-ink">
       <div class="wrap">
-        <div class="footer-top">${T("p", "site.footerTitle", s.footerTitle, "footer-title")}<a class="footer-mail" href="mailto:${esc(s.email)}">${esc(s.email)}</a></div>
+        <div class="footer-top">${T("p", "site.footerTitle", s.footerTitle, "footer-title")}
+          ${hasContact ? `<a class="footer-top-link" href="#top">Back to top ↑</a>` : `<a class="footer-mail" href="mailto:${esc(s.email)}">${esc(s.email)}</a>`}</div>
         <div class="footer-bottom">${T("p", "site.footerNote", s.footerNote, "", ' style="margin:0"')}<div class="footer-icons">${socials("")}</div></div>
       </div>
     </footer>`;
