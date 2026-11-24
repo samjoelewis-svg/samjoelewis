@@ -1,0 +1,32 @@
+/* Loaded into the preview frame while editing */
+[data-path], [data-paras] { cursor: text; border-radius: 2px; transition: box-shadow .15s ease; }
+[data-path]:hover, [data-paras]:hover { box-shadow: 0 0 0 2px rgba(47,107,255,.45); }
+[data-path]:focus, [data-paras]:focus { outline: none; box-shadow: 0 0 0 2px #2f6bff; background: rgba(255,255,255,.18); }
+[data-path]:empty::before { content: attr(data-ph); opacity: .45; font-style: italic; }
+[data-path]:empty { display: inline-block; min-width: 3em; min-height: 1em; }
+img[data-img] { cursor: pointer; }
+img[data-img]:hover { outline: 3px solid rgba(47,107,255,.7); outline-offset: -3px; }
+main > section { outline: 0 solid transparent; transition: outline-color .15s; }
+main > section.ed-hover { outline: 2px solid rgba(47,107,255,.6); outline-offset: -2px; }
+main > section.ed-sel { outline: 3px solid #2f6bff; outline-offset: -3px; }
+main > section.is-hidden { opacity: .45; }
+main > section.is-hidden::before { content: "Hidden from visitors"; position: absolute; left: 12px; top: 12px; z-index: 5; background: #2a1a1b; color: #fff; font: 600 12px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; padding: 6px 10px; border-radius: 6px; }
+.ed-bar { position: absolute; right: 12px; top: 12px; z-index: 30; display: flex; align-items: center; gap: 2px; background: #fff; color: #2a1a1b; border-radius: 10px; padding: 4px; box-shadow: 0 10px 30px -10px rgba(0,0,0,.4), 0 0 0 1px rgba(0,0,0,.06);
+  font: 500 13px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif; opacity: 0; pointer-events: none; transition: opacity .15s; }
+main > section.ed-hover > .ed-bar, main > section.ed-sel > .ed-bar { opacity: 1; pointer-events: auto; }
+.ed-bar .lbl { padding: 0 10px 0 8px; color: #6f6466; white-space: nowrap; }
+.ed-bar button { width: 32px; height: 32px; border: 0; background: none; border-radius: 7px; display: grid; place-items: center; cursor: pointer; color: inherit; }
+.ed-bar button:hover { background: #f1ede9; }
+.ed-bar button.wide { width: auto; padding: 0 10px; font-weight: 600; display: flex; gap: 6px; align-items: center; }
+.ed-bar svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.ed-bar .dot { width: 16px; height: 16px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(0,0,0,.2); }
+.ed-add { position: absolute; left: 50%; bottom: -17px; transform: translateX(-50%); z-index: 31; background: #2f6bff; color: #fff; border: 0; border-radius: 999px; padding: 0 16px; height: 34px;
+  font: 600 13px/34px -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif; cursor: pointer; box-shadow: 0 8px 20px -8px rgba(47,107,255,.8); opacity: 0; pointer-events: none; transition: opacity .15s; white-space: nowrap; }
+main > section.ed-hover > .ed-add { opacity: 1; pointer-events: auto; }
+.ed-img { position: absolute; z-index: 40; display: flex; gap: 6px; pointer-events: auto; }
+.ed-img button { background: #fff; color: #2a1a1b; border: 0; border-radius: 999px; padding: 8px 14px; font: 600 13px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif; cursor: pointer; box-shadow: 0 8px 24px -8px rgba(0,0,0,.5); }
+.ed-img button:hover { background: #f1ede9; }
+.card { cursor: pointer; }
+.card-media::after { content: "Edit project"; position: absolute; right: 12px; bottom: 12px; background: #fff; color: #2a1a1b; font: 600 12px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; padding: 7px 11px; border-radius: 999px; opacity: 0; transition: opacity .15s; box-shadow: 0 6px 18px -6px rgba(0,0,0,.5); }
+.card:hover .card-media::after { opacity: 1; }
+.rv { opacity: 1 !important; transform: none !important; }
