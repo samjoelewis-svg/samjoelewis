@@ -32,6 +32,8 @@ const TYPES = {
   split: { name: "Image + text", desc: "Photo on one side, headline, text and buttons on the other" },
   featured: { name: "Featured work", desc: "Hand-picked project cards with your own descriptions" },
   projects: { name: "Project grid", desc: "A grid of projects that open as their own pages" },
+  tabs: { name: "Work with tabs", desc: "Projects sorted into tabs, like Campaigns or Film" },
+  ticker: { name: "Moving names", desc: "A scrolling line of clients or skills" },
   text: { name: "Text", desc: "A heading with paragraphs of writing" },
   curved: { name: "Moving curved text", desc: "A line of text drifting along an arc, with social links" },
   gallery: { name: "Image gallery", desc: "A row of pictures with captions" },
@@ -370,7 +372,7 @@ async function sectionAction(i, act) {
   }
 }
 function scrollToSection(i) { setTimeout(() => { const el = $(`main > section[data-section="${i}"]`, D()); el && el.scrollIntoView({ behavior: "smooth", block: "start" }); }, 60); }
-function sectionName(s) { return s.navLabel || s.headline || s.text || s.quote || (TYPES[s.type] || {}).name || s.type; }
+function sectionName(s) { return s.navLabel || s.headline || s.text || s.quote || (s.type === "ticker" && (s.items || []).slice(0, 3).join(", ")) || (TYPES[s.type] || {}).name || s.type; }
 function newSection(type) {
   const first = C.projects.slice(0, 3);
   const T = {
@@ -378,6 +380,8 @@ function newSection(type) {
     split: { imageSide: "left", image: { src: "img/sam.jpg", caption: "" }, headline: "A Headline Here", columns: ["Write a few sentences here.", "And a few more here, if you like."], buttons: [{ label: "Get in touch", link: "#contact" }] },
     featured: { headline: "Featured Work", intro: "", items: first.map(p => ({ project: p.id, tag: p.tag, title: p.cardTitle || p.title, desc: p.meta, image: null })) },
     projects: { kicker: "", headline: "New Project Section", intro: "A short line about this group of work.", projects: [] },
+    tabs: { kicker: "", headline: "More Work", intro: "", groups: [{ id: "tab-1", name: "First tab", intro: "", projects: first.map(p => p.id) }] },
+    ticker: { label: "Work for", items: ["Client one", "Client two", "Client three"], duration: 40 },
     text: { headline: "A Heading", paragraphs: ["Write something here. Press Enter to start a new paragraph."], links: [] },
     curved: { text: "Let’s work together", speed: 40, showSocial: true },
     gallery: { kicker: "", headline: "Gallery", intro: "", images: [] },
@@ -394,6 +398,8 @@ function openAddSection(at) {
     split: '<div style="display:flex;gap:10px;width:100%;align-items:center"><i style="height:70px;width:45%;background:#7d6a5e"></i><div style="flex:1"><i style="height:12px;margin-bottom:6px"></i><i style="height:4px;margin-bottom:4px;opacity:.5"></i><i style="height:4px;width:70%;opacity:.5"></i></div></div>',
     featured: '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;width:100%"><i style="height:40px;background:#7d6a5e"></i><i style="height:40px;background:#7d6a5e"></i><i style="height:40px;background:#7d6a5e"></i></div>',
     projects: '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;width:100%"><i style="height:28px;background:#7d6a5e"></i><i style="height:28px;background:#7d6a5e"></i><i style="height:28px;background:#7d6a5e"></i><i style="height:28px;background:#7d6a5e"></i><i style="height:28px;background:#7d6a5e"></i></div>',
+    tabs: '<div style="width:100%"><div style="display:flex;gap:4px;margin-bottom:8px"><i style="height:10px;width:26px;border-radius:9px"></i><i style="height:10px;width:26px;border-radius:9px;opacity:.4"></i><i style="height:10px;width:26px;border-radius:9px;opacity:.4"></i></div><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px"><i style="height:30px;background:#7d6a5e"></i><i style="height:30px;background:#7d6a5e"></i><i style="height:30px;background:#7d6a5e"></i></div></div>',
+    ticker: '<div style="width:100%;overflow:hidden;white-space:nowrap;font:700 22px Georgia,serif;color:#46282a">Client ✦ <em>Client</em> ✦ Client ✦</div>',
     text: '<div style="display:flex;gap:10px;width:100%"><i style="height:14px;width:35%"></i><div style="flex:1"><i style="height:4px;margin-bottom:4px;opacity:.5"></i><i style="height:4px;margin-bottom:4px;opacity:.5"></i><i style="height:4px;width:60%;opacity:.5"></i></div></div>',
     curved: '<svg viewBox="0 0 120 50" style="width:100%;height:60px"><path d="M0 45 Q60 -10 120 45" stroke="#46282a" stroke-width="7" fill="none" stroke-dasharray="9 4"/></svg>',
     gallery: '<div style="display:flex;gap:6px;width:100%"><i style="height:50px;flex:1.4;background:#7d6a5e"></i><i style="height:50px;flex:1;background:#7d6a5e"></i><i style="height:50px;flex:.8;background:#7d6a5e"></i></div>',
@@ -473,7 +479,7 @@ function mainPane() {
     return tabs + `<div class="pane"><button class="addbtn" data-newproject>${ICON.plus} New project</button>
       <input class="search" type="search" placeholder="Search projects" aria-label="Search projects" data-search>
       <div class="plist">${C.projects.map(p => {
-        const where = C.sections.filter(s => (s.projects || []).includes(p.id)).map(s => s.headline).join(", ");
+        const where = [...C.sections.filter(s => (s.projects || []).includes(p.id)).map(s => s.headline), ...C.sections.flatMap(s => (s.groups || []).filter(g => (g.projects || []).includes(p.id)).map(g => g.name))].join(", ");
         const t = thumbSrc(p.thumb || (p.images && p.images[0]) || (p.video && p.video.poster));
         return `<button class="pitem" data-openproject="${esc(p.id)}" data-q="${esc((p.title + " " + p.meta + " " + p.cardTitle).toLowerCase())}">${t ? `<img src="${esc(t)}" alt="">` : `<span class="noimg"></span>`}<span><b>${esc(p.cardTitle || p.title)}</b><small>${esc(where || "Not shown in any section")}</small></span></button>`;
       }).join("")}</div></div>`;
@@ -497,11 +503,15 @@ function sectionPane(i) {
 }
 function projectPane() {
   const n = C.projects.findIndex(p => p.id === selProject), p = C.projects[n];
-  const secs = C.sections.map((s, i) => [s, i]).filter(([s]) => s.type === "projects");
+  const homes = [];
+  C.sections.forEach((s, i) => {
+    if (s.type === "projects") homes.push([`sections.${i}.projects`, s.headline]);
+    if (s.type === "tabs") (s.groups || []).forEach((g, k) => homes.push([`sections.${i}.groups.${k}.projects`, `${s.headline} → ${g.name}`]));
+  });
   return `<div class="pane-h"><button class="back" data-back>${ICON.back} Back</button><h2>${esc(p.cardTitle || p.title)}</h2></div>
     <div class="pane"><p class="hint">This project is open on the right. Click its words or pictures there to edit them, or use these settings.</p>
     ${form(p, "projects." + n, PROJECT_FIELDS)}
-    <div class="group"><h3>Show this project in</h3>${secs.map(([s, i]) => `<label class="check"><input type="checkbox" data-member="${i}"${(s.projects || []).includes(p.id) ? " checked" : ""}> ${esc(s.headline)}</label>`).join("") || '<p class="hint">Add a “Project grid” section first.</p>'}</div>
+    <div class="group"><h3>Show this project in</h3>${homes.map(([path, name]) => `<label class="check"><input type="checkbox" data-member="${path}"${(getAt(path) || []).includes(p.id) ? " checked" : ""}> ${esc(name)}</label>`).join("") || '<p class="hint">Add a “Work with tabs” or “Project grid” section first.</p>'}</div>
     <div class="danger-zone"><button class="btn-s" data-pact="dup">Duplicate project</button><button class="btn-d" data-pact="del">Delete project</button></div></div>`;
 }
 
@@ -529,6 +539,11 @@ const SECTION_FIELDS = {
   gallery: [{ k: "kicker", t: "text", label: "Small label" }, { k: "headline", t: "text", label: "Headline" }, { k: "intro", t: "textarea", label: "Intro" },
     { k: "images", t: "list", label: "Pictures", item: "Picture", title: x => x.caption || (x.src || "").split("/").pop(), fields: IMGITEM, addImage: true }],
   quote: [{ k: "quote", t: "textarea", label: "Quote" }, { k: "by", t: "text", label: "Who said it" }],
+  tabs: [{ k: "kicker", t: "text", label: "Small label above the headline" }, { k: "headline", t: "text", label: "Headline" }, { k: "intro", t: "textarea", label: "Intro" },
+    { k: "groups", t: "list", label: "Tabs", item: "Tab", help: "Drag tabs to reorder them. Open a tab to choose its projects.", title: g => `${g.name} (${(g.projects || []).length})`,
+      fields: [{ k: "name", t: "text", label: "Tab name" }, { k: "intro", t: "textarea", label: "Line above the projects" }, { k: "projects", t: "refs", label: "Projects in this tab", help: "Drag to change the order." }, { k: "id", t: "text", label: "Short name for links" }],
+      make: () => ({ id: "tab-" + Math.random().toString(36).slice(2, 6), name: "New tab", intro: "", projects: [] }) }],
+  ticker: [{ k: "label", t: "text", label: "Small label above" }, { k: "items", t: "paras", lines: true, label: "Names", help: "One per line." }, { k: "duration", t: "number", label: "Seconds for one loop", help: "Bigger is slower." }],
   cta: [{ k: "headline", t: "text", label: "Headline" }, { k: "text", t: "textarea", label: "Text" }, BUTTONS],
   cv: [{ k: "headline", t: "text", label: "Headline" }, { k: "intro", t: "textarea", label: "Intro" },
     { k: "jobs", t: "list", label: "Jobs", item: "Job", title: j => `${j.company} · ${j.dates}`, fields: [{ k: "dates", t: "text", label: "Dates" }, { k: "company", t: "text", label: "Company" }, { k: "role", t: "text", label: "Role" }, { k: "points", t: "paras", label: "Bullet points", help: "One per line." , lines: true }],
@@ -677,9 +692,9 @@ function bindSide(side) {
   // project actions
   $$("[data-pact]", side).forEach(b => b.onclick = () => projectAction(b.dataset.pact));
   $$("[data-member]", side).forEach(cb => cb.onchange = () => {
-    snap(); const s = C.sections[+cb.dataset.member]; s.projects = s.projects || [];
-    if (cb.checked) { if (!s.projects.includes(selProject)) s.projects.push(selProject); } else s.projects = s.projects.filter(x => x !== selProject);
-    changed();
+    snap(); const path = cb.dataset.member; let l = getAt(path) || [];
+    if (cb.checked) { if (!l.includes(selProject)) l.push(selProject); } else l = l.filter(x => x !== selProject);
+    setAt(path, l); changed();
   });
   // plain fields
   $$("[data-f]", side).forEach(inp => {
@@ -707,7 +722,7 @@ function bindSide(side) {
   $$("[data-refdel]", side).forEach(b => b.onclick = () => { snap(); getAt(b.dataset.refdel).splice(+b.dataset.k, 1); changed({ side: true }); });
   $$("[data-refadd]", side).forEach(s => s.onchange = () => {
     if (!s.value) return;
-    if (s.value === "__new") return newProject(+s.dataset.refadd.split(".")[1]);
+    if (s.value === "__new") return newProject(s.dataset.refadd);
     snap(); const l = getAt(s.dataset.refadd) || []; l.push(s.value); setAt(s.dataset.refadd, l); changed({ side: true });
   });
   dndLists(side, ".ref", "data-ref");
@@ -734,7 +749,8 @@ function renameId(kind, path, raw) {
   if (id === old) { renderSide(); return; }
   snap(); self.id = id;
   if (kind === "projectid") {
-    for (const s of C.sections) { if (s.projects) s.projects = s.projects.map(x => x === old ? id : x); for (const it of s.items || []) if (it.project === old) it.project = id; }
+    for (const [o, k] of refLists()) o[k] = o[k].map(x => x === old ? id : x);
+    for (const s of C.sections) for (const it of s.items || []) if (it.project === old) it.project = id;
     for (const p of C.projects) for (const r of p.related || []) if (r.project === old) r.project = id;
     if (selProject === old) selProject = id;
   } else {
@@ -783,14 +799,19 @@ function dndLists(root, sel, attr) {
 }
 
 /* ---------- projects ---------- */
-function newProject(sectionIdx) {
+function refLists() {
+  const out = [];
+  C.sections.forEach(s => { if (s.projects) out.push([s, "projects"]); (s.groups || []).forEach(g => out.push([g, "projects"])); });
+  return out;
+}
+function newProject(refPath) {
   snap();
   const id = uniqueId("new-project", C.projects);
   const p = { id, title: "New Project", cardTitle: "New project", tag: "", meta: "Client · Format · Year", industry: "", quote: "", quote2: "", cardQuote: "", body: ["Write about the project here."], images: [] };
   C.projects.unshift(p);
-  let si = sectionIdx;
-  if (si == null || !C.sections[si] || C.sections[si].type !== "projects") si = selSection != null && C.sections[selSection] && C.sections[selSection].type === "projects" ? selSection : C.sections.findIndex(s => s.type === "projects");
-  if (si >= 0) { C.sections[si].projects = C.sections[si].projects || []; C.sections[si].projects.unshift(id); }
+  let target = refPath && Array.isArray(getAt(refPath)) ? getAt(refPath) : null;
+  if (!target) { const first = refLists()[0]; if (first) target = first[0][first[1]]; }
+  if (target) target.unshift(id);
   changed();
   W().Site.openProject(id, true);
   toast("New project added. Edit it on the right, and upload pictures on the left.");
@@ -799,14 +820,15 @@ async function projectAction(act) {
   const n = C.projects.findIndex(p => p.id === selProject), p = C.projects[n];
   if (act === "dup") {
     snap(); const c = clone(p); c.id = uniqueId(p.id + "-copy", C.projects); c.title += " (copy)"; c.cardTitle = (c.cardTitle || p.title) + " (copy)"; C.projects.splice(n + 1, 0, c);
-    for (const s of C.sections) if ((s.projects || []).includes(p.id)) s.projects.splice(s.projects.indexOf(p.id) + 1, 0, c.id);
+    for (const [o, k] of refLists()) if (o[k].includes(p.id)) o[k].splice(o[k].indexOf(p.id) + 1, 0, c.id);
     changed(); W().Site.openProject(c.id, true); return;
   }
   if (act === "del") {
     if (!(await ask("Delete this project?", `“${esc(p.title)}” will be removed from every section. You can undo straight after.`, "Delete", true))) return;
     snap(); W().Site.closeProject(true);
     C.projects.splice(n, 1);
-    for (const s of C.sections) { if (s.projects) s.projects = s.projects.filter(x => x !== p.id); if (s.items) s.items = s.items.filter(x => x.project !== p.id); }
+    for (const [o, k] of refLists()) o[k] = o[k].filter(x => x !== p.id);
+    for (const s of C.sections) if (s.items) s.items = s.items.filter(x => x.project !== p.id);
     for (const q of C.projects) if (q.related) q.related = q.related.filter(r => r.project !== p.id);
     selProject = null; tab = "projects"; changed({ side: true }); toast("Project deleted. Press Undo to bring it back.");
   }

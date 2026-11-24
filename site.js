@@ -20,10 +20,13 @@ const ext = u => /^https?:/i.test(u) ? ' target="_blank" rel="noopener"' : "";
 /* text helpers: data-path lets the editor find and edit any piece of text */
 const T = (tag, path, val, cls = "", attrs = "") => `<${tag}${cls ? ` class="${cls}"` : ""} data-path="${path}"${attrs}>${esc(val)}</${tag}>`;
 const P = (path, arr, cls = "prose") => `<div class="${cls}" data-paras="${path}">${(arr || []).map(p => `<p>${esc(p)}</p>`).join("")}</div>`;
-const IMG = (path, x, cls = "", extra = "") => {
+const IMG = (path, x, cls = "", extra = "", natural = false) => {
   const s = R(x); if (!s && !O.edit) return "";
   const w = x && x.w ? ` width="${x.w}" height="${x.h}"` : "";
-  return `<img${cls ? ` class="${cls}"` : ""} src="${esc(s)}" alt="${esc(capOf(x))}"${w} data-img="${path}" decoding="async"${extra}>`;
+  const st = [];
+  if (x && x.w && x.h && x.h > x.w * 1.15) st.push("object-position:50% 0");
+  if (natural && x && x.w) st.push(`max-width:min(100%,${x.w}px)`);
+  return `<img${cls ? ` class="${cls}"` : ""} src="${esc(s)}" alt="${esc(capOf(x))}"${w}${st.length ? ` style="${st.join(";")}"` : ""} data-img="${path}" decoding="async"${extra}>`;
 };
 const ICONS = {
   linkedin: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.5 9.75h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5c0-1.2-.02-2.73-1.66-2.73-1.67 0-1.92 1.3-1.92 2.64V21h-4z"/></svg>',
@@ -79,20 +82,42 @@ S.featured = (s, i) => `
     }).join("")}</div>
   </div>`;
 
+function card(id) {
+  const p = projById(id); if (!p) return "";
+  const n = projIdx(id), q = p.quote || p.cardQuote;
+  const tp = p.thumb ? "thumb" : p.images && p.images[0] ? "images.0" : p.video && p.video.poster ? "video.poster" : "";
+  const media = tp ? IMG(`projects.${n}.${tp}`, getPath(p, tp), "", ' loading="lazy"') : `<span class="card-quote">${esc(q || p.title)}</span>`;
+  return `<a class="card rv" href="#work/${esc(p.id)}" data-project="${esc(p.id)}">
+    <span class="card-media">${p.tag ? `<span class="tag">${esc(p.tag)}</span>` : ""}${media}</span>
+    <span class="card-title">${esc(p.cardTitle || p.title)} <span class="arrow" aria-hidden="true">→</span></span>
+    <span class="card-meta">${esc(p.meta)}</span>
+    ${q ? `<span class="card-q">“${esc(q.replace(/^“|”$/g, ""))}”</span>` : ""}</a>`;
+}
+const getPath = (o, path) => path.split(".").reduce((a, k) => a == null ? a : a[k], o);
+
 S.projects = (s, i) => `
   <div class="wrap">${shead(s, i)}
-    <div class="grid">${(s.projects || []).map(id => {
-      const p = projById(id); if (!p) return "";
-      const n = projIdx(id), t = thumbOf(p), q = p.quote || p.cardQuote;
-      const media = t ? IMG(`projects.${n}.${p.thumb ? "thumb" : p.images && p.images[0] ? "images.0" : "video.poster"}`, t, "", ' loading="lazy"')
-        : `<span class="card-quote">${esc(q || p.title)}</span>`;
-      return `<a class="card rv" href="#work/${esc(p.id)}" data-project="${esc(p.id)}">
-        <span class="card-media">${p.tag ? `<span class="tag">${esc(p.tag)}</span>` : ""}${media}</span>
-        <span class="card-title">${esc(p.cardTitle || p.title)}</span>
-        <span class="card-meta">${esc(p.meta)}</span>
-        ${q ? `<span class="card-q">“${esc(q.replace(/^“|”$/g, ""))}”</span>` : ""}</a>`;
-    }).join("")}</div>
+    <div class="grid">${(s.projects || []).map(card).join("")}</div>
   </div>`;
+
+S.tabs = (s, i) => {
+  const gs = s.groups || [];
+  return `
+  <div class="wrap">${shead(s, i)}
+    <div class="tabbar rv" role="tablist" aria-label="${esc(s.headline)}">${gs.map((g, k) => `<button role="tab" id="tab-${esc(s.id)}-${k}" aria-controls="panel-${esc(s.id)}-${k}" aria-selected="${k === 0}" tabindex="${k === 0 ? 0 : -1}" data-tab-btn="${k}"><span data-path="sections.${i}.groups.${k}.name">${esc(g.name)}</span> <sup>${(g.projects || []).filter(projById).length}</sup></button>`).join("")}</div>
+    ${gs.map((g, k) => `<div class="tabpanel" role="tabpanel" id="panel-${esc(s.id)}-${k}" aria-labelledby="tab-${esc(s.id)}-${k}" data-group="${esc(g.id || "")}"${k ? " hidden" : ""}>
+      ${g.intro || O.edit ? T("p", `sections.${i}.groups.${k}.intro`, g.intro, "lede tab-intro") : ""}
+      <div class="grid">${(g.projects || []).map(card).join("")}</div></div>`).join("")}
+  </div>`;
+};
+
+S.ticker = (s, i) => {
+  const items = (s.items || []).filter(Boolean);
+  const run = items.map(x => `<span>${esc(x)}</span><i aria-hidden="true">✦</i>`).join("");
+  return `${s.label || O.edit ? T("p", `sections.${i}.label`, s.label, "kicker ticker-label wrap") : ""}
+    <div class="ticker" style="--dur:${Math.max(10, Number(s.duration) || 40)}s"><p class="sr-only">${esc(items.join(", "))}</p>
+      <div class="ticker-track" aria-hidden="true"><div class="ticker-run">${run}</div><div class="ticker-run">${run}</div></div></div>`;
+};
 
 S.text = (s, i) => `
   <div class="wrap textsec">
@@ -103,8 +128,8 @@ S.text = (s, i) => `
 
 S.curved = (s, i) => `
   <div class="curve-wrap" aria-label="${esc(s.text)}" role="img">
-    <svg class="curve-svg" viewBox="0 0 1600 440" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-      <defs><path id="curve-${i}" d="M -300 470 Q 800 -120 1900 470"/></defs>
+    <svg class="curve-svg" viewBox="0 0 1600 360" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <defs><path id="curve-${i}" d="M -300 430 Q 800 -170 1900 430"/></defs>
       <text><textPath href="#curve-${i}" data-curve="${i}" startOffset="0"></textPath></text>
     </svg>
   </div>
@@ -214,6 +239,17 @@ function wire() {
   const burger = $(".burger");
   if (burger) burger.onclick = () => { const o = document.body.classList.toggle("menu-open"); burger.setAttribute("aria-expanded", o); };
   $$(".nav a").forEach(a => a.addEventListener("click", () => { document.body.classList.remove("menu-open"); burger && burger.setAttribute("aria-expanded", "false"); }));
+  $$(".tabbar").forEach(bar => {
+    const sec = bar.closest("section"), btns = $$("[data-tab-btn]", bar);
+    btns.forEach((b, k) => {
+      b.onclick = e => { if (O.edit && e.target.closest("[data-path]")) return; showTab(sec.id, k); };
+      b.onkeydown = e => {
+        const d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+        if (d) { e.preventDefault(); showTab(sec.id, (k + d + btns.length) % btns.length, true); }
+      };
+    });
+    if (tabState[sec.id] != null) showTab(sec.id, tabState[sec.id]);
+  });
   const f = $("[data-contact]");
   if (f) f.onsubmit = e => {
     e.preventDefault(); if (O.edit) return;
@@ -223,6 +259,16 @@ function wire() {
   };
 }
 
+function showTab(secId, k, focus) {
+  const sec = document.getElementById(secId); if (!sec) return;
+  const btns = [...sec.querySelectorAll("[data-tab-btn]")], panels = [...sec.querySelectorAll(".tabpanel")];
+  if (!btns[k]) return;
+  btns.forEach((b, j) => { b.setAttribute("aria-selected", j === k); b.tabIndex = j === k ? 0 : -1; });
+  panels.forEach((p, j) => { p.hidden = j !== k; if (j === k) p.querySelectorAll(".rv").forEach(x => x.classList.add("in")); });
+  if (focus) btns[k].focus();
+  tabState[secId] = k;
+}
+const tabState = {};
 function headerColour() {
   const h = $(".header"); if (!h) return;
   const secs = $$("main > section");
@@ -281,14 +327,19 @@ function projectOrder() {
   const seen = new Set(), list = [];
   for (const s of C.sections) {
     if (s.hidden && !O.edit) continue;
-    const ids = s.type === "projects" ? s.projects : s.type === "featured" ? (s.items || []).map(x => x.project) : [];
+    const ids = s.type === "projects" ? s.projects : s.type === "tabs" ? (s.groups || []).flatMap(g => g.projects || []) : s.type === "featured" ? (s.items || []).map(x => x.project) : [];
     for (const id of ids || []) if (!seen.has(id) && projById(id)) { seen.add(id); list.push(id); }
   }
   for (const p of C.projects) if (!seen.has(p.id) && O.edit) list.push(p.id);
   return list;
 }
 function sectionOf(id) {
-  return C.sections.find(s => s.type === "projects" && (s.projects || []).includes(id) && (!s.hidden || O.edit));
+  for (const s of C.sections) {
+    if (s.hidden && !O.edit) continue;
+    if (s.type === "projects" && (s.projects || []).includes(id)) return { label: s.headline, bg: s.bg, anchor: s.id };
+    if (s.type === "tabs") { const k = (s.groups || []).findIndex(g => (g.projects || []).includes(id)); if (k >= 0) return { label: s.groups[k].name, bg: s.bg, anchor: s.id, tab: k }; }
+  }
+  return null;
 }
 
 function projectHTML(p) {
@@ -296,7 +347,7 @@ function projectHTML(p) {
   const imgs = p.images || [];
   const plain = imgs.map((im, k) => [im, k]).filter(([im]) => !im.heading && !im.text);
   const special = imgs.map((im, k) => [im, k]).filter(([im]) => im.heading || im.text);
-  const fig = ([im, k], lazy = true) => `<figure style="--ar:${im.w && im.h ? (im.w / im.h).toFixed(3) : 1}">${IMG(`${B}.images.${k}`, im, "zoom", lazy ? ' loading="lazy"' : "")}${im.caption ? T("figcaption", `${B}.images.${k}.caption`, im.caption) : ""}</figure>`;
+  const fig = ([im, k], lazy = true) => `<figure style="--ar:${im.w && im.h ? (im.w / im.h).toFixed(3) : 1}">${IMG(`${B}.images.${k}`, im, "zoom", lazy ? ' loading="lazy"' : "", true)}${im.caption ? T("figcaption", `${B}.images.${k}.caption`, im.caption) : ""}</figure>`;
   const vid = p.video && p.video.src ? `<figure><div class="vframe"><video controls playsinline preload="none" poster="${esc(resolve(p.video.poster || ""))}" aria-label="${esc(p.video.caption)}"><source src="${esc(resolve(p.video.src))}" type="video/mp4"></video></div>${p.video.caption ? T("figcaption", `${B}.video.caption`, p.video.caption) : ""}</figure>` : "";
   let side = "", rest = plain;
   if (vid) { side = vid + (plain.length === 1 ? fig(plain[0], false) : ""); if (plain.length === 1) rest = []; }
@@ -312,7 +363,7 @@ function projectHTML(p) {
     ${p.stats.note ? T("p", `${B}.stats.note`, p.stats.note, "stats-note") : ""}</div>` : "";
   return `
     <div class="proj-bar"><div class="wrap">
-      <button class="proj-back" data-close><span aria-hidden="true">←</span><span>${esc(sec ? sec.headline : "Back")}</span></button>
+      <button class="proj-back" data-close><span aria-hidden="true">←</span><span>${esc(sec ? sec.label : "Back")}</span></button>
       <button class="proj-x" data-close aria-label="Close project">×</button>
     </div></div>
     <article>
@@ -333,7 +384,7 @@ function projectHTML(p) {
           <div class="img-head">${T("h3", `${B}.images.${k}.heading`, im.heading || "", "display h3")}
             ${im.link && im.link.url ? `<a class="textlink" href="${esc(safeUrl(im.link.url))}"${ext(im.link.url)}>${esc(im.link.label || "View")} →</a>` : ""}</div>
           ${im.text ? T("p", `${B}.images.${k}.text`, im.text, "img-text") : ""}
-          ${IMG(`${B}.images.${k}`, im, "zoom", ' loading="lazy"')}</section>`).join("")}
+          ${IMG(`${B}.images.${k}`, im, "zoom", ' loading="lazy"', true)}</section>`).join("")}
       </div>` : ""}
     </article>
     <nav class="proj-next bg-${sec ? sec.bg === "cream" ? "mint" : "cream" : "mint"}" aria-label="More work"><div class="wrap">
@@ -369,14 +420,15 @@ function closeProject(fromHash) {
   setTimeout(() => { if (!openId) el.remove(); }, 300);
   if (!O.edit && !fromHash) {
     const sec = sectionOf(id);
-    history.pushState(null, "", sec ? "#" + sec.id : location.pathname);
+    history.pushState(null, "", sec ? "#" + sec.anchor : location.pathname);
+    if (sec && sec.tab != null) showTab(sec.anchor, sec.tab);
   }
   if (returnFocus && returnFocus.focus) returnFocus.focus({ preventScroll: true });
   if (O.onProject) O.onProject(null);
 }
 
 /* old teletext links (#p201 etc.) still work */
-const LEGACY = { 100: "home", 101: "about", 888: "cv", 200: "campaigns", 300: "journeys", 400: "email", 500: "film", 600: "editorial", 900: "home" };
+const LEGACY = { 100: "home", 101: "about", 888: "cv", 900: "home", 200: "campaigns", 300: "journeys", 400: "email", 500: "film", 600: "editorial", 700: "voice", 750: "voice" };
 function route(fromHash = true) {
   const h = decodeURIComponent(location.hash || "");
   let m = /^#work\/(.+)$/.exec(h);
@@ -385,7 +437,8 @@ function route(fromHash = true) {
   if (m) {
     const n = +m[1], p = C.projects.find(x => x.page === n);
     if (p) { history.replaceState(null, "", "#work/" + p.id); openProject(p.id, true); return; }
-    const id = LEGACY[n];
+    const id = LEGACY[n], panel = id && document.querySelector(`.tabpanel[data-group="${id}"]`);
+    if (panel) { const sec = panel.closest("section"); showTab(sec.id, [...sec.querySelectorAll(".tabpanel")].indexOf(panel)); history.replaceState(null, "", "#" + sec.id); sec.scrollIntoView(); return; }
     history.replaceState(null, "", id && document.getElementById(id) ? "#" + id : location.pathname);
     if (id && document.getElementById(id)) document.getElementById(id).scrollIntoView();
   }
@@ -456,7 +509,7 @@ window.Site = {
     C = content; const y = scrollY; render(); scrollTo(0, y);
     if (openId) { const id = openId; if (projById(id)) { const el = $("#proj"), st = el.scrollTop; el.innerHTML = projectHTML(projById(id)); el.scrollTop = st; } else closeProject(true); }
   },
-  openProject, closeProject, refit, startCurves,
+  openProject, closeProject, refit, startCurves, showTab,
   get openId() { return openId; },
   types: Object.keys(S),
 };

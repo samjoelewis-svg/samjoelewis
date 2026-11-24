@@ -184,3 +184,5 @@ svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width:
   .side { max-height: 42vh; border-right: 0; border-bottom: 1px solid var(--line); }
   .brand-sub, .lnk, .status { display: none; }
 }
+.refs, .ref { min-width: 0; }
+.field select[data-refadd] { width: 100%; padding: 8px 10px; border: 1px dashed #cfc6c0; border-radius: 8px; background: #fff; }

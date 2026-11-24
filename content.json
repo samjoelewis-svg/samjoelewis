@@ -39,12 +39,37 @@
       "bg": "sky",
       "headline": "Sam Lewis",
       "image": {
-        "src": "img/hbo-max-trailer.jpg",
-        "caption": "HBO Max trailer",
-        "w": 1400,
-        "h": 783
+        "src": "img/kings-cross-hero.jpg",
+        "caption": "“The best new platform since 9¾.” HBO Max UK launch, King's Cross",
+        "w": 1152,
+        "h": 648
       },
-      "caption": "Senior copywriter & creative. Campaigns, CRM, brand voice and film for HBO Max, TNT Sports, Tate Modern and more."
+      "caption": "Senior copywriter & creative in London. I write the ideas, lines and journeys for HBO Max, TNT Sports, Tate Modern and more."
+    },
+    {
+      "id": "clients",
+      "type": "ticker",
+      "navLabel": "",
+      "bg": "sky",
+      "label": "Work for",
+      "duration": 45,
+      "items": [
+        "HBO Max",
+        "TNT Sports",
+        "Tate Modern",
+        "National Theatre",
+        "Universal",
+        "Google",
+        "LEGO",
+        "FutureLearn",
+        "Natural History Museum",
+        "Fox",
+        "Westminster Abbey",
+        "AMC",
+        "British Library",
+        "Matilda The Musical",
+        "City & Guilds"
+      ]
     },
     {
       "id": "intro",
@@ -65,7 +90,7 @@
       ],
       "buttons": [
         {
-          "label": "View work",
+          "label": "See the work",
           "link": "#selected-work"
         },
         {
@@ -157,99 +182,86 @@
       ]
     },
     {
-      "id": "campaigns",
-      "type": "projects",
-      "navLabel": "Campaigns",
+      "id": "all-work",
+      "type": "tabs",
+      "navLabel": "All work",
       "bg": "cream",
       "kicker": "",
-      "headline": "Campaign concepts & taglines",
-      "intro": "Big ideas, taglines and the lines that make them land.",
-      "projects": [
-        "hbo-max-uk-launch-campaign",
-        "succession-influencer-campaign-for-hbo-max",
-        "hbo-max-halloween-2026-campaign",
-        "westminster-abbey-feel-wonder-first-hand",
-        "city-and-guilds-and-futurelearn-skills-campaign",
-        "hbo-max-wall-to-wall-watercooler-campaign",
-        "hbo-max-display-and-paid-social-ads",
-        "mock-the-week-print-ad-for-tlc",
-        "atg-theatres-business-deserves-a-bigger-stage",
-        "matilda-the-musical-social-video-and-radio",
-        "futurelearn-results-day-outdoor-campaign"
-      ]
-    },
-    {
-      "id": "journeys",
-      "type": "projects",
-      "navLabel": "",
-      "bg": "mint",
-      "kicker": "",
-      "headline": "Web & app journeys",
-      "intro": "Landing pages, product copy and in-app journeys.",
-      "projects": [
-        "hbo-max-and-tnt-sports",
-        "a-knight-of-the-seven-kingdoms-gamified-journey",
-        "milano-cortina-2026-interactive-campaign",
-        "futurelearn-google-course-product-copy",
-        "noodoll-ricespud-product-messaging"
-      ]
-    },
-    {
-      "id": "email",
-      "type": "projects",
-      "navLabel": "",
-      "bg": "cream",
-      "kicker": "",
-      "headline": "Email & lifecycle",
-      "intro": "CRM from onboarding to win-back.",
-      "projects": [
-        "tnt-sports-crm-including-paris-2024",
-        "hbo-max-lifecycle-email"
-      ]
-    },
-    {
-      "id": "film",
-      "type": "projects",
-      "navLabel": "Film",
-      "bg": "lilac",
-      "kicker": "",
-      "headline": "Film, scripts & taglines",
-      "intro": "Trailer concepts, scripts and taglines for film, TV, theatre and museums.",
-      "projects": [
-        "the-world-goes-pop-trailer-for-tate-modern",
-        "pogany-indulo-documentary-trailer-for-hbo-max",
-        "boyhood-trailer",
-        "home-i-m-darling-trailer-for-the-national-theatre",
-        "whales-beneath-the-surface-trailer-for-the-natural-history-museum",
-        "humans-and-halt-and-catch-fire-taglines",
-        "swallows-and-amazons-tagline",
-        "hbo-max-trailers-for-cinema-tv-and-radio"
-      ]
-    },
-    {
-      "id": "editorial",
-      "type": "projects",
-      "navLabel": "",
-      "bg": "cream",
-      "kicker": "",
-      "headline": "Editorial & SEO",
-      "intro": "Search-led writing and long-form storytelling.",
-      "projects": [
-        "futurelearn-course-seo-and-editorial",
-        "music-and-film-journalism"
-      ]
-    },
-    {
-      "id": "voice",
-      "type": "projects",
-      "navLabel": "Voice",
-      "bg": "mint",
-      "kicker": "",
-      "headline": "Brand Voice & Leadership",
-      "intro": "How brands sound, and the writers who help them sound that way.",
-      "projects": [
-        "brand-voice",
-        "leadership"
+      "headline": "All Work",
+      "intro": "Pick a lane. Every project opens with the story behind it.",
+      "groups": [
+        {
+          "id": "campaigns",
+          "name": "Campaigns & taglines",
+          "intro": "Big ideas, taglines and the lines that make them land.",
+          "projects": [
+            "hbo-max-uk-launch-campaign",
+            "succession-influencer-campaign-for-hbo-max",
+            "hbo-max-halloween-2026-campaign",
+            "westminster-abbey-feel-wonder-first-hand",
+            "city-and-guilds-and-futurelearn-skills-campaign",
+            "hbo-max-wall-to-wall-watercooler-campaign",
+            "hbo-max-display-and-paid-social-ads",
+            "mock-the-week-print-ad-for-tlc",
+            "atg-theatres-business-deserves-a-bigger-stage",
+            "matilda-the-musical-social-video-and-radio",
+            "futurelearn-results-day-outdoor-campaign"
+          ]
+        },
+        {
+          "id": "journeys",
+          "name": "Web & app journeys",
+          "intro": "Landing pages, product copy and in-app journeys.",
+          "projects": [
+            "hbo-max-and-tnt-sports",
+            "a-knight-of-the-seven-kingdoms-gamified-journey",
+            "milano-cortina-2026-interactive-campaign",
+            "futurelearn-google-course-product-copy",
+            "noodoll-ricespud-product-messaging"
+          ]
+        },
+        {
+          "id": "email",
+          "name": "Email & lifecycle",
+          "intro": "CRM from onboarding to win-back.",
+          "projects": [
+            "tnt-sports-crm-including-paris-2024",
+            "hbo-max-lifecycle-email"
+          ]
+        },
+        {
+          "id": "film",
+          "name": "Film & scripts",
+          "intro": "Trailer concepts, scripts and taglines for film, TV, theatre and museums.",
+          "projects": [
+            "the-world-goes-pop-trailer-for-tate-modern",
+            "pogany-indulo-documentary-trailer-for-hbo-max",
+            "boyhood-trailer",
+            "home-i-m-darling-trailer-for-the-national-theatre",
+            "whales-beneath-the-surface-trailer-for-the-natural-history-museum",
+            "humans-and-halt-and-catch-fire-taglines",
+            "swallows-and-amazons-tagline",
+            "hbo-max-trailers-for-cinema-tv-and-radio"
+          ]
+        },
+        {
+          "id": "voice",
+          "name": "Brand voice & leadership",
+          "intro": "How brands sound, and the writers who help them sound that way.",
+          "projects": [
+            "brand-voice",
+            "leadership"
+          ]
+        },
+        {
+          "id": "editorial",
+          "name": "Editorial & SEO",
+          "intro": "Search-led writing and long-form storytelling.",
+          "projects": [
+            "futurelearn-course-seo-and-editorial",
+            "music-and-film-journalism"
+          ]
+        }
       ]
     },
     {
