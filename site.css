@@ -316,7 +316,7 @@ body.locked { overflow: hidden; }
 .btns .btn:nth-child(2):hover { transform: translateY(-3px) rotate(1.5deg); }
 .split-media { border-radius: 999px 999px 8px 8px; }
 .hero-media { border-radius: 6px; }
-.stat b { transition: transform .3s cubic-bezier(.3,1.6,.5,1); display: inline-block; }
+.stat b { transition: transform .3s cubic-bezier(.3,1.6,.5,1); display: block; width: max-content; }
 .stat:hover b { transform: rotate(-3deg) scale(1.04); }
 ::selection { background: var(--ink); color: var(--sky); }
 

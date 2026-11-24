@@ -998,22 +998,22 @@
       "id": "tnt-sports-crm-including-paris-2024",
       "page": 401,
       "stats": {
-        "title": "TNT Sports CRM: results",
+        "title": "Results",
         "items": [
           {
             "value": "1.5–2 hrs",
-            "label": "Extra viewing a week, vs control group"
+            "label": "more viewing a week"
           },
           {
             "value": "+10 pts",
-            "label": "Habitual viewing, vs control group"
+            "label": "in habitual viewing"
           },
           {
-            "value": "Highest",
-            "label": "CRM performance across WBD regions"
+            "value": "No. 1",
+            "label": "CRM across WBD regions"
           }
         ],
-        "note": "Viewers who received the campaigns, compared with a control group who didn't."
+        "note": "Compared with a control group who didn’t get the campaigns."
       },
       "cardTitle": "TNT Sports CRM"
     },
