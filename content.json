@@ -992,7 +992,8 @@
           "src": "img/paris-2024.jpg",
           "caption": "Paris 2024 CRM",
           "w": 596,
-          "h": 726
+          "h": 726,
+          "size": 62
         }
       ],
       "id": "tnt-sports-crm-including-paris-2024",

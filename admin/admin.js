@@ -363,6 +363,7 @@ function parseParas(el) {
 }
 function bindFrame(d) {
   if (d.__ed) return; d.__ed = true;
+  bindResize(d);
   d.addEventListener("focusin", e => { const el = e.target.closest("[data-path],[data-paras]"); if (el) el.__snap = false; });
   d.addEventListener("input", e => {
     const el = e.target.closest("[data-path],[data-paras]"); if (!el) return;
@@ -413,9 +414,51 @@ function bindFrame(d) {
     const card = t.closest("[data-project]");
     if (card) return W().Site.openProject(card.dataset.project, true);
     const img = t.closest("img[data-img]");
-    if (img) return pickImage(img.dataset.img);
+    if (img && !t.closest(".ed-resize")) return pickImage(img.dataset.img);
+    if (t.closest(".ed-resize")) return;
     if (i != null) selectSection(i, false);
   });
+}
+/* drag the corner of a picture to resize it */
+function resizable(img) {
+  if (!img || !img.dataset || !img.dataset.img || img.closest(".card, .hero-media, .split-media, .ticker")) return false;
+  const v = getAt(img.dataset.img); return v && typeof v === "object";
+}
+function bindResize(d) {
+  const h = d.createElement("div"); h.className = "ed-resize"; h.title = "Drag to resize. Double-click to reset."; h.contentEditable = "false";
+  h.innerHTML = '<span class="ed-size"></span>';
+  d.body.appendChild(h);
+  let target = null, drag = null;
+  const place = () => {
+    if (!target || !target.isConnected) { h.style.display = "none"; return; }
+    const r = target.getBoundingClientRect();
+    if (r.width < 40 || r.bottom < 0 || r.top > d.defaultView.innerHeight) { h.style.display = "none"; return; }
+    h.style.display = "block"; h.style.left = (r.right - 14) + "px"; h.style.top = (r.bottom - 14) + "px";
+  };
+  d.addEventListener("mouseover", e => { if (drag) return; const img = e.target.closest && e.target.closest("img[data-img]"); if (img && resizable(img)) { target = img; place(); } else if (!e.target.closest(".ed-resize")) { target = null; place(); } });
+  d.addEventListener("scroll", () => { if (!drag) { target = null; place(); } }, true);
+  h.addEventListener("pointerdown", e => {
+    if (!target) return; e.preventDefault(); e.stopPropagation(); h.setPointerCapture(e.pointerId);
+    const box = target.parentElement.getBoundingClientRect(), r = target.getBoundingClientRect();
+    drag = { x: e.clientX, w: r.width, max: box.width, img: target };
+    d.body.classList.add("ed-resizing");
+  });
+  h.addEventListener("pointermove", e => {
+    if (!drag) return;
+    const w = Math.max(80, Math.min(drag.max, drag.w + (e.clientX - drag.x)));
+    drag.img.style.width = w + "px"; drag.img.style.maxWidth = "none";
+    drag.pct = Math.round(w / drag.max * 100);
+    h.querySelector(".ed-size").textContent = drag.pct >= 99 ? "Full" : drag.pct + "%";
+    place();
+  });
+  const end = () => {
+    if (!drag) return; const { img, pct } = drag; drag = null; d.body.classList.remove("ed-resizing"); h.querySelector(".ed-size").textContent = "";
+    if (pct == null) return;
+    snap(); const o = getAt(img.dataset.img); if (pct >= 99) delete o.size; else o.size = pct;
+    changed();
+  };
+  h.addEventListener("pointerup", end); h.addEventListener("pointercancel", end);
+  h.addEventListener("dblclick", () => { if (!target) return; const o = getAt(target.dataset.img); if (o && o.size) { snap(); delete o.size; changed(); toast("Picture back to its normal size."); } });
 }
 function keys(e) {
   const mod = e.metaKey || e.ctrlKey;

@@ -49,3 +49,10 @@ main > section.ed-hover .ed-addblk, main > section.ed-sel .ed-addblk { opacity: 
 .ed-addblk:hover { border-color: #2f6bff; color: #2f6bff; background: #fff; }
 .blocks:empty { display: flex !important; }
 .spacer { background: repeating-linear-gradient(45deg, rgba(47,107,255,.08) 0 8px, transparent 8px 16px); border-radius: 4px; }
+
+.ed-resize { position: fixed; z-index: 90; width: 28px; height: 28px; display: none; cursor: nwse-resize; touch-action: none;
+  background: #2f6bff; border: 3px solid #fff; border-radius: 50%; box-shadow: 0 4px 14px rgba(0,0,0,.35); }
+.ed-resize::after { content: ""; position: absolute; inset: 6px; border-right: 2px solid #fff; border-bottom: 2px solid #fff; }
+.ed-size { position: absolute; right: 34px; bottom: 2px; background: #2a1a1b; color: #fff; font: 600 12px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; padding: 5px 8px; border-radius: 6px; white-space: nowrap; }
+.ed-size:empty { display: none; }
+.ed-resizing, .ed-resizing * { cursor: nwse-resize !important; user-select: none !important; }
