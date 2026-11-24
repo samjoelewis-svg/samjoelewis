@@ -311,6 +311,12 @@ function decorate() {
     el.insertBefore(bb, el.firstChild);
     if (b.type === "image" && !(b.image && b.image.src)) { const ph = d.createElement("button"); ph.className = "ed-addblk"; ph.dataset.bact = "img"; ph.textContent = "Upload a picture"; ph.contentEditable = "false"; el.appendChild(ph); }
   });
+  $$(".card[data-project]", d).forEach(card => {
+    const media = $(".card-media", card);
+    if (!media || $(".ed-open", media)) return;
+    const o = d.createElement("button"); o.className = "ed-open"; o.type = "button"; o.contentEditable = "false"; o.textContent = "Open project ↗";
+    media.appendChild(o);
+  });
   $$("[data-blocks]", d).forEach(el => {
     if ($(":scope > .ed-addblk[data-addblk]", el)) return;
     const a = d.createElement("button"); a.className = "ed-addblk"; a.dataset.addblk = el.dataset.blocks; a.contentEditable = "false";
@@ -411,10 +417,11 @@ function bindFrame(d) {
     if (t.closest(".ed-add")) return openAddSection(i + 1);
     if (t.closest("[data-close]")) return W().Site.closeProject(true);
     const go = t.closest("[data-go]"); if (go) return W().Site.openProject(go.dataset.go, true);
-    const rel = t.closest('a[href^="#work/"]'); if (rel) return W().Site.openProject(decodeURIComponent(rel.getAttribute("href").slice(6)), true);
+    const rel = t.closest('a[href^="#work/"]:not([data-project])'); if (rel) return W().Site.openProject(decodeURIComponent(rel.getAttribute("href").slice(6)), true);
+    const opener = t.closest(".ed-open");
+    if (opener) { e.stopPropagation(); return W().Site.openProject(opener.closest("[data-project]").dataset.project, true); }
     if (t.closest("[data-path],[data-paras]")) { if (i != null && selSection !== i && !selProject) selectSection(i, false); return; }
-    const card = t.closest("[data-project]");
-    if (card) return W().Site.openProject(card.dataset.project, true);
+    if (t.closest("[data-project]")) { if (i != null && selSection !== i) selectSection(i, false); return; }
     const img = t.closest("img[data-img]");
     if (img && !t.closest(".ed-resize")) return pickImage(img.dataset.img);
     if (t.closest(".ed-resize")) return;
@@ -471,7 +478,7 @@ function bindCardDrag(d) {
   d.addEventListener("dragstart", e => { if (e.target.closest && e.target.closest("[data-list]")) e.preventDefault(); });
   d.addEventListener("pointerdown", e => {
     const card = e.target.closest && e.target.closest("[data-list][data-idx]");
-    if (!card || e.button !== 0 || previewing || e.target.closest("[data-path], [data-paras], .ed-resize, .ed-bar, .ed-bbar")) return;
+    if (!card || e.button !== 0 || previewing || e.target.closest("[data-path], [data-paras], .ed-resize, .ed-bar, .ed-bbar, .ed-open")) return;
     st = { card, x: e.clientX, y: e.clientY, list: card.dataset.list, from: +card.dataset.idx, moved: false, to: null, replace: null };
   });
   d.addEventListener("pointermove", e => {

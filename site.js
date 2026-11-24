@@ -90,8 +90,8 @@ function card(id, list, k) {
   const media = tp ? IMG(`projects.${n}.${tp}`, getPath(p, tp), "", ' loading="lazy"') : `<span class="card-quote">${esc(q || p.title)}</span>`;
   return `<a class="card rv" href="#work/${esc(p.id)}" data-project="${esc(p.id)}"${list ? ` data-list="${list}" data-idx="${k}"` : ""}>
     <span class="card-media">${p.tag ? `<span class="tag">${esc(p.tag)}</span>` : ""}${media}</span>
-    <span class="card-title">${esc(p.cardTitle || p.title)} <span class="arrow" aria-hidden="true">→</span></span>
-    <span class="card-meta">${esc(p.meta)}</span>
+    <span class="card-title"><span data-path="projects.${n}.cardTitle">${esc(p.cardTitle || p.title)}</span> <span class="arrow" aria-hidden="true">→</span></span>
+    <span class="card-meta" data-path="projects.${n}.meta">${esc(p.meta)}</span>
     ${q ? `<span class="card-q">“${esc(q.replace(/^“|”$/g, ""))}”</span>` : ""}</a>`;
 }
 const getPath = (o, path) => path.split(".").reduce((a, k) => a == null ? a : a[k], o);
