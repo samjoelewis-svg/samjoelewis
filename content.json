@@ -3,7 +3,7 @@
     "title": "Sam Lewis, Senior Copywriter & Creative",
     "description": "Sam Lewis is a senior copywriter and creative working across campaigns, brand voice, CRM, product, B2B and content. Work for HBO Max, TNT Sports, FutureLearn, Tate Modern and more.",
     "shareImage": "img/sam.jpg",
-    "logoText": "Hello",
+    "logoText": "Sam Lewis",
     "email": "sam.joe.lewis@gmail.com",
     "linkedin": "https://www.linkedin.com/in/sam-lewis-495992134/",
     "location": "London",
@@ -37,7 +37,7 @@
       "type": "hero",
       "navLabel": "",
       "bg": "sky",
-      "headline": "Sam Lewis",
+      "headline": "Hi, I'm Sam",
       "image": {
         "src": "img/kings-cross-hero.jpg",
         "caption": "“The best new platform since 9¾.” HBO Max UK launch, King's Cross",
