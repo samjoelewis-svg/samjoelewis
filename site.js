@@ -407,7 +407,7 @@ function openProject(id, fromHash) {
   openId = id;
   document.body.classList.add("locked");
   requestAnimationFrame(() => el.classList.add("open"));
-  if (!O.edit && !fromHash && location.hash !== "#work/" + id) history.pushState(null, "", "#work/" + id);
+  if (!O.edit && !fromHash && location.hash !== "#work/" + id) { try { history.pushState(null, "", "#work/" + id); } catch (e) {} }
   el.tabIndex = -1; el.focus({ preventScroll: true });
   if (O.onProject) O.onProject(id);
   return true;
@@ -420,13 +420,14 @@ function closeProject(fromHash) {
   setTimeout(() => { if (!openId) el.remove(); }, 300);
   if (!O.edit && !fromHash) {
     const sec = sectionOf(id);
-    history.pushState(null, "", sec ? "#" + sec.anchor : location.pathname);
+    try { history.pushState(null, "", sec ? "#" + sec.anchor : location.pathname); } catch (e) {}
     if (sec && sec.tab != null) showTab(sec.anchor, sec.tab);
   }
   if (returnFocus && returnFocus.focus) returnFocus.focus({ preventScroll: true });
   if (O.onProject) O.onProject(null);
 }
 
+function safeReplace(a, b, url) { try { history.replaceState(a, b, url); } catch (e) {} }
 /* old teletext links (#p201 etc.) still work */
 const LEGACY = { 100: "home", 101: "about", 888: "cv", 900: "home", 200: "campaigns", 300: "journeys", 400: "email", 500: "film", 600: "editorial", 700: "voice", 750: "voice" };
 function route(fromHash = true) {
@@ -436,10 +437,10 @@ function route(fromHash = true) {
   m = /^#p(\d{3})$/.exec(h);
   if (m) {
     const n = +m[1], p = C.projects.find(x => x.page === n);
-    if (p) { history.replaceState(null, "", "#work/" + p.id); openProject(p.id, true); return; }
+    if (p) { safeReplace(null, "", "#work/" + p.id); openProject(p.id, true); return; }
     const id = LEGACY[n], panel = id && document.querySelector(`.tabpanel[data-group="${id}"]`);
-    if (panel) { const sec = panel.closest("section"); showTab(sec.id, [...sec.querySelectorAll(".tabpanel")].indexOf(panel)); history.replaceState(null, "", "#" + sec.id); sec.scrollIntoView(); return; }
-    history.replaceState(null, "", id && document.getElementById(id) ? "#" + id : location.pathname);
+    if (panel) { const sec = panel.closest("section"); showTab(sec.id, [...sec.querySelectorAll(".tabpanel")].indexOf(panel)); safeReplace(null, "", "#" + sec.id); sec.scrollIntoView(); return; }
+    safeReplace(null, "", id && document.getElementById(id) ? "#" + id : location.pathname);
     if (id && document.getElementById(id)) document.getElementById(id).scrollIntoView();
   }
   if (openId) closeProject(true);
