@@ -190,9 +190,33 @@
       "type": "featured",
       "navLabel": "Work",
       "bg": "lilac",
-      "headline": "Selected Work",
+      "headline": "Featured Work",
       "intro": "",
       "items": [
+        {
+          "project": "hbo-max-uk-launch-campaign",
+          "tag": "Campaign",
+          "title": "HBO Max UK launch",
+          "desc": "Launch copy across outdoor, radio, social and email",
+          "image": {
+            "src": "img/kings-cross.jpg",
+            "caption": "",
+            "w": 1200,
+            "h": 678
+          }
+        },
+        {
+          "project": "the-world-goes-pop-trailer-for-tate-modern",
+          "tag": "Film & script",
+          "title": "Tate Modern",
+          "desc": "Trailer concept and script for The World Goes Pop",
+          "image": {
+            "src": "img/world-goes-pop.jpg",
+            "caption": "",
+            "w": 1200,
+            "h": 912
+          }
+        },
         {
           "project": "hbo-max-and-tnt-sports",
           "tag": "Landing pages",
@@ -239,30 +263,6 @@
             "caption": "",
             "w": 768,
             "h": 1280
-          }
-        },
-        {
-          "project": "hbo-max-uk-launch-campaign",
-          "tag": "Campaign",
-          "title": "HBO Max UK launch",
-          "desc": "Launch copy across outdoor, radio, social and email",
-          "image": {
-            "src": "img/kings-cross.jpg",
-            "caption": "",
-            "w": 1200,
-            "h": 678
-          }
-        },
-        {
-          "project": "the-world-goes-pop-trailer-for-tate-modern",
-          "tag": "Film & script",
-          "title": "Tate Modern",
-          "desc": "Trailer concept and script for The World Goes Pop",
-          "image": {
-            "src": "img/world-goes-pop.jpg",
-            "caption": "",
-            "w": 1200,
-            "h": 912
           }
         }
       ]
