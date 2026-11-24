@@ -224,8 +224,8 @@ figcaption { font-size: .82em; opacity: .75; margin-top: 10px; }
 .proj-side { display: grid; gap: clamp(16px, 2vw, 28px); }
 .proj-side figure { margin: 0; }
 .proj-side img { max-height: 80vh; width: auto; max-width: 100%; }
-.vframe { background: #000; }
-.vframe video { width: 100%; height: auto; max-height: 78vh; margin: 0 auto; }
+.vframe { background: none; }
+.vframe video { width: auto; max-width: 100%; height: auto; max-height: 78vh; background: #000; border-radius: 6px; }
 .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; border-top: 1.5px solid var(--ink); margin: 0 0 clamp(40px, 5vw, 80px); }
 .stat { padding: 24px 24px 24px 0; border-bottom: 1.5px solid var(--ink); }
 .stat b { display: block; font: 700 clamp(40px, 4.6vw, 80px)/1 var(--display); font-variation-settings: "SOFT" 100; margin-bottom: 8px; }
