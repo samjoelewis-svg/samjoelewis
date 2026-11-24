@@ -175,6 +175,29 @@ S.cta = (s, i) => `
   <div class="wrap cta rv">${T("h2", `sections.${i}.headline`, s.headline, "display h2")}
     ${T("p", `sections.${i}.text`, s.text, "lede")}${buttons(s.buttons, `sections.${i}.buttons`)}</div>`;
 
+/* ---------- free blocks (any section can hold extra text, images, buttons) ---------- */
+S.custom = () => "";
+function blockHTML(b, path) {
+  const cls = `blk a-${["left", "center", "right"].includes(b.align) ? b.align : "left"} w-${["narrow", "wide", "full"].includes(b.width) ? b.width : "wide"}`;
+  let inner = "";
+  switch (b.type) {
+    case "heading": inner = T("h2", `${path}.text`, b.text, "display h2"); break;
+    case "subheading": inner = T("h3", `${path}.text`, b.text, "display h3"); break;
+    case "text": inner = P(`${path}.paragraphs`, b.paragraphs, "prose lede"); break;
+    case "quote": inner = T("blockquote", `${path}.text`, b.text, "display bigquote") + (b.by || O.edit ? T("p", `${path}.by`, b.by, "bigquote-by") : ""); break;
+    case "button": inner = `<a class="btn" href="${esc(safeUrl(b.link))}"${ext(b.link)} data-path="${path}.label">${esc(b.label)}</a>`; break;
+    case "image": inner = `<figure>${IMG(`${path}.image`, b.image, "zoom", ' loading="lazy"', b.width !== "full")}${b.image && b.image.caption || O.edit ? T("figcaption", `${path}.image.caption`, b.image && b.image.caption || "") : ""}</figure>`; break;
+    case "spacer": inner = `<div class="spacer"${O.edit ? ' data-ph="Space"' : ""}></div>`; break;
+    default: return "";
+  }
+  return `<div class="${cls} rv" data-block="${path}">${inner}</div>`;
+}
+function blocks(s, i) {
+  const bs = s.blocks || [];
+  if (!bs.length && !O.edit) return "";
+  return `<div class="wrap blocks" data-blocks="sections.${i}.blocks">${bs.map((b, k) => blockHTML(b, `sections.${i}.blocks.${k}`)).join("")}</div>`;
+}
+
 /* ---------- page ---------- */
 function visibleSections() { return C.sections.map((s, i) => [s, i]).filter(([s]) => O.edit || !s.hidden); }
 
@@ -193,7 +216,7 @@ function render() {
     ? `<div class="announce" data-path="site.announcement.text">${s.announcement.link ? `<a href="${esc(safeUrl(s.announcement.link))}">${esc(s.announcement.text)}</a>` : esc(s.announcement.text)}</div>` : "";
   const body = visibleSections().map(([x, i]) => {
     const fn = S[x.type]; if (!fn) return "";
-    return `<section id="${esc(x.id)}" class="sec t-${esc(x.type)} bg-${BGS.includes(x.bg) ? x.bg : "cream"}${x.hidden ? " is-hidden" : ""}" data-section="${i}">${fn(x, i)}</section>`;
+    return `<section id="${esc(x.id)}" class="sec t-${esc(x.type)} bg-${BGS.includes(x.bg) ? x.bg : "cream"}${x.hidden ? " is-hidden" : ""}" data-section="${i}">${fn(x, i)}${blocks(x, i)}</section>`;
   }).join("");
   $("#app").innerHTML = `${ann}
     <header class="header" id="top">

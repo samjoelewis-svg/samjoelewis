@@ -11,9 +11,11 @@ main > section.ed-hover { outline: 2px solid rgba(47,107,255,.6); outline-offset
 main > section.ed-sel { outline: 3px solid #2f6bff; outline-offset: -3px; }
 main > section.is-hidden { opacity: .45; }
 main > section.is-hidden::before { content: "Hidden from visitors"; position: absolute; left: 12px; top: 12px; z-index: 5; background: #2a1a1b; color: #fff; font: 600 12px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; padding: 6px 10px; border-radius: 6px; }
-.ed-bar { position: absolute; right: 12px; top: 12px; z-index: 30; display: flex; align-items: center; gap: 2px; background: #fff; color: #2a1a1b; border-radius: 10px; padding: 4px; box-shadow: 0 10px 30px -10px rgba(0,0,0,.4), 0 0 0 1px rgba(0,0,0,.06);
+.ed-barwrap { position: sticky; top: calc(var(--header-h) + 10px); height: 0; z-index: 30; display: flex; justify-content: flex-end; align-items: flex-start; padding-right: 12px; pointer-events: none; }
+.ed-bar { flex: none; height: auto; }
+.ed-bar { margin-top: 12px; display: flex; align-items: center; gap: 2px; background: #fff; color: #2a1a1b; border-radius: 10px; padding: 4px; box-shadow: 0 10px 30px -10px rgba(0,0,0,.4), 0 0 0 1px rgba(0,0,0,.06);
   font: 500 13px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif; opacity: 0; pointer-events: none; transition: opacity .15s; }
-main > section.ed-hover > .ed-bar, main > section.ed-sel > .ed-bar { opacity: 1; pointer-events: auto; }
+main > section.ed-hover > .ed-barwrap > .ed-bar, main > section.ed-sel > .ed-barwrap > .ed-bar { opacity: 1; pointer-events: auto; }
 .ed-bar .lbl { padding: 0 10px 0 8px; color: #6f6466; white-space: nowrap; }
 .ed-bar button { width: 32px; height: 32px; border: 0; background: none; border-radius: 7px; display: grid; place-items: center; cursor: pointer; color: inherit; }
 .ed-bar button:hover { background: #f1ede9; }
@@ -30,3 +32,20 @@ main > section.ed-hover > .ed-add { opacity: 1; pointer-events: auto; }
 .card-media::after { content: "Edit project"; position: absolute; right: 12px; bottom: 12px; background: #fff; color: #2a1a1b; font: 600 12px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; padding: 7px 11px; border-radius: 999px; opacity: 0; transition: opacity .15s; box-shadow: 0 6px 18px -6px rgba(0,0,0,.5); }
 .card:hover .card-media::after { opacity: 1; }
 .rv { opacity: 1 !important; transform: none !important; }
+
+.blk { position: relative; border-radius: 4px; }
+.blk:hover { box-shadow: 0 0 0 1px rgba(47,107,255,.35); }
+.ed-bbar { position: absolute; left: -2px; top: -40px; z-index: 32; display: flex; gap: 2px; background: #2a1a1b; color: #fff; border-radius: 9px; padding: 3px; opacity: 0; pointer-events: none; transition: opacity .15s;
+  font: 500 12px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif; }
+.blk:hover > .ed-bbar, .blk:focus-within > .ed-bbar { opacity: 1; pointer-events: auto; }
+.blk.a-center > .ed-bbar { left: 50%; transform: translateX(-50%); }
+.blk.a-right > .ed-bbar { left: auto; right: -2px; }
+.ed-bbar button { height: 28px; min-width: 28px; padding: 0 7px; border: 0; background: none; color: inherit; border-radius: 6px; cursor: pointer; display: grid; place-items: center; font: inherit; white-space: nowrap; }
+.ed-bbar button:hover { background: rgba(255,255,255,.16); }
+.ed-bbar svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.ed-addblk { align-self: flex-start; border: 1.5px dashed rgba(42,26,27,.35); background: rgba(255,255,255,.35); color: #2a1a1b; border-radius: 10px; padding: 10px 16px; cursor: pointer;
+  font: 600 13px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif; opacity: .55; transition: opacity .15s; }
+main > section.ed-hover .ed-addblk, main > section.ed-sel .ed-addblk { opacity: 1; }
+.ed-addblk:hover { border-color: #2f6bff; color: #2f6bff; background: #fff; }
+.blocks:empty { display: flex !important; }
+.spacer { background: repeating-linear-gradient(45deg, rgba(47,107,255,.08) 0 8px, transparent 8px 16px); border-radius: 4px; }

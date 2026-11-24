@@ -41,7 +41,18 @@ const TYPES = {
   cta: { name: "Call to action", desc: "Headline, a line of text and buttons" },
   cv: { name: "CV / experience", desc: "Jobs, dates and bullet points, plus education" },
   contact: { name: "Contact", desc: "Your email, links and a message form" },
+  custom: { name: "Free layout", desc: "Start blank and stack headings, text, pictures and buttons" },
 };
+const BLOCKS = {
+  heading: { name: "Heading", make: () => ({ text: "A heading" }) },
+  subheading: { name: "Small heading", make: () => ({ text: "A smaller heading" }) },
+  text: { name: "Text", make: () => ({ paragraphs: ["Write something here. Press Enter for a new paragraph."] }) },
+  image: { name: "Picture", make: () => ({ image: null }) },
+  button: { name: "Button", make: () => ({ label: "Get in touch", link: "#contact" }) },
+  quote: { name: "Big quote", make: () => ({ text: "A line worth remembering.", by: "" }) },
+  spacer: { name: "Space", make: () => ({}) },
+};
+const CONVERTIBLE = ["hero", "split", "text", "quote", "cta"];
 
 /* ---------- state ---------- */
 let REPO = { ...DEFAULT_REPO }, auth = null, token = null;
@@ -269,7 +280,8 @@ function decorate() {
   $$("main > section", d).forEach(sec => {
     if ($(":scope > .ed-bar", sec)) return;
     const i = +sec.dataset.section, s = C.sections[i];
-    const bar = d.createElement("div"); bar.className = "ed-bar"; bar.contentEditable = "false";
+    const wrap = d.createElement("div"); wrap.className = "ed-barwrap"; wrap.contentEditable = "false";
+    const bar = d.createElement("div"); bar.className = "ed-bar"; wrap.appendChild(bar);
     bar.innerHTML = `<span class="lbl">${esc((TYPES[s.type] || {}).name || s.type)}</span>
       <button data-act="up" title="Move up" aria-label="Move section up"${i === 0 ? " disabled" : ""}>${ICON.up}</button>
       <button data-act="down" title="Move down" aria-label="Move section down"${i === C.sections.length - 1 ? " disabled" : ""}>${ICON.down}</button>
@@ -277,12 +289,72 @@ function decorate() {
       <button data-act="hide" title="${s.hidden ? "Show to visitors" : "Hide from visitors"}" aria-label="${s.hidden ? "Show section" : "Hide section"}">${s.hidden ? ICON.eyeOff : ICON.eye}</button>
       <button data-act="dup" title="Duplicate" aria-label="Duplicate section">${ICON.copy}</button>
       <button data-act="del" title="Delete" aria-label="Delete section">${ICON.trash}</button>
+      ${CONVERTIBLE.includes(s.type) ? `<button data-act="free" class="wide" title="Break this section into pieces you can move and add to">Free layout</button>` : ""}
       <button data-act="edit" class="wide" title="Section settings">${ICON.gear}<span>Settings</span></button>`;
-    sec.appendChild(bar);
+    sec.insertBefore(wrap, sec.firstChild);
     const add = d.createElement("button"); add.className = "ed-add"; add.textContent = "+ Add section"; add.contentEditable = "false";
     sec.appendChild(add);
     sec.classList.toggle("ed-sel", i === selSection);
   });
+  $$("[data-block]", d).forEach(el => {
+    if ($(":scope > .ed-bbar", el)) return;
+    const path = el.dataset.block, b = getAt(path), k = +path.split(".").pop(), list = getAt(path.replace(/\.\d+$/, ""));
+    const bb = d.createElement("div"); bb.className = "ed-bbar"; bb.contentEditable = "false";
+    bb.innerHTML = `<button data-bact="up" title="Move up" aria-label="Move up"${k === 0 ? " disabled" : ""}>${ICON.up}</button>
+      <button data-bact="down" title="Move down" aria-label="Move down"${k === list.length - 1 ? " disabled" : ""}>${ICON.down}</button>
+      <button data-bact="align" title="Line up left, centre or right">${{ left: "Left", center: "Centre", right: "Right" }[b.align || "left"]}</button>
+      <button data-bact="width" title="Narrow, wide or full width">${{ narrow: "Narrow", wide: "Wide", full: "Full width" }[b.width || "wide"]}</button>
+      ${b.type === "button" ? `<button data-bact="link" title="Where the button goes">Link…</button>` : ""}
+      ${b.type === "image" ? `<button data-bact="img" title="Replace picture">Replace…</button>` : ""}
+      <button data-bact="dup" title="Duplicate" aria-label="Duplicate">${ICON.copy}</button>
+      <button data-bact="del" title="Delete" aria-label="Delete">${ICON.trash}</button>`;
+    el.insertBefore(bb, el.firstChild);
+    if (b.type === "image" && !(b.image && b.image.src)) { const ph = d.createElement("button"); ph.className = "ed-addblk"; ph.dataset.bact = "img"; ph.textContent = "Upload a picture"; ph.contentEditable = "false"; el.appendChild(ph); }
+  });
+  $$("[data-blocks]", d).forEach(el => {
+    if ($(":scope > .ed-addblk[data-addblk]", el)) return;
+    const a = d.createElement("button"); a.className = "ed-addblk"; a.dataset.addblk = el.dataset.blocks; a.contentEditable = "false";
+    a.textContent = "+ Add text, picture or button"; el.appendChild(a);
+  });
+}
+function blockAction(path, act) {
+  const listPath = path.replace(/\.\d+$/, ""), list = getAt(listPath), k = +path.split(".").pop(), b = list[k];
+  if (act === "img") return pickImage(path + ".image");
+  if (act === "link") {
+    const { el, close } = modal(`<div class="dialog-h"><h2>Button link</h2><button class="ib" data-x aria-label="Close">${ICON.x}</button></div>
+      <form class="dialog-b"><div class="field"><label for="bl">Goes to</label><input id="bl" type="text" value="${esc(b.link)}" placeholder="https://… or #contact"><p class="help">A web address, or # and a section’s link name, like #contact.</p></div><div><button class="btn-p">Save</button></div></form>`, "small");
+    $("form", el).onsubmit = e => { e.preventDefault(); snap(); b.link = $("#bl", el).value.trim(); close(); changed({ side: true }); };
+    return;
+  }
+  snap();
+  if (act === "up" && k > 0) [list[k - 1], list[k]] = [list[k], list[k - 1]];
+  if (act === "down" && k < list.length - 1) [list[k + 1], list[k]] = [list[k], list[k + 1]];
+  if (act === "align") b.align = { left: "center", center: "right", right: "left" }[b.align || "left"];
+  if (act === "width") b.width = { narrow: "wide", wide: "full", full: "narrow" }[b.width || "wide"];
+  if (act === "dup") list.splice(k + 1, 0, clone(b));
+  if (act === "del") { list.splice(k, 1); toast("Removed. Press Undo to bring it back."); }
+  changed({ side: true });
+}
+function openAddBlock(listPath) {
+  const { el, close } = modal(`<div class="dialog-h"><h2>Add to this section</h2><button class="ib" data-x aria-label="Close">${ICON.x}</button></div>
+    <div class="dialog-b"><div class="types">${Object.entries(BLOCKS).map(([k, t]) => `<button class="type" data-blk="${k}"><div class="tx"><b>${esc(t.name)}</b></div></button>`).join("")}</div></div>`, "small");
+  $$("[data-blk]", el).forEach(btn => btn.onclick = () => {
+    close(); snap();
+    const list = getAt(listPath) || []; list.push({ type: btn.dataset.blk, align: "left", width: btn.dataset.blk === "image" ? "full" : "wide", ...BLOCKS[btn.dataset.blk].make() });
+    setAt(listPath, list); changed({ side: true });
+    if (btn.dataset.blk === "image") pickImage(`${listPath}.${list.length - 1}.image`);
+  });
+}
+function toBlocks(s) {
+  const B = (type, o) => ({ type, align: "left", width: "wide", ...o });
+  const out = [];
+  const btns = l => (l || []).forEach(x => out.push(B("button", { label: x.label, link: x.link })));
+  if (s.type === "hero") { out.push(B("heading", { text: s.headline, align: "center", width: "full" })); if (s.image) out.push(B("image", { image: s.image, width: "full" })); if (s.caption) out.push(B("text", { paragraphs: [s.caption] })); }
+  if (s.type === "split") { if (s.image) out.push(B("image", { image: s.image, width: "narrow" })); out.push(B("heading", { text: s.headline })); if ((s.columns || []).length) out.push(B("text", { paragraphs: s.columns })); btns(s.buttons); }
+  if (s.type === "text") { out.push(B("heading", { text: s.headline })); out.push(B("text", { paragraphs: s.paragraphs || [] })); btns(s.links); }
+  if (s.type === "quote") out.push(B("quote", { text: s.quote, by: s.by, align: "center", width: "full" }));
+  if (s.type === "cta") { out.push(B("heading", { text: s.headline, align: "center" })); if (s.text) out.push(B("text", { paragraphs: [s.text], align: "center" })); btns(s.buttons); out.slice(-((s.buttons || []).length)).forEach(b => b.align = "center"); }
+  return { id: s.id, type: "custom", navLabel: s.navLabel, bg: s.bg, hidden: s.hidden, blocks: [...out, ...(s.blocks || [])] };
 }
 function parseParas(el) {
   const blocks = $$(":scope > p, :scope > div, :scope > li", el);
@@ -329,6 +401,10 @@ function bindFrame(d) {
     const sec = t.closest("main > section"), i = sec ? +sec.dataset.section : null;
     const act = t.closest(".ed-bar button");
     if (act) { e.stopPropagation(); return sectionAction(i, act.dataset.act); }
+    const bact = t.closest("[data-bact]");
+    if (bact) { e.stopPropagation(); return blockAction(t.closest("[data-block]").dataset.block, bact.dataset.bact); }
+    const addb = t.closest("[data-addblk]");
+    if (addb) return openAddBlock(addb.dataset.addblk);
     if (t.closest(".ed-add")) return openAddSection(i + 1);
     if (t.closest("[data-close]")) return W().Site.closeProject(true);
     const go = t.closest("[data-go]"); if (go) return W().Site.openProject(go.dataset.go, true);
@@ -362,6 +438,10 @@ function uniqueId(base, list, self) { let id = slugify(base), n = 2; while (list
 async function sectionAction(i, act) {
   const S = C.sections, s = S[i];
   if (act === "edit") return selectSection(i, false);
+  if (act === "free") {
+    if (!(await ask("Switch to free layout?", "This section becomes a stack of separate pieces (heading, text, picture, buttons) that you can move, line up and add to. It looks a little simpler than the designed layout. You can Undo straight after.", "Switch"))) return;
+    snap(); S[i] = toBlocks(s); selSection = i; changed({ side: true }); toast("Hover any piece for its toolbar: move it, centre it, resize it or delete it."); return;
+  }
   if (act === "up" || act === "down") { const j = act === "up" ? i - 1 : i + 1; if (j < 0 || j >= S.length) return; snap(); [S[i], S[j]] = [S[j], S[i]]; selSection = j; changed({ side: true }); scrollToSection(j); return; }
   if (act === "bg") { const keys = Object.keys(BG); snap(); s.bg = keys[(keys.indexOf(s.bg) + 1) % keys.length]; return changed({ side: true }); }
   if (act === "hide") { snap(); s.hidden = !s.hidden; toast(s.hidden ? "Hidden from visitors. It stays here so you can bring it back." : "Visible to visitors again."); return changed({ side: true }); }
@@ -372,7 +452,7 @@ async function sectionAction(i, act) {
   }
 }
 function scrollToSection(i) { setTimeout(() => { const el = $(`main > section[data-section="${i}"]`, D()); el && el.scrollIntoView({ behavior: "smooth", block: "start" }); }, 60); }
-function sectionName(s) { return s.navLabel || s.headline || s.text || s.quote || (s.type === "ticker" && (s.items || []).slice(0, 3).map(x => typeof x === "string" ? x : x.name).join(", ")) || (TYPES[s.type] || {}).name || s.type; }
+function sectionName(s) { const hb = (s.blocks || []).find(b => b.type === "heading" || b.type === "subheading"); return s.navLabel || s.headline || (s.type === "custom" && hb && hb.text) || s.text || s.quote || (s.type === "ticker" && (s.items || []).slice(0, 3).map(x => typeof x === "string" ? x : x.name).join(", ")) || (TYPES[s.type] || {}).name || s.type; }
 function newSection(type) {
   const first = C.projects.slice(0, 3);
   const T = {
@@ -389,6 +469,7 @@ function newSection(type) {
     cta: { headline: "Let’s Talk", text: "Got a brief or a role in mind? I’d love to hear about it.", buttons: [{ label: "Get in touch", link: "#contact" }] },
     cv: { headline: "Experience", intro: "", jobs: [{ dates: "2020–now", company: "Company", role: "Role", points: ["What you did."] }], educationTitle: "Education", education: [] },
     contact: { headline: "Get in Touch", text: "Say hello.", showForm: true },
+    custom: { blocks: [{ type: "heading", align: "left", width: "wide", text: "A heading" }, { type: "text", align: "left", width: "wide", paragraphs: ["Write something here."] }] },
   }[type];
   return { id: uniqueId(type === "projects" ? "work" : type, C.sections), type, navLabel: "", bg: type === "hero" || type === "curved" ? "sky" : "cream", ...clone(T) };
 }
@@ -406,6 +487,7 @@ function openAddSection(at) {
     quote: '<i style="height:16px;width:80%"></i>',
     cta: '<div style="width:100%;text-align:center"><i style="height:12px;width:60%;margin:0 auto 8px"></i><i style="height:14px;width:30%;margin:0 auto;border-radius:9px"></i></div>',
     cv: '<div style="width:100%"><i style="height:3px;margin-bottom:8px"></i><i style="height:3px;margin-bottom:8px"></i><i style="height:3px;margin-bottom:8px"></i><i style="height:3px"></i></div>',
+    custom: '<div style="width:100%;display:grid;gap:6px;justify-items:start"><i style="height:12px;width:55%"></i><i style="height:4px;width:80%;opacity:.5"></i><i style="height:4px;width:70%;opacity:.5"></i><i style="height:26px;width:45%;background:#7d6a5e"></i><i style="height:10px;width:22%;border-radius:9px"></i></div>',
     contact: '<div style="display:flex;gap:10px;width:100%"><i style="height:14px;width:40%"></i><div style="flex:1"><i style="height:10px;margin-bottom:5px;background:#fff;border:1px solid #46282a"></i><i style="height:22px;background:#fff;border:1px solid #46282a"></i></div></div>',
   };
   const { el, close } = modal(`<div class="dialog-h"><h2>Add a section</h2><button class="ib" data-x aria-label="Close">${ICON.x}</button></div>
@@ -491,7 +573,7 @@ function mainPane() {
       <span class="grip" title="Drag to reorder" aria-hidden="true">${ICON.grip}</span>
       <span class="swatch" style="background:${esc((C.site.colors || {})[s.bg] || "#fff")}"></span>
       <span class="s-name"><b>${esc(sectionName(s))}</b><small>${esc((TYPES[s.type] || {}).name || s.type)}${s.navLabel ? " · in menu" : ""}</small></span>
-      <span class="s-act"><button data-sact="hide" title="${s.hidden ? "Show" : "Hide"}" aria-label="${s.hidden ? "Show section" : "Hide section"}">${s.hidden ? ICON.eyeOff : ICON.eye}</button><button data-sact="del" title="Delete" aria-label="Delete section">${ICON.trash}</button></span>
+      <span class="s-act"><button data-sact="up" title="Move up" aria-label="Move section up"${i === 0 ? " disabled" : ""}>${ICON.up}</button><button data-sact="down" title="Move down" aria-label="Move section down"${i === C.sections.length - 1 ? " disabled" : ""}>${ICON.down}</button><button data-sact="hide" title="${s.hidden ? "Show" : "Hide"}" aria-label="${s.hidden ? "Show section" : "Hide section"}">${s.hidden ? ICON.eyeOff : ICON.eye}</button><button data-sact="del" title="Delete" aria-label="Delete section">${ICON.trash}</button></span>
     </div>`).join("")}</div>
     <button class="addbtn" data-addsection>${ICON.plus} Add section</button></div>`;
 }
@@ -516,7 +598,21 @@ function projectPane() {
 }
 
 /* field definitions */
+const BLOCK_FIELDS = [
+  { k: "type", t: "select", label: "Kind", opts: Object.entries(BLOCKS).map(([k, b]) => [k, b.name]) },
+  { k: "text", t: "textarea", label: "Words", when: b => ["heading", "subheading", "quote"].includes(b.type) },
+  { k: "by", t: "text", label: "Who said it", when: b => b.type === "quote" },
+  { k: "paragraphs", t: "paras", label: "Text", help: "Leave a blank line between paragraphs.", when: b => b.type === "text" },
+  { k: "label", t: "text", label: "Button text", when: b => b.type === "button" },
+  { k: "link", t: "link", label: "Goes to", when: b => b.type === "button" },
+  { k: "image", t: "image", label: "Picture", when: b => b.type === "image" },
+  { k: "image.caption", t: "text", label: "Caption", when: b => b.type === "image" },
+  { k: "align", t: "select", label: "Line up", opts: [["left", "Left"], ["center", "Centre"], ["right", "Right"]] },
+  { k: "width", t: "select", label: "Width", opts: [["narrow", "Narrow"], ["wide", "Wide"], ["full", "Full width"]] },
+];
 const COMMON_FIELDS = [
+  { k: "blocks", t: "list", label: "Extra pieces in this section", item: "Piece", help: "Text, pictures and buttons added under the section’s main content. Drag to reorder.", addBlocks: true,
+    title: b => (BLOCKS[b.type] || {}).name + (b.text || b.label ? ": " + (b.text || b.label) : b.paragraphs ? ": " + (b.paragraphs[0] || "") : "") },
   { g: "Section" },
   { k: "navLabel", t: "text", label: "Show in the menu as", help: "Leave empty to keep this section out of the top menu." },
   { k: "bg", t: "bg", label: "Background colour" },
@@ -556,6 +652,7 @@ const SECTION_FIELDS = {
     { k: "education", t: "list", label: "Education & tools", item: "Row", title: e => `${e.label} · ${e.place}`, fields: [{ k: "label", t: "text", label: "Label" }, { k: "place", t: "text", label: "Where / what" }, { k: "detail", t: "text", label: "Detail" }], make: () => ({ label: "", place: "", detail: "" }) }],
   contact: [{ k: "headline", t: "text", label: "Headline" }, { k: "text", t: "textarea", label: "Text" }, { k: "showForm", t: "check", label: "Show a message form", help: "The form opens the visitor’s email app with their message ready to send to you. Your email address is set in Site settings." }],
 };
+SECTION_FIELDS.custom = [];
 const PROJECT_FIELDS = [
   { k: "title", t: "text", label: "Title" },
   { k: "cardTitle", t: "text", label: "Short title for cards" },
@@ -622,6 +719,7 @@ function form(obj, basePath, fields) {
   return out;
 }
 function field(obj, basePath, f) {
+  if (f.when && !f.when(obj || {})) return "";
   const path = f.k == null ? basePath : basePath + "." + f.k;
   const v = f.k == null ? obj : getAt(f.k, obj);
   const id = "f" + ++fid;
@@ -664,9 +762,9 @@ function field(obj, basePath, f) {
         const ip = `${path}.${k}`, isOpen = open.has(ip);
         return `<div class="li" data-li="${path}" data-k="${k}" draggable="true"><div class="li-h" data-toggle="${ip}"><span class="grip" aria-hidden="true">${ICON.grip}</span><span class="t">${esc((f.title && f.title(x)) || f.item + " " + (k + 1))}</span>
           <button type="button" data-lidup="${path}" data-k="${k}" aria-label="Duplicate" title="Duplicate">${ICON.copy}</button><button type="button" data-lidel="${path}" data-k="${k}" aria-label="Remove" title="Remove">${ICON.trash}</button></div>
-          ${isOpen ? `<div class="li-b">${f.fields.map(sf => field(x, ip, sf)).join("")}</div>` : ""}</div>`;
+          ${isOpen ? `<div class="li-b">${(f.fields || BLOCK_FIELDS).map(sf => field(x, ip, sf)).join("")}</div>` : ""}</div>`;
       }).join("")}</div>
-      ${f.addImage ? `<button type="button" class="mini" data-imgadd="${path}">+ Upload a picture</button>` : `<button type="button" class="mini" data-liadd="${path}">+ Add ${esc(f.item.toLowerCase())}</button>`}</div>`;
+      ${f.addBlocks ? `<button type="button" class="mini" data-addblkside="${path}">+ Add a piece</button>` : f.addImage ? `<button type="button" class="mini" data-imgadd="${path}">+ Upload a picture</button>` : `<button type="button" class="mini" data-liadd="${path}">+ Add ${esc(f.item.toLowerCase())}</button>`}</div>`;
     }
   }
   return "";
@@ -712,6 +810,7 @@ function bindSide(side) {
   $$("[data-vid]", side).forEach(b => b.onclick = () => pickVideo(b.dataset.vid));
   $$("[data-imgclear]", side).forEach(b => b.onclick = () => { snap(); const p = b.dataset.imgclear, cur = getAt(p); setAt(p, typeof cur === "string" ? "" : null); changed({ side: true }); });
   $$("[data-imgadd]", side).forEach(b => b.onclick = () => pickImage(b.dataset.imgadd, { add: true }));
+  $$("[data-addblkside]", side).forEach(b => b.onclick = () => openAddBlock(b.dataset.addblkside));
   // lists
   $$("[data-toggle]", side).forEach(h => h.onclick = e => { if (e.target.closest("button")) return; const p = h.dataset.toggle; open.has(p) ? open.delete(p) : open.add(p); renderSide(); });
   $$("[data-lidel]", side).forEach(b => b.onclick = () => { snap(); getAt(b.dataset.lidel).splice(+b.dataset.k, 1); changed({ side: true }); });
@@ -743,6 +842,7 @@ function onField(inp, final, commitOnly) {
   if (t === "color") { const twin = $$(`[data-f="${path}"]`, $("#side")).find(x => x !== inp); if (twin) twin.value = v; }
   changed({ render: false }); paint(!final);
   if (final && (t === "check" || inp.tagName === "SELECT")) renderSide();
+  if (final && t === "text" && inp.tagName === "SELECT" && /\.type$/.test(path)) { const b = getAt(path.replace(/\.type$/, "")); Object.assign(b, { ...BLOCKS[v].make(), ...b, type: v }); paint(); renderSide(); }
 }
 let rsT = 0;
 function renderSideSoon() { clearTimeout(rsT); rsT = setTimeout(() => { if (!$("#side").contains(document.activeElement) || document.activeElement === document.body) renderSide(); }, 50); }

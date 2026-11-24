@@ -90,7 +90,7 @@ svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width:
 .s-name { flex: 1; min-width: 0; }
 .s-name b { display: block; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .s-name small { color: var(--muted); }
-.s-act { display: flex; gap: 0; opacity: 0; transition: opacity .15s; }
+.s-act { display: flex; gap: 0; opacity: .4; transition: opacity .15s; }
 .sitem:hover .s-act, .sitem.sel .s-act { opacity: 1; }
 .s-act button { width: 28px; height: 28px; border: 0; background: none; border-radius: 6px; display: grid; place-items: center; color: var(--muted); }
 .s-act button:hover { background: #ece7e2; color: var(--ink); }

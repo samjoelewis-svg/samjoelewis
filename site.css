@@ -327,3 +327,23 @@ body.locked { overflow: hidden; }
 }
 .ticker-run img { height: clamp(34px, 3.6vw, 60px); width: auto; max-width: clamp(120px, 14vw, 240px); object-fit: contain; margin: 0 clamp(14px, 1.6vw, 28px); flex: none; }
 .ticker.mono img { filter: brightness(0); opacity: .82; }
+
+/* ---------- free blocks ---------- */
+.blocks { display: flex; flex-direction: column; gap: clamp(20px, 2.4vw, 36px); margin-top: clamp(32px, 4vw, 56px); }
+.t-custom .blocks { margin-top: 0; }
+.blocks:empty { display: none; }
+.blk { width: 100%; }
+.blk.w-narrow { max-width: 38em; }
+.blk.w-wide { max-width: 72em; }
+.blk.a-center { margin-left: auto; margin-right: auto; text-align: center; }
+.blk.a-right { margin-left: auto; text-align: right; }
+.blk.a-center .lede, .blk.a-center .prose { margin-left: auto; margin-right: auto; }
+.blk.a-right .lede { margin-left: auto; }
+.blk figure { margin: 0; }
+.blk.a-center img { margin: 0 auto; }
+.blk.a-right img { margin-left: auto; }
+.blk .bigquote { margin: 0; max-width: none; }
+.blk.a-left .bigquote, .blk.a-left .bigquote-by { text-align: left; }
+.blk.a-right .bigquote, .blk.a-right .bigquote-by { text-align: right; }
+.blk .lede { max-width: 40em; }
+.spacer { height: clamp(24px, 5vw, 80px); }
