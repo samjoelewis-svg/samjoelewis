@@ -171,12 +171,12 @@
       },
       "headline": "Senior Copywriter & Creative",
       "columns": [
-        "I lead copy for HBO Max and TNT Sports across EMEA, from campaigns and email to landing pages and sign-up journeys.",
-        "I own HBO Max’s tone-of-voice guides and manage two junior writers. Before that: FutureLearn, AKA UK and Empire Design."
+        "I write master copy for HBO Max across EMEA, from ideating campaigns and email to landing pages and sign-up journeys.",
+        "I own HBO Max’s tone-of-voice guides and manage two junior writers. Before Skydance, I worked in entertainment and edtech."
       ],
       "buttons": [
         {
-          "label": "See the work",
+          "label": "See my work",
           "link": "#selected-work"
         },
         {
@@ -196,7 +196,7 @@
         {
           "project": "hbo-max-and-tnt-sports",
           "tag": "Landing pages",
-          "title": "HBO Max & TNT Sports",
+          "title": "HBO Max & TNT Sports landing pages",
           "desc": "Plans, pricing and sign-up copy · Figma",
           "image": {
             "src": "img/hbo-max-landing-case.webp",
@@ -220,7 +220,7 @@
         {
           "project": "brand-voice",
           "tag": "Brand voice",
-          "title": "HBO Max & FutureLearn",
+          "title": "TOV Guides",
           "desc": "Tone-of-voice guides · Master copy in 17 languages",
           "image": {
             "src": "img/quick-witted.jpg",
@@ -233,7 +233,7 @@
           "project": "a-knight-of-the-seven-kingdoms-gamified-journey",
           "tag": "App & retention",
           "title": "A Knight of the Seven Kingdoms",
-          "desc": "An in-app journey across a season of HBO",
+          "desc": "An interactive in-app journey",
           "image": {
             "src": "img/knight-journey.jpg",
             "caption": "",
@@ -279,7 +279,7 @@
         {
           "id": "campaigns",
           "name": "Campaigns & taglines",
-          "intro": "Big ideas, taglines and the lines that make them land.",
+          "intro": "",
           "projects": [
             "hbo-max-uk-launch-campaign",
             "succession-influencer-campaign-for-hbo-max",
