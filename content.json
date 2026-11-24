@@ -1,0 +1,1256 @@
+{
+  "site": {
+    "title": "Sam Lewis, Senior Copywriter & Creative",
+    "description": "Sam Lewis is a senior copywriter and creative working across campaigns, brand voice, CRM, product, B2B and content. Work for HBO Max, TNT Sports, FutureLearn, Tate Modern and more.",
+    "shareImage": "img/sam.jpg",
+    "logoText": "samlewis",
+    "email": "sam.joe.lewis@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/sam-lewis-495992134/",
+    "location": "London",
+    "footerTitle": "Sam Lewis",
+    "footerNote": "Senior Copywriter & Creative · London",
+    "colors": {
+      "sky": "#9fe5fb",
+      "mint": "#c7e6e4",
+      "lilac": "#e4e7f9",
+      "cream": "#f7f2ea",
+      "ink": "#46282a",
+      "accent": "#46282a"
+    },
+    "announcement": {
+      "enabled": false,
+      "text": "Open to new projects. Get in touch.",
+      "link": "#contact"
+    },
+    "popup": {
+      "enabled": false,
+      "title": "Hello there.",
+      "text": "Want to talk about a project? I’d love to hear from you.",
+      "buttonLabel": "Get in touch",
+      "buttonLink": "#contact",
+      "delaySeconds": 6
+    }
+  },
+  "sections": [
+    {
+      "id": "home",
+      "type": "hero",
+      "navLabel": "",
+      "bg": "sky",
+      "headline": "Sam Lewis",
+      "image": {
+        "src": "img/hbo-max-trailer.jpg",
+        "caption": "HBO Max trailer",
+        "w": 1400,
+        "h": 783
+      },
+      "caption": "Senior copywriter & creative. Campaigns, CRM, brand voice and film for HBO Max, TNT Sports, Tate Modern and more."
+    },
+    {
+      "id": "intro",
+      "type": "split",
+      "navLabel": "",
+      "bg": "mint",
+      "imageSide": "left",
+      "image": {
+        "src": "img/sam.jpg",
+        "caption": "Sam Lewis",
+        "w": 600,
+        "h": 600
+      },
+      "headline": "Senior Copywriter & Creative",
+      "columns": [
+        "I lead copy for HBO Max and TNT Sports across EMEA, from campaigns and email to landing pages and sign-up journeys.",
+        "I own HBO Max’s tone-of-voice guides and manage two junior writers. Before that: FutureLearn, AKA UK and Empire Design."
+      ],
+      "buttons": [
+        {
+          "label": "View work",
+          "link": "#selected-work"
+        },
+        {
+          "label": "Get in touch",
+          "link": "#contact"
+        }
+      ]
+    },
+    {
+      "id": "selected-work",
+      "type": "featured",
+      "navLabel": "Work",
+      "bg": "lilac",
+      "headline": "Selected Work",
+      "intro": "",
+      "items": [
+        {
+          "project": "hbo-max-and-tnt-sports",
+          "tag": "Landing pages",
+          "title": "HBO Max & TNT Sports",
+          "desc": "Plans, pricing and sign-up copy · Figma",
+          "image": {
+            "src": "img/hbo-max-landing-case.webp",
+            "caption": "",
+            "w": 1904,
+            "h": 890
+          }
+        },
+        {
+          "project": "tnt-sports-crm-including-paris-2024",
+          "tag": "Email & lifecycle",
+          "title": "TNT Sports CRM",
+          "desc": "+10 percentage points in habitual viewing vs control",
+          "image": {
+            "src": "img/paris-2024.jpg",
+            "caption": "",
+            "w": 596,
+            "h": 726
+          }
+        },
+        {
+          "project": "brand-voice",
+          "tag": "Brand voice",
+          "title": "HBO Max & FutureLearn",
+          "desc": "Tone-of-voice guides · Master copy in 17 languages",
+          "image": {
+            "src": "img/quick-witted.jpg",
+            "caption": "",
+            "w": 1200,
+            "h": 748
+          }
+        },
+        {
+          "project": "a-knight-of-the-seven-kingdoms-gamified-journey",
+          "tag": "App & retention",
+          "title": "A Knight of the Seven Kingdoms",
+          "desc": "An in-app journey across a season of HBO",
+          "image": {
+            "src": "img/knight-journey.jpg",
+            "caption": "",
+            "w": 768,
+            "h": 1280
+          }
+        },
+        {
+          "project": "hbo-max-uk-launch-campaign",
+          "tag": "Campaign",
+          "title": "HBO Max UK launch",
+          "desc": "Launch copy across outdoor, radio, social and email",
+          "image": {
+            "src": "img/kings-cross.jpg",
+            "caption": "",
+            "w": 1200,
+            "h": 678
+          }
+        },
+        {
+          "project": "the-world-goes-pop-trailer-for-tate-modern",
+          "tag": "Film & script",
+          "title": "Tate Modern",
+          "desc": "Trailer concept and script for The World Goes Pop",
+          "image": {
+            "src": "img/world-goes-pop.jpg",
+            "caption": "",
+            "w": 1200,
+            "h": 912
+          }
+        }
+      ]
+    },
+    {
+      "id": "campaigns",
+      "type": "projects",
+      "navLabel": "Campaigns",
+      "bg": "cream",
+      "kicker": "",
+      "headline": "Campaign concepts & taglines",
+      "intro": "Big ideas, taglines and the lines that make them land.",
+      "projects": [
+        "hbo-max-uk-launch-campaign",
+        "succession-influencer-campaign-for-hbo-max",
+        "hbo-max-halloween-2026-campaign",
+        "westminster-abbey-feel-wonder-first-hand",
+        "city-and-guilds-and-futurelearn-skills-campaign",
+        "hbo-max-wall-to-wall-watercooler-campaign",
+        "hbo-max-display-and-paid-social-ads",
+        "mock-the-week-print-ad-for-tlc",
+        "atg-theatres-business-deserves-a-bigger-stage",
+        "matilda-the-musical-social-video-and-radio",
+        "futurelearn-results-day-outdoor-campaign"
+      ]
+    },
+    {
+      "id": "journeys",
+      "type": "projects",
+      "navLabel": "",
+      "bg": "mint",
+      "kicker": "",
+      "headline": "Web & app journeys",
+      "intro": "Landing pages, product copy and in-app journeys.",
+      "projects": [
+        "hbo-max-and-tnt-sports",
+        "a-knight-of-the-seven-kingdoms-gamified-journey",
+        "milano-cortina-2026-interactive-campaign",
+        "futurelearn-google-course-product-copy",
+        "noodoll-ricespud-product-messaging"
+      ]
+    },
+    {
+      "id": "email",
+      "type": "projects",
+      "navLabel": "",
+      "bg": "cream",
+      "kicker": "",
+      "headline": "Email & lifecycle",
+      "intro": "CRM from onboarding to win-back.",
+      "projects": [
+        "tnt-sports-crm-including-paris-2024",
+        "hbo-max-lifecycle-email"
+      ]
+    },
+    {
+      "id": "film",
+      "type": "projects",
+      "navLabel": "Film",
+      "bg": "lilac",
+      "kicker": "",
+      "headline": "Film, scripts & taglines",
+      "intro": "Trailer concepts, scripts and taglines for film, TV, theatre and museums.",
+      "projects": [
+        "the-world-goes-pop-trailer-for-tate-modern",
+        "pogany-indulo-documentary-trailer-for-hbo-max",
+        "boyhood-trailer",
+        "home-i-m-darling-trailer-for-the-national-theatre",
+        "whales-beneath-the-surface-trailer-for-the-natural-history-museum",
+        "humans-and-halt-and-catch-fire-taglines",
+        "swallows-and-amazons-tagline",
+        "hbo-max-trailers-for-cinema-tv-and-radio"
+      ]
+    },
+    {
+      "id": "editorial",
+      "type": "projects",
+      "navLabel": "",
+      "bg": "cream",
+      "kicker": "",
+      "headline": "Editorial & SEO",
+      "intro": "Search-led writing and long-form storytelling.",
+      "projects": [
+        "futurelearn-course-seo-and-editorial",
+        "music-and-film-journalism"
+      ]
+    },
+    {
+      "id": "voice",
+      "type": "projects",
+      "navLabel": "Voice",
+      "bg": "mint",
+      "kicker": "",
+      "headline": "Brand Voice & Leadership",
+      "intro": "How brands sound, and the writers who help them sound that way.",
+      "projects": [
+        "brand-voice",
+        "leadership"
+      ]
+    },
+    {
+      "id": "follow",
+      "type": "curved",
+      "navLabel": "",
+      "bg": "sky",
+      "text": "Let’s work together",
+      "speed": 40,
+      "showSocial": true
+    },
+    {
+      "id": "about",
+      "type": "text",
+      "navLabel": "About",
+      "bg": "cream",
+      "headline": "About Me",
+      "paragraphs": [
+        "I’m a Senior Copywriter and Creative with over a decade of experience turning strategic briefs into ideas and words for brands across entertainment, sport, culture, technology and education.",
+        "In my current role at Skydance, I develop copy and creative for HBO Max and TNT Sports across EMEA as part of our in-house creative team. I take briefs from initial concept through to execution across social, digital, CRM, outdoor, trailers, radio and wider brand campaigns. Most recently, I led copy for the UK launch of HBO Max.",
+        "I approach every brief as an open problem to be solved, and enjoy the challenge of finding the idea that can unlock it. My work involves moving between the bigger campaign concept and the detail of how it comes through in a script, a headline or an email.",
+        "Much of my role also involves shaping how brands sound. I own HBO Max’s tone-of-voice guides and messaging frameworks, and work across brands with very different personalities. That means developing and adapting the writing for different audiences, channels and markets while keeping each brand’s underlying identity coherent.",
+        "Before this role, I worked at FutureLearn and in agencies, developing work for organisations including Google, LEGO, Tate Modern, the National Theatre, Universal and Fox. Those roles gave me experience moving between campaign ideas, brand narratives, product messaging and long-form editorial. My film work includes scripting trailers for Boyhood and the National Theatre, and developing the idea and script for Tate Modern’s The World Goes Pop.",
+        "My background is editorial as well as commercial. I started my writing career as a music and film journalist, interviewing artists and filmmakers and writing features and profiles. I later produced long-form editorial and interview pieces at FutureLearn, alongside my campaign work. Writing at length remains an important part of my experience, as does writing scripts for television, radio, theatrical and social.",
+        "I enjoy the collaborative side of copywriting just as much as the writing itself. I regularly present and defend ideas to senior stakeholders, work closely with designers and regional teams, and manage two junior writers. Alongside my own writing, I edit and shape their work before it becomes English master copy for multiple markets."
+      ],
+      "links": [
+        {
+          "label": "Presentation portfolio",
+          "link": "https://docs.google.com/presentation/d/1mHRjpPoziItjGX_4GrqQJIve7HLaUhjQ/edit?usp=sharing&rtpof=true&sd=true"
+        }
+      ]
+    },
+    {
+      "id": "cv",
+      "type": "cv",
+      "navLabel": "CV",
+      "bg": "mint",
+      "headline": "Experience",
+      "intro": "Senior copywriter and creative with over a decade of agency and in-house experience. I develop campaign ideas, write product and marketing copy, and shape brand voices for brands in entertainment, technology, education and culture. My work ranges from scripts and outdoor campaigns to CRM, landing pages, B2B advertising and editorial, including work for HBO Max, TNT Sports, FutureLearn, Google, LEGO, Tate Modern and the National Theatre. I also lead and mentor writers.",
+      "jobs": [
+        {
+          "dates": "2022–now",
+          "company": "HBO Max (Skydance)",
+          "role": "Senior Creative & Copy Specialist",
+          "points": [
+            "Lead copy and creative for HBO Max, TNT Sports and discovery+ across EMEA, from initial concepts through to final delivery.",
+            "Develop integrated campaigns across TV, radio, outdoor, social and digital, including the UK launch of HBO Max.",
+            "Write copy for emails, landing pages, paid media and product journeys, making offers and features clear without losing the brand's personality.",
+            "Shape brand voice and messaging frameworks, creating English master copy for 15+ markets and working with regional teams on localisation.",
+            "Work closely with designers, marketers and strategists, presenting and defending ideas to senior stakeholders.",
+            "Manage and mentor two junior copywriters, giving creative direction and editing their work from brief to final copy."
+          ]
+        },
+        {
+          "dates": "2020–21",
+          "company": "FutureLearn",
+          "role": "Copywriter",
+          "points": [
+            "Created brand, campaign, product and CRM copy across the learner journey, including paid social, emails and course landing pages.",
+            "Wrote course product copy for Google for Education and developed messaging for partner projects including LEGO.",
+            "Used keyword research to write search-led course titles, researched and wrote long-form editorial, and created FutureLearn's first tone-of-voice guide."
+          ]
+        },
+        {
+          "dates": "2015–19",
+          "company": "AKA UK",
+          "role": "Concept Copywriter & Creative",
+          "points": [
+            "Developed campaigns for Tate Modern, the National Theatre, the British Library, the Natural History Museum and Matilda the Musical.",
+            "Created B2B concepts for ATG Theatres' corporate venue hire, alongside consumer work across film, radio, outdoor, digital and social.",
+            "Worked closely with designers and strategists, pitching ideas and writing scripts, headlines and longer-form copy."
+          ]
+        },
+        {
+          "dates": "2012–14",
+          "company": "Empire Design",
+          "role": "Junior Copywriter",
+          "points": [
+            "Developed concepts, taglines and scripts for theatrical and home-entertainment campaigns for Universal Studios, Fox, AMC and Canal Plus.",
+            "Wrote trailer, radio, OOH, digital and social copy for film and television launches."
+          ]
+        },
+        {
+          "dates": "2005–15",
+          "company": "Freelance",
+          "role": "Copywriter, Journalist & Proofreader",
+          "points": [
+            "Wrote and proofread for private clients and cultural publications; researched, interviewed and wrote music and film features and reviews."
+          ]
+        }
+      ],
+      "educationTitle": "Education & Tools",
+      "education": [
+        {
+          "label": "MA",
+          "place": "UCL",
+          "detail": "English Literature"
+        },
+        {
+          "label": "BA",
+          "place": "University of Manchester",
+          "detail": "English Literature"
+        },
+        {
+          "label": "Cert",
+          "place": "Society for Editors & Proofreaders",
+          "detail": "Proofreading 1"
+        },
+        {
+          "label": "Tools",
+          "place": "Figma, Google Docs, Google Slides, Adobe",
+          "detail": ""
+        }
+      ]
+    },
+    {
+      "id": "contact",
+      "type": "contact",
+      "navLabel": "Contact",
+      "bg": "sky",
+      "headline": "Get in Touch",
+      "text": "Got a brief, a role or an idea? I’m based in London and always happy to talk.",
+      "showForm": true
+    }
+  ],
+  "projects": [
+    {
+      "title": "HBO Max UK Launch Campaign",
+      "tag": "Campaign",
+      "meta": "HBO Max · OOH · 2026 · Warner Bros. Discovery",
+      "industry": "Film & TV",
+      "quote": "",
+      "quote2": "",
+      "cardQuote": "The best new platform since 9¾.",
+      "body": [
+        "I led copy for the UK launch of HBO Max in 2026, writing across radio, outdoor, social, email and display. I pushed for UK-specific lines that spoke to local places and content, like “The best new platform since 9¾.”",
+        "That line ran as a takeover of the tunnel at King's Cross, and the ad went viral on LinkedIn. Across the launch as a whole, UK subscriptions passed the yearly target within four months.",
+        "The same tone ran through the launch emails, including the welcome email for new subscribers."
+      ],
+      "images": [
+        {
+          "src": "img/kings-cross.jpg",
+          "caption": "King's Cross tunnel, London",
+          "w": 1200,
+          "h": 678
+        }
+      ],
+      "id": "hbo-max-uk-launch-campaign",
+      "page": 201,
+      "related": [
+        {
+          "project": "hbo-max-lifecycle-email",
+          "label": "See the HBO Max welcome email"
+        }
+      ],
+      "cardTitle": "HBO Max UK launch"
+    },
+    {
+      "title": "HBO Max Wall-to-Wall Watercooler Campaign",
+      "tag": "Campaign",
+      "meta": "HBO Max · OOH brand campaign · Autumn 2026 · Warner Bros. Discovery",
+      "industry": "Film & TV",
+      "quote": "",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "This outdoor brand campaign ran in autumn 2026, at a point when HBO Max was between big new releases. With no single launch to shout about, the idea was to remind people how much is already there: a back catalogue full of the shows everyone has talked about for years.",
+        "“Wall-to-Wall Watercooler” was the broader copy concept, turning that breadth into one simple promise: on HBO Max, there’s always something people are talking about. For this update to the campaign I added the subtitle, “Critically acclaimed, publicly debated”, which makes the point that these are shows people argue over as well as admire.",
+        "Each poster put characters from different eras of HBO side by side, keeping the brand front of mind until the next big release."
+      ],
+      "images": [
+        {
+          "src": "img/watercooler.jpg",
+          "caption": "“Wall-to-Wall Watercooler” poster",
+          "w": 1200,
+          "h": 900
+        }
+      ],
+      "id": "hbo-max-wall-to-wall-watercooler-campaign",
+      "page": 202,
+      "cardTitle": "Wall-to-Wall Watercooler"
+    },
+    {
+      "title": "Succession Influencer Campaign for HBO Max",
+      "tag": "",
+      "meta": "HBO Max · Social & influencer · Warner Bros. Discovery",
+      "industry": "Film & TV",
+      "quote": "Who's up for a pint at The Royal Roy?",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "I develop social and influencer ideas for HBO Max. This paid collaboration with @hollyandbrookearehooked ran for the UK and Ireland launch, and imagined the Roys from Succession running a British pub."
+      ],
+      "images": [
+        {
+          "src": "img/royal-roy.jpg",
+          "caption": "Instagram, @hbomaxuk × @hollyandbrookearehooked",
+          "w": 549,
+          "h": 747
+        }
+      ],
+      "id": "succession-influencer-campaign-for-hbo-max",
+      "page": 203,
+      "cardTitle": "Succession social campaign"
+    },
+    {
+      "title": "HBO Max Display & Paid Social Ads",
+      "tag": "",
+      "meta": "HBO Max · Display & paid social · Warner Bros. Discovery",
+      "industry": "Film & TV",
+      "quote": "Tough cases call for strong leads.",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "I write display and paid-social copy for HBO Max across EMEA, plus international titles and taglines for European productions. Every word has to earn its place."
+      ],
+      "images": [
+        {
+          "src": "img/tough-cases.jpg",
+          "caption": "Display ad, before market pricing was added",
+          "w": 689,
+          "h": 690
+        }
+      ],
+      "id": "hbo-max-display-and-paid-social-ads",
+      "page": 204,
+      "cardTitle": "HBO Max display & paid social"
+    },
+    {
+      "title": "Humans and Halt and Catch Fire Taglines",
+      "tag": "",
+      "meta": "Humans · Halt and Catch Fire · Empire Design",
+      "industry": "Film & TV",
+      "quote": "Made in our image. Out of our control.",
+      "quote2": "The battle for CTRL begins.",
+      "cardQuote": "",
+      "body": [
+        "At Empire Design, I developed concepts, taglines and scripts for theatrical and home-entertainment campaigns for Universal Studios, Fox, AMC and Canal Plus, and wrote trailer, radio, outdoor, digital and social copy for film and TV launches.",
+        "Two of my lines from that time: the first for Humans, the second for Halt and Catch Fire."
+      ],
+      "images": [
+        {
+          "src": "img/humans.jpg",
+          "caption": "Humans",
+          "w": 1200,
+          "h": 684
+        },
+        {
+          "src": "img/halt-catch-fire.jpg",
+          "caption": "Halt and Catch Fire",
+          "w": 1200,
+          "h": 851
+        }
+      ],
+      "id": "humans-and-halt-and-catch-fire-taglines",
+      "page": 205,
+      "cardTitle": "Humans & Halt and Catch Fire"
+    },
+    {
+      "title": "HBO Max Trailers for Cinema, TV and Radio",
+      "tag": "Trailer",
+      "meta": "HBO Max · Trailers · Cinema, TV & radio · Warner Bros. Discovery",
+      "industry": "Film & TV",
+      "quote": "",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "I develop trailer ideas and write scripts for HBO Max. The Hungarian documentary and Halloween campaigns show how that work came to life."
+      ],
+      "images": [
+        {
+          "src": "img/hbo-max-trailer.jpg",
+          "caption": "HBO Max trailer",
+          "w": 1400,
+          "h": 783
+        }
+      ],
+      "id": "hbo-max-trailers-for-cinema-tv-and-radio",
+      "page": 206,
+      "related": [
+        {
+          "project": "pogany-indulo-documentary-trailer-for-hbo-max",
+          "label": "Pogány Induló documentary trailer"
+        },
+        {
+          "project": "hbo-max-halloween-2026-campaign",
+          "label": "HBO Max Halloween campaign"
+        }
+      ],
+      "cardTitle": "HBO Max trailers"
+    },
+    {
+      "title": "Pogány Induló Documentary Trailer for HBO Max",
+      "tag": "Trailer",
+      "meta": "HBO Max · Hungarian original documentary series · Trailer concept & script · Warner Bros. Discovery",
+      "industry": "Film & TV",
+      "quote": "",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "Pogány Induló is a Hungarian rapper, real name Marcell Szirmai, who became one of the country's biggest music stars by the age of twenty.",
+        "For HBO Max's four-part documentary series about him, Pogány Induló: Vajon mit mondana anya (What Would Mum Say?), I came up with the concept for the trailer and wrote the script.",
+        "My concept shows him walking alone against the crowd, with his own lyrics projected onto him. He's a lone wolf, weighed down by his words."
+      ],
+      "images": [
+        {
+          "src": "img/pogany-indulo.jpg",
+          "caption": "Pogány Induló: Vajon mit mondana anya, HBO Max",
+          "w": 1400,
+          "h": 785
+        }
+      ],
+      "link": {
+        "url": "https://www.youtube.com/watch?v=p6dlv8rp49E",
+        "label": "Watch the trailer"
+      },
+      "id": "pogany-indulo-documentary-trailer-for-hbo-max",
+      "page": 207,
+      "cardTitle": "Pogány Induló"
+    },
+    {
+      "title": "Boyhood Trailer",
+      "tag": "Trailer",
+      "meta": "Universal · Trailer script · Empire Design",
+      "industry": "Film & TV",
+      "quote": "",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "At Empire Design, I scripted an emotive trailer for Universal's release of Boyhood, Richard Linklater's film shot over twelve years with the same cast.",
+        "The film follows one boy, Mason, from the age of six to eighteen, with Patricia Arquette and Ethan Hawke as his parents. That process was what made the film unique, so the script had to explain it quickly, then let the footage do the emotional work as Mason grows up on screen.",
+        "The trailer gained 5.5 million views on YouTube, and was also shown on TV in America."
+      ],
+      "images": [
+        {
+          "src": "img/boyhood.jpg",
+          "caption": "Boyhood, Universal",
+          "w": 723,
+          "h": 424
+        }
+      ],
+      "id": "boyhood-trailer",
+      "page": 208,
+      "cardTitle": "Boyhood"
+    },
+    {
+      "title": "Mock the Week Print Ad for TLC",
+      "tag": "",
+      "meta": "TLC · Print · Warner Bros. Discovery",
+      "industry": "Film & TV",
+      "quote": "Heard we were finished? Fake news.",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "I wrote this print ad for Mock the Week on TLC, turning the idea that the show was ‘finished’ into the punchline."
+      ],
+      "images": [
+        {
+          "src": "img/mock-the-week.jpg",
+          "caption": "Print ad for TLC",
+          "w": 1200,
+          "h": 784
+        }
+      ],
+      "id": "mock-the-week-print-ad-for-tlc",
+      "page": 209,
+      "cardTitle": "Mock the Week"
+    },
+    {
+      "title": "Swallows and Amazons Tagline",
+      "tag": "",
+      "meta": "Swallows and Amazons · Film tagline · AKA UK",
+      "industry": "Film & TV",
+      "quote": "Some summers you treasure forever.",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "At AKA UK, I wrote the tagline for the 2016 film of Swallows and Amazons, based on Arthur Ransome's classic children's novel."
+      ],
+      "images": [
+        {
+          "src": "img/swallows-amazons.jpg",
+          "caption": "Swallows and Amazons",
+          "w": 816,
+          "h": 1199
+        }
+      ],
+      "id": "swallows-and-amazons-tagline",
+      "page": 210,
+      "cardTitle": "Swallows and Amazons"
+    },
+    {
+      "title": "HBO Max Halloween 2026 Campaign",
+      "tag": "Campaign",
+      "meta": "HBO Max · Halloween 2026 · Campaign concept · AV & online · Warner Bros. Discovery",
+      "industry": "Film & TV",
+      "quote": "Fear hits home.",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "For Halloween 2026 on HBO Max, I came up with the campaign line: “Fear hits home.”",
+        "The line has a double meaning. It speaks to the quality of the horror on HBO Max, the kind that really gets to you, and to the Home in Home Box Office: you don’t have to leave the house to be terrified.",
+        "The line flexed across AV and online assets, from the trailer to display creative."
+      ],
+      "images": [
+        {
+          "src": "img/hbo-max-halloween.jpg",
+          "caption": "Display creative: “Fear hits home”",
+          "w": 600,
+          "h": 500
+        }
+      ],
+      "video": {
+        "src": "video/hbo-max-halloween.mp4",
+        "poster": "img/hbo-max-halloween-video.jpg",
+        "caption": "HBO Max Halloween 2026 trailer"
+      },
+      "id": "hbo-max-halloween-2026-campaign",
+      "page": 211,
+      "cardTitle": "HBO Max Halloween"
+    },
+    {
+      "title": "A Knight of the Seven Kingdoms Gamified Journey",
+      "tag": "Campaign",
+      "meta": "HBO Max app · A Knight of the Seven Kingdoms · Interactive retention campaign · Warner Bros. Discovery",
+      "industry": "Film & TV",
+      "quote": "",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "We needed to keep A Knight of the Seven Kingdoms viewers watching throughout the show’s debut season.",
+        "My solution was an interactive journey in the HBO Max app. Episode by episode, users took quizzes and played games to work their way up from stable hand to knight.",
+        "The in-season gamification drove an uplift of around 16–18% through consistent episode progression."
+      ],
+      "images": [
+        {
+          "src": "img/knight-journey.jpg",
+          "caption": "Result screen for getting every answer wrong",
+          "w": 768,
+          "h": 1280
+        }
+      ],
+      "video": {
+        "src": "video/knight-journey.mp4",
+        "poster": "img/knight-journey-video.jpg",
+        "caption": "Episode challenge: take your vows"
+      },
+      "id": "a-knight-of-the-seven-kingdoms-gamified-journey",
+      "page": 212,
+      "cardTitle": "A Knight of the Seven Kingdoms"
+    },
+    {
+      "title": "ATG Theatres: Business Deserves a Bigger Stage",
+      "tag": "B2b",
+      "meta": "ATG Theatres · Corporate nights out & venue hire · LinkedIn concept · AKA UK",
+      "industry": "Theatre",
+      "quote": "",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "At AKA, part of ATG, I worked on attracting corporate clients to theatres. The creative challenge was different from selling tickets: I wanted businesses to see a West End theatre as somewhere special for their next corporate night out.",
+        "“Business deserves a bigger stage” gives that idea a simple, memorable line. A LinkedIn execution set against the Lyceum Theatre shows how the venue itself can do the selling — a famous West End theatre that makes a company night out feel like an occasion."
+      ],
+      "images": [
+        {
+          "src": "img/atg-lyceum-b2b.webp",
+          "caption": "ATG Theatres corporate venue hire LinkedIn advertising concept featuring the Lyceum Theatre",
+          "w": 1440,
+          "h": 753
+        }
+      ],
+      "id": "atg-theatres-business-deserves-a-bigger-stage",
+      "page": 301,
+      "cardTitle": "ATG Theatres"
+    },
+    {
+      "title": "Noodoll: Ricespud Product Messaging",
+      "tag": "Product",
+      "meta": "Noodoll · Ecommerce · Product descriptions",
+      "industry": "Retail",
+      "quote": "",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "At Noodoll, I wrote product copy designed to bring the characters to life while helping customers understand what they're buying. Ricespud needed a playful, distinctive voice alongside clear descriptions of the product.",
+        "From “Are you ready for spud at first sight?” to the softness, embroidered features and little arms for hugs, the writing brings the character into the shopping experience."
+      ],
+      "images": [
+        {
+          "src": "img/noodoll-ricespud-product-copy.webp",
+          "caption": "Noodoll Ricespud product page showing the plush and the product copy I wrote",
+          "w": 1650,
+          "h": 817
+        }
+      ],
+      "id": "noodoll-ricespud-product-messaging",
+      "page": 302,
+      "cardTitle": "Noodoll ecommerce copy"
+    },
+    {
+      "title": "HBO Max Lifecycle Email",
+      "tag": "Email",
+      "meta": "HBO Max · EMEA · Onboarding, retention and win-back",
+      "industry": "Streaming",
+      "quote": "",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "I write English master copy for HBO Max lifecycle email across EMEA, from onboarding to retention and win-back. That includes subject lines, content modules and calls to action.",
+        "For this UK launch welcome email, I used The White Lotus to bring the HBO Max voice into the first email a new subscriber saw. ‘Take a deep breath…’ leads into ‘And dive in’, giving the button a reason to sound like part of the email."
+      ],
+      "images": [
+        {
+          "src": "img/hbo-max-welcome-email.jpg",
+          "caption": "HBO Max UK welcome email",
+          "w": 860,
+          "h": 918
+        }
+      ],
+      "id": "hbo-max-lifecycle-email",
+      "page": 303,
+      "cardTitle": "HBO Max lifecycle email"
+    },
+    {
+      "title": "FutureLearn: Course SEO & Editorial",
+      "tag": "SEO / Editorial",
+      "meta": "FutureLearn · Search-led course titles · Long-form articles",
+      "industry": "Education",
+      "quote": "",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "At FutureLearn, I used keyword research and search-results analysis to write course titles that would rank well while still making sense to prospective learners. ‘Power Dressing in the Zoom Era’ is one example of balancing clear search intent with useful, engaging copy.",
+        "I also researched and wrote longer editorial pieces, often based on interviews with educators. These two examples show the range: precise, discovery-led course messaging and more expansive storytelling, including an article exploring Ancient Rome."
+      ],
+      "images": [
+        {
+          "src": "img/futurelearn-course-seo.webp",
+          "caption": "FutureLearn course page: Power Dressing in the Zoom Era, showing search-informed course-title copy",
+          "w": 913,
+          "h": 911
+        },
+        {
+          "src": "img/futurelearn-editorial-rome.webp",
+          "caption": "FutureLearn long-form editorial article: Explore a virtual map of Ancient Rome",
+          "w": 857,
+          "h": 874
+        }
+      ],
+      "id": "futurelearn-course-seo-and-editorial",
+      "page": 304,
+      "cardTitle": "FutureLearn course SEO & editorial"
+    },
+    {
+      "title": "FutureLearn × Google: Course Product Copy",
+      "tag": "Product",
+      "meta": "FutureLearn × Google for Education · Course landing page · Product copy",
+      "industry": "Education",
+      "quote": "",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "At FutureLearn, I wrote product copy for online courses, including this Google for Education course aimed at teachers and educators.",
+        "The course title is ‘Google For Education: Staying Organised and Improving Communication’. The introduction opens with ‘Communicate effectively with staff, students, and parents, and save time as an educator…’"
+      ],
+      "images": [
+        {
+          "src": "https://ugc.futurelearn.com/uploads/images/e4/98/header_e498abc1-1429-4c12-9941-a6746fa13efd.jpg",
+          "caption": "Google for Education course artwork used on the FutureLearn landing page"
+        }
+      ],
+      "link": {
+        "url": "https://www.futurelearn.com/courses/google-for-education-communicating-and-staying-organised-with-staff-students-and-parents-sc",
+        "label": "See the course"
+      },
+      "id": "futurelearn-google-course-product-copy",
+      "page": 305,
+      "cardTitle": "FutureLearn × Google"
+    },
+    {
+      "title": "HBO Max & TNT Sports Landing Pages",
+      "tag": "Landing Pages",
+      "meta": "Landing pages · Product copy · Figma",
+      "industry": "Streaming",
+      "quote": "",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "I write the landing pages for HBO Max and TNT Sports across EMEA. I work with designers in Figma and use testing to make plans, pricing and sign-up clearer."
+      ],
+      "images": [
+        {
+          "src": "img/hbo-max-landing-case.webp",
+          "caption": "HBO Max UK landing page",
+          "w": 1904,
+          "h": 890,
+          "heading": "HBO Max",
+          "link": {
+            "url": "https://www.hbomax.com/gb/en",
+            "label": "View live page"
+          }
+        },
+        {
+          "src": "img/tnt-sports-landing-case.webp",
+          "caption": "TNT Sports UK landing page",
+          "w": 1904,
+          "h": 864,
+          "heading": "TNT Sports",
+          "link": {
+            "url": "https://www.hbomax.com/gb/en/sports",
+            "label": "View live page"
+          }
+        },
+        {
+          "src": "img/hbo-checkout-flow-overview.webp",
+          "caption": "Figma canvas showing several HBO Max mobile checkout flows",
+          "w": 638,
+          "h": 97,
+          "heading": "Checkout flows in Figma",
+          "text": "I used this board to see what happens after someone clicks through. On the TNT Sports page, “Get TNT Sports” and “Get Sports & HBO Max” spell out the two options before customers reach checkout."
+        }
+      ],
+      "thumb": "img/hbo-max-landing.webp",
+      "id": "hbo-max-and-tnt-sports",
+      "page": 306,
+      "cardTitle": "HBO Max & TNT Sports landing pages"
+    },
+    {
+      "title": "TNT Sports CRM, Including Paris 2024",
+      "tag": "",
+      "meta": "TNT Sports · Paris 2024 · CRM · Warner Bros. Discovery",
+      "industry": "Sport",
+      "quote": "",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "I lead master CRM for HBO Max and TNT Sports across EMEA, from onboarding to win-back. When we took on TNT Sports' CRM, I worked with their marketing team to rebuild the emails around user data. Our CRM now performs better than any other WBD region.",
+        "For Paris 2024, a large batch of Olympics comms landed just before deadline. I used automation to deliver it on time, during what became our highest-ever period for new subscriptions."
+      ],
+      "images": [
+        {
+          "src": "img/paris-2024.jpg",
+          "caption": "Paris 2024 CRM",
+          "w": 596,
+          "h": 726
+        }
+      ],
+      "id": "tnt-sports-crm-including-paris-2024",
+      "page": 401,
+      "stats": {
+        "title": "TNT Sports CRM: results",
+        "items": [
+          {
+            "value": "1.5–2 hrs",
+            "label": "Extra viewing a week, vs control group"
+          },
+          {
+            "value": "+10 pts",
+            "label": "Habitual viewing, vs control group"
+          },
+          {
+            "value": "Highest",
+            "label": "CRM performance across WBD regions"
+          }
+        ],
+        "note": "Viewers who received the campaigns, compared with a control group who didn't."
+      },
+      "cardTitle": "TNT Sports CRM"
+    },
+    {
+      "title": "Milano Cortina 2026 Interactive Campaign",
+      "tag": "Campaign",
+      "meta": "HBO Max · TNT Sports · Milano Cortina 2026 · Warner Bros. Discovery",
+      "industry": "Sport",
+      "quote": "Your Olympics. Your way.",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "I come up with interactive campaigns for TNT Sports users. For the Milano Cortina 2026 Winter Olympics, I created a pick-your-sports journey: users chose the sports they cared about from all 16 on the programme, so we only sent them the notifications that mattered to them.",
+        "The final screen asked them to turn on push notifications, so they were ready for the opening ceremony on 6 February."
+      ],
+      "images": [
+        {
+          "src": "img/milano-cortina.jpg",
+          "caption": "Pick-your-sports journey, Milano Cortina 2026",
+          "w": 1800,
+          "h": 964
+        }
+      ],
+      "id": "milano-cortina-2026-interactive-campaign",
+      "page": 403,
+      "cardTitle": "Milano Cortina preferences"
+    },
+    {
+      "title": "The World Goes Pop Trailer for Tate Modern",
+      "tag": "Trailer",
+      "meta": "Tate Modern · Trailer · AKA UK",
+      "industry": "Arts & culture",
+      "quote": "",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "For Tate Modern's exhibition The EY Exhibition: The World Goes Pop, I came up with the idea for the trailer, wrote the script and helped on the shoot.",
+        "I thought the Japanese pop star Kyary Pamyu Pamyu, with her surrealist sensibility, would be perfect for it. I contacted her team, and the stars aligned: she was in London for a show, so we could shoot with her while she was here."
+      ],
+      "images": [
+        {
+          "src": "img/world-goes-pop.jpg",
+          "caption": "The World Goes Pop, Tate Modern",
+          "w": 1200,
+          "h": 912
+        }
+      ],
+      "link": {
+        "url": "https://www.youtube.com/watch?v=F1pbMBGxvS4",
+        "label": "Watch the trailer"
+      },
+      "id": "the-world-goes-pop-trailer-for-tate-modern",
+      "page": 501,
+      "cardTitle": "Tate Modern"
+    },
+    {
+      "title": "Home, I’m Darling Trailer for the National Theatre",
+      "tag": "Trailer",
+      "meta": "National Theatre · Trailer script · AKA UK",
+      "industry": "Theatre",
+      "quote": "",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "Laura Wade's play Home, I'm Darling follows Judy, a woman who chooses to live as a perfect 1950s housewife in the present day.",
+        "I wrote the National Theatre's trailer to match: a script in the style of a 1950s TV commercial that sells the dream, then hints at the cracks beneath it. It has more than 200,000 views on YouTube."
+      ],
+      "images": [
+        {
+          "src": "img/national-theatre.jpg",
+          "caption": "Home, I'm Darling trailer, National Theatre",
+          "w": 1200,
+          "h": 913
+        }
+      ],
+      "link": {
+        "url": "https://www.youtube.com/watch?v=fDvlSoQ3PY4",
+        "label": "Watch the trailer"
+      },
+      "id": "home-i-m-darling-trailer-for-the-national-theatre",
+      "page": 502,
+      "cardTitle": "Home, I’m Darling"
+    },
+    {
+      "title": "Whales: Beneath the Surface Trailer for the Natural History Museum",
+      "tag": "Trailer",
+      "meta": "Natural History Museum · Trailer concept, script & edit · AKA UK",
+      "industry": "Arts & culture",
+      "quote": "",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "For the Natural History Museum's exhibition Whales: Beneath the Surface, I came up with the idea for the trailer, wrote the script and helped with the edit.",
+        "I wanted to tap into the sense of mystery whales evoke, and found Heathcote Williams’ poem Whale Nation. The trailer is built around an extract from it."
+      ],
+      "images": [
+        {
+          "src": "img/whales.jpg",
+          "caption": "Whales: Beneath the Surface, Natural History Museum",
+          "w": 1400,
+          "h": 785
+        }
+      ],
+      "link": {
+        "url": "https://www.youtube.com/watch?v=z_ZonqO_Hn4",
+        "label": "Watch the trailer"
+      },
+      "id": "whales-beneath-the-surface-trailer-for-the-natural-history-museum",
+      "page": 503,
+      "cardTitle": "Whales"
+    },
+    {
+      "title": "Matilda the Musical Social, Video & Radio",
+      "tag": "Social",
+      "meta": "Matilda The Musical · Social, video & radio · AKA UK",
+      "industry": "Theatre",
+      "quote": "",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "At AKA UK, for Matilda The Musical, I came up with ideas for social and video content, wrote the scripts, went along to the shoots and edited the videos myself in Adobe Premiere Pro.",
+        "Meet the Matildas introduced the young actors taking on the title role, showing audiences the new cast before they stepped on stage.",
+        "I also scripted and edited Matilda’s radio trailers."
+      ],
+      "images": [
+        {
+          "src": "img/matilda.jpg",
+          "caption": "Meet the Matildas, Matilda The Musical",
+          "w": 1200,
+          "h": 674
+        }
+      ],
+      "link": {
+        "url": "https://www.youtube.com/watch?v=w1WAWnm4zLw&list=PLybPI7Yeye3jCdkvCjsYKNvWqBjZdYBzS",
+        "label": "Watch the videos"
+      },
+      "id": "matilda-the-musical-social-video-and-radio",
+      "page": 504,
+      "cardTitle": "Matilda the Musical"
+    },
+    {
+      "title": "Westminster Abbey: Feel Wonder First Hand",
+      "tag": "Campaign",
+      "meta": "Westminster Abbey · Visitor campaign · Outdoor · AKA UK",
+      "industry": "Arts & culture",
+      "quote": "Feel wonder first hand.",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "For this Westminster Abbey campaign, the visual showed the Abbey balanced on an outstretched hand. My job was to find the line that made the image and the idea click together.",
+        "I wrote “Feel wonder first hand.” It worked with the visual but also said something about the experience of visiting the Abbey and seeing its history and architecture for yourself."
+      ],
+      "images": [
+        {
+          "src": "img/westminster-abbey.jpg",
+          "caption": "Westminster Abbey outdoor campaign",
+          "w": 772,
+          "h": 1194
+        },
+        {
+          "src": "img/westminster-abbey-bond-street.webp",
+          "caption": "The campaign at Bond Street station",
+          "w": 1100,
+          "h": 1467
+        }
+      ],
+      "id": "westminster-abbey-feel-wonder-first-hand",
+      "page": 505,
+      "cardTitle": "Westminster Abbey"
+    },
+    {
+      "title": "City & Guilds and FutureLearn Skills Campaign",
+      "tag": "Campaign",
+      "meta": "City & Guilds × FutureLearn · Campaign",
+      "industry": "Education",
+      "quote": "The new world needs you.",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "For City & Guilds' new skills courses, I created ‘The New World Needs You’, a campaign encouraging young people to see a place for themselves in the post-pandemic world. We extended the idea into sector-specific paid creative."
+      ],
+      "images": [
+        {
+          "src": "img/new-world-needs.jpg",
+          "caption": "The New World Needs…",
+          "w": 935,
+          "h": 935
+        },
+        {
+          "src": "img/new-world-building.jpg",
+          "caption": "Sector-specific paid social",
+          "w": 424,
+          "h": 710
+        }
+      ],
+      "id": "city-and-guilds-and-futurelearn-skills-campaign",
+      "page": 601,
+      "cardTitle": "City & Guilds × FutureLearn"
+    },
+    {
+      "title": "FutureLearn Results Day Outdoor Campaign",
+      "tag": "Campaign",
+      "meta": "FutureLearn · OOH",
+      "industry": "Education",
+      "quote": "Exam results don't define you.",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "I wrote copy for a fast-turnaround Results Day OOH campaign aimed at Gen Z, reframing failure as part of the journey rather than the end of it."
+      ],
+      "images": [
+        {
+          "src": "img/results-day.jpg",
+          "caption": "Results Day OOH",
+          "w": 1106,
+          "h": 1106
+        }
+      ],
+      "id": "futurelearn-results-day-outdoor-campaign",
+      "page": 602,
+      "cardTitle": "FutureLearn Results Day"
+    },
+    {
+      "id": "brand-voice",
+      "title": "Brand Voice",
+      "tag": "Brand voice",
+      "meta": "HBO Max · Skydance · FutureLearn",
+      "industry": "Brand",
+      "quote": "",
+      "quote2": "",
+      "cardQuote": "",
+      "stats": {
+        "title": "",
+        "items": [
+          {
+            "value": "10m+",
+            "label": "people a week"
+          },
+          {
+            "value": "17",
+            "label": "languages"
+          }
+        ],
+        "note": ""
+      },
+      "body": [
+        "I own HBO Max’s tone-of-voice guides and messaging frameworks, and work across brands with very different personalities.",
+        "The guide describes HBO Max as quick-witted. “We’ve an easy wit” gives writers and reviewers a shared reference for how far to push a joke. The welcome email shows how that can sound in practice.",
+        "My English master copy for HBO Max and TNT Sports is translated into 17 languages and reaches more than 10 million people a week, so the voice has to hold in every market.",
+        "At FutureLearn, I wrote the company’s first brand tone-of-voice guide. I also created the mnemonic STEP (Social, Transformative, Experimental, Purposeful), inspired by the FutureLearn logo, to help staff remember our brand values."
+      ],
+      "images": [
+        {
+          "src": "img/quick-witted.jpg",
+          "caption": "HBO Max tone-of-voice guide",
+          "w": 1200,
+          "h": 748
+        }
+      ],
+      "video": {
+        "src": "video/futurelearn-step.mp4",
+        "poster": "img/futurelearn-step-video.jpg",
+        "caption": "FutureLearn staff values film: STEP"
+      },
+      "page": 700,
+      "related": [
+        {
+          "project": "hbo-max-lifecycle-email",
+          "label": "See the HBO Max welcome email"
+        }
+      ],
+      "cardTitle": "Brand Voice"
+    },
+    {
+      "id": "leadership",
+      "title": "Leadership",
+      "tag": "Leadership",
+      "meta": "Skydance",
+      "industry": "Leadership",
+      "quote": "",
+      "quote2": "",
+      "cardQuote": "",
+      "stats": {
+        "title": "",
+        "items": [
+          {
+            "value": "2",
+            "label": "junior writers I manage"
+          },
+          {
+            "value": "UK",
+            "label": "retention team I lead"
+          }
+        ],
+        "note": ""
+      },
+      "body": [
+        "I manage and mentor two junior writers, giving creative direction and feedback from concept to final copy, and lead the UK retention team for HBO Max and TNT Sports.",
+        "Alongside my own writing, I edit and shape their work before it becomes English master copy for multiple markets.",
+        "I regularly present and defend ideas to senior stakeholders, and work closely with designers and regional teams."
+      ],
+      "images": [],
+      "page": 750,
+      "cardTitle": "Leadership"
+    },
+    {
+      "id": "music-and-film-journalism",
+      "title": "Music & Film Journalism",
+      "tag": "Journalism",
+      "meta": "The Skinny · Drowned in Sound · FutureLearn",
+      "industry": "Editorial",
+      "quote": "",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "I started my writing career as a music and film journalist. For The Skinny, I interviewed filmmakers and musicians and wrote cover features and long-form profiles, including John Maclean on Slow West and Julia Holter on Loud City Song.",
+        "I later produced long-form editorial and interview pieces at FutureLearn, alongside my campaign work."
+      ],
+      "images": [
+        {
+          "src": "img/skinny-slow-west.jpg",
+          "caption": "The Skinny: Slow West",
+          "w": 1200,
+          "h": 693
+        },
+        {
+          "src": "img/skinny-julia-holter.jpg",
+          "caption": "The Skinny: Julia Holter",
+          "w": 1200,
+          "h": 693
+        }
+      ],
+      "page": 800,
+      "cardTitle": "Music & film journalism"
+    }
+  ]
+}
