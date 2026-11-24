@@ -34,17 +34,45 @@
   "sections": [
     {
       "id": "home",
-      "type": "hero",
+      "type": "split",
       "navLabel": "",
       "bg": "sky",
+      "imageSide": "left",
+      "image": {
+        "src": "img/sam.jpg",
+        "caption": "Sam Lewis",
+        "w": 600,
+        "h": 600
+      },
       "headline": "Hi, I'm Sam",
+      "subheadline": "Senior Copywriter & Creative",
+      "columns": [
+        "I’m a senior copywriter & creative based in London. I’ve written copy and developed creative campaigns for HBO Max, TNT Sports, FutureLearn, the National Theatre, the Royal Shakespeare Company, Universal Studios, Tate Modern and more."
+      ],
+      "buttons": [
+        {
+          "label": "See my work",
+          "link": "#selected-work"
+        },
+        {
+          "label": "Get in touch",
+          "link": "#contact"
+        }
+      ]
+    },
+    {
+      "id": "hbo-max",
+      "type": "hero",
+      "navLabel": "",
+      "bg": "mint",
+      "headline": "",
       "image": {
         "src": "img/kings-cross-hero.jpg",
         "caption": "“The best new platform since 9¾.” HBO Max UK launch, King's Cross",
         "w": 1152,
-        "h": 648
+        "h": 630
       },
-      "caption": "I’m a senior copywriter & creative based in London. I’ve written copy and developed creative campaigns for HBO Max, TNT Sports, FutureLearn, the National Theatre, the Royal Shakespeare Company, Universal Studios, Tate Modern and more."
+      "caption": "I write master copy for HBO Max across EMEA, from ideating campaigns and email to landing pages and sign-up journeys. I own HBO Max’s tone-of-voice guides and manage two junior writers. Before Skydance, I worked in entertainment and edtech."
     },
     {
       "id": "clients",
@@ -156,34 +184,6 @@
         }
       ],
       "mono": true
-    },
-    {
-      "id": "intro",
-      "type": "split",
-      "navLabel": "",
-      "bg": "mint",
-      "imageSide": "left",
-      "image": {
-        "src": "img/sam.jpg",
-        "caption": "Sam Lewis",
-        "w": 600,
-        "h": 600
-      },
-      "headline": "Senior Copywriter & Creative",
-      "columns": [
-        "I write master copy for HBO Max across EMEA, from ideating campaigns and email to landing pages and sign-up journeys.",
-        "I own HBO Max’s tone-of-voice guides and manage two junior writers. Before Skydance, I worked in entertainment and edtech."
-      ],
-      "buttons": [
-        {
-          "label": "See my work",
-          "link": "#selected-work"
-        },
-        {
-          "label": "Get in touch",
-          "link": "#contact"
-        }
-      ]
     },
     {
       "id": "selected-work",

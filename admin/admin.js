@@ -737,8 +737,8 @@ const COMMON_FIELDS = [
 const BUTTONS = { k: "buttons", t: "list", label: "Buttons", item: "Button", title: b => b.label, fields: [{ k: "label", t: "text", label: "Button text" }, { k: "link", t: "link", label: "Goes to" }], make: () => ({ label: "New button", link: "#contact" }) };
 const IMGITEM = [{ k: null, t: "image", label: "Picture" }, { k: "caption", t: "text", label: "Caption", help: "Also read out to people using screen readers." }];
 const SECTION_FIELDS = {
-  hero: [{ k: "headline", t: "text", label: "Headline", help: "It automatically grows to fill the width." }, { k: "caption", t: "textarea", label: "Text over the picture" }, { k: "image", t: "image", label: "Picture" }],
-  split: [{ k: "headline", t: "text", label: "Headline" }, { k: "columns", t: "strings", label: "Text columns", item: "Column" }, { k: "image", t: "image", label: "Picture" },
+  hero: [{ k: "headline", t: "text", label: "Headline", help: "It automatically grows to fill the width. Leave empty for just the picture." }, { k: "caption", t: "textarea", label: "Text over the picture" }, { k: "image", t: "image", label: "Picture" }],
+  split: [{ k: "headline", t: "text", label: "Headline" }, { k: "subheadline", t: "text", label: "Line under the headline (optional)" }, { k: "columns", t: "strings", label: "Text columns", item: "Column" }, { k: "image", t: "image", label: "Picture" },
     { k: "imageSide", t: "select", label: "Picture side", opts: [["left", "Left"], ["right", "Right"]] }, BUTTONS],
   featured: [{ k: "headline", t: "text", label: "Headline" }, { k: "intro", t: "textarea", label: "Intro" },
     { k: "items", t: "list", label: "Cards", item: "Card", title: x => x.title, fields: [{ k: "project", t: "project", label: "Opens project" }, { k: "tag", t: "text", label: "Tag" }, { k: "title", t: "text", label: "Title" }, { k: "desc", t: "text", label: "Description" }, { k: "image", t: "image", label: "Picture", help: "Leave empty to use the project’s first picture." }],

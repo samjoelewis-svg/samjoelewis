@@ -47,7 +47,7 @@ const thumbOf = p => p.thumb || (p.images && p.images[0] && p.images[0].src) || 
 const S = {};
 S.hero = (s, i) => `
   <div class="wrap">
-    <h1 class="display hero-title"><span class="fit" data-path="sections.${i}.headline">${esc(s.headline)}</span></h1>
+    ${s.headline || O.edit ? `<h1 class="display hero-title"><span class="fit" data-path="sections.${i}.headline">${esc(s.headline)}</span></h1>` : ""}
     <figure class="hero-media rv">${IMG(`sections.${i}.image`, s.image, "", ' fetchpriority="high"')}
       ${s.caption || O.edit ? T("p", `sections.${i}.caption`, s.caption, "hero-caption") : ""}</figure>
   </div>`;
@@ -56,12 +56,14 @@ S.split = (s, i) => `
   <div class="wrap split${s.imageSide === "right" ? " right" : ""}">
     <figure class="split-media rv">${IMG(`sections.${i}.image`, s.image, "zoom")}</figure>
     <div class="rv">
-      ${T("h2", `sections.${i}.headline`, s.headline, "display h2")}
+      ${T(i === firstIdx() ? "h1" : "h2", `sections.${i}.headline`, s.headline, "display h2")}
+      ${s.subheadline || O.edit && s.subheadline !== undefined ? T("p", `sections.${i}.subheadline`, s.subheadline, "display h3 split-sub") : ""}
       <div class="cols lede">${(s.columns || []).map((c, k) => T("p", `sections.${i}.columns.${k}`, c)).join("")}</div>
       ${buttons(s.buttons, `sections.${i}.buttons`)}
     </div>
   </div>`;
 
+const firstIdx = () => { const v = C.sections.findIndex(x => O.edit || !x.hidden); return v; };
 function buttons(list, path) {
   if (!list || !list.length) return "";
   return `<div class="btns">${list.map((b, k) => `<a class="btn${k ? " ghost" : ""}" href="${esc(safeUrl(b.link))}"${ext(b.link)} data-path="${path}.${k}.label">${esc(b.label)}</a>`).join("")}</div>`;
