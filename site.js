@@ -52,6 +52,17 @@ S.hero = (s, i) => `
       ${s.caption || O.edit ? T("p", `sections.${i}.caption`, s.caption, "hero-caption") : ""}</figure>
   </div>`;
 
+S.feature = (s, i) => `
+  <div class="wrap feature${s.imageSide === "right" ? " right" : ""}">
+    <figure class="feature-media rv">${IMG(`sections.${i}.image`, s.image, "zoom", ' fetchpriority="high"')}</figure>
+    <div class="feature-copy rv">
+      ${s.kicker || O.edit ? T("p", `sections.${i}.kicker`, s.kicker, "kicker") : ""}
+      ${T("h2", `sections.${i}.line`, s.line, "display feature-line")}
+      ${P(`sections.${i}.paragraphs`, s.paragraphs, "prose feature-text")}
+      ${buttons(s.buttons, `sections.${i}.buttons`)}
+    </div>
+  </div>`;
+
 S.split = (s, i) => `
   <div class="wrap split${s.imageSide === "right" ? " right" : ""}">
     <figure class="split-media rv">${IMG(`sections.${i}.image`, s.image, "zoom")}</figure>

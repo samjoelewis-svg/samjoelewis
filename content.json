@@ -62,17 +62,28 @@
     },
     {
       "id": "hbo-max",
-      "type": "hero",
+      "type": "feature",
       "navLabel": "",
       "bg": "mint",
-      "headline": "",
+      "imageSide": "left",
       "image": {
         "src": "img/kings-cross-hero.jpg",
-        "caption": "“The best new platform since 9¾.” HBO Max UK launch, King's Cross",
+        "caption": "HBO Max UK launch: King's Cross tunnel takeover",
         "w": 1152,
         "h": 630
       },
-      "caption": "I write master copy for HBO Max across EMEA, from ideating campaigns and email to landing pages and sign-up journeys. I own HBO Max’s tone-of-voice guides and manage two junior writers. Before Skydance, I worked in entertainment and edtech."
+      "kicker": "HBO Max UK launch · King's Cross",
+      "line": "“The best new platform since 9¾.”",
+      "paragraphs": [
+        "I write master copy for HBO Max across EMEA, from ideating campaigns and email to landing pages and sign-up journeys.",
+        "I own HBO Max’s tone-of-voice guides and manage two junior writers. Before Skydance, I worked in entertainment and edtech."
+      ],
+      "buttons": [
+        {
+          "label": "See the launch campaign",
+          "link": "#work/hbo-max-uk-launch-campaign"
+        }
+      ]
     },
     {
       "id": "clients",

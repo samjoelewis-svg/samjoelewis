@@ -350,3 +350,16 @@ body.locked { overflow: hidden; }
 .blk img { height: auto; }
 .split-sub { margin: -.15em 0 .8em; font-weight: 600; font-style: italic; font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 72; }
 .t-hero .hero-media:first-child { margin-top: clamp(16px, 2vw, 32px); }
+
+/* ---------- showcase (one piece of work, uncropped, with its line) ---------- */
+.feature { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(28px, 4.5vw, 80px); align-items: center; }
+.feature.right .feature-media { order: 2; }
+.feature-media { margin: 0; }
+.feature-media img { width: 100%; height: auto; border-radius: 6px; box-shadow: 0 30px 60px -30px rgba(40,20,22,.55); transform: rotate(-1deg); transition: transform .5s cubic-bezier(.3,1.5,.5,1); }
+.feature-media img:hover { transform: rotate(0) scale(1.01); }
+.feature.right .feature-media img { transform: rotate(1deg); }
+.feature-line { font-size: clamp(34px, 3.6vw, 64px); line-height: 1; margin: 0 0 .5em; }
+.feature-text { font-size: clamp(17px, 1.2vw, 20px); }
+.feature-text p { margin: 0 0 .8em; }
+.feature .btns { margin-top: 1.4em; }
+@media (max-width: 820px) { .feature { grid-template-columns: 1fr; } .feature.right .feature-media { order: 0; } .feature-media img { transform: none; } }
