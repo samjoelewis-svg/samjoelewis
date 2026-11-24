@@ -128,7 +128,7 @@ S.tabs = (s, i) => {
 
 S.ticker = (s, i) => {
   const items = (s.items || []).map(x => typeof x === "string" ? { name: x } : x).filter(x => x && (x.name || srcOf(x.logo)));
-  const run = items.map(x => (srcOf(x.logo) ? `<img src="${esc(R(x.logo))}" alt="" loading="lazy" decoding="async">` : `<span>${esc(x.name)}</span>`) + `<i aria-hidden="true">✦</i>`).join("");
+  const run = items.map(x => `<b class="tk">${srcOf(x.logo) ? `<img src="${esc(R(x.logo))}" alt="" loading="lazy" decoding="async">` : `<span>${esc(x.name)}</span>`}<i aria-hidden="true">✦</i></b>`).join("");
   return `${s.label || O.edit ? T("p", `sections.${i}.label`, s.label, "kicker ticker-label wrap") : ""}
     <div class="ticker${s.mono ? " mono" : ""}" style="--dur:${Math.max(10, Number(s.duration) || 40)}s"><p class="sr-only">${esc(items.map(x => x.name).join(", "))}</p>
       <div class="ticker-track" aria-hidden="true"><div class="ticker-run">${run}</div><div class="ticker-run">${run}</div></div></div>`;
