@@ -76,19 +76,19 @@ S.featured = (s, i) => `
     <div class="feat">${(s.items || []).map((it, k) => {
       const p = projById(it.project); if (!p && !O.edit) return "";
       const base = `sections.${i}.items.${k}`;
-      return `<a class="card rv" href="#work/${esc(it.project)}" data-project="${esc(it.project)}">
+      return `<a class="card rv" href="#work/${esc(it.project)}" data-project="${esc(it.project)}" data-list="sections.${i}.items" data-idx="${k}">
         <span class="card-media">${it.tag ? T("span", `${base}.tag`, it.tag, "tag") : ""}${IMG(`${base}.image`, it.image || thumbOf(p || {}), "", ' loading="lazy"')}</span>
         ${T("span", `${base}.title`, it.title || (p && p.cardTitle), "card-title")}
         <span class="card-meta"><span data-path="${base}.desc">${esc(it.desc)}</span> <span class="arrow" aria-hidden="true">→</span></span></a>`;
     }).join("")}</div>
   </div>`;
 
-function card(id) {
+function card(id, list, k) {
   const p = projById(id); if (!p) return "";
   const n = projIdx(id), q = p.quote || p.cardQuote;
   const tp = p.thumb ? "thumb" : p.images && p.images[0] ? "images.0" : p.video && p.video.poster ? "video.poster" : "";
   const media = tp ? IMG(`projects.${n}.${tp}`, getPath(p, tp), "", ' loading="lazy"') : `<span class="card-quote">${esc(q || p.title)}</span>`;
-  return `<a class="card rv" href="#work/${esc(p.id)}" data-project="${esc(p.id)}">
+  return `<a class="card rv" href="#work/${esc(p.id)}" data-project="${esc(p.id)}"${list ? ` data-list="${list}" data-idx="${k}"` : ""}>
     <span class="card-media">${p.tag ? `<span class="tag">${esc(p.tag)}</span>` : ""}${media}</span>
     <span class="card-title">${esc(p.cardTitle || p.title)} <span class="arrow" aria-hidden="true">→</span></span>
     <span class="card-meta">${esc(p.meta)}</span>
@@ -98,7 +98,7 @@ const getPath = (o, path) => path.split(".").reduce((a, k) => a == null ? a : a[
 
 S.projects = (s, i) => `
   <div class="wrap">${shead(s, i)}
-    <div class="grid">${(s.projects || []).map(card).join("")}</div>
+    <div class="grid">${(s.projects || []).map((id, k) => card(id, `sections.${i}.projects`, k)).join("")}</div>
   </div>`;
 
 S.tabs = (s, i) => {
@@ -108,7 +108,7 @@ S.tabs = (s, i) => {
     <div class="tabbar rv" role="tablist" aria-label="${esc(s.headline)}">${gs.map((g, k) => `<button role="tab" id="tab-${esc(s.id)}-${k}" aria-controls="panel-${esc(s.id)}-${k}" aria-selected="${k === 0}" tabindex="${k === 0 ? 0 : -1}" data-tab-btn="${k}"><span data-path="sections.${i}.groups.${k}.name">${esc(g.name)}</span> <sup>${(g.projects || []).filter(projById).length}</sup></button>`).join("")}</div>
     ${gs.map((g, k) => `<div class="tabpanel" role="tabpanel" id="panel-${esc(s.id)}-${k}" aria-labelledby="tab-${esc(s.id)}-${k}" data-group="${esc(g.id || "")}"${k ? " hidden" : ""}>
       ${g.intro || O.edit ? T("p", `sections.${i}.groups.${k}.intro`, g.intro, "lede tab-intro") : ""}
-      <div class="grid">${(g.projects || []).map(card).join("")}</div></div>`).join("")}
+      <div class="grid">${(g.projects || []).map((id, j) => card(id, `sections.${i}.groups.${k}.projects`, j)).join("")}</div></div>`).join("")}
   </div>`;
 };
 

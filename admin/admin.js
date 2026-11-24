@@ -364,6 +364,7 @@ function parseParas(el) {
 function bindFrame(d) {
   if (d.__ed) return; d.__ed = true;
   bindResize(d);
+  bindCardDrag(d);
   d.addEventListener("focusin", e => { const el = e.target.closest("[data-path],[data-paras]"); if (el) el.__snap = false; });
   d.addEventListener("input", e => {
     const el = e.target.closest("[data-path],[data-paras]"); if (!el) return;
@@ -398,6 +399,7 @@ function bindFrame(d) {
   });
   d.addEventListener("click", e => {
     const t = e.target;
+    if (d.__suppressClick) { e.preventDefault(); e.stopPropagation(); return; }
     const a = t.closest("a"); if (a) e.preventDefault();
     const sec = t.closest("main > section"), i = sec ? +sec.dataset.section : null;
     const act = t.closest(".ed-bar button");
@@ -459,6 +461,56 @@ function bindResize(d) {
   };
   h.addEventListener("pointerup", end); h.addEventListener("pointercancel", end);
   h.addEventListener("dblclick", () => { if (!target) return; const o = getAt(target.dataset.img); if (o && o.size) { snap(); delete o.size; changed(); toast("Picture back to its normal size."); } });
+}
+/* drag project cards to reorder them */
+function bindCardDrag(d) {
+  let st = null, ghost = null, scrollT = 0;
+  const W2 = d.defaultView;
+  const clear = () => $$(".ed-drop-l, .ed-drop-r", d).forEach(x => x.classList.remove("ed-drop-l", "ed-drop-r"));
+  d.addEventListener("dragstart", e => { if (e.target.closest && e.target.closest("[data-list]")) e.preventDefault(); });
+  d.addEventListener("pointerdown", e => {
+    const card = e.target.closest && e.target.closest("[data-list][data-idx]");
+    if (!card || e.button !== 0 || previewing || e.target.closest("[data-path], [data-paras], .ed-resize, .ed-bar, .ed-bbar")) return;
+    st = { card, x: e.clientX, y: e.clientY, list: card.dataset.list, from: +card.dataset.idx, moved: false, to: null };
+  });
+  d.addEventListener("pointermove", e => {
+    if (!st) return;
+    if (!st.moved) {
+      if (Math.hypot(e.clientX - st.x, e.clientY - st.y) < 8) return;
+      st.moved = true; d.body.classList.add("ed-dragging"); st.card.classList.add("ed-dragsrc");
+      const r = st.card.getBoundingClientRect();
+      ghost = st.card.cloneNode(true); ghost.className = "card ed-ghost"; ghost.style.width = Math.min(r.width, 320) + "px";
+      d.body.appendChild(ghost);
+    }
+    e.preventDefault();
+    ghost.style.left = (e.clientX + 14) + "px"; ghost.style.top = (e.clientY + 14) + "px";
+    ghost.style.display = "none"; const under = d.elementFromPoint(e.clientX, e.clientY); ghost.style.display = "";
+    const tgt = under && under.closest(`[data-list="${st.list}"][data-idx]`);
+    clear(); st.to = null;
+    if (tgt) {
+      const r = tgt.getBoundingClientRect(), after = e.clientX > r.left + r.width / 2;
+      tgt.classList.add(after ? "ed-drop-r" : "ed-drop-l"); st.to = +tgt.dataset.idx + (after ? 1 : 0);
+    }
+    clearInterval(scrollT);
+    const edge = 140, h = W2.innerHeight;
+    const sp = dist => Math.round(8 + Math.min(1, dist / edge) * 42);
+    if (e.clientY < edge) { const v = sp(edge - e.clientY); scrollT = setInterval(() => W2.scrollBy(0, -v), 16); }
+    else if (e.clientY > h - edge) { const v = sp(e.clientY - (h - edge)); scrollT = setInterval(() => W2.scrollBy(0, v), 16); }
+  });
+  const end = () => {
+    clearInterval(scrollT);
+    if (!st) return; const s2 = st; st = null;
+    if (ghost) { ghost.remove(); ghost = null; }
+    clear(); d.body.classList.remove("ed-dragging"); s2.card.classList.remove("ed-dragsrc");
+    if (!s2.moved) return;
+    d.__suppressClick = true; setTimeout(() => { d.__suppressClick = false; }, 60);
+    if (s2.to == null) return;
+    let to = s2.to; if (s2.from < to) to--;
+    if (to === s2.from) return;
+    snap(); const l = getAt(s2.list); const [x] = l.splice(s2.from, 1); l.splice(to, 0, x);
+    changed({ side: true });
+  };
+  d.addEventListener("pointerup", end); d.addEventListener("pointercancel", end);
 }
 function keys(e) {
   const mod = e.metaKey || e.ctrlKey;

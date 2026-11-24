@@ -29,7 +29,16 @@ main > section.ed-hover > .ed-add { opacity: 1; pointer-events: auto; }
 .ed-img button { background: #fff; color: #2a1a1b; border: 0; border-radius: 999px; padding: 8px 14px; font: 600 13px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif; cursor: pointer; box-shadow: 0 8px 24px -8px rgba(0,0,0,.5); }
 .ed-img button:hover { background: #f1ede9; }
 .card { cursor: pointer; }
-.card-media::after { content: "Edit project"; position: absolute; right: 12px; bottom: 12px; background: #fff; color: #2a1a1b; font: 600 12px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; padding: 7px 11px; border-radius: 999px; opacity: 0; transition: opacity .15s; box-shadow: 0 6px 18px -6px rgba(0,0,0,.5); }
+.card[data-list] .card-media { cursor: grab; }
+.card[data-list] .card-media::before { content: "⠿ Drag to move"; position: absolute; left: 12px; bottom: 12px; z-index: 2; background: #2a1a1b; color: #fff; font: 600 12px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; padding: 7px 11px; border-radius: 999px; opacity: 0; transition: opacity .15s; pointer-events: none; }
+.card[data-list]:hover .card-media::before { opacity: 1; }
+.ed-dragging, .ed-dragging * { cursor: grabbing !important; user-select: none !important; }
+.ed-dragsrc { opacity: .35; }
+.ed-ghost { position: fixed; z-index: 95; pointer-events: none; transform: rotate(-3deg); box-shadow: 0 24px 50px -16px rgba(0,0,0,.55); background: var(--cream); padding: 8px; border-radius: 10px; opacity: .95; }
+.ed-ghost .card-media::before, .ed-ghost .card-media::after { display: none; }
+.ed-drop-l { box-shadow: -10px 0 0 -4px #2f6bff; border-radius: 6px; }
+.ed-drop-r { box-shadow: 10px 0 0 -4px #2f6bff; border-radius: 6px; }
+.card-media::after { content: "Click to edit"; position: absolute; right: 12px; bottom: 12px; background: #fff; color: #2a1a1b; font: 600 12px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; padding: 7px 11px; border-radius: 999px; opacity: 0; transition: opacity .15s; box-shadow: 0 6px 18px -6px rgba(0,0,0,.5); }
 .card:hover .card-media::after { opacity: 1; }
 .rv { opacity: 1 !important; transform: none !important; }
 
