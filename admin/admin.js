@@ -622,6 +622,25 @@ function openAddSection(at) {
 
 /* ---------- images + video ---------- */
 function pickFile(input) { return new Promise(res => { input.value = ""; input.onchange = () => res(input.files[0] || null); input.click(); }); }
+/* cut away plain white, grey or black borders (frames, shadows, letterbox bars) */
+function trimBorders(cv) {
+  const ctx = cv.getContext("2d"), w = cv.width, h = cv.height;
+  if (w < 40 || h < 40) return;
+  const d = ctx.getImageData(0, 0, w, h).data;
+  const lum = (x, y) => { const i = (y * w + x) * 4; return d[i] * .299 + d[i + 1] * .587 + d[i + 2] * .114; };
+  const plain = vals => { let m = 0; for (const v of vals) m += v; m /= vals.length; let sd = 0; for (const v of vals) sd += (v - m) ** 2; sd = Math.sqrt(sd / vals.length); return (sd < 14 && (m > 225 || m < 28)) || (sd < 8 && m > 140); };
+  const row = (y, x0, x1) => { const v = []; for (let x = x0; x < x1; x += 2) v.push(lum(x, y)); return v; };
+  const col = (x, y0, y1) => { const v = []; for (let y = y0; y < y1; y += 2) v.push(lum(x, y)); return v; };
+  let t = 0, b = h, l = 0, r = w;
+  while (t < h * .25 && plain(row(t, 0, w))) t++;
+  while (h - b < h * .25 && plain(row(b - 1, 0, w))) b--;
+  while (l < w * .25 && plain(col(l, t, b))) l++;
+  while (w - r < w * .25 && plain(col(r - 1, t, b))) r--;
+  if (!t && b === h && !l && r === w) return;
+  if (t) t += 2; if (b < h) b -= 2; if (l) l += 2; if (r < w) r -= 2;
+  const img = ctx.getImageData(l, t, r - l, b - t);
+  cv.width = r - l; cv.height = b - t; ctx.putImageData(img, 0, 0);
+}
 async function processImage(file) {
   const name = slugify(file.name.replace(/\.[a-z0-9]+$/i, "")).slice(0, 40) + "-" + Math.random().toString(36).slice(2, 6);
   if (/gif|svg/.test(file.type)) {
@@ -634,11 +653,12 @@ async function processImage(file) {
   const w = Math.round(bmp.width * k), h = Math.round(bmp.height * k);
   const cv = document.createElement("canvas"); cv.width = w; cv.height = h;
   cv.getContext("2d").drawImage(bmp, 0, 0, w, h);
+  trimBorders(cv);
   let blob = await new Promise(r => cv.toBlob(r, "image/webp", 0.86)), ext = "webp";
   if (!blob || blob.type !== "image/webp") { blob = await new Promise(r => cv.toBlob(r, "image/jpeg", 0.88)); ext = "jpg"; }
   const path = `img/uploads/${name}.${ext}`;
   pending.set(path, { blob, url: URL.createObjectURL(blob) }); idb.put(path, blob);
-  return { src: path, w, h };
+  return { src: path, w: cv.width, h: cv.height };
 }
 async function pickImage(path, { add = false } = {}) {
   const f = await pickFile($("#filePick")); if (!f) return;

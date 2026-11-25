@@ -41,7 +41,7 @@
       "image": {
         "src": "img/sam.jpg",
         "caption": "Sam Lewis",
-        "w": 600,
+        "w": 527,
         "h": 600
       },
       "headline": "Hi, I'm Sam",
@@ -213,8 +213,8 @@
           "image": {
             "src": "img/kings-cross.jpg",
             "caption": "",
-            "w": 1200,
-            "h": 678
+            "w": 1162,
+            "h": 661
           }
         },
         {
@@ -225,8 +225,8 @@
           "image": {
             "src": "img/world-goes-pop.jpg",
             "caption": "",
-            "w": 1200,
-            "h": 912
+            "w": 1147,
+            "h": 645
           }
         },
         {
@@ -251,8 +251,8 @@
           "image": {
             "src": "img/quick-witted.jpg",
             "caption": "",
-            "w": 1200,
-            "h": 748
+            "w": 1179,
+            "h": 726
           }
         },
         {
@@ -494,8 +494,8 @@
         {
           "src": "img/kings-cross.jpg",
           "caption": "King's Cross tunnel, London",
-          "w": 1200,
-          "h": 678
+          "w": 1162,
+          "h": 661
         }
       ],
       "id": "hbo-max-uk-launch-campaign",
@@ -548,8 +548,8 @@
         {
           "src": "img/royal-roy.jpg",
           "caption": "Instagram, @hbomaxuk × @hollyandbrookearehooked",
-          "w": 549,
-          "h": 747
+          "w": 516,
+          "h": 718
         }
       ],
       "id": "succession-influencer-campaign-for-hbo-max",
@@ -571,8 +571,8 @@
         {
           "src": "img/tough-cases.jpg",
           "caption": "Display ad, before market pricing was added",
-          "w": 689,
-          "h": 690
+          "w": 669,
+          "h": 670
         }
       ],
       "id": "hbo-max-display-and-paid-social-ads",
@@ -595,14 +595,14 @@
         {
           "src": "img/humans.jpg",
           "caption": "Humans",
-          "w": 1200,
-          "h": 684
+          "w": 1180,
+          "h": 664
         },
         {
           "src": "img/halt-catch-fire.jpg",
           "caption": "Halt and Catch Fire",
-          "w": 1200,
-          "h": 851
+          "w": 1179,
+          "h": 831
         }
       ],
       "id": "humans-and-halt-and-catch-fire-taglines",
@@ -660,7 +660,7 @@
           "src": "img/pogany-indulo.jpg",
           "caption": "Pogány Induló: Vajon mit mondana anya, HBO Max",
           "w": 1400,
-          "h": 785
+          "h": 583
         }
       ],
       "link": {
@@ -711,8 +711,8 @@
         {
           "src": "img/mock-the-week.jpg",
           "caption": "Print ad for TLC",
-          "w": 1200,
-          "h": 784
+          "w": 1158,
+          "h": 742
         }
       ],
       "id": "mock-the-week-print-ad-for-tlc",
@@ -734,8 +734,8 @@
         {
           "src": "img/swallows-amazons.jpg",
           "caption": "Swallows and Amazons",
-          "w": 816,
-          "h": 1199
+          "w": 795,
+          "h": 1178
         }
       ],
       "id": "swallows-and-amazons-tagline",
@@ -760,7 +760,7 @@
           "src": "img/hbo-max-halloween.jpg",
           "caption": "Display creative: “Fear hits home”",
           "w": 600,
-          "h": 500
+          "h": 465
         }
       ],
       "video": {
@@ -842,8 +842,8 @@
         {
           "src": "img/noodoll-ricespud-product-copy.webp",
           "caption": "Noodoll Ricespud product page showing the plush and the product copy I wrote",
-          "w": 1650,
-          "h": 817
+          "w": 1406,
+          "h": 782
         }
       ],
       "id": "noodoll-ricespud-product-messaging",
@@ -866,8 +866,8 @@
         {
           "src": "img/hbo-max-welcome-email.jpg",
           "caption": "HBO Max UK welcome email",
-          "w": 860,
-          "h": 918
+          "w": 813,
+          "h": 882
         }
       ],
       "id": "hbo-max-lifecycle-email",
@@ -890,14 +890,14 @@
         {
           "src": "img/futurelearn-course-seo.webp",
           "caption": "FutureLearn course page: Power Dressing in the Zoom Era, showing search-informed course-title copy",
-          "w": 913,
-          "h": 911
+          "w": 796,
+          "h": 752
         },
         {
           "src": "img/futurelearn-editorial-rome.webp",
           "caption": "FutureLearn long-form editorial article: Explore a virtual map of Ancient Rome",
-          "w": 857,
-          "h": 874
+          "w": 818,
+          "h": 823
         }
       ],
       "id": "futurelearn-course-seo-and-editorial",
@@ -946,7 +946,7 @@
           "src": "img/hbo-max-landing-case.webp",
           "caption": "HBO Max UK landing page",
           "w": 1904,
-          "h": 890,
+          "h": 836,
           "heading": "HBO Max",
           "link": {
             "url": "https://www.hbomax.com/gb/en",
@@ -956,7 +956,7 @@
         {
           "src": "img/tnt-sports-landing-case.webp",
           "caption": "TNT Sports UK landing page",
-          "w": 1904,
+          "w": 1887,
           "h": 864,
           "heading": "TNT Sports",
           "link": {
@@ -994,8 +994,8 @@
         {
           "src": "img/paris-2024.jpg",
           "caption": "Paris 2024 CRM",
-          "w": 596,
-          "h": 726,
+          "w": 574,
+          "h": 702,
           "size": 62
         }
       ],
@@ -1061,8 +1061,8 @@
         {
           "src": "img/world-goes-pop.jpg",
           "caption": "The World Goes Pop, Tate Modern",
-          "w": 1200,
-          "h": 912
+          "w": 1147,
+          "h": 645
         }
       ],
       "link": {
@@ -1089,8 +1089,8 @@
         {
           "src": "img/national-theatre.jpg",
           "caption": "Home, I'm Darling trailer, National Theatre",
-          "w": 1200,
-          "h": 913
+          "w": 945,
+          "h": 637
         }
       ],
       "link": {
@@ -1174,8 +1174,8 @@
         {
           "src": "img/westminster-abbey.jpg",
           "caption": "Westminster Abbey outdoor campaign",
-          "w": 772,
-          "h": 1194
+          "w": 760,
+          "h": 1183
         },
         {
           "src": "img/westminster-abbey-bond-street.webp",
@@ -1203,14 +1203,14 @@
         {
           "src": "img/new-world-needs.jpg",
           "caption": "The New World Needs…",
-          "w": 935,
-          "h": 935
+          "w": 913,
+          "h": 913
         },
         {
           "src": "img/new-world-building.jpg",
           "caption": "Sector-specific paid social",
           "w": 424,
-          "h": 710
+          "h": 696
         }
       ],
       "id": "city-and-guilds-and-futurelearn-skills-campaign",
@@ -1232,8 +1232,8 @@
         {
           "src": "img/results-day.jpg",
           "caption": "Results Day OOH",
-          "w": 1106,
-          "h": 1106
+          "w": 1048,
+          "h": 1048
         }
       ],
       "id": "futurelearn-results-day-outdoor-campaign",
@@ -1273,8 +1273,8 @@
         {
           "src": "img/quick-witted.jpg",
           "caption": "HBO Max tone-of-voice guide",
-          "w": 1200,
-          "h": 748
+          "w": 1179,
+          "h": 726
         }
       ],
       "video": {
@@ -1340,13 +1340,13 @@
         {
           "src": "img/skinny-slow-west.jpg",
           "caption": "The Skinny: Slow West",
-          "w": 1200,
+          "w": 1171,
           "h": 693
         },
         {
           "src": "img/skinny-julia-holter.jpg",
           "caption": "The Skinny: Julia Holter",
-          "w": 1200,
+          "w": 1174,
           "h": 693
         }
       ],
