@@ -456,6 +456,17 @@ function galRows(rest) {
   for (let r = 0; r < n; r++) { const k = Math.ceil((rest.length - i) / (n - r)); rows.push(rest.slice(i, i + k)); i += k; }
   return rows;
 }
+// Case-study layout: each picture with a heading becomes a numbered chapter in its own coloured band.
+function storyHTML(special, rest, B, fig) {
+  const bgs = ["sky", "lilac", "mint"];
+  return special.map(([im, k], i) => `<section class="chap bg-${bgs[i % 3]}"><div class="wrap chap-in">
+      <div class="chap-txt"><span class="chap-n" aria-hidden="true">${String(i + 1).padStart(2, "0")}</span>
+        ${T("h3", `${B}.images.${k}.heading`, im.heading || "", "display chap-h")}
+        ${im.text ? T("p", `${B}.images.${k}.text`, im.text, "chap-p") : ""}
+        ${im.link && im.link.url ? `<a class="textlink" href="${esc(safeUrl(im.link.url))}"${ext(im.link.url)}>${esc(im.link.label || "View")} →</a>` : ""}</div>
+      <figure class="chap-fig">${IMG(`${B}.images.${k}`, im, "zoom", ' loading="lazy"', true)}${im.caption || O.edit ? T("figcaption", `${B}.images.${k}.caption`, im.caption || "") : ""}</figure>
+    </div></section>`).join("") + (rest.length ? `<div class="wrap proj-gal" style="padding-top:clamp(48px,6vw,96px)">${galRows(rest).map(r => `<div class="row">${r.map(x => fig(x)).join("")}</div>`).join("")}</div>` : "");
+}
 function projectHTML(p) {
   const n = projIdx(p.id), B = `projects.${n}`;
   const imgs = p.images || [];
@@ -494,8 +505,9 @@ function projectHTML(p) {
         <div>${P(`${B}.body`, p.body)}${links.length ? `<div class="proj-links">${links.join("")}</div>` : ""}</div>
         ${side ? `<div class="proj-side">${side}</div>` : ""}
       </div>
-      ${st}
-      ${rest.length || special.length ? `<div class="wrap proj-gal">
+      ${p.story ? "" : st}
+      ${p.story ? storyHTML(special, rest, B, fig) + (st ? `<div class="chap-result">${st}</div>` : "") : ""}
+      ${!p.story && (rest.length || special.length) ? `<div class="wrap proj-gal">
         ${galRows(rest).map(r => `<div class="row">${r.map(x => fig(x)).join("")}</div>`).join("")}
         ${special.map(([im, k]) => `<section>
           <div class="img-head">${T("h3", `${B}.images.${k}.heading`, im.heading || "", "display h3")}

@@ -516,11 +516,8 @@
       "quote2": "",
       "cardQuote": "The best new platform since 9¾.",
       "body": [
-        "I led copy for the UK launch of HBO Max in 2026, across outdoor, radio, landing pages, email and paid social.",
-        "For outdoor, I pushed for lines that were specifically British, about places and shows people here know. “The best new platform since 9¾” took over the tunnel at King’s Cross and went viral on LinkedIn. “Wall-to-Wall Westeros” sold HBO Max as the only place to watch all three Game of Thrones series together.",
-        "I wrote the radio scripts, including Time Well Spent, a 30-second spot read by a very British voiceover.",
-        "I also wrote the landing pages that tied into the campaign, and the email and paid social copy for acquisition, including the welcome email for new subscribers.",
-        "Across the whole launch, UK subscriptions passed the yearly target within four months."
+        "HBO Max launched in the UK in 2026 and I led the copy, across outdoor, radio, landing pages, email and paid social.",
+        "The first job was making it feel British. I pushed for lines about places and shows people here already know. “The best new platform since 9¾” took over the tunnel at King’s Cross, and the ad went viral on LinkedIn."
       ],
       "images": [
         {
@@ -535,19 +532,25 @@
           "w": 1020,
           "h": 1360,
           "dw": 510,
-          "caption": "Wall-to-Wall Westeros, outdoor"
+          "caption": "Wall-to-Wall Westeros",
+          "heading": "Get out from under Sky",
+          "text": "HBO shows had been on Sky for years, so a lot of people thought of them as Sky shows. We had to give them a new home. “Wall-to-Wall Westeros” put all three Game of Thrones series on one poster, and HBO Max was the only place to watch them together."
         },
         {
           "src": "img/hbo-max-launch-radio-script.jpg",
           "w": 1800,
           "h": 1009,
-          "caption": "Time Well Spent, 30-second radio script"
+          "caption": "Radio script, 30 seconds",
+          "heading": "Find our own voice",
+          "text": "HBO Max’s tone came from the US, so we needed a UK version that still sounded like HBO. Time Well Spent, a 30-second radio spot, is a good example: a very British voiceover, talking about dragons, wizards and fresh trauma like it’s a normal night in."
         },
         {
           "src": "img/hbo-max-launch-landing-page.jpg",
           "w": 1800,
           "h": 920,
-          "caption": "Launch landing page"
+          "caption": "Launch landing page",
+          "heading": "Make it work everywhere",
+          "text": "The same voice had to work on posters, radio, landing pages, email and paid social, and each one has a different job. I worked closely with our designers and the US team throughout. The landing pages picked up the Wall-to-Wall line from the posters, so the campaign followed people from the street to the sign-up page."
         }
       ],
       "id": "hbo-max-uk-launch-campaign",
@@ -559,7 +562,21 @@
         }
       ],
       "cardTitle": "HBO Max UK launch",
-      "lead": true
+      "story": true,
+      "stats": {
+        "title": "The result",
+        "items": [
+          {
+            "value": "4 months",
+            "label": "to pass the yearly UK sign-up target"
+          },
+          {
+            "value": "5 channels",
+            "label": "outdoor, radio, landing pages, email and paid social"
+          }
+        ],
+        "note": ""
+      }
     },
     {
       "title": "HBO Max Wall-to-Wall Watercooler Campaign",

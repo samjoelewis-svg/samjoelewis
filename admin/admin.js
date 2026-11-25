@@ -1044,6 +1044,7 @@ const PROJECT_FIELDS = [
   { k: "images", t: "list", label: "Pictures", item: "Picture", title: x => x.heading || x.caption || (x.src || "").split("/").pop(), addImage: true,
     fields: [...IMGITEM, { k: "heading", t: "text", label: "Heading above it (optional)" }, { k: "text", t: "textarea", label: "Text above it (optional)" }, { k: "link.url", t: "link", label: "Link (optional)" }, { k: "link.label", t: "text", label: "Link text" }] },
   { k: "thumb", t: "image", label: "Card picture (optional)", help: "Leave empty to use the first picture." },
+  { k: "story", t: "check", label: "Case study layout", help: "Pictures with a heading become numbered chapters in coloured bands. Results show at the end." },
   { k: "lead", t: "check", label: "Show the first picture beside the text", help: "The other pictures go in tidy rows underneath." },
   { g: "Video" },
   { k: "embed", t: "link", label: "YouTube or Vimeo link", help: "Paste the video’s web address. It plays on the project page, in place of an uploaded video." },
