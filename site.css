@@ -458,6 +458,7 @@ body.locked { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) { .card:hover, .card:nth-child(even):hover { transform: none; } #copied { transition: opacity .2s; } }
 .nf-badge { justify-self: start; display: inline-block; background: var(--sky); border: 2px solid var(--ink); border-radius: 99px; padding: .1em .6em; margin-bottom: .5em;
   font: 700 clamp(44px, 6vw, 90px)/1.1 var(--display); font-variation-settings: "SOFT" 100; transform: rotate(-4deg); box-shadow: 6px 6px 0 var(--lilac); }
-/* cards: lift only, no tilt */
-.card { transition: transform .3s ease; }
-.card:hover, .card:nth-child(even):hover { transform: translateY(-6px); }
+/* cards: the original slight tilt */
+.card { transition: transform .35s cubic-bezier(.3,1.5,.5,1); }
+.card:hover { transform: translateY(-6px) rotate(-.6deg); }
+.card:nth-child(even):hover { transform: translateY(-6px) rotate(.6deg); }
