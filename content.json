@@ -69,8 +69,9 @@
       "image": {
         "src": "img/kings-cross-hero.jpg",
         "caption": "HBO Max UK launch: King's Cross tunnel takeover",
-        "w": 1152,
-        "h": 630
+        "w": 1800,
+        "h": 984,
+        "dw": 1152
       },
       "kicker": "Out of home · King's Cross",
       "line": "“The best new platform since 9¾.”",
@@ -213,8 +214,9 @@
           "image": {
             "src": "img/kings-cross.jpg",
             "caption": "",
-            "w": 1162,
-            "h": 661
+            "w": 1800,
+            "h": 984,
+            "dw": 1152
           }
         },
         {
@@ -225,8 +227,9 @@
           "image": {
             "src": "img/world-goes-pop.jpg",
             "caption": "",
-            "w": 1147,
-            "h": 645
+            "w": 1800,
+            "h": 1012,
+            "dw": 1147
           }
         },
         {
@@ -284,7 +287,10 @@
             "mock-the-week-print-ad-for-tlc",
             "atg-theatres-business-deserves-a-bigger-stage",
             "matilda-the-musical-social-video-and-radio",
-            "futurelearn-results-day-outdoor-campaign"
+            "futurelearn-results-day-outdoor-campaign",
+            "barbie-pre-premiere-campaign",
+            "hbo-max-international-titles-and-taglines",
+            "futurelearn-experttracks"
           ]
         },
         {
@@ -299,7 +305,8 @@
             "whales-beneath-the-surface-trailer-for-the-natural-history-museum",
             "humans-and-halt-and-catch-fire-taglines",
             "swallows-and-amazons-tagline",
-            "hbo-max-trailers-for-cinema-tv-and-radio"
+            "hbo-max-trailers-for-cinema-tv-and-radio",
+            "natural-history-museum-dino-escape"
           ]
         },
         {
@@ -309,7 +316,13 @@
           "projects": [
             "succession-influencer-campaign-for-hbo-max",
             "hbo-max-display-and-paid-social-ads",
-            "matilda-the-musical-social-video-and-radio"
+            "matilda-the-musical-social-video-and-radio",
+            "futurelearn-scholarship",
+            "futurelearn-paid-social",
+            "futurelearn-experttracks",
+            "natural-history-museum-dino-escape",
+            "futurelearn-course-emails-and-social",
+            "futurelearn-microcredentials"
           ]
         },
         {
@@ -318,7 +331,11 @@
           "intro": "CRM from onboarding to win-back.",
           "projects": [
             "tnt-sports-crm-including-paris-2024",
-            "hbo-max-lifecycle-email"
+            "hbo-max-lifecycle-email",
+            "barbie-pre-premiere-campaign",
+            "futurelearn-scholarship",
+            "futurelearn-course-emails-and-social",
+            "nice-fish-website-and-email"
           ]
         },
         {
@@ -330,7 +347,11 @@
             "a-knight-of-the-seven-kingdoms-gamified-journey",
             "milano-cortina-2026-interactive-campaign",
             "futurelearn-google-course-product-copy",
-            "noodoll-ricespud-product-messaging"
+            "noodoll-ricespud-product-messaging",
+            "hbo-max-app-and-ux-copy",
+            "futurelearn-upgrade-journey",
+            "nice-fish-website-and-email",
+            "barbie-pre-premiere-campaign"
           ]
         },
         {
@@ -339,7 +360,8 @@
           "intro": "How brands sound, and the writers who help them sound that way.",
           "projects": [
             "brand-voice",
-            "leadership"
+            "leadership",
+            "futurelearn-microcredentials"
           ]
         },
         {
@@ -494,8 +516,9 @@
         {
           "src": "img/kings-cross.jpg",
           "caption": "King's Cross tunnel, London",
-          "w": 1162,
-          "h": 661
+          "w": 1800,
+          "h": 984,
+          "dw": 1152
         }
       ],
       "id": "hbo-max-uk-launch-campaign",
@@ -525,8 +548,9 @@
         {
           "src": "img/watercooler.jpg",
           "caption": "“Wall-to-Wall Watercooler” poster",
-          "w": 1200,
-          "h": 900
+          "w": 1800,
+          "h": 1350,
+          "dw": 1200
         }
       ],
       "id": "hbo-max-wall-to-wall-watercooler-campaign",
@@ -548,8 +572,9 @@
         {
           "src": "img/royal-roy.jpg",
           "caption": "Instagram, @hbomaxuk × @hollyandbrookearehooked",
-          "w": 516,
-          "h": 718
+          "w": 1032,
+          "h": 1436,
+          "dw": 516
         }
       ],
       "id": "succession-influencer-campaign-for-hbo-max",
@@ -565,14 +590,23 @@
       "quote2": "",
       "cardQuote": "",
       "body": [
-        "I write display and paid-social copy for HBO Max across EMEA, plus international titles and taglines for European productions. Every word has to earn its place."
+        "I write the display ad copy for HBO Max across EMEA. It has to be witty and bold in as little space as possible.",
+        "I also write HBO Max’s paid social copy for Meta, YouTube, TikTok and more. Every word has to earn its place."
       ],
       "images": [
         {
           "src": "img/tough-cases.jpg",
           "caption": "Display ad, before market pricing was added",
-          "w": 669,
-          "h": 670
+          "w": 1338,
+          "h": 1340,
+          "dw": 669
+        },
+        {
+          "src": "img/final-destination-display.jpg",
+          "caption": "Final Destination display ad: ‘5 chilling movies. Not 1 accident.’",
+          "w": 558,
+          "h": 572,
+          "dw": 279
         }
       ],
       "id": "hbo-max-display-and-paid-social-ads",
@@ -595,14 +629,16 @@
         {
           "src": "img/humans.jpg",
           "caption": "Humans",
-          "w": 1180,
-          "h": 664
+          "w": 1800,
+          "h": 1013,
+          "dw": 1180
         },
         {
           "src": "img/halt-catch-fire.jpg",
           "caption": "Halt and Catch Fire",
-          "w": 1179,
-          "h": 831
+          "w": 1800,
+          "h": 1269,
+          "dw": 1179
         }
       ],
       "id": "humans-and-halt-and-catch-fire-taglines",
@@ -624,8 +660,9 @@
         {
           "src": "img/hbo-max-trailer.jpg",
           "caption": "HBO Max trailer",
-          "w": 1400,
-          "h": 783
+          "w": 1800,
+          "h": 1007,
+          "dw": 1400
         }
       ],
       "id": "hbo-max-trailers-for-cinema-tv-and-radio",
@@ -655,21 +692,17 @@
         "For HBO Max's four-part documentary series about him, Pogány Induló: Vajon mit mondana anya (What Would Mum Say?), I came up with the concept for the trailer and wrote the script.",
         "My concept shows him walking alone against the crowd, with his own lyrics projected onto him. He's a lone wolf, weighed down by his words."
       ],
-      "images": [
-        {
-          "src": "img/pogany-indulo.jpg",
-          "caption": "Pogány Induló: Vajon mit mondana anya, HBO Max",
-          "w": 1400,
-          "h": 583
-        }
-      ],
+      "images": [],
       "link": {
         "url": "https://www.youtube.com/watch?v=p6dlv8rp49E",
         "label": "Watch the trailer"
       },
       "id": "pogany-indulo-documentary-trailer-for-hbo-max",
       "page": 207,
-      "cardTitle": "Pogány Induló"
+      "cardTitle": "Pogány Induló",
+      "embed": "https://www.youtube.com/watch?v=NwIcsmX7ipA",
+      "thumb": "img/pogany-indulo.jpg",
+      "embedCaption": "Pogány Induló: Vajon mit mondana anya, HBO Max"
     },
     {
       "title": "Boyhood Trailer",
@@ -684,17 +717,13 @@
         "The film follows one boy, Mason, from the age of six to eighteen, with Patricia Arquette and Ethan Hawke as his parents. That process was what made the film unique, so the script had to explain it quickly, then let the footage do the emotional work as Mason grows up on screen.",
         "The trailer gained 5.5 million views on YouTube, and was also shown on TV in America."
       ],
-      "images": [
-        {
-          "src": "img/boyhood.jpg",
-          "caption": "Boyhood, Universal",
-          "w": 723,
-          "h": 424
-        }
-      ],
+      "images": [],
       "id": "boyhood-trailer",
       "page": 208,
-      "cardTitle": "Boyhood"
+      "cardTitle": "Boyhood",
+      "embed": "https://www.youtube.com/watch?v=Y0oX0xiwOv8",
+      "embedCaption": "Boyhood trailer, Universal",
+      "thumb": "img/boyhood.jpg"
     },
     {
       "title": "Mock the Week Print Ad for TLC",
@@ -711,8 +740,9 @@
         {
           "src": "img/mock-the-week.jpg",
           "caption": "Print ad for TLC",
-          "w": 1158,
-          "h": 742
+          "w": 1800,
+          "h": 1153,
+          "dw": 1158
         }
       ],
       "id": "mock-the-week-print-ad-for-tlc",
@@ -734,8 +764,9 @@
         {
           "src": "img/swallows-amazons.jpg",
           "caption": "Swallows and Amazons",
-          "w": 795,
-          "h": 1178
+          "w": 1590,
+          "h": 2356,
+          "dw": 795
         }
       ],
       "id": "swallows-and-amazons-tagline",
@@ -759,8 +790,9 @@
         {
           "src": "img/hbo-max-halloween.jpg",
           "caption": "Display creative: “Fear hits home”",
-          "w": 600,
-          "h": 465
+          "w": 1200,
+          "h": 930,
+          "dw": 600
         }
       ],
       "video": {
@@ -789,8 +821,9 @@
         {
           "src": "img/knight-journey.jpg",
           "caption": "Result screen for getting every answer wrong",
-          "w": 768,
-          "h": 1280
+          "w": 1536,
+          "h": 2560,
+          "dw": 768
         }
       ],
       "video": {
@@ -818,8 +851,9 @@
         {
           "src": "img/atg-lyceum-b2b.webp",
           "caption": "ATG Theatres corporate venue hire LinkedIn advertising concept featuring the Lyceum Theatre",
-          "w": 1440,
-          "h": 753
+          "w": 1800,
+          "h": 941,
+          "dw": 1440
         }
       ],
       "id": "atg-theatres-business-deserves-a-bigger-stage",
@@ -842,8 +876,8 @@
         {
           "src": "img/noodoll-ricespud-product-copy.webp",
           "caption": "Noodoll Ricespud product page showing the plush and the product copy I wrote",
-          "w": 1406,
-          "h": 782
+          "w": 1650,
+          "h": 817
         }
       ],
       "id": "noodoll-ricespud-product-messaging",
@@ -860,14 +894,31 @@
       "cardQuote": "",
       "body": [
         "I write English master copy for HBO Max lifecycle email across EMEA, from onboarding to retention and win-back. That includes subject lines, content modules and calls to action.",
-        "For this UK launch welcome email, I used The White Lotus to bring the HBO Max voice into the first email a new subscriber saw. ‘Take a deep breath…’ leads into ‘And dive in’, giving the button a reason to sound like part of the email."
+        "My English master copy is translated into 17 languages and reaches more than 10 million people every week, and our open-rate and engagement metrics are the highest of any WBD territory.",
+        "For this UK launch welcome email, I used The White Lotus to bring the HBO Max voice into the first email a new subscriber saw. ‘Take a deep breath…’ leads into ‘And dive in’, giving the button a reason to sound like part of the email.",
+        "I write social-first, use AI to take the strain off the routine work, and work closely with designers and videographers on every email, in-app message and push notification we send."
       ],
       "images": [
         {
           "src": "img/hbo-max-welcome-email.jpg",
           "caption": "HBO Max UK welcome email",
-          "w": 813,
-          "h": 882
+          "w": 1626,
+          "h": 1764,
+          "dw": 813
+        },
+        {
+          "src": "img/hbo-max-so-back-email.jpg",
+          "caption": "‘We Are So Back’ email",
+          "w": 1192,
+          "h": 1906,
+          "dw": 596
+        },
+        {
+          "src": "img/hbo-max-joker-email.jpg",
+          "caption": "Joker: Folie à Deux email",
+          "w": 694,
+          "h": 1258,
+          "dw": 347
         }
       ],
       "id": "hbo-max-lifecycle-email",
@@ -890,14 +941,16 @@
         {
           "src": "img/futurelearn-course-seo.webp",
           "caption": "FutureLearn course page: Power Dressing in the Zoom Era, showing search-informed course-title copy",
-          "w": 796,
-          "h": 752
+          "w": 1800,
+          "h": 1796,
+          "dw": 913
         },
         {
           "src": "img/futurelearn-editorial-rome.webp",
           "caption": "FutureLearn long-form editorial article: Explore a virtual map of Ancient Rome",
-          "w": 818,
-          "h": 823
+          "w": 1636,
+          "h": 1646,
+          "dw": 818
         }
       ],
       "id": "futurelearn-course-seo-and-editorial",
@@ -968,10 +1021,11 @@
         {
           "src": "img/hbo-checkout-flow-overview.webp",
           "caption": "Figma canvas showing several HBO Max mobile checkout flows",
-          "w": 638,
-          "h": 97,
+          "w": 1276,
+          "h": 194,
           "heading": "Checkout flows in Figma",
-          "text": "I used this board to see what happens after someone clicks through. On the TNT Sports page, “Get TNT Sports” and “Get Sports & HBO Max” spell out the two options before customers reach checkout."
+          "text": "I used this board to see what happens after someone clicks through. On the TNT Sports page, “Get TNT Sports” and “Get Sports & HBO Max” spell out the two options before customers reach checkout.",
+          "dw": 638
         }
       ],
       "thumb": "img/hbo-max-landing.webp",
@@ -995,9 +1049,10 @@
         {
           "src": "img/paris-2024.jpg",
           "caption": "Paris 2024 CRM",
-          "w": 574,
-          "h": 702,
-          "size": 62
+          "w": 1148,
+          "h": 1404,
+          "size": 62,
+          "dw": 574
         }
       ],
       "id": "tnt-sports-crm-including-paris-2024",
@@ -1059,21 +1114,14 @@
         "I thought Japanese pop star Kyary Pamyu Pamyu, with her wonderfully surreal aesthetic, would be a perfect fit for the exhibition. I got in touch with her team and, as luck would have it, she was due to play a show in London, so we arranged to film with her while she was here.",
         "The resulting trailer racked up nearly 100,000 views on YouTube and was featured in Time Out."
       ],
-      "images": [
-        {
-          "src": "img/world-goes-pop.jpg",
-          "caption": "The World Goes Pop, Tate Modern",
-          "w": 1147,
-          "h": 645
-        }
-      ],
-      "link": {
-        "url": "https://www.youtube.com/watch?v=F1pbMBGxvS4",
-        "label": "Watch the trailer"
-      },
+      "images": [],
+      "link": null,
       "id": "the-world-goes-pop-trailer-for-tate-modern",
       "page": 501,
-      "cardTitle": "Tate Modern"
+      "cardTitle": "Tate Modern",
+      "embed": "https://youtu.be/F1pbMBGxvS4",
+      "thumb": "img/world-goes-pop.jpg",
+      "embedCaption": "The World Goes Pop, Tate Modern"
     },
     {
       "title": "Home, I’m Darling Trailer for the National Theatre",
@@ -1091,8 +1139,9 @@
         {
           "src": "img/national-theatre.jpg",
           "caption": "Home, I'm Darling trailer, National Theatre",
-          "w": 945,
-          "h": 637
+          "w": 1800,
+          "h": 1213,
+          "dw": 945
         }
       ],
       "link": {
@@ -1115,21 +1164,14 @@
         "For the Natural History Museum's exhibition Whales: Beneath the Surface, I came up with the idea for the trailer, wrote the script and helped with the edit.",
         "I wanted to tap into the sense of mystery whales evoke, and found Heathcote Williams’ poem Whale Nation. The trailer is built around an extract from it."
       ],
-      "images": [
-        {
-          "src": "img/whales.jpg",
-          "caption": "Whales: Beneath the Surface, Natural History Museum",
-          "w": 1400,
-          "h": 785
-        }
-      ],
-      "link": {
-        "url": "https://www.youtube.com/watch?v=z_ZonqO_Hn4",
-        "label": "Watch the trailer"
-      },
+      "images": [],
+      "link": null,
       "id": "whales-beneath-the-surface-trailer-for-the-natural-history-museum",
       "page": 503,
-      "cardTitle": "Whales"
+      "cardTitle": "Whales",
+      "embed": "https://www.youtube.com/watch?v=z_ZonqO_Hn4",
+      "thumb": "img/whales.jpg",
+      "embedCaption": "Whales: Beneath the Surface, Natural History Museum"
     },
     {
       "title": "Matilda the Musical Social, Video & Radio",
@@ -1144,21 +1186,17 @@
         "Meet the Matildas introduced the young actors taking on the title role, showing audiences the new cast before they stepped on stage.",
         "I also scripted and edited Matilda’s radio trailers."
       ],
-      "images": [
-        {
-          "src": "img/matilda.jpg",
-          "caption": "Meet the Matildas, Matilda The Musical",
-          "w": 1200,
-          "h": 674
-        }
-      ],
+      "images": [],
       "link": {
         "url": "https://www.youtube.com/watch?v=w1WAWnm4zLw&list=PLybPI7Yeye3jCdkvCjsYKNvWqBjZdYBzS",
         "label": "Watch the videos"
       },
       "id": "matilda-the-musical-social-video-and-radio",
       "page": 504,
-      "cardTitle": "Matilda the Musical"
+      "cardTitle": "Matilda the Musical",
+      "embed": "https://www.youtube.com/watch?v=zW9_mmJbgdc",
+      "thumb": "img/matilda.jpg",
+      "embedCaption": "Meet the Matildas, Matilda The Musical"
     },
     {
       "title": "Westminster Abbey: Feel Wonder First Hand",
@@ -1176,14 +1214,16 @@
         {
           "src": "img/westminster-abbey.jpg",
           "caption": "Westminster Abbey outdoor campaign",
-          "w": 760,
-          "h": 1183
+          "w": 1520,
+          "h": 2366,
+          "dw": 760
         },
         {
           "src": "img/westminster-abbey-bond-street.webp",
           "caption": "The campaign at Bond Street station",
-          "w": 1100,
-          "h": 1467
+          "w": 1800,
+          "h": 2401,
+          "dw": 1100
         }
       ],
       "id": "westminster-abbey-feel-wonder-first-hand",
@@ -1205,14 +1245,16 @@
         {
           "src": "img/new-world-needs.jpg",
           "caption": "The New World Needs…",
-          "w": 913,
-          "h": 913
+          "w": 1800,
+          "h": 1800,
+          "dw": 913
         },
         {
           "src": "img/new-world-building.jpg",
           "caption": "Sector-specific paid social",
-          "w": 424,
-          "h": 696
+          "w": 848,
+          "h": 1392,
+          "dw": 424
         }
       ],
       "id": "city-and-guilds-and-futurelearn-skills-campaign",
@@ -1236,8 +1278,9 @@
         {
           "src": "img/results-day.jpg",
           "caption": "Results Day OOH",
-          "w": 1048,
-          "h": 1048
+          "w": 1800,
+          "h": 1800,
+          "dw": 1048
         }
       ],
       "id": "futurelearn-results-day-outdoor-campaign",
@@ -1277,8 +1320,9 @@
         {
           "src": "img/quick-witted.jpg",
           "caption": "HBO Max tone-of-voice guide",
-          "w": 1179,
-          "h": 726
+          "w": 1800,
+          "h": 1108,
+          "dw": 1179
         }
       ],
       "video": {
@@ -1344,18 +1388,316 @@
         {
           "src": "img/skinny-slow-west.jpg",
           "caption": "The Skinny: Slow West",
-          "w": 1171,
-          "h": 693
+          "w": 1800,
+          "h": 1065,
+          "dw": 1171
         },
         {
           "src": "img/skinny-julia-holter.jpg",
           "caption": "The Skinny: Julia Holter",
-          "w": 1174,
-          "h": 693
+          "w": 1800,
+          "h": 1063,
+          "dw": 1174
         }
       ],
       "page": 800,
       "cardTitle": "Music & film journalism"
+    },
+    {
+      "id": "barbie-pre-premiere-campaign",
+      "title": "Barbie on HBO Max: Pre-Premiere Campaign",
+      "cardTitle": "Barbie pre-premiere",
+      "tag": "Campaign",
+      "meta": "HBO Max · Barbie · Email & in-app · Warner Bros. Discovery",
+      "industry": "",
+      "quote": "",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "I work on HBO Max campaigns from the very start: in the ideation sessions and brainstorms, and all the way through to delivery.",
+        "This one built the excitement for Barbie arriving on HBO Max. The pre-premiere plan ran across email and in-app messaging, so the build-up reached people in their inbox and inside the app itself.",
+        "With a film that already owns a colour, the job of the copy is to match its energy: bright, knowing and fun, without losing sight of the one thing we need people to do, which is press play."
+      ],
+      "images": [
+        {
+          "src": "img/barbie-pre-premiere.jpg",
+          "caption": "Barbie pre-premiere plan: emails and in-app message",
+          "w": 1584,
+          "h": 878,
+          "dw": 792
+        }
+      ]
+    },
+    {
+      "id": "hbo-max-international-titles-and-taglines",
+      "title": "International Titles & Taglines for HBO Max Originals",
+      "cardTitle": "International titles & taglines",
+      "tag": "Tagline",
+      "meta": "HBO Max · European originals · Titles & taglines · Warner Bros. Discovery",
+      "industry": "",
+      "quote": "“Modern life is messy.”",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "I create the international titles and taglines for HBO Max’s European original productions. They run on outdoor posters and online across the region.",
+        "A local show has to travel. The title and line need to grab people who’ve never heard of it, while staying true to what makes it special at home.",
+        "For Feride vs the World, ‘Modern life is messy’ sets the tone in four words, and lets the artwork do the rest."
+      ],
+      "images": [
+        {
+          "src": "img/feride-vs-the-world.jpg",
+          "caption": "Feride vs the World, HBO Max",
+          "w": 960,
+          "h": 1400,
+          "dw": 480
+        }
+      ]
+    },
+    {
+      "id": "hbo-max-app-and-ux-copy",
+      "title": "HBO Max App & UX Copy",
+      "cardTitle": "HBO Max app & UX",
+      "tag": "Product",
+      "meta": "HBO Max app · Platform & UX copy · Warner Bros. Discovery",
+      "industry": "",
+      "quote": "",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "I write copy for the HBO Max platform, and UX copy across the app, from onboarding through to retention.",
+        "App copy lives in tiny spaces: a title card, a button, one line under a hero image. Every word has to help someone decide what to watch next, in a voice that still sounds like HBO Max.",
+        "It’s also never finished. We iterate quickly, changing the copy based on how people actually respond to it."
+      ],
+      "images": [
+        {
+          "src": "img/hbo-max-app-superman.jpg",
+          "caption": "HBO Max app: Superman title page",
+          "w": 1800,
+          "h": 3246,
+          "dw": 1098
+        }
+      ]
+    },
+    {
+      "id": "futurelearn-scholarship",
+      "title": "FutureLearn Scholarship",
+      "cardTitle": "FutureLearn Scholarship",
+      "tag": "Social",
+      "meta": "FutureLearn · Launch campaign · Email & social",
+      "industry": "",
+      "quote": "“Want £5,000 worth of world-class learning & study gear?”",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "I wrote the email and social copy for FutureLearn’s first ever scholarship.",
+        "The campaign had two jobs. The prize was real and tangible: £5,000 worth of learning and study gear. But a scholarship is about something bigger than kit, so the copy also had to make room for people’s ambitions, asking them to ‘Tell us how you’re going to change the world.’",
+        "Getting that balance right paid off. The campaign beat expectations, with thousands of early sign-ups."
+      ],
+      "images": [
+        {
+          "src": "img/fl-scholarship-1.jpg",
+          "caption": "Scholarship launch social ad",
+          "w": 1800,
+          "h": 1932,
+          "dw": 1108
+        },
+        {
+          "src": "img/fl-scholarship-2.jpg",
+          "caption": "Scholarship social ad",
+          "w": 1800,
+          "h": 1803,
+          "dw": 1096
+        }
+      ]
+    },
+    {
+      "id": "futurelearn-paid-social",
+      "title": "FutureLearn Paid Social",
+      "cardTitle": "FutureLearn paid social",
+      "tag": "Social",
+      "meta": "FutureLearn · ExpertTracks · Meta ads",
+      "industry": "",
+      "quote": "",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "I wrote all the on-asset copy and primary text for FutureLearn’s paid social ads.",
+        "Each ad was written for where its audience was. ‘Hot’ ads went to existing customers, so they could get straight to the offer. ‘Warm’ ads went to people we knew were already interested in FutureLearn, so they had more to do: selling the bigger idea of a fresh start and a job you love."
+      ],
+      "images": [
+        {
+          "src": "img/fl-paid-social-hot.jpg",
+          "caption": "‘Hot’ ad, aimed at converting existing customers",
+          "w": 1600,
+          "h": 1594,
+          "dw": 800
+        },
+        {
+          "src": "img/fl-paid-social-warm.jpg",
+          "caption": "‘Warm’ ad, aimed at people already interested in FutureLearn",
+          "w": 1410,
+          "h": 2950,
+          "dw": 705
+        }
+      ]
+    },
+    {
+      "id": "futurelearn-upgrade-journey",
+      "title": "FutureLearn Upgrade Journey",
+      "cardTitle": "FutureLearn upgrades",
+      "tag": "Product",
+      "meta": "FutureLearn · Conversion copy · Course pages",
+      "industry": "",
+      "quote": "",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "Plenty of FutureLearn learners started on a free course. I wrote the conversion copy that guided them towards the paid options.",
+        "The trick was not to sound pushy. People had chosen a free course for a reason, so the copy stays short and friendly, sets the options out side by side, and gives just enough information to make upgrading feel like an easy, sensible next step."
+      ],
+      "images": [
+        {
+          "src": "img/fl-upgrade.png",
+          "caption": "Upgrade options on a FutureLearn course page",
+          "w": 1248,
+          "h": 3058,
+          "dw": 624
+        }
+      ]
+    },
+    {
+      "id": "futurelearn-course-emails-and-social",
+      "title": "FutureLearn Course Emails & Social",
+      "cardTitle": "FutureLearn emails & social",
+      "tag": "Email",
+      "meta": "FutureLearn · Email · Paid social",
+      "industry": "",
+      "quote": "“Learn English by watching an exciting TV drama.”",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "I wrote emails inviting customers to join new courses, and paid social campaigns aimed at the same people.",
+        "Planning them together meant the email and the ad backed each other up: the same idea, the same voice, in two different places. Someone who saw ‘Learn English by watching an exciting TV drama’ in their feed would recognise it in their inbox, and vice versa."
+      ],
+      "images": [
+        {
+          "src": "img/fl-course-email.jpg",
+          "caption": "Course email",
+          "w": 1800,
+          "h": 1491,
+          "dw": 1386
+        },
+        {
+          "src": "img/fl-tv-drama-social.jpg",
+          "caption": "Paid social ad for the same audience",
+          "w": 1800,
+          "h": 1800,
+          "dw": 1080
+        }
+      ]
+    },
+    {
+      "id": "futurelearn-microcredentials",
+      "title": "FutureLearn Microcredentials",
+      "cardTitle": "FutureLearn microcredentials",
+      "tag": "Brand voice",
+      "meta": "FutureLearn · Tone of voice · Facebook & Instagram ads",
+      "industry": "",
+      "quote": "“Invest in your ambition.”",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "I developed a new tone of voice for FutureLearn’s microcredentials: career-focused courses built for people who are already working.",
+        "The tagline is ‘Invest in your ambition’, backed by messaging around ‘flexible learning for full-time professionals’. It speaks to busy people who want to move up, and treats the course as an investment rather than a hobby.",
+        "The Facebook and Instagram ads helped establish microcredentials as a premium offering."
+      ],
+      "images": [
+        {
+          "src": "img/fl-microcredentials.jpg",
+          "caption": "Microcredentials social ad",
+          "w": 1600,
+          "h": 1600
+        }
+      ]
+    },
+    {
+      "id": "futurelearn-experttracks",
+      "title": "FutureLearn ExpertTracks",
+      "cardTitle": "FutureLearn ExpertTracks",
+      "tag": "Campaign",
+      "meta": "FutureLearn · ExpertTracks · Social campaign",
+      "industry": "",
+      "quote": "“From couch dreamer to classroom leader.”",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "I wrote an aspirational campaign for ExpertTracks, FutureLearn’s career-focused course series.",
+        "Each line uses alliteration to tell the story of the journey a track offers, from where you are now to where you want to be, in few enough words to stop a scroll: ‘Go from dreaming big to dream career.’ ‘From couch dreamer to classroom leader.’"
+      ],
+      "images": [
+        {
+          "src": "img/fl-experttracks-1.jpg",
+          "caption": "‘Go from dreaming big to dream career’",
+          "w": 1800,
+          "h": 2936,
+          "dw": 1152
+        },
+        {
+          "src": "img/fl-experttracks-2.jpg",
+          "caption": "‘From couch dreamer to classroom leader’",
+          "w": 1800,
+          "h": 3200,
+          "dw": 1152
+        }
+      ]
+    },
+    {
+      "id": "nice-fish-website-and-email",
+      "title": "Nice Fish: Website & Email",
+      "cardTitle": "Nice Fish",
+      "tag": "Web & email",
+      "meta": "Harold Pinter Theatre · Website & email copy · AKA UK",
+      "industry": "",
+      "quote": "“Academy and BAFTA-winner Mark Rylance returns to the West End in Nice Fish for a strictly limited season this winter.”",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "At AKA, I wrote website and email copy for new West End shows. This was for Nice Fish, the comic play written by and starring Mark Rylance.",
+        "Theatre copy has a lot to do in a few lines: sell the star, explain the show and give people a reason to book now. The headline does all three, and the description then sets up the play’s strange, funny world on a frozen Minnesota lake."
+      ],
+      "images": [
+        {
+          "src": "img/nice-fish.jpg",
+          "caption": "Nice Fish web copy",
+          "w": 1288,
+          "h": 900,
+          "dw": 644
+        }
+      ]
+    },
+    {
+      "id": "natural-history-museum-dino-escape",
+      "title": "Natural History Museum: Dino Escape",
+      "cardTitle": "NHM Dino Escape",
+      "tag": "Social",
+      "meta": "Natural History Museum · Social video · Script, direction & edit · AKA UK",
+      "industry": "",
+      "quote": "",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "For the Natural History Museum’s Dino Escape summer campaign for kids, I scripted, directed and edited a series of ‘news bulletin’ videos for the museum’s social channels.",
+        "The idea was to treat a dinosaur on the loose like breaking news. Playing it completely straight, with a newsreader at the desk, makes it funnier for parents and more exciting for kids."
+      ],
+      "images": [
+        {
+          "src": "img/nhm-dino-escape.jpg",
+          "caption": "Dino Escape ‘breaking news’ video",
+          "w": 1800,
+          "h": 1807,
+          "dw": 1076
+        }
+      ]
     }
   ]
 }
