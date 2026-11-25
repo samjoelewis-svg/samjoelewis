@@ -298,37 +298,6 @@
           ]
         },
         {
-          "id": "social",
-          "name": "Social",
-          "intro": "Social, influencer and paid social.",
-          "projects": [
-            "succession-influencer-campaign-for-hbo-max",
-            "hbo-max-display-and-paid-social-ads",
-            "matilda-the-musical-social-video-and-radio"
-          ]
-        },
-        {
-          "id": "journeys",
-          "name": "Web & app journeys",
-          "intro": "Landing pages, product copy and in-app journeys.",
-          "projects": [
-            "hbo-max-and-tnt-sports",
-            "a-knight-of-the-seven-kingdoms-gamified-journey",
-            "milano-cortina-2026-interactive-campaign",
-            "futurelearn-google-course-product-copy",
-            "noodoll-ricespud-product-messaging"
-          ]
-        },
-        {
-          "id": "email",
-          "name": "Email & lifecycle",
-          "intro": "CRM from onboarding to win-back.",
-          "projects": [
-            "tnt-sports-crm-including-paris-2024",
-            "hbo-max-lifecycle-email"
-          ]
-        },
-        {
           "id": "film",
           "name": "Film & scripts",
           "intro": "Trailer concepts, scripts and taglines for film, TV, theatre and museums.",
@@ -341,6 +310,37 @@
             "humans-and-halt-and-catch-fire-taglines",
             "swallows-and-amazons-tagline",
             "hbo-max-trailers-for-cinema-tv-and-radio"
+          ]
+        },
+        {
+          "id": "social",
+          "name": "Social",
+          "intro": "Social, influencer and paid social.",
+          "projects": [
+            "succession-influencer-campaign-for-hbo-max",
+            "hbo-max-display-and-paid-social-ads",
+            "matilda-the-musical-social-video-and-radio"
+          ]
+        },
+        {
+          "id": "email",
+          "name": "Email & lifecycle",
+          "intro": "CRM from onboarding to win-back.",
+          "projects": [
+            "tnt-sports-crm-including-paris-2024",
+            "hbo-max-lifecycle-email"
+          ]
+        },
+        {
+          "id": "journeys",
+          "name": "Web & app journeys",
+          "intro": "Landing pages, product copy and in-app journeys.",
+          "projects": [
+            "hbo-max-and-tnt-sports",
+            "a-knight-of-the-seven-kingdoms-gamified-journey",
+            "milano-cortina-2026-interactive-campaign",
+            "futurelearn-google-course-product-copy",
+            "noodoll-ricespud-product-messaging"
           ]
         },
         {
