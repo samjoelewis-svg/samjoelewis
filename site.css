@@ -387,4 +387,4 @@ body.locked { overflow: hidden; }
 }
 
 /* picture-frame around the split photo: a cream mount with a thin dark edge */
-.split-media { box-shadow: 0 0 0 clamp(6px, .7vw, 10px) var(--cream), 0 0 0 calc(clamp(6px, .7vw, 10px) + 2px) var(--ink), 0 24px 40px -18px rgba(40,20,22,.45); }
+.split-media { box-shadow: 0 0 0 clamp(6px, .7vw, 10px) var(--cream), 0 24px 40px -18px rgba(40,20,22,.45); }
