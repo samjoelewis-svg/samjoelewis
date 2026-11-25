@@ -213,8 +213,8 @@
           "image": {
             "src": "img/kings-cross.jpg",
             "caption": "",
-            "w": 1162,
-            "h": 661
+            "w": 1152,
+            "h": 630
           }
         },
         {
@@ -494,8 +494,8 @@
         {
           "src": "img/kings-cross.jpg",
           "caption": "King's Cross tunnel, London",
-          "w": 1162,
-          "h": 661
+          "w": 1152,
+          "h": 630
         }
       ],
       "id": "hbo-max-uk-launch-campaign",
@@ -909,12 +909,13 @@
       "tag": "Product",
       "meta": "FutureLearn × Google for Education · Course landing page · Product copy",
       "industry": "Education",
-      "quote": "",
+      "quote": "“Communicate effectively with staff, students, and parents, and save time as an educator.”",
       "quote2": "",
       "cardQuote": "",
       "body": [
-        "At FutureLearn, I wrote product copy for online courses, including this Google for Education course aimed at teachers and educators.",
-        "The course title is ‘Google For Education: Staying Organised and Improving Communication’. The introduction opens with ‘Communicate effectively with staff, students, and parents, and save time as an educator…’"
+        "At FutureLearn, I wrote product copy for courses made with partners like Google for Education. This one was for teachers: people with full timetables, full inboxes and very little patience for jargon.",
+        "The challenge was selling a practical course without making it sound like more admin. So I led with what teachers get out of it, not the tools. The title, ‘Google for Education: Staying Organised and Improving Communication’, says exactly what’s on offer. The introduction goes straight to the two things every teacher wants more of: better conversations with staff, students and parents, and time back in their week.",
+        "Partner courses mean writing for two brands at once. The copy had to feel like FutureLearn, sit comfortably next to Google’s name, and still make sense to a teacher skimming course listings at the end of a long day. Every line on the landing page had to earn its place."
       ],
       "images": [
         {
