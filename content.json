@@ -201,7 +201,7 @@
     {
       "id": "selected-work",
       "type": "featured",
-      "navLabel": "Featured Work",
+      "navLabel": "Work",
       "bg": "lilac",
       "headline": "Featured Work",
       "intro": "",
@@ -1527,8 +1527,7 @@
       "quote2": "",
       "cardQuote": "",
       "body": [
-        "For First Five, a Max Original series about the five women who led Finland’s government, I wrote the tagline for the key art.",
-        "It’s a true story, so I wanted a line with some weight that didn’t oversell it."
+        "For First Five, a Max Original series about the five women who led Finland’s government, I wrote the tagline for the international key art."
       ],
       "images": [
         {
