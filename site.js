@@ -25,7 +25,7 @@ const IMG = (path, x, cls = "", extra = "", natural = false) => {
   const w = x && x.w ? ` width="${x.w}" height="${x.h}"` : "";
   const st = [];
   if (x && x.w && x.h && x.h > x.w * 1.15) st.push("object-position:50% 0");
-  if (natural && x && x.w) st.push(`max-width:min(100%,${x.w}px)`);
+  if (natural && x && x.w) st.push(`max-width:min(100%,${x.dw || x.w}px)`);
   if (x && x.size > 0 && x.size < 100) st.push(`width:${Math.round(x.size)}%`);
   return `<img${cls ? ` class="${cls}"` : ""} src="${esc(s)}" alt="${esc(capOf(x))}"${w}${st.length ? ` style="${st.join(";")}"` : ""} data-img="${path}" decoding="async"${extra}>`;
 };

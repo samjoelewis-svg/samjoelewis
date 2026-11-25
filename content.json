@@ -70,7 +70,8 @@
         "src": "img/kings-cross-hero.jpg",
         "caption": "HBO Max UK launch: King's Cross tunnel takeover",
         "w": 1800,
-        "h": 984
+        "h": 984,
+        "dw": 1152
       },
       "kicker": "Out of home · King's Cross",
       "line": "“The best new platform since 9¾.”",
@@ -214,7 +215,8 @@
             "src": "img/kings-cross.jpg",
             "caption": "",
             "w": 1800,
-            "h": 984
+            "h": 984,
+            "dw": 1152
           }
         },
         {
@@ -226,7 +228,8 @@
             "src": "img/world-goes-pop.jpg",
             "caption": "",
             "w": 1800,
-            "h": 1012
+            "h": 1012,
+            "dw": 1147
           }
         },
         {
@@ -495,7 +498,8 @@
           "src": "img/kings-cross.jpg",
           "caption": "King's Cross tunnel, London",
           "w": 1800,
-          "h": 984
+          "h": 984,
+          "dw": 1152
         }
       ],
       "id": "hbo-max-uk-launch-campaign",
@@ -526,7 +530,8 @@
           "src": "img/watercooler.jpg",
           "caption": "“Wall-to-Wall Watercooler” poster",
           "w": 1800,
-          "h": 1350
+          "h": 1350,
+          "dw": 1200
         }
       ],
       "id": "hbo-max-wall-to-wall-watercooler-campaign",
@@ -549,7 +554,8 @@
           "src": "img/royal-roy.jpg",
           "caption": "Instagram, @hbomaxuk × @hollyandbrookearehooked",
           "w": 1032,
-          "h": 1436
+          "h": 1436,
+          "dw": 516
         }
       ],
       "id": "succession-influencer-campaign-for-hbo-max",
@@ -572,7 +578,8 @@
           "src": "img/tough-cases.jpg",
           "caption": "Display ad, before market pricing was added",
           "w": 1338,
-          "h": 1340
+          "h": 1340,
+          "dw": 669
         }
       ],
       "id": "hbo-max-display-and-paid-social-ads",
@@ -596,13 +603,15 @@
           "src": "img/humans.jpg",
           "caption": "Humans",
           "w": 1800,
-          "h": 1013
+          "h": 1013,
+          "dw": 1180
         },
         {
           "src": "img/halt-catch-fire.jpg",
           "caption": "Halt and Catch Fire",
           "w": 1800,
-          "h": 1269
+          "h": 1269,
+          "dw": 1179
         }
       ],
       "id": "humans-and-halt-and-catch-fire-taglines",
@@ -625,7 +634,8 @@
           "src": "img/hbo-max-trailer.jpg",
           "caption": "HBO Max trailer",
           "w": 1800,
-          "h": 1007
+          "h": 1007,
+          "dw": 1400
         }
       ],
       "id": "hbo-max-trailers-for-cinema-tv-and-radio",
@@ -704,7 +714,8 @@
           "src": "img/mock-the-week.jpg",
           "caption": "Print ad for TLC",
           "w": 1800,
-          "h": 1153
+          "h": 1153,
+          "dw": 1158
         }
       ],
       "id": "mock-the-week-print-ad-for-tlc",
@@ -727,7 +738,8 @@
           "src": "img/swallows-amazons.jpg",
           "caption": "Swallows and Amazons",
           "w": 1590,
-          "h": 2356
+          "h": 2356,
+          "dw": 795
         }
       ],
       "id": "swallows-and-amazons-tagline",
@@ -752,7 +764,8 @@
           "src": "img/hbo-max-halloween.jpg",
           "caption": "Display creative: “Fear hits home”",
           "w": 1200,
-          "h": 930
+          "h": 930,
+          "dw": 600
         }
       ],
       "video": {
@@ -782,7 +795,8 @@
           "src": "img/knight-journey.jpg",
           "caption": "Result screen for getting every answer wrong",
           "w": 1536,
-          "h": 2560
+          "h": 2560,
+          "dw": 768
         }
       ],
       "video": {
@@ -811,7 +825,8 @@
           "src": "img/atg-lyceum-b2b.webp",
           "caption": "ATG Theatres corporate venue hire LinkedIn advertising concept featuring the Lyceum Theatre",
           "w": 1800,
-          "h": 941
+          "h": 941,
+          "dw": 1440
         }
       ],
       "id": "atg-theatres-business-deserves-a-bigger-stage",
@@ -859,7 +874,8 @@
           "src": "img/hbo-max-welcome-email.jpg",
           "caption": "HBO Max UK welcome email",
           "w": 1626,
-          "h": 1764
+          "h": 1764,
+          "dw": 813
         }
       ],
       "id": "hbo-max-lifecycle-email",
@@ -883,13 +899,15 @@
           "src": "img/futurelearn-course-seo.webp",
           "caption": "FutureLearn course page: Power Dressing in the Zoom Era, showing search-informed course-title copy",
           "w": 1800,
-          "h": 1796
+          "h": 1796,
+          "dw": 913
         },
         {
           "src": "img/futurelearn-editorial-rome.webp",
           "caption": "FutureLearn long-form editorial article: Explore a virtual map of Ancient Rome",
           "w": 1636,
-          "h": 1646
+          "h": 1646,
+          "dw": 818
         }
       ],
       "id": "futurelearn-course-seo-and-editorial",
@@ -963,7 +981,8 @@
           "w": 1276,
           "h": 194,
           "heading": "Checkout flows in Figma",
-          "text": "I used this board to see what happens after someone clicks through. On the TNT Sports page, “Get TNT Sports” and “Get Sports & HBO Max” spell out the two options before customers reach checkout."
+          "text": "I used this board to see what happens after someone clicks through. On the TNT Sports page, “Get TNT Sports” and “Get Sports & HBO Max” spell out the two options before customers reach checkout.",
+          "dw": 638
         }
       ],
       "thumb": "img/hbo-max-landing.webp",
@@ -989,7 +1008,8 @@
           "caption": "Paris 2024 CRM",
           "w": 1148,
           "h": 1404,
-          "size": 62
+          "size": 62,
+          "dw": 574
         }
       ],
       "id": "tnt-sports-crm-including-paris-2024",
@@ -1076,7 +1096,8 @@
           "src": "img/national-theatre.jpg",
           "caption": "Home, I'm Darling trailer, National Theatre",
           "w": 1800,
-          "h": 1213
+          "h": 1213,
+          "dw": 945
         }
       ],
       "link": {
@@ -1150,13 +1171,15 @@
           "src": "img/westminster-abbey.jpg",
           "caption": "Westminster Abbey outdoor campaign",
           "w": 1520,
-          "h": 2366
+          "h": 2366,
+          "dw": 760
         },
         {
           "src": "img/westminster-abbey-bond-street.webp",
           "caption": "The campaign at Bond Street station",
           "w": 1800,
-          "h": 2401
+          "h": 2401,
+          "dw": 1100
         }
       ],
       "id": "westminster-abbey-feel-wonder-first-hand",
@@ -1179,13 +1202,15 @@
           "src": "img/new-world-needs.jpg",
           "caption": "The New World Needs…",
           "w": 1800,
-          "h": 1800
+          "h": 1800,
+          "dw": 913
         },
         {
           "src": "img/new-world-building.jpg",
           "caption": "Sector-specific paid social",
           "w": 848,
-          "h": 1392
+          "h": 1392,
+          "dw": 424
         }
       ],
       "id": "city-and-guilds-and-futurelearn-skills-campaign",
@@ -1210,7 +1235,8 @@
           "src": "img/results-day.jpg",
           "caption": "Results Day OOH",
           "w": 1800,
-          "h": 1800
+          "h": 1800,
+          "dw": 1048
         }
       ],
       "id": "futurelearn-results-day-outdoor-campaign",
@@ -1251,7 +1277,8 @@
           "src": "img/quick-witted.jpg",
           "caption": "HBO Max tone-of-voice guide",
           "w": 1800,
-          "h": 1108
+          "h": 1108,
+          "dw": 1179
         }
       ],
       "video": {
@@ -1318,13 +1345,15 @@
           "src": "img/skinny-slow-west.jpg",
           "caption": "The Skinny: Slow West",
           "w": 1800,
-          "h": 1065
+          "h": 1065,
+          "dw": 1171
         },
         {
           "src": "img/skinny-julia-holter.jpg",
           "caption": "The Skinny: Julia Holter",
           "w": 1800,
-          "h": 1063
+          "h": 1063,
+          "dw": 1174
         }
       ],
       "page": 800,
