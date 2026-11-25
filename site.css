@@ -236,9 +236,12 @@ figcaption { font-size: .82em; opacity: .75; margin-top: 10px; }
 .stats-title { font-size: 15px; letter-spacing: .14em; text-transform: uppercase; margin: 0 0 14px; }
 .stats-note { font-size: .85em; opacity: .75; margin: -56px 0 clamp(40px, 5vw, 80px); padding-top: 14px; }
 .proj-gal { display: grid; gap: clamp(32px, 4vw, 64px); padding-bottom: clamp(48px, 6vw, 96px); }
-.proj-gal .row { display: flex; flex-wrap: wrap; gap: clamp(16px, 2vw, 32px); align-items: flex-start; }
-.proj-gal figure { margin: 0; flex: var(--ar, 1) 1 280px; min-width: 0; }
-.proj-gal img { width: auto; max-width: 100%; height: auto; max-height: 86vh; }
+.proj-gal .row { display: flex; gap: clamp(16px, 2vw, 32px); align-items: flex-start; }
+.proj-gal figure { margin: 0; flex: var(--ar, 1) 1 0; min-width: 0; }
+.proj-gal img { width: 100%; height: auto; }
+.proj-gal .row:has(> figure:only-child) figure { flex: 0 1 auto; }
+.proj-gal .row:has(> figure:only-child) img { width: auto; max-width: 100%; max-height: 86vh; }
+@media (max-width: 700px) { .proj-gal .row { flex-direction: column; } .proj-gal figure { flex: none; width: 100%; } }
 .img-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 14px; }
 .img-head h3 { margin: 0; }
 .img-text { max-width: 40em; margin: 0 0 16px; }

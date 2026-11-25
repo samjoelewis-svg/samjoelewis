@@ -449,10 +449,12 @@ function sectionOf(id) {
   return null;
 }
 
-// Three or more pictures with a wide one among them (screenshots, scripts, landscape ads): two per row, so they stay readable.
+// Gallery rows: at most three pictures a row, spread evenly (4 = 2+2, 5 = 3+2). Pictures in a row share a height.
 function galRows(rest) {
-  if (rest.length < 3 || !rest.some(([im]) => im.w && im.h && im.w / im.h >= 1.6)) return rest.length ? [rest] : [];
-  const rows = []; for (let i = 0; i < rest.length; i += 2) rows.push(rest.slice(i, i + 2)); return rows;
+  if (!rest.length) return [];
+  const n = Math.ceil(rest.length / 3), rows = []; let i = 0;
+  for (let r = 0; r < n; r++) { const k = Math.ceil((rest.length - i) / (n - r)); rows.push(rest.slice(i, i + k)); i += k; }
+  return rows;
 }
 function projectHTML(p) {
   const n = projIdx(p.id), B = `projects.${n}`;
@@ -466,6 +468,7 @@ function projectHTML(p) {
   let side = "", rest = plain;
   if (vid) { side = vid + (plain.length === 1 ? fig(plain[0], false) : ""); if (plain.length === 1) rest = []; }
   else if (plain.length === 1) { side = fig(plain[0], false); rest = []; }
+  else if (p.lead && plain.length > 1) { side = fig(plain[0], false); rest = plain.slice(1); }
   const links = [];
   if (p.link && p.link.url) links.push(`<a class="btn" href="${esc(safeUrl(p.link.url))}"${ext(p.link.url)}><span data-path="${B}.link.label">${esc(p.link.label || "View")}</span> <span aria-hidden="true">→</span></a>`);
   for (const r of p.related || []) if (projById(r.project)) links.push(`<a class="textlink" href="#work/${esc(r.project)}">${esc(r.label)}</a>`);
