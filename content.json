@@ -210,7 +210,7 @@
           "project": "hbo-max-uk-launch-campaign",
           "tag": "Campaign",
           "title": "HBO Max UK launch",
-          "desc": "Launch copy across outdoor, radio, social and email",
+          "desc": "Leading the copy for HBO Max’s UK launch",
           "image": {
             "src": "img/kings-cross.jpg",
             "caption": "",
@@ -508,7 +508,7 @@
   ],
   "projects": [
     {
-      "title": "HBO Max UK Launch Campaign",
+      "title": "HBO Max UK launch",
       "tag": "Campaign",
       "meta": "HBO Max · OOH, radio, landing pages, email & paid social · 2026 · Warner Bros. Discovery",
       "industry": "Film & TV",
@@ -516,8 +516,9 @@
       "quote2": "",
       "cardQuote": "The best new platform since 9¾.",
       "body": [
-        "HBO Max launched in the UK on 26 March 2026. I led the copy for the launch campaign: outdoor, radio, landing pages, email and paid social.",
-        "It had to feel British. I wrote lines about places and shows people here know, like 9¾ for the tunnel at King’s Cross. That ad went viral on LinkedIn."
+        "HBO Max launched in the UK on 26 March 2026. I led the copy for the launch campaign across outdoor, radio, landing pages, email and paid social.",
+        "British audiences already knew HBO’s shows. The challenge was to establish HBO Max as their new home, with a campaign that felt unmistakably HBO and distinctly British.",
+        "For the tunnel at King’s Cross, that meant a little Harry Potter wordplay: The best new platform since 9¾."
       ],
       "images": [
         {
@@ -534,23 +535,23 @@
           "dw": 510,
           "caption": "Wall-to-Wall Westeros",
           "heading": "A new home for HBO",
-          "text": "Sky had the HBO rights in the UK for years, so people thought of these as Sky shows. We needed them to think HBO Max instead. Wall-to-Wall Westeros did that for Game of Thrones: all three series, only on HBO Max."
+          "text": "For years, British audiences had associated HBO’s biggest shows with Sky. Now they had a new home. Wall-to-Wall Westeros brought together all three series from the Game of Thrones universe in a single headline, selling both the breadth and exclusivity of the catalogue."
         },
         {
           "src": "img/hbo-max-launch-radio-script.jpg",
           "w": 1800,
           "h": 1009,
-          "caption": "Radio script, 30 seconds",
-          "heading": "A British HBO tone",
-          "text": "HBO Max already had a tone of voice, but it was written in the US. We needed a UK version that still sounded like HBO. I wrote the radio scripts in it, including this 30-second spot."
+          "caption": "30-second launch radio spot",
+          "heading": "A British HBO voice",
+          "text": "Working from HBO Max’s global tone of voice, I adapted the brand’s humour and attitude for British audiences. This extended to the launch radio campaign, including this 30-second spot."
         },
         {
           "src": "img/hbo-max-launch-landing-page.jpg",
           "w": 1800,
           "h": 920,
           "caption": "Launch landing page",
-          "heading": "One voice across channels",
-          "text": "The tone had to work for outdoor, radio, landing pages, email and paid social. I worked closely with the designers and the US team on all of it. The landing pages used the same Wall-to-Wall idea as the posters."
+          "heading": "From billboards to browsers",
+          "text": "Working with designers and the US creative team, I carried the campaign’s language across the different touchpoints, from outdoor advertising to the landing pages where audiences could actually sign up. The trick was to retain the personality of the campaign while giving people the information they needed to subscribe."
         }
       ],
       "id": "hbo-max-uk-launch-campaign",
@@ -564,18 +565,18 @@
       "cardTitle": "HBO Max UK launch",
       "story": true,
       "stats": {
-        "title": "Subscriber targets exceeded in just 4 months",
+        "title": "A record-breaking UK launch",
         "items": [
           {
             "value": "1.5m",
-            "label": "UK subscribers in the first five days"
+            "label": "Estimated UK subscribers in the first five days"
           },
           {
             "value": "No. 1",
-            "label": "fastest streaming service to reach a million UK subscribers"
+            "label": "Fastest streaming service to reach one million UK subscribers"
           }
         ],
-        "note": "Subscriber figures from Ampere Analysis, April 2026."
+        "note": "Source: Ampere Analysis, April 2026."
       }
     },
     {
