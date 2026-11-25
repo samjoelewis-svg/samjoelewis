@@ -289,6 +289,7 @@
             "matilda-the-musical-social-video-and-radio",
             "futurelearn-results-day-outdoor-campaign",
             "barbie-pre-premiere-campaign",
+            "the-eastern-gate-season-2-tagline",
             "hbo-max-international-titles-and-taglines",
             "futurelearn-experttracks"
           ]
@@ -1923,6 +1924,29 @@
           "w": 1160,
           "h": 1152,
           "dw": 580
+        }
+      ]
+    },
+    {
+      "id": "the-eastern-gate-season-2-tagline",
+      "title": "The Eastern Gate: Season 2 Tagline",
+      "cardTitle": "The Eastern Gate",
+      "tag": "Tagline",
+      "meta": "HBO Max · HBO Original series · Season 2 key art · Warner Bros. Discovery",
+      "industry": "",
+      "quote": "“You’re either an asset or a target.”",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "For the second season of the HBO Original spy thriller The Eastern Gate, I wrote the tagline for the key art.",
+        "A spy story runs on one question: who can you trust? The line answers it in six words and leaves no middle ground, just like the image: two chairs, one of them on fire."
+      ],
+      "images": [
+        {
+          "src": "img/the-eastern-gate-s2.jpg",
+          "caption": "The Eastern Gate, season 2 key art",
+          "w": 1288,
+          "h": 1908
         }
       ]
     }
