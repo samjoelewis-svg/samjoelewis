@@ -306,7 +306,10 @@
             "humans-and-halt-and-catch-fire-taglines",
             "swallows-and-amazons-tagline",
             "hbo-max-trailers-for-cinema-tv-and-radio",
-            "natural-history-museum-dino-escape"
+            "natural-history-museum-dino-escape",
+            "national-gallery-sorolla-trailer",
+            "british-library-writing-trailer",
+            "labour-of-love-trailer"
           ]
         },
         {
@@ -322,7 +325,10 @@
             "futurelearn-experttracks",
             "natural-history-museum-dino-escape",
             "futurelearn-course-emails-and-social",
-            "futurelearn-microcredentials"
+            "futurelearn-microcredentials",
+            "donmar-warehouse-berberian-sound-studio",
+            "futurelearn-instagram-videos",
+            "city-and-guilds-and-futurelearn-skills-campaign"
           ]
         },
         {
@@ -351,7 +357,7 @@
             "hbo-max-app-and-ux-copy",
             "futurelearn-upgrade-journey",
             "nice-fish-website-and-email",
-            "barbie-pre-premiere-campaign"
+            "the-view-from-the-shard-website"
           ]
         },
         {
@@ -607,6 +613,13 @@
           "w": 558,
           "h": 572,
           "dw": 279
+        },
+        {
+          "src": "img/hbo-max-christmas-card.jpg",
+          "caption": "HBO Max Christmas campaign",
+          "w": 1800,
+          "h": 1800,
+          "dw": 1080
         }
       ],
       "id": "hbo-max-display-and-paid-social-ads",
@@ -919,6 +932,13 @@
           "w": 694,
           "h": 1258,
           "dw": 347
+        },
+        {
+          "src": "img/hbo-max-australian-open-email.jpg",
+          "caption": "Australian Open email: ‘A Whole New Ball Game’",
+          "w": 982,
+          "h": 1092,
+          "dw": 491
         }
       ],
       "id": "hbo-max-lifecycle-email",
@@ -935,7 +955,8 @@
       "cardQuote": "",
       "body": [
         "At FutureLearn, I used keyword research and search-results analysis to write course titles that would rank well while still making sense to prospective learners. ‘Power Dressing in the Zoom Era’ is one example of balancing clear search intent with useful, engaging copy.",
-        "I also researched and wrote longer editorial pieces, often based on interviews with educators. These two examples show the range: precise, discovery-led course messaging and more expansive storytelling, including an article exploring Ancient Rome."
+        "I also researched and wrote longer editorial pieces, often based on interviews with educators. These two examples show the range: precise, discovery-led course messaging and more expansive storytelling, including an article exploring Ancient Rome.",
+        "Two more of my FutureLearn articles: <a href=\"https://www.futurelearn.com/info/blog/explore-a-virtual-map-of-ancient-rome\">Explore a virtual map of Ancient Rome</a> and <a href=\"https://www.futurelearn.com/info/blog/how-well-has-africa-managed-covid\">How well has Africa managed COVID-19?</a>"
       ],
       "images": [
         {
@@ -951,6 +972,17 @@
           "w": 1636,
           "h": 1646,
           "dw": 818
+        },
+        {
+          "src": "img/fl-blog-africa-covid.jpg",
+          "caption": "How well has Africa managed COVID-19?, FutureLearn blog",
+          "w": 1800,
+          "h": 1372,
+          "link": {
+            "url": "https://www.futurelearn.com/info/blog/how-well-has-africa-managed-covid",
+            "label": "Read the article"
+          },
+          "dw": 967
         }
       ],
       "id": "futurelearn-course-seo-and-editorial",
@@ -1135,22 +1167,17 @@
         "Laura Wade's play Home, I'm Darling follows Judy, a woman who chooses to live as a perfect 1950s housewife in the present day.",
         "I wrote the National Theatre's trailer to match: a script in the style of a 1950s TV commercial that sells the dream, then hints at the cracks beneath it. It has more than 200,000 views on YouTube."
       ],
-      "images": [
-        {
-          "src": "img/national-theatre.jpg",
-          "caption": "Home, I'm Darling trailer, National Theatre",
-          "w": 1800,
-          "h": 1213,
-          "dw": 945
-        }
-      ],
+      "images": [],
       "link": {
         "url": "https://www.youtube.com/watch?v=fDvlSoQ3PY4",
         "label": "Watch the trailer"
       },
       "id": "home-i-m-darling-trailer-for-the-national-theatre",
       "page": 502,
-      "cardTitle": "Home, I’m Darling"
+      "cardTitle": "Home, I’m Darling",
+      "embed": "https://www.youtube.com/watch?v=qjLuO_C_cg8",
+      "embedCaption": "Home, I’m Darling, National Theatre",
+      "thumb": "img/national-theatre.jpg"
     },
     {
       "title": "Whales: Beneath the Surface Trailer for the Natural History Museum",
@@ -1382,6 +1409,7 @@
       "cardQuote": "",
       "body": [
         "I started my writing career as a music and film journalist. For The Skinny, I interviewed filmmakers and musicians and wrote cover features and long-form profiles, including John Maclean on Slow West and Julia Holter on Loud City Song.",
+        "I interviewed musicians including <a href=\"https://www.theskinny.co.uk/music/interviews/in-the-loop-julianna-barwick-reveals-nepenthe\">Julianna Barwick</a>, <a href=\"https://theskinny.co.uk/music/interviews/toro-y-moi-talks-arthur-russell-and-astral-jazz\">Toro y Moi</a> and <a href=\"https://www.theskinny.co.uk/music/interviews/new-old-space-mount-eeries-phil-elverum-in-interview\">Phil Elverum of Mount Eerie</a> for The Skinny, and <a href=\"http://drownedinsound.com/in_depth/4141823-dis-meets-avey-tare-from-animal-collective\">Avey Tare of Animal Collective</a> for Drowned in Sound.",
         "I later produced long-form editorial and interview pieces at FutureLearn, alongside my campaign work."
       ],
       "images": [
@@ -1398,6 +1426,34 @@
           "w": 1800,
           "h": 1063,
           "dw": 1174
+        },
+        {
+          "src": "img/skinny-julianna-barwick.jpg",
+          "caption": "Julianna Barwick, The Skinny",
+          "w": 1800,
+          "h": 1800,
+          "dw": 1000
+        },
+        {
+          "src": "img/skinny-toro-y-moi.jpg",
+          "caption": "Toro y Moi, The Skinny",
+          "w": 1600,
+          "h": 1600,
+          "dw": 800
+        },
+        {
+          "src": "img/skinny-mount-eerie.jpg",
+          "caption": "Mount Eerie, The Skinny",
+          "w": 1574,
+          "h": 1566,
+          "dw": 787
+        },
+        {
+          "src": "img/dis-animal-collective.jpg",
+          "caption": "Avey Tare of Animal Collective, Drowned in Sound",
+          "w": 1300,
+          "h": 1300,
+          "dw": 650
         }
       ],
       "page": 800,
@@ -1425,6 +1481,13 @@
           "w": 1584,
           "h": 878,
           "dw": 792
+        },
+        {
+          "src": "img/barbie-land-social.jpg",
+          "caption": "‘Ready to enter Barbie Land?’",
+          "w": 1136,
+          "h": 1828,
+          "dw": 568
         }
       ]
     },
@@ -1441,7 +1504,7 @@
       "body": [
         "I create the international titles and taglines for HBO Max’s European original productions. They run on outdoor posters and online across the region.",
         "A local show has to travel. The title and line need to grab people who’ve never heard of it, while staying true to what makes it special at home.",
-        "For Feride vs the World, ‘Modern life is messy’ sets the tone in four words, and lets the artwork do the rest."
+        "For Feride vs the World, ‘Modern life is messy’ sets the tone in four words, and lets the artwork do the rest. Las Vidas de Félix and First Five are two more from the same slate."
       ],
       "images": [
         {
@@ -1450,6 +1513,20 @@
           "w": 960,
           "h": 1400,
           "dw": 480
+        },
+        {
+          "src": "img/hbo-max-felix.jpg",
+          "caption": "Las Vidas de Félix, HBO Max",
+          "w": 812,
+          "h": 1116,
+          "dw": 406
+        },
+        {
+          "src": "img/hbo-max-first-five.jpg",
+          "caption": "First Five, HBO Max",
+          "w": 1080,
+          "h": 1600,
+          "dw": 540
         }
       ]
     },
@@ -1648,6 +1725,13 @@
           "w": 1800,
           "h": 3200,
           "dw": 1152
+        },
+        {
+          "src": "img/fl-experttracks-ad.jpg",
+          "caption": "ExpertTracks social ad",
+          "w": 814,
+          "h": 812,
+          "dw": 407
         }
       ]
     },
@@ -1680,13 +1764,13 @@
       "title": "Natural History Museum: Dino Escape",
       "cardTitle": "NHM Dino Escape",
       "tag": "Social",
-      "meta": "Natural History Museum · Social video · Script, direction & edit · AKA UK",
+      "meta": "Natural History Museum · Social video · Concept, script, casting, direction & edit · 2019 · AKA UK",
       "industry": "",
       "quote": "",
       "quote2": "",
       "cardQuote": "",
       "body": [
-        "For the Natural History Museum’s Dino Escape summer campaign for kids, I scripted, directed and edited a series of ‘news bulletin’ videos for the museum’s social channels.",
+        "For the Natural History Museum’s Dino Escape summer campaign for kids, I made a series of ‘news bulletin’ videos for the museum’s social channels. I came up with the concept, wrote the scripts, booked the crew, cast it, directed it, and edited the videos, sound and After Effects myself.",
         "The idea was to treat a dinosaur on the loose like breaking news. Playing it completely straight, with a newsreader at the desk, makes it funnier for parents and more exciting for kids."
       ],
       "images": [
@@ -1696,6 +1780,149 @@
           "w": 1800,
           "h": 1807,
           "dw": 1076
+        },
+        {
+          "src": "img/nhm-dino-escape-2.jpg",
+          "caption": "‘Escaped dinosaur’ breaking news",
+          "w": 1800,
+          "h": 1798,
+          "dw": 1064
+        }
+      ]
+    },
+    {
+      "id": "national-gallery-sorolla-trailer",
+      "title": "Sorolla: Trailer for the National Gallery",
+      "cardTitle": "National Gallery: Sorolla",
+      "tag": "Trailer",
+      "meta": "National Gallery · Trailer concept & script · 2019 · AKA UK",
+      "industry": "",
+      "quote": "",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "At AKA UK, I came up with the concept and wrote the script for the National Gallery’s trailer for Sorolla: Spanish Master of Light.",
+        "Sorolla painted sunlight like almost nobody else, so the trailer had one job: make people feel the warmth coming off those canvases, and want to go and stand in front of them."
+      ],
+      "images": [],
+      "embed": "https://www.youtube.com/watch?v=N0R9TZJcaYs",
+      "embedCaption": "Sorolla: Spanish Master of Light, National Gallery",
+      "thumb": "https://i.ytimg.com/vi/N0R9TZJcaYs/maxresdefault.jpg"
+    },
+    {
+      "id": "british-library-writing-trailer",
+      "title": "Writing: Making Your Mark, Trailer for the British Library",
+      "cardTitle": "British Library: Writing",
+      "tag": "Trailer",
+      "meta": "British Library · Trailer concept, script, edit & sound design · 2019 · AKA UK",
+      "industry": "",
+      "quote": "",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "For the British Library’s exhibition Writing: Making Your Mark, I came up with the concept and wrote the script, then edited the trailer and designed its sound myself.",
+        "The exhibition told the story of writing across thousands of years. The trailer brings it right up to date, landing on the marks we make every day without thinking: the emoji on our phones."
+      ],
+      "images": [],
+      "embed": "https://www.youtube.com/watch?v=bruWH0-LBls",
+      "embedCaption": "Writing: Making Your Mark, British Library",
+      "thumb": "img/british-library-writing.jpg"
+    },
+    {
+      "id": "labour-of-love-trailer",
+      "title": "Labour of Love: Trailer for the Michael Grandage Company",
+      "cardTitle": "Labour of Love",
+      "tag": "Trailer",
+      "meta": "Michael Grandage Company · Trailer concept, script, edit & sound design · 2017 · AKA UK",
+      "industry": "",
+      "quote": "",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "For the Michael Grandage Company’s West End production of James Graham’s Labour of Love, I came up with the concept and wrote the script, then edited the trailer and designed its sound.",
+        "The play is a political comedy, so the trailer had to be funny and quick on its feet, while selling a big night out at the theatre."
+      ],
+      "images": [],
+      "embed": "https://www.youtube.com/watch?v=7u0LBFf-fp8",
+      "embedCaption": "Labour of Love, Michael Grandage Company",
+      "thumb": "img/labour-of-love.jpg"
+    },
+    {
+      "id": "donmar-warehouse-berberian-sound-studio",
+      "title": "Berberian Sound Studio: Social Videos for the Donmar Warehouse",
+      "cardTitle": "Donmar: Berberian Sound Studio",
+      "tag": "Social",
+      "meta": "Donmar Warehouse · Social video concept, edit & sound design · 2019 · AKA UK",
+      "industry": "",
+      "quote": "",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "For the Donmar Warehouse’s stage adaptation of Berberian Sound Studio, I came up with the concept for a series of social videos, then edited them and designed the sound.",
+        "The story is set in the sound studio of a 1970s Italian horror film, where every scream and squelch is made by hand. So sound wasn’t just part of the videos: it was the whole idea."
+      ],
+      "images": [
+        {
+          "src": "img/donmar-berberian.jpg",
+          "caption": "Berberian Sound Studio social video",
+          "w": 1800,
+          "h": 1789,
+          "dw": 1004
+        }
+      ]
+    },
+    {
+      "id": "the-view-from-the-shard-website",
+      "title": "The View from The Shard: Website Copy",
+      "cardTitle": "The View from The Shard",
+      "tag": "Web",
+      "meta": "The View from The Shard · Full website copy · 2018 · Empire Design",
+      "industry": "",
+      "quote": "“London’s highest view.”",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "At Empire Design, I wrote the full website copy for The View from The Shard, the viewing platform at the top of London’s tallest building.",
+        "It had to work hard and stay light: inspire people to visit, answer every practical question about tickets and timings, and still sound as exciting as standing 244 metres above the city."
+      ],
+      "images": [
+        {
+          "src": "img/view-from-the-shard.jpg",
+          "caption": "The View from The Shard website",
+          "w": 1678,
+          "h": 1674,
+          "dw": 839
+        }
+      ]
+    },
+    {
+      "id": "futurelearn-instagram-videos",
+      "title": "FutureLearn Instagram Videos",
+      "cardTitle": "FutureLearn Instagram videos",
+      "tag": "Social",
+      "meta": "FutureLearn · Instagram video · 2021",
+      "industry": "",
+      "quote": "",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "I wrote short videos for FutureLearn’s Instagram, made to stop the scroll and turn a course into something people wanted to talk about.",
+        "You can watch them on Instagram: <a href=\"https://www.instagram.com/p/CM7SryhlJbD/\">video one</a> and <a href=\"https://www.instagram.com/p/CJqnnHrl4eJ/\">video two</a>."
+      ],
+      "images": [
+        {
+          "src": "img/fl-instagram-poem.jpg",
+          "caption": "FutureLearn Instagram video",
+          "w": 1528,
+          "h": 1600,
+          "dw": 764
+        },
+        {
+          "src": "img/fl-instagram-learner.jpg",
+          "caption": "FutureLearn Instagram video",
+          "w": 1160,
+          "h": 1152,
+          "dw": 580
         }
       ]
     }
