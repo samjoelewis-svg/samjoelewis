@@ -431,3 +431,5 @@ body.locked { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) { .chap-fig, .chap:nth-of-type(even) .chap-fig { transition: none; } }
 .chap-result .stat span { display: block; font-size: clamp(16px, 1.2vw, 19px); max-width: 16em; }
 .chap-result .stat b { font-size: clamp(52px, 6vw, 104px); }
+.chap-result .stat b { width: auto; font-size: clamp(48px, 5vw, 88px); overflow-wrap: anywhere; }
+.chap-result .stat { padding-right: clamp(16px, 2vw, 32px); }

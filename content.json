@@ -564,12 +564,8 @@
       "cardTitle": "HBO Max UK launch",
       "story": true,
       "stats": {
-        "title": "How it went",
+        "title": "Subscriber targets exceeded in just 4 months",
         "items": [
-          {
-            "value": "Just 4 months",
-            "label": "to hit the full-year UK sign-up target"
-          },
           {
             "value": "1.5m",
             "label": "UK subscribers in the first five days"
