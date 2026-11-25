@@ -207,6 +207,59 @@ function showSetup() {
   };
 }
 
+/* ---------- merging ----------
+   Three-way merge: base = what the editor loaded, mine = the editor's copy, theirs = what's live now.
+   Changes made on only one side are kept from both; where both changed the same thing, the editor's version wins. */
+function merge3(b, m, t, path = "", clashes = []) {
+  const same = (x, y) => JSON.stringify(x) === JSON.stringify(y);
+  if (same(m, b)) return t;
+  if (same(t, b) || same(m, t)) return m;
+  const isObj = x => x && typeof x === "object" && !Array.isArray(x);
+  if (isObj(b) && isObj(m) && isObj(t)) {
+    const out = {};
+    for (const k of new Set([...Object.keys(m), ...Object.keys(t)])) {
+      const v = merge3(b[k], m[k], t[k], path ? path + "." + k : k, clashes);
+      if (v !== undefined) out[k] = v;
+    }
+    return out;
+  }
+  const keyOf = x => isObj(x) ? (x.id ?? x.src) : undefined;
+  const keyed = a => Array.isArray(a) && a.length && a.every(x => keyOf(x) !== undefined) && new Set(a.map(keyOf)).size === a.length;
+  if (Array.isArray(b) && Array.isArray(m) && Array.isArray(t) && (keyed(m) || !m.length) && (keyed(t) || !t.length) && (keyed(b) || !b.length)) {
+    const B = new Map(b.map(x => [keyOf(x), x])), M = new Map(m.map(x => [keyOf(x), x])), T = new Map(t.map(x => [keyOf(x), x]));
+    const order = same(m.map(keyOf), b.map(keyOf)) ? t.map(keyOf) : m.map(keyOf);
+    for (const [i, x] of t.entries()) {           // things added on the live site: slot them in after their neighbour
+      const k = keyOf(x); if (B.has(k) || order.includes(k)) continue;
+      const prev = i ? keyOf(t[i - 1]) : null, at = prev == null ? 0 : order.indexOf(prev) + 1;
+      order.splice(at || (prev == null ? 0 : order.length), 0, k);
+    }
+    for (const k of M.keys()) if (!order.includes(k)) order.push(k);
+    const out = [];
+    for (const k of order) {
+      const inB = B.has(k), inM = M.has(k), inT = T.has(k);
+      if (inB && (!inM || !inT)) {                   // deleted on one side
+        const other = inM ? M.get(k) : inT ? T.get(k) : undefined;
+        if (other === undefined || same(other, B.get(k))) continue;
+        clashes.push(path + "[" + k + "]"); if (inM) out.push(M.get(k)); continue;
+      }
+      out.push(inM && inT ? merge3(B.get(k), M.get(k), T.get(k), path + "[" + k + "]", clashes) : inM ? M.get(k) : T.get(k));
+    }
+    return out;
+  }
+  if (Array.isArray(b) && Array.isArray(m) && Array.isArray(t) && [b, m, t].every(a => a.every(x => typeof x === "string")) && /projects$|items$/.test(path)) {
+    // lists of project ids: keep my order, add what was added live, drop what was removed live
+    const out = m.filter(x => !(b.includes(x) && !t.includes(x)));
+    for (const x of t) if (!b.includes(x) && !out.includes(x)) out.push(x);
+    return out;
+  }
+  clashes.push(path); return m;
+}
+async function fetchLive() {
+  const f = await gh(`${RP()}/contents/content.json?ref=${encodeURIComponent(REPO.branch)}`);
+  return { json: fromb64utf8(f.content), contentSha: f.sha };
+}
+async function blobJSON(sha) { const b = await gh(`${RP()}/git/blobs/${sha}`); return JSON.parse(fromb64utf8(b.content)); }
+
 /* ---------- start ---------- */
 async function start() {
   $("#gate").innerHTML = `<div class="gate-card"><div class="lock">${ICON.lock}</div><h1>Opening…</h1><p>Loading your latest content.</p></div>`;
@@ -222,8 +275,12 @@ async function start() {
   $("#gate").hidden = true; $("#editor").hidden = false;
   if (draft && JSON.stringify(draft.content) !== JSON.stringify(C)) {
     const when = new Date(draft.at).toLocaleString("en-GB", { dateStyle: "medium", timeStyle: "short" });
-    const keep = await ask("Pick up where you left off?", `You have unpublished changes from ${esc(when)} saved in this browser.${draft.base !== base.contentSha ? " The live site has been published since then, so publishing these will replace that version." : ""}`, "Keep my changes");
-    if (keep) { C = draft.content; for (const [k, v] of await idb.all()) pending.set(k, { blob: v, url: URL.createObjectURL(v) }); dirty = true; }
+    const keep = await ask("Pick up where you left off?", `You have unpublished changes from ${esc(when)} saved in this browser.${draft.base !== base.contentSha ? " The live site has changed since then. Your changes will be combined with it." : ""}`, "Keep my changes");
+    if (keep) {
+      C = draft.content;
+      if (draft.base && draft.base !== base.contentSha) { try { C = merge3(await blobJSON(draft.base), draft.content, JSON.parse(base.json)); } catch (e) {} }
+      for (const [k, v] of await idb.all()) pending.set(k, { blob: v, url: URL.createObjectURL(v) }); dirty = true;
+    }
     else clearDraft();
   }
   frame.onload = mountFrame;
@@ -1273,13 +1330,15 @@ async function publish() {
   if (!dirty) { toast("Nothing new to publish."); return; }
   const btn = $("#publish"); publishing = true; btn.disabled = true; btn.textContent = "Publishing…"; status("Saving to GitHub…");
   try {
-    const cur = await gh(`${RP()}/contents/content.json?ref=${encodeURIComponent(REPO.branch)}`);
-    if (cur.sha !== base.contentSha) {
-      const ok = await ask("The site changed somewhere else", "Someone (maybe you, on another device) published since you opened the editor. Publishing now replaces that version with this one.", "Publish anyway", true);
-      if (!ok) throw Object.assign(new Error("cancelled"), { quiet: true });
-    }
     const ref = await gh(`${RP()}/git/ref/heads/${encodeURIComponent(REPO.branch)}`);
     const head = ref.object.sha, headCommit = await gh(`${RP()}/git/commits/${head}`);
+    const cur = await gh(`${RP()}/contents/content.json?ref=${head}`);
+    let clashes = [];
+    if (cur.sha !== base.contentSha) {
+      status("Combining with the live site…");
+      const merged = merge3(JSON.parse(base.json), C, JSON.parse(fromb64utf8(cur.content)), "", clashes);
+      if (JSON.stringify(merged) !== JSON.stringify(C)) { snap(); C = merged; paint(); renderSide(); }
+    }
     const json = JSON.stringify(C, null, 2) + "\n";
     const tree = [];
     let n = 0; const used = [...pending].filter(([path]) => json.includes(path));
@@ -1296,7 +1355,7 @@ async function publish() {
     const f = await gh(`${RP()}/contents/content.json?ref=${encodeURIComponent(REPO.branch)}`);
     base = { json, contentSha: f.sha };
     pending.clear(); clearDraft(); dirty = false; status();
-    toast("Published. Your live site updates in about a minute.", 5000);
+    toast(clashes.length ? `Published, combined with changes made elsewhere. ${clashes.length === 1 ? "One thing was" : clashes.length + " things were"} changed in both places, so your version was kept.` : "Published. Your live site updates in about a minute.", 6000);
   } catch (e) {
     status();
     if (!e.quiet) toast(e.status === 401 ? "GitHub didn’t accept the token. It may have expired: set up the editor again from the menu." : "Couldn’t publish: " + e.message, 6000);
