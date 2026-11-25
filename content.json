@@ -298,6 +298,16 @@
           ]
         },
         {
+          "id": "social",
+          "name": "Social",
+          "intro": "Social, influencer and paid social.",
+          "projects": [
+            "succession-influencer-campaign-for-hbo-max",
+            "hbo-max-display-and-paid-social-ads",
+            "matilda-the-musical-social-video-and-radio"
+          ]
+        },
+        {
           "id": "journeys",
           "name": "Web & app journeys",
           "intro": "Landing pages, product copy and in-app journeys.",
@@ -535,7 +545,7 @@
     },
     {
       "title": "Succession Influencer Campaign for HBO Max",
-      "tag": "",
+      "tag": "Social",
       "meta": "HBO Max · Social & influencer · Warner Bros. Discovery",
       "industry": "Film & TV",
       "quote": "Who's up for a pint at The Royal Roy?",
