@@ -655,21 +655,17 @@
         "For HBO Max's four-part documentary series about him, Pogány Induló: Vajon mit mondana anya (What Would Mum Say?), I came up with the concept for the trailer and wrote the script.",
         "My concept shows him walking alone against the crowd, with his own lyrics projected onto him. He's a lone wolf, weighed down by his words."
       ],
-      "images": [
-        {
-          "src": "img/pogany-indulo.jpg",
-          "caption": "Pogány Induló: Vajon mit mondana anya, HBO Max",
-          "w": 1400,
-          "h": 583
-        }
-      ],
+      "images": [],
       "link": {
         "url": "https://www.youtube.com/watch?v=p6dlv8rp49E",
         "label": "Watch the trailer"
       },
       "id": "pogany-indulo-documentary-trailer-for-hbo-max",
       "page": 207,
-      "cardTitle": "Pogány Induló"
+      "cardTitle": "Pogány Induló",
+      "embed": "https://www.youtube.com/watch?v=NwIcsmX7ipA",
+      "thumb": "img/pogany-indulo.jpg",
+      "embedCaption": "Pogány Induló: Vajon mit mondana anya, HBO Max"
     },
     {
       "title": "Boyhood Trailer",
@@ -1054,21 +1050,14 @@
         "For Tate Modern's exhibition The EY Exhibition: The World Goes Pop, I came up with the idea for the trailer, wrote the script and helped on the shoot.",
         "I thought the Japanese pop star Kyary Pamyu Pamyu, with her surrealist sensibility, would be perfect for it. I contacted her team, and the stars aligned: she was in London for a show, so we could shoot with her while she was here."
       ],
-      "images": [
-        {
-          "src": "img/world-goes-pop.jpg",
-          "caption": "The World Goes Pop, Tate Modern",
-          "w": 1147,
-          "h": 645
-        }
-      ],
-      "link": {
-        "url": "https://www.youtube.com/watch?v=F1pbMBGxvS4",
-        "label": "Watch the trailer"
-      },
+      "images": [],
+      "link": null,
       "id": "the-world-goes-pop-trailer-for-tate-modern",
       "page": 501,
-      "cardTitle": "Tate Modern"
+      "cardTitle": "Tate Modern",
+      "embed": "https://youtu.be/F1pbMBGxvS4",
+      "thumb": "img/world-goes-pop.jpg",
+      "embedCaption": "The World Goes Pop, Tate Modern"
     },
     {
       "title": "Home, I’m Darling Trailer for the National Theatre",
@@ -1110,21 +1099,14 @@
         "For the Natural History Museum's exhibition Whales: Beneath the Surface, I came up with the idea for the trailer, wrote the script and helped with the edit.",
         "I wanted to tap into the sense of mystery whales evoke, and found Heathcote Williams’ poem Whale Nation. The trailer is built around an extract from it."
       ],
-      "images": [
-        {
-          "src": "img/whales.jpg",
-          "caption": "Whales: Beneath the Surface, Natural History Museum",
-          "w": 1400,
-          "h": 785
-        }
-      ],
-      "link": {
-        "url": "https://www.youtube.com/watch?v=z_ZonqO_Hn4",
-        "label": "Watch the trailer"
-      },
+      "images": [],
+      "link": null,
       "id": "whales-beneath-the-surface-trailer-for-the-natural-history-museum",
       "page": 503,
-      "cardTitle": "Whales"
+      "cardTitle": "Whales",
+      "embed": "https://www.youtube.com/watch?v=z_ZonqO_Hn4",
+      "thumb": "img/whales.jpg",
+      "embedCaption": "Whales: Beneath the Surface, Natural History Museum"
     },
     {
       "title": "Matilda the Musical Social, Video & Radio",
@@ -1139,21 +1121,17 @@
         "Meet the Matildas introduced the young actors taking on the title role, showing audiences the new cast before they stepped on stage.",
         "I also scripted and edited Matilda’s radio trailers."
       ],
-      "images": [
-        {
-          "src": "img/matilda.jpg",
-          "caption": "Meet the Matildas, Matilda The Musical",
-          "w": 1200,
-          "h": 674
-        }
-      ],
+      "images": [],
       "link": {
         "url": "https://www.youtube.com/watch?v=w1WAWnm4zLw&list=PLybPI7Yeye3jCdkvCjsYKNvWqBjZdYBzS",
         "label": "Watch the videos"
       },
       "id": "matilda-the-musical-social-video-and-radio",
       "page": 504,
-      "cardTitle": "Matilda the Musical"
+      "cardTitle": "Matilda the Musical",
+      "embed": "https://www.youtube.com/watch?v=zW9_mmJbgdc",
+      "thumb": "img/matilda.jpg",
+      "embedCaption": "Meet the Matildas, Matilda The Musical"
     },
     {
       "title": "Westminster Abbey: Feel Wonder First Hand",
