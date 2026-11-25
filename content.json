@@ -69,9 +69,8 @@
       "image": {
         "src": "img/kings-cross-hero.jpg",
         "caption": "HBO Max UK launch: King's Cross tunnel takeover",
-        "w": 1800,
-        "h": 984,
-        "dw": 1152
+        "w": 1152,
+        "h": 630
       },
       "kicker": "Out of home · King's Cross",
       "line": "“The best new platform since 9¾.”",
@@ -214,9 +213,8 @@
           "image": {
             "src": "img/kings-cross.jpg",
             "caption": "",
-            "w": 1800,
-            "h": 984,
-            "dw": 1152
+            "w": 1162,
+            "h": 661
           }
         },
         {
@@ -227,9 +225,8 @@
           "image": {
             "src": "img/world-goes-pop.jpg",
             "caption": "",
-            "w": 1800,
-            "h": 1012,
-            "dw": 1147
+            "w": 1147,
+            "h": 645
           }
         },
         {
@@ -497,9 +494,8 @@
         {
           "src": "img/kings-cross.jpg",
           "caption": "King's Cross tunnel, London",
-          "w": 1800,
-          "h": 984,
-          "dw": 1152
+          "w": 1162,
+          "h": 661
         }
       ],
       "id": "hbo-max-uk-launch-campaign",
@@ -529,9 +525,8 @@
         {
           "src": "img/watercooler.jpg",
           "caption": "“Wall-to-Wall Watercooler” poster",
-          "w": 1800,
-          "h": 1350,
-          "dw": 1200
+          "w": 1200,
+          "h": 900
         }
       ],
       "id": "hbo-max-wall-to-wall-watercooler-campaign",
@@ -553,9 +548,8 @@
         {
           "src": "img/royal-roy.jpg",
           "caption": "Instagram, @hbomaxuk × @hollyandbrookearehooked",
-          "w": 1032,
-          "h": 1436,
-          "dw": 516
+          "w": 516,
+          "h": 718
         }
       ],
       "id": "succession-influencer-campaign-for-hbo-max",
@@ -577,9 +571,8 @@
         {
           "src": "img/tough-cases.jpg",
           "caption": "Display ad, before market pricing was added",
-          "w": 1338,
-          "h": 1340,
-          "dw": 669
+          "w": 669,
+          "h": 670
         }
       ],
       "id": "hbo-max-display-and-paid-social-ads",
@@ -602,16 +595,14 @@
         {
           "src": "img/humans.jpg",
           "caption": "Humans",
-          "w": 1800,
-          "h": 1013,
-          "dw": 1180
+          "w": 1180,
+          "h": 664
         },
         {
           "src": "img/halt-catch-fire.jpg",
           "caption": "Halt and Catch Fire",
-          "w": 1800,
-          "h": 1269,
-          "dw": 1179
+          "w": 1179,
+          "h": 831
         }
       ],
       "id": "humans-and-halt-and-catch-fire-taglines",
@@ -633,9 +624,8 @@
         {
           "src": "img/hbo-max-trailer.jpg",
           "caption": "HBO Max trailer",
-          "w": 1800,
-          "h": 1007,
-          "dw": 1400
+          "w": 1400,
+          "h": 783
         }
       ],
       "id": "hbo-max-trailers-for-cinema-tv-and-radio",
@@ -665,17 +655,21 @@
         "For HBO Max's four-part documentary series about him, Pogány Induló: Vajon mit mondana anya (What Would Mum Say?), I came up with the concept for the trailer and wrote the script.",
         "My concept shows him walking alone against the crowd, with his own lyrics projected onto him. He's a lone wolf, weighed down by his words."
       ],
-      "images": [],
+      "images": [
+        {
+          "src": "img/pogany-indulo.jpg",
+          "caption": "Pogány Induló: Vajon mit mondana anya, HBO Max",
+          "w": 1400,
+          "h": 583
+        }
+      ],
       "link": {
         "url": "https://www.youtube.com/watch?v=p6dlv8rp49E",
         "label": "Watch the trailer"
       },
       "id": "pogany-indulo-documentary-trailer-for-hbo-max",
       "page": 207,
-      "cardTitle": "Pogány Induló",
-      "embed": "https://www.youtube.com/watch?v=NwIcsmX7ipA",
-      "thumb": "img/pogany-indulo.jpg",
-      "embedCaption": "Pogány Induló: Vajon mit mondana anya, HBO Max"
+      "cardTitle": "Pogány Induló"
     },
     {
       "title": "Boyhood Trailer",
@@ -690,13 +684,17 @@
         "The film follows one boy, Mason, from the age of six to eighteen, with Patricia Arquette and Ethan Hawke as his parents. That process was what made the film unique, so the script had to explain it quickly, then let the footage do the emotional work as Mason grows up on screen.",
         "The trailer gained 5.5 million views on YouTube, and was also shown on TV in America."
       ],
-      "images": [],
+      "images": [
+        {
+          "src": "img/boyhood.jpg",
+          "caption": "Boyhood, Universal",
+          "w": 723,
+          "h": 424
+        }
+      ],
       "id": "boyhood-trailer",
       "page": 208,
-      "cardTitle": "Boyhood",
-      "embed": "https://www.youtube.com/watch?v=Y0oX0xiwOv8",
-      "embedCaption": "Boyhood trailer, Universal",
-      "thumb": "img/boyhood.jpg"
+      "cardTitle": "Boyhood"
     },
     {
       "title": "Mock the Week Print Ad for TLC",
@@ -713,9 +711,8 @@
         {
           "src": "img/mock-the-week.jpg",
           "caption": "Print ad for TLC",
-          "w": 1800,
-          "h": 1153,
-          "dw": 1158
+          "w": 1158,
+          "h": 742
         }
       ],
       "id": "mock-the-week-print-ad-for-tlc",
@@ -737,9 +734,8 @@
         {
           "src": "img/swallows-amazons.jpg",
           "caption": "Swallows and Amazons",
-          "w": 1590,
-          "h": 2356,
-          "dw": 795
+          "w": 795,
+          "h": 1178
         }
       ],
       "id": "swallows-and-amazons-tagline",
@@ -763,9 +759,8 @@
         {
           "src": "img/hbo-max-halloween.jpg",
           "caption": "Display creative: “Fear hits home”",
-          "w": 1200,
-          "h": 930,
-          "dw": 600
+          "w": 600,
+          "h": 465
         }
       ],
       "video": {
@@ -794,9 +789,8 @@
         {
           "src": "img/knight-journey.jpg",
           "caption": "Result screen for getting every answer wrong",
-          "w": 1536,
-          "h": 2560,
-          "dw": 768
+          "w": 768,
+          "h": 1280
         }
       ],
       "video": {
@@ -824,9 +818,8 @@
         {
           "src": "img/atg-lyceum-b2b.webp",
           "caption": "ATG Theatres corporate venue hire LinkedIn advertising concept featuring the Lyceum Theatre",
-          "w": 1800,
-          "h": 941,
-          "dw": 1440
+          "w": 1440,
+          "h": 753
         }
       ],
       "id": "atg-theatres-business-deserves-a-bigger-stage",
@@ -849,8 +842,8 @@
         {
           "src": "img/noodoll-ricespud-product-copy.webp",
           "caption": "Noodoll Ricespud product page showing the plush and the product copy I wrote",
-          "w": 1650,
-          "h": 817
+          "w": 1406,
+          "h": 782
         }
       ],
       "id": "noodoll-ricespud-product-messaging",
@@ -873,9 +866,8 @@
         {
           "src": "img/hbo-max-welcome-email.jpg",
           "caption": "HBO Max UK welcome email",
-          "w": 1626,
-          "h": 1764,
-          "dw": 813
+          "w": 813,
+          "h": 882
         }
       ],
       "id": "hbo-max-lifecycle-email",
@@ -898,16 +890,14 @@
         {
           "src": "img/futurelearn-course-seo.webp",
           "caption": "FutureLearn course page: Power Dressing in the Zoom Era, showing search-informed course-title copy",
-          "w": 1800,
-          "h": 1796,
-          "dw": 913
+          "w": 796,
+          "h": 752
         },
         {
           "src": "img/futurelearn-editorial-rome.webp",
           "caption": "FutureLearn long-form editorial article: Explore a virtual map of Ancient Rome",
-          "w": 1636,
-          "h": 1646,
-          "dw": 818
+          "w": 818,
+          "h": 823
         }
       ],
       "id": "futurelearn-course-seo-and-editorial",
@@ -978,11 +968,10 @@
         {
           "src": "img/hbo-checkout-flow-overview.webp",
           "caption": "Figma canvas showing several HBO Max mobile checkout flows",
-          "w": 1276,
-          "h": 194,
+          "w": 638,
+          "h": 97,
           "heading": "Checkout flows in Figma",
-          "text": "I used this board to see what happens after someone clicks through. On the TNT Sports page, “Get TNT Sports” and “Get Sports & HBO Max” spell out the two options before customers reach checkout.",
-          "dw": 638
+          "text": "I used this board to see what happens after someone clicks through. On the TNT Sports page, “Get TNT Sports” and “Get Sports & HBO Max” spell out the two options before customers reach checkout."
         }
       ],
       "thumb": "img/hbo-max-landing.webp",
@@ -1006,10 +995,9 @@
         {
           "src": "img/paris-2024.jpg",
           "caption": "Paris 2024 CRM",
-          "w": 1148,
-          "h": 1404,
-          "size": 62,
-          "dw": 574
+          "w": 574,
+          "h": 702,
+          "size": 62
         }
       ],
       "id": "tnt-sports-crm-including-paris-2024",
@@ -1067,17 +1055,25 @@
       "quote2": "",
       "cardQuote": "",
       "body": [
-        "For Tate Modern's exhibition The EY Exhibition: The World Goes Pop, I came up with the idea for the trailer, wrote the script and helped on the shoot.",
-        "I thought the Japanese pop star Kyary Pamyu Pamyu, with her surrealist sensibility, would be perfect for it. I contacted her team, and the stars aligned: she was in London for a show, so we could shoot with her while she was here."
+        "For Tate Modern’s *The EY Exhibition: The World Goes Pop*, I came up with the concept for the trailer, wrote the script and helped out on the shoot.",
+        "I thought Japanese pop star Kyary Pamyu Pamyu, with her wonderfully surreal aesthetic, would be a perfect fit for the exhibition. I got in touch with her team and, as luck would have it, she was due to play a show in London, so we arranged to film with her while she was here.",
+        "The resulting trailer racked up nearly 100,000 views on YouTube and was featured in Time Out."
       ],
-      "images": [],
-      "link": null,
+      "images": [
+        {
+          "src": "img/world-goes-pop.jpg",
+          "caption": "The World Goes Pop, Tate Modern",
+          "w": 1147,
+          "h": 645
+        }
+      ],
+      "link": {
+        "url": "https://www.youtube.com/watch?v=F1pbMBGxvS4",
+        "label": "Watch the trailer"
+      },
       "id": "the-world-goes-pop-trailer-for-tate-modern",
       "page": 501,
-      "cardTitle": "Tate Modern",
-      "embed": "https://youtu.be/F1pbMBGxvS4",
-      "thumb": "img/world-goes-pop.jpg",
-      "embedCaption": "The World Goes Pop, Tate Modern"
+      "cardTitle": "Tate Modern"
     },
     {
       "title": "Home, I’m Darling Trailer for the National Theatre",
@@ -1095,9 +1091,8 @@
         {
           "src": "img/national-theatre.jpg",
           "caption": "Home, I'm Darling trailer, National Theatre",
-          "w": 1800,
-          "h": 1213,
-          "dw": 945
+          "w": 945,
+          "h": 637
         }
       ],
       "link": {
@@ -1120,14 +1115,21 @@
         "For the Natural History Museum's exhibition Whales: Beneath the Surface, I came up with the idea for the trailer, wrote the script and helped with the edit.",
         "I wanted to tap into the sense of mystery whales evoke, and found Heathcote Williams’ poem Whale Nation. The trailer is built around an extract from it."
       ],
-      "images": [],
-      "link": null,
+      "images": [
+        {
+          "src": "img/whales.jpg",
+          "caption": "Whales: Beneath the Surface, Natural History Museum",
+          "w": 1400,
+          "h": 785
+        }
+      ],
+      "link": {
+        "url": "https://www.youtube.com/watch?v=z_ZonqO_Hn4",
+        "label": "Watch the trailer"
+      },
       "id": "whales-beneath-the-surface-trailer-for-the-natural-history-museum",
       "page": 503,
-      "cardTitle": "Whales",
-      "embed": "https://www.youtube.com/watch?v=z_ZonqO_Hn4",
-      "thumb": "img/whales.jpg",
-      "embedCaption": "Whales: Beneath the Surface, Natural History Museum"
+      "cardTitle": "Whales"
     },
     {
       "title": "Matilda the Musical Social, Video & Radio",
@@ -1142,17 +1144,21 @@
         "Meet the Matildas introduced the young actors taking on the title role, showing audiences the new cast before they stepped on stage.",
         "I also scripted and edited Matilda’s radio trailers."
       ],
-      "images": [],
+      "images": [
+        {
+          "src": "img/matilda.jpg",
+          "caption": "Meet the Matildas, Matilda The Musical",
+          "w": 1200,
+          "h": 674
+        }
+      ],
       "link": {
         "url": "https://www.youtube.com/watch?v=w1WAWnm4zLw&list=PLybPI7Yeye3jCdkvCjsYKNvWqBjZdYBzS",
         "label": "Watch the videos"
       },
       "id": "matilda-the-musical-social-video-and-radio",
       "page": 504,
-      "cardTitle": "Matilda the Musical",
-      "embed": "https://www.youtube.com/watch?v=zW9_mmJbgdc",
-      "thumb": "img/matilda.jpg",
-      "embedCaption": "Meet the Matildas, Matilda The Musical"
+      "cardTitle": "Matilda the Musical"
     },
     {
       "title": "Westminster Abbey: Feel Wonder First Hand",
@@ -1170,16 +1176,14 @@
         {
           "src": "img/westminster-abbey.jpg",
           "caption": "Westminster Abbey outdoor campaign",
-          "w": 1520,
-          "h": 2366,
-          "dw": 760
+          "w": 760,
+          "h": 1183
         },
         {
           "src": "img/westminster-abbey-bond-street.webp",
           "caption": "The campaign at Bond Street station",
-          "w": 1800,
-          "h": 2401,
-          "dw": 1100
+          "w": 1100,
+          "h": 1467
         }
       ],
       "id": "westminster-abbey-feel-wonder-first-hand",
@@ -1201,16 +1205,14 @@
         {
           "src": "img/new-world-needs.jpg",
           "caption": "The New World Needs…",
-          "w": 1800,
-          "h": 1800,
-          "dw": 913
+          "w": 913,
+          "h": 913
         },
         {
           "src": "img/new-world-building.jpg",
           "caption": "Sector-specific paid social",
-          "w": 848,
-          "h": 1392,
-          "dw": 424
+          "w": 424,
+          "h": 696
         }
       ],
       "id": "city-and-guilds-and-futurelearn-skills-campaign",
@@ -1234,9 +1236,8 @@
         {
           "src": "img/results-day.jpg",
           "caption": "Results Day OOH",
-          "w": 1800,
-          "h": 1800,
-          "dw": 1048
+          "w": 1048,
+          "h": 1048
         }
       ],
       "id": "futurelearn-results-day-outdoor-campaign",
@@ -1276,9 +1277,8 @@
         {
           "src": "img/quick-witted.jpg",
           "caption": "HBO Max tone-of-voice guide",
-          "w": 1800,
-          "h": 1108,
-          "dw": 1179
+          "w": 1179,
+          "h": 726
         }
       ],
       "video": {
@@ -1344,16 +1344,14 @@
         {
           "src": "img/skinny-slow-west.jpg",
           "caption": "The Skinny: Slow West",
-          "w": 1800,
-          "h": 1065,
-          "dw": 1171
+          "w": 1171,
+          "h": 693
         },
         {
           "src": "img/skinny-julia-holter.jpg",
           "caption": "The Skinny: Julia Holter",
-          "w": 1800,
-          "h": 1063,
-          "dw": 1174
+          "w": 1174,
+          "h": 693
         }
       ],
       "page": 800,
