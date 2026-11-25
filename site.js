@@ -449,6 +449,11 @@ function sectionOf(id) {
   return null;
 }
 
+// Three or more pictures with a wide one among them (screenshots, scripts, landscape ads): two per row, so they stay readable.
+function galRows(rest) {
+  if (rest.length < 3 || !rest.some(([im]) => im.w && im.h && im.w / im.h >= 1.6)) return rest.length ? [rest] : [];
+  const rows = []; for (let i = 0; i < rest.length; i += 2) rows.push(rest.slice(i, i + 2)); return rows;
+}
 function projectHTML(p) {
   const n = projIdx(p.id), B = `projects.${n}`;
   const imgs = p.images || [];
@@ -488,7 +493,7 @@ function projectHTML(p) {
       </div>
       ${st}
       ${rest.length || special.length ? `<div class="wrap proj-gal">
-        ${rest.length ? `<div class="row">${rest.map(x => fig(x)).join("")}</div>` : ""}
+        ${galRows(rest).map(r => `<div class="row">${r.map(x => fig(x)).join("")}</div>`).join("")}
         ${special.map(([im, k]) => `<section>
           <div class="img-head">${T("h3", `${B}.images.${k}.heading`, im.heading || "", "display h3")}
             ${im.link && im.link.url ? `<a class="textlink" href="${esc(safeUrl(im.link.url))}"${ext(im.link.url)}>${esc(im.link.label || "View")} →</a>` : ""}</div>
