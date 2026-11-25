@@ -244,28 +244,18 @@
           "image": null
         },
         {
-          "project": "brand-voice",
-          "tag": "Brand voice",
-          "title": "TOV Guides",
-          "desc": "Tone-of-voice guides · Master copy in 17 languages",
-          "image": {
-            "src": "img/quick-witted.jpg",
-            "caption": "",
-            "w": 1179,
-            "h": 726
-          }
+          "project": "hbo-max-wall-to-wall-watercooler-campaign",
+          "tag": "Campaign",
+          "title": "Wall-to-Wall Watercooler",
+          "desc": "HBO Max · OOH brand campaign · Autumn 2026 · Warner Bros. Discovery",
+          "image": null
         },
         {
-          "project": "a-knight-of-the-seven-kingdoms-gamified-journey",
-          "tag": "UX & RETENTION",
-          "title": "A Knight of the Seven Kingdoms",
-          "desc": "An interactive in-app journey",
-          "image": {
-            "src": "img/knight-journey.jpg",
-            "caption": "",
-            "w": 768,
-            "h": 1280
-          }
+          "project": "futurelearn-google-course-product-copy",
+          "tag": "Product",
+          "title": "FutureLearn × Google",
+          "desc": "FutureLearn × Google for Education · Course landing page · Product copy",
+          "image": null
         }
       ]
     },
