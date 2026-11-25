@@ -366,27 +366,96 @@ function toBlocks(s) {
   if (s.type === "cta") { out.push(B("heading", { text: s.headline, align: "center" })); if (s.text) out.push(B("text", { paragraphs: [s.text], align: "center" })); btns(s.buttons); out.slice(-((s.buttons || []).length)).forEach(b => b.align = "center"); }
   return { id: s.id, type: "custom", navLabel: s.navLabel, bg: s.bg, hidden: s.hidden, blocks: [...out, ...(s.blocks || [])] };
 }
+/* turn edited HTML into stored text: plain text when unformatted, safe HTML when formatted */
+const tidy = h => h.replace(/\s+/g, " ").replace(/^(\s|&nbsp;)+|(\s|&nbsp;)+$/g, "").trim();
+function store(html) {
+  const c = tidy(html);
+  if (!/</.test(c)) { const t = document.createElement("textarea"); t.innerHTML = c; return t.value.replace(/\u00a0/g, " ").trim(); }
+  return c.replace(/&nbsp;/g, " ");
+}
+function serialize(el, inline) {
+  const clone = el.cloneNode(true);
+  clone.querySelectorAll(".ed-bar, .ed-barwrap, .ed-bbar, .ed-add, .ed-addblk, .ed-open, .ed-imgchip, .ed-fmt").forEach(x => x.remove());
+  return store(W().Site.cleanHTML(clone.innerHTML, inline));
+}
 function parseParas(el) {
   const blocks = $$(":scope > p, :scope > div, :scope > li", el);
-  const parts = blocks.length ? blocks.map(b => b.innerText) : [el.innerText];
-  return parts.flatMap(t => t.split(/\n+/)).map(t => t.replace(/\s+/g, " ").trim()).filter(Boolean);
+  const parts = blocks.length ? blocks.map(b => b.innerHTML) : [el.innerHTML];
+  return parts.flatMap(h => h.split(/(?:<br\s*\/?>\s*){2,}/i)).map(h => store(W().Site.cleanHTML(h))).filter(x => x && x !== "<br>");
+}
+/* formatting toolbar: appears over selected text */
+const FMT_ICON = {
+  b: '<b style="font:800 15px/1 Georgia,serif">B</b>', i: '<i style="font:italic 600 16px/1 Georgia,serif">I</i>',
+  u: '<span style="font:600 15px/1 Georgia,serif;text-decoration:underline">U</span>', s: '<span style="font:600 15px/1 Georgia,serif;text-decoration:line-through">S</span>',
+};
+function bindFormat(d) {
+  try { d.execCommand("styleWithCSS", false, false); } catch (e) {}
+  const bar = d.createElement("div"); bar.className = "ed-fmt"; bar.contentEditable = "false";
+  bar.innerHTML = `<button data-c="bold" title="Bold (Ctrl/Cmd B)">${FMT_ICON.b}</button><button data-c="italic" title="Italic (Ctrl/Cmd I)">${FMT_ICON.i}</button>
+    <button data-c="underline" title="Underline (Ctrl/Cmd U)">${FMT_ICON.u}</button><button data-c="strikeThrough" title="Strikethrough">${FMT_ICON.s}</button><span class="sep"></span>
+    <button data-c="size" data-v="2" title="Small text">S</button><button data-c="size" data-v="3" title="Normal size">M</button><button data-c="size" data-v="4" title="Large text">L</button><button data-c="size" data-v="5" title="Extra large">XL</button><span class="sep"></span>
+    <button data-c="font" data-v="ffd" title="Headline typeface" class="ffd">Aa</button><button data-c="font" data-v="ffb" title="Body typeface" class="ffb">Aa</button><span class="sep"></span>
+    <button data-c="hl" title="Highlight"><span class="hlm">ab</span></button><button data-c="link" title="Add or change link">Link</button><button data-c="clear" title="Clear formatting">✕</button>`;
+  d.body.appendChild(bar);
+  let target = null;
+  const hide = () => { bar.style.display = "none"; d.body.classList.remove("ed-formatting"); };
+  const place = () => {
+    const sel = d.getSelection();
+    if (previewing || !sel || sel.isCollapsed || !sel.rangeCount) return hide();
+    const node = sel.anchorNode && (sel.anchorNode.nodeType === 1 ? sel.anchorNode : sel.anchorNode.parentElement);
+    target = node && node.closest("[data-path],[data-paras]");
+    if (!target) return hide();
+    const r = sel.getRangeAt(0).getBoundingClientRect(); if (!r.width) return hide();
+    bar.style.display = "flex"; d.body.classList.add("ed-formatting");
+    const bw = bar.offsetWidth, vw = d.documentElement.clientWidth;
+    bar.style.left = Math.max(8, Math.min(vw - bw - 8, r.left + r.width / 2 - bw / 2)) + "px";
+    bar.style.top = (r.top > 70 ? r.top - bar.offsetHeight - 10 : r.bottom + 10) + "px";
+    $$("[data-c]", bar).forEach(b => { const c = b.dataset.c; if (["bold", "italic", "underline", "strikeThrough"].includes(c)) { try { b.classList.toggle("on", d.queryCommandState(c)); } catch (e) {} } });
+  };
+  d.addEventListener("selectionchange", () => requestAnimationFrame(place));
+  d.addEventListener("scroll", hide, true);
+  bar.addEventListener("mousedown", e => e.preventDefault());
+  bar.addEventListener("click", e => {
+    const b = e.target.closest("[data-c]"); if (!b || !target) return;
+    e.preventDefault(); e.stopPropagation();
+    const c = b.dataset.c, v = b.dataset.v;
+    if (c === "size") d.execCommand("fontSize", false, v);
+    else if (c === "font") d.execCommand("fontName", false, v);
+    else if (c === "hl") { const on = d.queryCommandValue("hiliteColor"); d.execCommand("hiliteColor", false, on && !/transparent|rgba\(0, 0, 0, 0\)/.test(on) ? "transparent" : "#9fe5fb"); }
+    else if (c === "clear") { d.execCommand("removeFormat"); d.execCommand("unlink"); }
+    else if (c === "link") {
+      const sel = d.getSelection(), range = sel.rangeCount && sel.getRangeAt(0).cloneRange();
+      const a = sel.anchorNode && (sel.anchorNode.nodeType === 1 ? sel.anchorNode : sel.anchorNode.parentElement).closest("a");
+      const { el, close } = modal(`<div class="dialog-h"><h2>Link</h2><button class="ib" data-x aria-label="Close">${ICON.x}</button></div>
+        <form class="dialog-b"><div class="field"><label for="lk">Goes to</label><input id="lk" type="text" value="${esc(a ? a.getAttribute("href") : "")}" placeholder="https://… or #contact"><p class="help">A web address, an email (mailto:you@…), or # and a section’s link name.</p></div>
+        <div style="display:flex;gap:8px"><button class="btn-p">Save link</button>${a ? '<button type="button" class="btn-d" data-un>Remove link</button>' : ""}</div></form>`, "small");
+      const restore = () => { target.focus(); const s2 = d.getSelection(); s2.removeAllRanges(); if (range) s2.addRange(range); };
+      $("form", el).onsubmit = ev => { ev.preventDefault(); let u = $("#lk", el).value.trim(); close(); restore(); if (!u) return; if (/^[\w.+-]+@[\w-]+\.[\w.]+$/.test(u)) u = "mailto:" + u; else if (!/^(https?:|mailto:|tel:|#|\/)/.test(u)) u = "https://" + u; d.execCommand("createLink", false, u); };
+      const un = $("[data-un]", el); if (un) un.onclick = () => { close(); restore(); d.execCommand("unlink"); };
+      return;
+    }
+    else d.execCommand(c);
+    target.dispatchEvent(new d.defaultView.InputEvent("input", { bubbles: true }));
+    place();
+  });
 }
 function bindFrame(d) {
   if (d.__ed) return; d.__ed = true;
+  bindFormat(d);
   bindResize(d);
   bindCardDrag(d);
   d.addEventListener("focusin", e => { const el = e.target.closest("[data-path],[data-paras]"); if (el) el.__snap = false; });
   d.addEventListener("input", e => {
     const el = e.target.closest("[data-path],[data-paras]"); if (!el) return;
     if (!el.__snap) { snap(); el.__snap = true; }
-    if (el.dataset.path) setAt(el.dataset.path, el.innerText.replace(/\s*\n\s*/g, " "));
+    if (el.dataset.path) setAt(el.dataset.path, serialize(el, true));
     else setAt(el.dataset.paras, parseParas(el));
     if (el.classList.contains("fit")) W().Site.refit();
     dirty = true; saveDraft(); status();
   });
   d.addEventListener("focusout", e => {
     const el = e.target.closest("[data-path],[data-paras]"); if (!el || !el.__snap) return;
-    if (el.dataset.path) { const v = el.innerText.replace(/\s+/g, " ").trim(); setAt(el.dataset.path, v); }
+    if (el.dataset.path) setAt(el.dataset.path, serialize(el, true));
     if (!document.activeElement || !$("#side").contains(document.activeElement)) renderSide();
     if (/^site\.|navLabel|\.title$|cardTitle|headline/.test(el.dataset.path || "")) paint(true);
   });
@@ -973,6 +1042,9 @@ function form(obj, basePath, fields) {
   if (inGroup) out += "</div>";
   return out;
 }
+const hasFmt = v => typeof v === "string" && /<[a-z]/i.test(v);
+const plainText = v => { if (!hasFmt(v)) return v ?? ""; const t = document.createElement("template"); t.innerHTML = v; return t.content.textContent; };
+const FMT_NOTE = '<p class="help">This text has formatting (bold, links and so on). Edit it on the page to keep it: typing here removes the formatting.</p>';
 function field(obj, basePath, f) {
   if (f.when && !f.when(obj || {})) return "";
   const path = f.k == null ? basePath : basePath + "." + f.k;
@@ -982,11 +1054,11 @@ function field(obj, basePath, f) {
   const lab = `<label for="${id}">${esc(f.label)}</label>`;
   switch (f.t) {
     case "text": case "link": case "sectionid": case "projectid":
-      return `<div class="field">${lab}<input id="${id}" type="text" data-f="${path}" data-t="${f.t}" value="${esc(v)}"${f.t === "link" ? ' placeholder="https://… or #section-name"' : ""}>${help}</div>`;
+      return `<div class="field">${lab}<input id="${id}" type="text" data-f="${path}" data-t="${f.t}" value="${esc(plainText(v))}"${f.t === "link" ? ' placeholder="https://… or #section-name"' : ""}>${help}${f.t === "text" && hasFmt(v) ? FMT_NOTE : ""}</div>`;
     case "number": return `<div class="field">${lab}<input id="${id}" type="number" min="0" data-f="${path}" data-t="number" value="${esc(v ?? 0)}">${help}</div>`;
     case "range": return `<div class="field">${lab}<input id="${id}" type="range" min="${f.min}" max="${f.max}" data-f="${path}" data-t="number" value="${esc(v ?? 40)}">${help}</div>`;
-    case "textarea": return `<div class="field">${lab}<textarea id="${id}" data-f="${path}" data-t="text">${esc(v)}</textarea>${help}</div>`;
-    case "paras": return `<div class="field">${lab}<textarea id="${id}" class="tall" data-f="${path}" data-t="${f.lines ? "lines" : "paras"}">${esc((v || []).join(f.lines ? "\n" : "\n\n"))}</textarea>${help}</div>`;
+    case "textarea": return `<div class="field">${lab}<textarea id="${id}" data-f="${path}" data-t="text">${esc(plainText(v))}</textarea>${help}${hasFmt(v) ? FMT_NOTE : ""}</div>`;
+    case "paras": return `<div class="field">${lab}<textarea id="${id}" class="tall" data-f="${path}" data-t="${f.lines ? "lines" : "paras"}">${esc((v || []).map(plainText).join(f.lines ? "\n" : "\n\n"))}</textarea>${help}${(v || []).some(hasFmt) ? FMT_NOTE : ""}</div>`;
     case "check": return `<div class="field"><label class="check"><input type="checkbox" data-f="${path}" data-t="check"${v ? " checked" : ""}> ${esc(f.label)}</label>${help}</div>`;
     case "select": return `<div class="field">${lab}<select id="${id}" data-f="${path}" data-t="text">${f.opts.map(([a, b]) => `<option value="${esc(a)}"${a === v ? " selected" : ""}>${esc(b)}</option>`).join("")}</select>${help}</div>`;
     case "bg": return `<div class="field"><span class="lab">${esc(f.label)}</span><div class="bgs" role="group" aria-label="${esc(f.label)}">${Object.entries(BG).map(([k, n]) => `<button type="button" title="${n}" aria-label="${n}" aria-pressed="${v === k}" class="${v === k ? "on" : ""}" data-bg="${path}" data-val="${k}" style="background:${esc(C.site.colors[k])}"></button>`).join("")}</div>${help}</div>`;

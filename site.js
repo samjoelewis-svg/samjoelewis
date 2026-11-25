@@ -18,8 +18,50 @@ const safeUrl = u => { u = String(u || "").trim(); return /^(https?:|mailto:|tel
 const ext = u => /^https?:/i.test(u) ? ' target="_blank" rel="noopener"' : "";
 
 /* text helpers: data-path lets the editor find and edit any piece of text */
-const T = (tag, path, val, cls = "", attrs = "") => `<${tag}${cls ? ` class="${cls}"` : ""} data-path="${path}"${attrs}>${esc(val)}</${tag}>`;
-const P = (path, arr, cls = "prose") => `<div class="${cls}" data-paras="${path}">${(arr || []).map(p => `<p>${esc(p)}</p>`).join("")}</div>`;
+/* rich text: a small, safe set of formatting (bold, italic, underline, strike, links, sizes, typeface, highlight) */
+const TAGS = { B: "b", STRONG: "b", I: "i", EM: "i", U: "u", S: "s", STRIKE: "s", DEL: "s", A: "a" };
+const FSIZE = { 1: "s", 2: "s", 4: "l", 5: "xl", 6: "xxl", 7: "xxl" };
+const SPANCLS = /\b(sz-(?:s|l|xl|xxl)|ff-d|ff-b|hl)\b/g;
+function cleanNodes(node, inline) {
+  let out = "";
+  for (const c of node.childNodes) {
+    if (c.nodeType === 3) { out += esc(c.nodeValue); continue; }
+    if (c.nodeType !== 1) continue;
+    const t = c.tagName;
+    if (t === "BR") { out += inline ? " " : "<br>"; continue; }
+    if (t === "SCRIPT" || t === "STYLE") continue;
+    let inner = cleanNodes(c, inline);
+    if (!inner) continue;
+    if (TAGS[t] === "a") { const h = safeUrl(c.getAttribute("href")); out += h && h !== "#" ? `<a href="${esc(h)}"${ext(h)}>${inner}</a>` : inner; continue; }
+    if (TAGS[t]) { out += `<${TAGS[t]}>${inner}</${TAGS[t]}>`; continue; }
+    if (t === "FONT" || t === "SPAN") {
+      const cls = [];
+      if (t === "FONT") {
+        if (FSIZE[c.getAttribute("size")]) cls.push("sz-" + FSIZE[c.getAttribute("size")]);
+        const f = (c.getAttribute("face") || "").toLowerCase();
+        if (f === "ffd") cls.push("ff-d"); else if (f === "ffb") cls.push("ff-b");
+      } else {
+        (c.className.match(SPANCLS) || []).forEach(x => cls.push(x));
+        const st = c.style || {};
+        if (st.backgroundColor && !/transparent|rgba\(0, 0, 0, 0\)/.test(st.backgroundColor)) cls.push("hl");
+        if (st.fontWeight === "bold" || +st.fontWeight >= 600) inner = `<b>${inner}</b>`;
+        if (st.fontStyle === "italic") inner = `<i>${inner}</i>`;
+        if (/underline/.test(st.textDecoration || st.textDecorationLine || "")) inner = `<u>${inner}</u>`;
+      }
+      out += cls.length ? `<span class="${[...new Set(cls)].join(" ")}">${inner}</span>` : inner; continue;
+    }
+    out += inner;
+  }
+  return out;
+}
+function cleanHTML(html, inline) {
+  const tp = document.createElement("template"); tp.innerHTML = String(html ?? "");
+  return cleanNodes(tp.content, inline);
+}
+const rich = s => { s = String(s ?? ""); return /[<&]/.test(s) ? cleanHTML(s) : esc(s); };
+const plainTxt = s => { s = String(s ?? ""); if (!/[<&]/.test(s)) return s; const tp = document.createElement("template"); tp.innerHTML = s; return tp.content.textContent; };
+const T = (tag, path, val, cls = "", attrs = "") => `<${tag}${cls ? ` class="${cls}"` : ""} data-path="${path}"${attrs}>${rich(val)}</${tag}>`;
+const P = (path, arr, cls = "prose") => `<div class="${cls}" data-paras="${path}">${(arr || []).map(p => `<p>${rich(p)}</p>`).join("")}</div>`;
 const IMG = (path, x, cls = "", extra = "", natural = false) => {
   const s = R(x); if (!s && !O.edit) return "";
   const w = x && x.w ? ` width="${x.w}" height="${x.h}"` : "";
@@ -27,7 +69,7 @@ const IMG = (path, x, cls = "", extra = "", natural = false) => {
   if (x && x.w && x.h && x.h > x.w * 1.15) st.push("object-position:50% 0");
   if (natural && x && x.w) st.push(`max-width:min(100%,${x.dw || x.w}px)`);
   if (x && x.size > 0 && x.size < 100) st.push(`width:${Math.round(x.size)}%`);
-  return `<img${cls ? ` class="${cls}"` : ""} src="${esc(s)}" alt="${esc(capOf(x))}"${w}${st.length ? ` style="${st.join(";")}"` : ""} data-img="${path}" decoding="async"${extra}>`;
+  return `<img${cls ? ` class="${cls}"` : ""} src="${esc(s)}" alt="${esc(plainTxt(capOf(x)))}"${w}${st.length ? ` style="${st.join(";")}"` : ""} data-img="${path}" decoding="async"${extra}>`;
 };
 const ICONS = {
   linkedin: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.5 9.75h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5c0-1.2-.02-2.73-1.66-2.73-1.67 0-1.92 1.3-1.92 2.64V21h-4z"/></svg>',
@@ -78,7 +120,7 @@ S.split = (s, i) => `
 const firstIdx = () => { const v = C.sections.findIndex(x => O.edit || !x.hidden); return v; };
 function buttons(list, path) {
   if (!list || !list.length) return "";
-  return `<div class="btns">${list.map((b, k) => `<a class="btn${k ? " ghost" : ""}" href="${esc(safeUrl(b.link))}"${ext(b.link)} data-path="${path}.${k}.label">${esc(b.label)}</a>`).join("")}</div>`;
+  return `<div class="btns">${list.map((b, k) => `<a class="btn${k ? " ghost" : ""}" href="${esc(safeUrl(b.link))}"${ext(b.link)} data-path="${path}.${k}.label">${rich(b.label)}</a>`).join("")}</div>`;
 }
 function shead(s, i) {
   return `<div class="shead rv"><div>${s.kicker || O.edit && s.kicker !== undefined ? T("p", `sections.${i}.kicker`, s.kicker, "kicker") : ""}${T("h2", `sections.${i}.headline`, s.headline, "display h2")}</div>
@@ -101,12 +143,12 @@ function card(id, list, k) {
   const p = projById(id); if (!p) return "";
   const n = projIdx(id), q = p.quote || p.cardQuote;
   const tp = p.thumb ? "thumb" : p.images && p.images[0] ? "images.0" : p.video && p.video.poster ? "video.poster" : "";
-  const media = tp ? IMG(`projects.${n}.${tp}`, getPath(p, tp), "", ' loading="lazy"') : `<span class="card-quote">${esc(q || p.title)}</span>`;
+  const media = tp ? IMG(`projects.${n}.${tp}`, getPath(p, tp), "", ' loading="lazy"') : `<span class="card-quote">${rich(q || p.title)}</span>`;
   return `<a class="card rv" href="#work/${esc(p.id)}" data-project="${esc(p.id)}"${list ? ` data-list="${list}" data-idx="${k}"` : ""}>
     <span class="card-media">${p.tag ? `<span class="tag">${esc(p.tag)}</span>` : ""}${media}</span>
-    <span class="card-title"><span data-path="projects.${n}.cardTitle">${esc(p.cardTitle || p.title)}</span> <span class="arrow" aria-hidden="true">→</span></span>
-    <span class="card-meta" data-path="projects.${n}.meta">${esc(p.meta)}</span>
-    ${q ? `<span class="card-q">“${esc(q.replace(/^“|”$/g, ""))}”</span>` : ""}</a>`;
+    <span class="card-title"><span data-path="projects.${n}.cardTitle">${rich(p.cardTitle || p.title)}</span> <span class="arrow" aria-hidden="true">→</span></span>
+    <span class="card-meta" data-path="projects.${n}.meta">${rich(p.meta)}</span>
+    ${q ? `<span class="card-q">“${rich(q.replace(/^“|”$/g, ""))}”</span>` : ""}</a>`;
 }
 const getPath = (o, path) => path.split(".").reduce((a, k) => a == null ? a : a[k], o);
 
@@ -413,7 +455,7 @@ function projectHTML(p) {
     ${p.stats.note ? T("p", `${B}.stats.note`, p.stats.note, "stats-note") : ""}</div>` : "";
   return `
     <div class="proj-bar"><div class="wrap">
-      <button class="proj-back" data-close><span aria-hidden="true">←</span><span>${esc(sec ? sec.label : "Back")}</span></button>
+      <button class="proj-back" data-close><span aria-hidden="true">←</span><span>${esc(plainTxt(sec ? sec.label : "Back"))}</span></button>
       <button class="proj-x" data-close aria-label="Close project">×</button>
     </div></div>
     <article>
@@ -438,8 +480,8 @@ function projectHTML(p) {
       </div>` : ""}
     </article>
     <nav class="proj-next bg-${sec ? sec.bg === "cream" ? "mint" : "cream" : "mint"}" aria-label="More work"><div class="wrap">
-      ${prev ? `<button data-go="${esc(prev.id)}"><small>← Previous</small><strong>${esc(prev.cardTitle || prev.title)}</strong></button>` : ""}
-      ${next ? `<button data-go="${esc(next.id)}"><small>Next →</small><strong>${esc(next.cardTitle || next.title)}</strong></button>` : ""}
+      ${prev ? `<button data-go="${esc(prev.id)}"><small>← Previous</small><strong>${esc(plainTxt(prev.cardTitle || prev.title))}</strong></button>` : ""}
+      ${next ? `<button data-go="${esc(next.id)}"><small>Next →</small><strong>${esc(plainTxt(next.cardTitle || next.title))}</strong></button>` : ""}
     </div></nav>`;
 }
 
@@ -562,7 +604,7 @@ window.Site = {
   },
   openProject, closeProject, refit, startCurves, showTab,
   get openId() { return openId; },
-  types: Object.keys(S),
+  types: Object.keys(S), cleanHTML, plain: plainTxt,
 };
 
 if (!/[?&]edit=1/.test(location.search)) {

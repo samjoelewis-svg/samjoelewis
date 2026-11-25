@@ -74,3 +74,13 @@ main > section.ed-hover .ed-addblk, main > section.ed-sel .ed-addblk { opacity: 
 .ed-imgchip { position: fixed; z-index: 91; display: none; gap: 4px; background: #2a1a1b; padding: 4px; border-radius: 999px; box-shadow: 0 8px 22px -8px rgba(0,0,0,.6); }
 .ed-imgchip button { border: 0; background: none; color: #fff; font: 600 12.5px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; padding: 7px 11px; border-radius: 999px; cursor: pointer; }
 .ed-imgchip button:hover { background: #2f6bff; }
+
+.ed-fmt { position: fixed; z-index: 96; display: none; align-items: center; gap: 2px; background: #2a1a1b; color: #fff; padding: 4px; border-radius: 10px; box-shadow: 0 12px 30px -10px rgba(0,0,0,.6);
+  font: 600 13px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif; }
+.ed-fmt button { min-width: 30px; height: 30px; padding: 0 7px; border: 0; border-radius: 7px; background: none; color: inherit; cursor: pointer; display: grid; place-items: center; font: inherit; }
+.ed-fmt button:hover { background: rgba(255,255,255,.16); }
+.ed-fmt button.on { background: #2f6bff; }
+.ed-fmt .sep { width: 1px; height: 20px; background: rgba(255,255,255,.25); margin: 0 3px; }
+.ed-fmt .ffd { font: 700 15px/1 Georgia, serif; } .ed-fmt .ffb { font: 400 15px/1 Georgia, serif; }
+.ed-fmt .hlm { background: #9fe5fb; color: #2a1a1b; padding: 1px 4px; border-radius: 3px; }
+.ed-formatting .ed-barwrap, .ed-formatting .ed-bbar { visibility: hidden; }
