@@ -325,6 +325,7 @@ function wire() {
     io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px", threshold: .05 });
     $$(".rv").forEach(el => io.observe(el));
   }
+  countUp();
   // scrollspy
   if (spy) spy.disconnect();
   const links = $$(".nav a");
@@ -449,6 +450,37 @@ function sectionOf(id) {
   return null;
 }
 
+/* ---------- playful extras ---------- */
+// Results count up from zero the first time they scroll into view. Values like "1.5m", "+10 pts", "No. 1"; ranges are left alone.
+let countIO = null;
+function countUp(root) {
+  if (O.edit || reduced || !("IntersectionObserver" in window)) return;
+  countIO = countIO || new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return; countIO.unobserve(e.target);
+    const b = e.target, txt = b.dataset.final, m = txt.match(/^(\D*?)(\d+(?:[.,]\d+)?)(.*)$/);
+    if (!m || /[–-]\s*\d/.test(m[3])) return;
+    const [, pre, num, post] = m, dec = (num.split(/[.,]/)[1] || "").length, target = parseFloat(num.replace(",", ".")), t0 = performance.now(), dur = 1100;
+    const tick = now => { const k = Math.min(1, (now - t0) / dur), v = target * (1 - Math.pow(1 - k, 3));
+      b.textContent = pre + (k < 1 ? v.toFixed(dec) : num) + post; if (k < 1) requestAnimationFrame(tick); };
+    requestAnimationFrame(tick);
+  }), { threshold: .6 });
+  (root || document).querySelectorAll(".stat b").forEach(b => { if (b.dataset.final) return; b.dataset.final = b.textContent; b.style.minWidth = b.offsetWidth ? b.offsetWidth + "px" : ""; countIO.observe(b); });
+}
+// Clicking the big email address copies it and says so, with a link to open the email app as well.
+function copyMail(e) {
+  const a = e.target.closest("a.bigmail, a.footer-mail"); if (!a || O.edit || !navigator.clipboard) return;
+  e.preventDefault();
+  const addr = a.getAttribute("href").replace(/^mailto:/, "");
+  navigator.clipboard.writeText(addr).then(() => {
+    let t = document.getElementById("copied"); if (t) t.remove();
+    t = document.createElement("div"); t.id = "copied"; t.setAttribute("role", "status");
+    t.innerHTML = `Copied. Speak soon. <a href="mailto:${esc(addr)}">Open email</a>`;
+    document.body.appendChild(t); requestAnimationFrame(() => t.classList.add("on"));
+    setTimeout(() => { t.classList.remove("on"); setTimeout(() => t.remove(), 400); }, 3200);
+  }, () => { location.href = a.href; });
+}
+document.addEventListener("click", copyMail);
+
 // Gallery rows: at most three pictures a row, spread evenly (4 = 2+2, 5 = 3+2). Pictures in a row share a height.
 function galRows(rest) {
   if (!rest.length) return [];
@@ -531,7 +563,7 @@ function openProject(id, fromHash) {
   const sec = sectionOf(id);
   el.className = "proj bg-" + (sec && sec.bg !== "ink" ? sec.bg : "cream");
   el.setAttribute("aria-label", p.title);
-  el.innerHTML = projectHTML(p); fixAmps(el);
+  el.innerHTML = projectHTML(p); fixAmps(el); countUp(el);
   el.scrollTop = 0;
   openId = id;
   document.body.classList.add("locked");
