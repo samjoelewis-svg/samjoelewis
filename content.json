@@ -290,7 +290,8 @@
             "futurelearn-results-day-outdoor-campaign",
             "barbie-pre-premiere-campaign",
             "the-eastern-gate-season-2-tagline",
-            "hbo-max-international-titles-and-taglines",
+            "feride-vs-the-world-tagline",
+            "first-five-tagline",
             "futurelearn-experttracks"
           ]
         },
@@ -1492,37 +1493,47 @@
       ]
     },
     {
-      "id": "hbo-max-international-titles-and-taglines",
-      "title": "International Titles & Taglines for HBO Max Originals",
-      "cardTitle": "International titles & taglines",
+      "id": "feride-vs-the-world-tagline",
+      "title": "Feride vs the World: Tagline",
+      "cardTitle": "Feride vs the World",
       "tag": "Tagline",
-      "meta": "HBO Max · European originals · Titles & taglines · Warner Bros. Discovery",
+      "meta": "HBO Max · Max Original series · Key art · Warner Bros. Discovery",
       "industry": "",
       "quote": "“Modern life is messy.”",
       "quote2": "",
       "cardQuote": "",
       "body": [
-        "I create the international titles and taglines for HBO Max’s European original productions, used on outdoor posters and online.",
-        "The titles and lines need to work for audiences who don’t know the show yet. Examples include Feride vs the World (‘Modern life is messy’), Las Vidas de Félix and First Five."
+        "For the Max Original animated series Feride vs the World, I wrote the tagline for the key art.",
+        "It’s a comedy about a girl getting through everyday life, so I kept the line short and a bit deadpan."
       ],
       "images": [
         {
           "src": "img/feride-vs-the-world.jpg",
-          "caption": "Feride vs the World, HBO Max",
+          "caption": "Feride vs the World key art",
           "w": 960,
           "h": 1400,
           "dw": 480
-        },
-        {
-          "src": "img/hbo-max-felix.jpg",
-          "caption": "Las Vidas de Félix, HBO Max",
-          "w": 812,
-          "h": 1116,
-          "dw": 406
-        },
+        }
+      ]
+    },
+    {
+      "id": "first-five-tagline",
+      "title": "First Five: Tagline",
+      "cardTitle": "First Five",
+      "tag": "Tagline",
+      "meta": "HBO Max · Max Original series · Key art · Warner Bros. Discovery",
+      "industry": "",
+      "quote": "“Their story made history.”",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "For First Five, a Max Original series about the five women who led Finland’s government, I wrote the tagline for the key art.",
+        "It’s a true story, so I wanted a line with some weight that didn’t oversell it."
+      ],
+      "images": [
         {
           "src": "img/hbo-max-first-five.jpg",
-          "caption": "First Five, HBO Max",
+          "caption": "First Five key art",
           "w": 1080,
           "h": 1600,
           "dw": 540
@@ -1700,13 +1711,13 @@
       "title": "FutureLearn ExpertTracks",
       "cardTitle": "FutureLearn ExpertTracks",
       "tag": "Campaign",
-      "meta": "FutureLearn · ExpertTracks · Social campaign",
+      "meta": "FutureLearn · ExpertTracks · Paid social campaign",
       "industry": "",
       "quote": "“From couch dreamer to classroom leader.”",
       "quote2": "",
       "cardQuote": "",
       "body": [
-        "I wrote an aspirational campaign for FutureLearn’s ExpertTracks.",
+        "I wrote an aspirational paid social campaign for FutureLearn’s ExpertTracks.",
         "The lines use alliteration to describe the learning journey each track offers, such as ‘Go from dreaming big to dream career’ and ‘From couch dreamer to classroom leader’."
       ],
       "images": [
