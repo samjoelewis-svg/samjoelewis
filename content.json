@@ -567,19 +567,19 @@
         "title": "How it went",
         "items": [
           {
+            "value": "8 months early",
+            "label": "we beat the full-year sign-up target, in just four months"
+          },
+          {
             "value": "1.5m",
             "label": "UK subscribers in the first five days"
           },
           {
             "value": "No. 1",
             "label": "fastest streaming service to reach a million UK subscribers"
-          },
-          {
-            "value": "4 months",
-            "label": "to beat the sign-up target for the whole year"
           }
         ],
-        "note": "First two figures from Ampere Analysis, April 2026."
+        "note": "Subscriber figures from Ampere Analysis, April 2026."
       }
     },
     {
