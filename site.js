@@ -294,9 +294,24 @@ function render() {
   wire();
 }
 
+/* the headline font's “&” looks like “@”, so ampersands in headline type use the body font */
+const AMP_SEL = ".display, .card-title, .logo, .footer-title, .footer-mail, .ticker-run, .proj-next strong, .job-co, .stat b, .bigmail, .ff-d, .nav a, .tabbar button, .card-quote";
+function fixAmps(root = document) {
+  root.querySelectorAll(AMP_SEL).forEach(el => {
+    const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), hits = [];
+    let n; while ((n = w.nextNode())) if (n.nodeValue.includes("&") && !(n.parentElement && n.parentElement.classList.contains("amp"))) hits.push(n);
+    hits.forEach(t => {
+      const parts = t.nodeValue.split("&"), frag = document.createDocumentFragment();
+      parts.forEach((txt, i) => { if (i) { const sp = document.createElement("span"); sp.className = "amp"; sp.textContent = "&"; frag.appendChild(sp); } if (txt) frag.appendChild(document.createTextNode(txt)); });
+      t.parentNode.replaceChild(frag, t);
+    });
+  });
+}
+
 /* ---------- behaviour ---------- */
 let curveRAF = 0, io = null, spy = null;
 function wire() {
+  fixAmps();
   refit();
   startCurves();
   // header colour follows the section under it
@@ -494,7 +509,7 @@ function openProject(id, fromHash) {
   const sec = sectionOf(id);
   el.className = "proj bg-" + (sec && sec.bg !== "ink" ? sec.bg : "cream");
   el.setAttribute("aria-label", p.title);
-  el.innerHTML = projectHTML(p);
+  el.innerHTML = projectHTML(p); fixAmps(el);
   el.scrollTop = 0;
   openId = id;
   document.body.classList.add("locked");
@@ -600,7 +615,7 @@ window.Site = {
   },
   update(content) {
     C = content; const y = scrollY; render(); scrollTo(0, y);
-    if (openId) { const id = openId; if (projById(id)) { const el = $("#proj"), st = el.scrollTop; el.innerHTML = projectHTML(projById(id)); el.scrollTop = st; } else closeProject(true); }
+    if (openId) { const id = openId; if (projById(id)) { const el = $("#proj"), st = el.scrollTop; el.innerHTML = projectHTML(projById(id)); fixAmps(el); el.scrollTop = st; } else closeProject(true); }
   },
   openProject, closeProject, refit, startCurves, showTab,
   get openId() { return openId; },

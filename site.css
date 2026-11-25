@@ -398,3 +398,6 @@ body.locked { overflow: hidden; }
 .hl { background: linear-gradient(transparent 52%, var(--sky) 52%, var(--sky) 92%, transparent 92%); padding: 0 .08em; }
 .bg-sky .hl { background: linear-gradient(transparent 52%, var(--cream) 52%, var(--cream) 92%, transparent 92%); }
 .prose a, .lede a, [data-path] a { text-decoration: underline; text-underline-offset: .18em; text-decoration-thickness: 1px; }
+
+/* classic ampersand inside headline type */
+.amp { font-family: var(--serif); font-style: inherit; font-weight: 600; font-variation-settings: normal; letter-spacing: 0; }
