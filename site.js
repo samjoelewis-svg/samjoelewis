@@ -60,6 +60,8 @@ function cleanHTML(html, inline) {
 }
 const rich = s => { s = String(s ?? ""); return /[<&]/.test(s) ? cleanHTML(s) : esc(s); };
 const plainTxt = s => { s = String(s ?? ""); if (!/[<&]/.test(s)) return s; const tp = document.createElement("template"); tp.innerHTML = s; return tp.content.textContent; };
+const tagsOf = v => String(v || "").split(",").map(x => x.trim()).filter(Boolean);
+const tagPills = (v, cls) => tagsOf(v).map(t => `<span class="${cls}">${esc(t)}</span>`).join("");
 const T = (tag, path, val, cls = "", attrs = "") => `<${tag}${cls ? ` class="${cls}"` : ""} data-path="${path}"${attrs}>${rich(val)}</${tag}>`;
 const P = (path, arr, cls = "prose") => `<div class="${cls}" data-paras="${path}">${(arr || []).map(p => `<p>${rich(p)}</p>`).join("")}</div>`;
 const IMG = (path, x, cls = "", extra = "", natural = false) => {
@@ -133,7 +135,7 @@ S.featured = (s, i) => `
       const p = projById(it.project); if (!p && !O.edit) return "";
       const base = `sections.${i}.items.${k}`;
       return `<a class="card rv" href="#work/${esc(it.project)}" data-project="${esc(it.project)}" data-list="sections.${i}.items" data-idx="${k}">
-        <span class="card-media">${it.tag ? T("span", `${base}.tag`, it.tag, "tag") : ""}${IMG(`${base}.image`, it.image || thumbOf(p || {}), "", ' loading="lazy"')}</span>
+        <span class="card-media">${it.tag ? (O.edit ? `<span class="tags">${T("span", `${base}.tag`, it.tag, "tag")}</span>` : `<span class="tags">${tagPills(it.tag, "tag")}</span>`) : ""}${IMG(`${base}.image`, it.image || thumbOf(p || {}), "", ' loading="lazy"')}</span>
         ${T("span", `${base}.title`, it.title || (p && p.cardTitle), "card-title")}
         <span class="card-meta"><span data-path="${base}.desc">${esc(it.desc)}</span> <span class="arrow" aria-hidden="true">→</span></span></a>`;
     }).join("")}</div>
@@ -145,7 +147,7 @@ function card(id, list, k) {
   const tp = p.thumb ? "thumb" : p.images && p.images[0] ? "images.0" : p.video && p.video.poster ? "video.poster" : "";
   const media = tp ? IMG(`projects.${n}.${tp}`, getPath(p, tp), "", ' loading="lazy"') : `<span class="card-quote">${rich(q || p.title)}</span>`;
   return `<a class="card rv" href="#work/${esc(p.id)}" data-project="${esc(p.id)}"${list ? ` data-list="${list}" data-idx="${k}"` : ""}>
-    <span class="card-media">${p.tag ? `<span class="tag">${esc(p.tag)}</span>` : ""}${media}</span>
+    <span class="card-media">${p.tag ? `<span class="tags">${tagPills(p.tag, "tag")}</span>` : ""}${media}</span>
     <span class="card-title"><span data-path="projects.${n}.cardTitle">${rich(p.cardTitle || p.title)}</span> <span class="arrow" aria-hidden="true">→</span></span>
     <span class="card-meta" data-path="projects.${n}.meta">${rich(p.meta)}</span>
     ${q ? `<span class="card-q">“${rich(q.replace(/^“|”$/g, ""))}”</span>` : ""}</a>`;
@@ -475,7 +477,7 @@ function projectHTML(p) {
     </div></div>
     <article>
       <div class="wrap proj-head">
-        <div class="proj-meta">${p.tag || O.edit ? T("span", `${B}.tag`, p.tag, "pill") : ""}${T("span", `${B}.meta`, p.meta)}</div>
+        <div class="proj-meta">${O.edit ? T("span", `${B}.tag`, p.tag, "pill") : tagPills(p.tag, "pill")}${T("span", `${B}.meta`, p.meta)}</div>
         ${T("h1", `${B}.title`, p.title, "display proj-title")}
         ${p.quote || O.edit ? T("p", `${B}.quote`, p.quote ? p.quote : "", "display proj-quote") : ""}
         ${p.quote2 ? T("p", `${B}.quote2`, p.quote2, "display proj-quote") : ""}

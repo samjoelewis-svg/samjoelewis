@@ -1035,7 +1035,7 @@ SECTION_FIELDS.custom = [];
 const PROJECT_FIELDS = [
   { k: "title", t: "text", label: "Title" },
   { k: "cardTitle", t: "text", label: "Short title for cards" },
-  { k: "tag", t: "text", label: "Tag", help: "Like Campaign, Trailer or Email." },
+  { k: "tag", t: "text", label: "Tags", help: "Like Campaign, Trailer or Email. For more than one, separate with commas: Campaign, B2B." },
   { k: "meta", t: "text", label: "Details line", help: "Client · Format · Year" },
   { k: "quote", t: "textarea", label: "Big line", help: "A tagline or headline you wrote. Shown large." },
   { k: "quote2", t: "textarea", label: "Second big line" },
