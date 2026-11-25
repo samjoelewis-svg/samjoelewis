@@ -69,8 +69,8 @@
       "image": {
         "src": "img/kings-cross-hero.jpg",
         "caption": "HBO Max UK launch: King's Cross tunnel takeover",
-        "w": 1152,
-        "h": 630
+        "w": 1800,
+        "h": 984
       },
       "kicker": "Out of home · King's Cross",
       "line": "“The best new platform since 9¾.”",
@@ -213,8 +213,8 @@
           "image": {
             "src": "img/kings-cross.jpg",
             "caption": "",
-            "w": 1162,
-            "h": 661
+            "w": 1800,
+            "h": 984
           }
         },
         {
@@ -225,8 +225,8 @@
           "image": {
             "src": "img/world-goes-pop.jpg",
             "caption": "",
-            "w": 1147,
-            "h": 645
+            "w": 1800,
+            "h": 1012
           }
         },
         {
@@ -494,8 +494,8 @@
         {
           "src": "img/kings-cross.jpg",
           "caption": "King's Cross tunnel, London",
-          "w": 1162,
-          "h": 661
+          "w": 1800,
+          "h": 984
         }
       ],
       "id": "hbo-max-uk-launch-campaign",
@@ -525,8 +525,8 @@
         {
           "src": "img/watercooler.jpg",
           "caption": "“Wall-to-Wall Watercooler” poster",
-          "w": 1200,
-          "h": 900
+          "w": 1800,
+          "h": 1350
         }
       ],
       "id": "hbo-max-wall-to-wall-watercooler-campaign",
@@ -548,8 +548,8 @@
         {
           "src": "img/royal-roy.jpg",
           "caption": "Instagram, @hbomaxuk × @hollyandbrookearehooked",
-          "w": 516,
-          "h": 718
+          "w": 1032,
+          "h": 1436
         }
       ],
       "id": "succession-influencer-campaign-for-hbo-max",
@@ -571,8 +571,8 @@
         {
           "src": "img/tough-cases.jpg",
           "caption": "Display ad, before market pricing was added",
-          "w": 669,
-          "h": 670
+          "w": 1338,
+          "h": 1340
         }
       ],
       "id": "hbo-max-display-and-paid-social-ads",
@@ -595,14 +595,14 @@
         {
           "src": "img/humans.jpg",
           "caption": "Humans",
-          "w": 1180,
-          "h": 664
+          "w": 1800,
+          "h": 1013
         },
         {
           "src": "img/halt-catch-fire.jpg",
           "caption": "Halt and Catch Fire",
-          "w": 1179,
-          "h": 831
+          "w": 1800,
+          "h": 1269
         }
       ],
       "id": "humans-and-halt-and-catch-fire-taglines",
@@ -624,8 +624,8 @@
         {
           "src": "img/hbo-max-trailer.jpg",
           "caption": "HBO Max trailer",
-          "w": 1400,
-          "h": 783
+          "w": 1800,
+          "h": 1007
         }
       ],
       "id": "hbo-max-trailers-for-cinema-tv-and-radio",
@@ -703,8 +703,8 @@
         {
           "src": "img/mock-the-week.jpg",
           "caption": "Print ad for TLC",
-          "w": 1158,
-          "h": 742
+          "w": 1800,
+          "h": 1153
         }
       ],
       "id": "mock-the-week-print-ad-for-tlc",
@@ -726,8 +726,8 @@
         {
           "src": "img/swallows-amazons.jpg",
           "caption": "Swallows and Amazons",
-          "w": 795,
-          "h": 1178
+          "w": 1590,
+          "h": 2356
         }
       ],
       "id": "swallows-and-amazons-tagline",
@@ -751,8 +751,8 @@
         {
           "src": "img/hbo-max-halloween.jpg",
           "caption": "Display creative: “Fear hits home”",
-          "w": 600,
-          "h": 465
+          "w": 1200,
+          "h": 930
         }
       ],
       "video": {
@@ -781,8 +781,8 @@
         {
           "src": "img/knight-journey.jpg",
           "caption": "Result screen for getting every answer wrong",
-          "w": 768,
-          "h": 1280
+          "w": 1536,
+          "h": 2560
         }
       ],
       "video": {
@@ -810,8 +810,8 @@
         {
           "src": "img/atg-lyceum-b2b.webp",
           "caption": "ATG Theatres corporate venue hire LinkedIn advertising concept featuring the Lyceum Theatre",
-          "w": 1440,
-          "h": 753
+          "w": 1800,
+          "h": 941
         }
       ],
       "id": "atg-theatres-business-deserves-a-bigger-stage",
@@ -834,8 +834,8 @@
         {
           "src": "img/noodoll-ricespud-product-copy.webp",
           "caption": "Noodoll Ricespud product page showing the plush and the product copy I wrote",
-          "w": 1406,
-          "h": 782
+          "w": 1650,
+          "h": 817
         }
       ],
       "id": "noodoll-ricespud-product-messaging",
@@ -858,8 +858,8 @@
         {
           "src": "img/hbo-max-welcome-email.jpg",
           "caption": "HBO Max UK welcome email",
-          "w": 813,
-          "h": 882
+          "w": 1626,
+          "h": 1764
         }
       ],
       "id": "hbo-max-lifecycle-email",
@@ -882,14 +882,14 @@
         {
           "src": "img/futurelearn-course-seo.webp",
           "caption": "FutureLearn course page: Power Dressing in the Zoom Era, showing search-informed course-title copy",
-          "w": 796,
-          "h": 752
+          "w": 1800,
+          "h": 1796
         },
         {
           "src": "img/futurelearn-editorial-rome.webp",
           "caption": "FutureLearn long-form editorial article: Explore a virtual map of Ancient Rome",
-          "w": 818,
-          "h": 823
+          "w": 1636,
+          "h": 1646
         }
       ],
       "id": "futurelearn-course-seo-and-editorial",
@@ -960,8 +960,8 @@
         {
           "src": "img/hbo-checkout-flow-overview.webp",
           "caption": "Figma canvas showing several HBO Max mobile checkout flows",
-          "w": 638,
-          "h": 97,
+          "w": 1276,
+          "h": 194,
           "heading": "Checkout flows in Figma",
           "text": "I used this board to see what happens after someone clicks through. On the TNT Sports page, “Get TNT Sports” and “Get Sports & HBO Max” spell out the two options before customers reach checkout."
         }
@@ -987,8 +987,8 @@
         {
           "src": "img/paris-2024.jpg",
           "caption": "Paris 2024 CRM",
-          "w": 574,
-          "h": 702,
+          "w": 1148,
+          "h": 1404,
           "size": 62
         }
       ],
@@ -1075,8 +1075,8 @@
         {
           "src": "img/national-theatre.jpg",
           "caption": "Home, I'm Darling trailer, National Theatre",
-          "w": 945,
-          "h": 637
+          "w": 1800,
+          "h": 1213
         }
       ],
       "link": {
@@ -1149,14 +1149,14 @@
         {
           "src": "img/westminster-abbey.jpg",
           "caption": "Westminster Abbey outdoor campaign",
-          "w": 760,
-          "h": 1183
+          "w": 1520,
+          "h": 2366
         },
         {
           "src": "img/westminster-abbey-bond-street.webp",
           "caption": "The campaign at Bond Street station",
-          "w": 1100,
-          "h": 1467
+          "w": 1800,
+          "h": 2401
         }
       ],
       "id": "westminster-abbey-feel-wonder-first-hand",
@@ -1178,14 +1178,14 @@
         {
           "src": "img/new-world-needs.jpg",
           "caption": "The New World Needs…",
-          "w": 913,
-          "h": 913
+          "w": 1800,
+          "h": 1800
         },
         {
           "src": "img/new-world-building.jpg",
           "caption": "Sector-specific paid social",
-          "w": 424,
-          "h": 696
+          "w": 848,
+          "h": 1392
         }
       ],
       "id": "city-and-guilds-and-futurelearn-skills-campaign",
@@ -1209,8 +1209,8 @@
         {
           "src": "img/results-day.jpg",
           "caption": "Results Day OOH",
-          "w": 1048,
-          "h": 1048
+          "w": 1800,
+          "h": 1800
         }
       ],
       "id": "futurelearn-results-day-outdoor-campaign",
@@ -1250,8 +1250,8 @@
         {
           "src": "img/quick-witted.jpg",
           "caption": "HBO Max tone-of-voice guide",
-          "w": 1179,
-          "h": 726
+          "w": 1800,
+          "h": 1108
         }
       ],
       "video": {
@@ -1317,14 +1317,14 @@
         {
           "src": "img/skinny-slow-west.jpg",
           "caption": "The Skinny: Slow West",
-          "w": 1171,
-          "h": 693
+          "w": 1800,
+          "h": 1065
         },
         {
           "src": "img/skinny-julia-holter.jpg",
           "caption": "The Skinny: Julia Holter",
-          "w": 1174,
-          "h": 693
+          "w": 1800,
+          "h": 1063
         }
       ],
       "page": 800,
