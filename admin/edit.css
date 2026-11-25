@@ -71,3 +71,6 @@ main > section.ed-hover .ed-addblk, main > section.ed-sel .ed-addblk { opacity: 
 .ed-open:hover { background: #2f6bff; color: #fff; }
 .card { cursor: default; }
 .card .card-title [data-path], .card .card-meta[data-path] { cursor: text; }
+.ed-imgchip { position: fixed; z-index: 91; display: none; gap: 4px; background: #2a1a1b; padding: 4px; border-radius: 999px; box-shadow: 0 8px 22px -8px rgba(0,0,0,.6); }
+.ed-imgchip button { border: 0; background: none; color: #fff; font: 600 12.5px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; padding: 7px 11px; border-radius: 999px; cursor: pointer; }
+.ed-imgchip button:hover { background: #2f6bff; }

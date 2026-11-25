@@ -14,6 +14,7 @@ const ICON = {
   up: '<svg viewBox="0 0 24 24"><path d="m6 15 6-6 6 6"/></svg>',
   down: '<svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>',
   gear: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>',
+  crop: '<svg viewBox="0 0 24 24"><path d="M6 2v14a2 2 0 0 0 2 2h14"/><path d="M18 22V8a2 2 0 0 0-2-2H2"/></svg>',
   copy: '<svg viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>',
   eye: '<svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>',
   eyeOff: '<svg viewBox="0 0 24 24"><path d="M17.9 17.9A10 10 0 0 1 12 19c-6.5 0-10-7-10-7a18 18 0 0 1 4.1-5.1M9.9 5.2A9 9 0 0 1 12 5c6.5 0 10 7 10 7a18 18 0 0 1-2.2 3.2M14.1 14.2a3 3 0 1 1-4.2-4.2M2 2l20 20"/></svg>',
@@ -306,7 +307,7 @@ function decorate() {
       <button data-bact="align" title="Line up left, centre or right">${{ left: "Left", center: "Centre", right: "Right" }[b.align || "left"]}</button>
       <button data-bact="width" title="Narrow, wide or full width">${{ narrow: "Narrow", wide: "Wide", full: "Full width" }[b.width || "wide"]}</button>
       ${b.type === "button" ? `<button data-bact="link" title="Where the button goes">Link…</button>` : ""}
-      ${b.type === "image" ? `<button data-bact="img" title="Replace picture">Replace…</button>` : ""}
+      ${b.type === "image" ? `<button data-bact="img" title="Replace picture">Replace…</button>${b.image && b.image.src ? `<button data-bact="crop" title="Crop picture">Crop…</button>` : ""}` : ""}
       <button data-bact="dup" title="Duplicate" aria-label="Duplicate">${ICON.copy}</button>
       <button data-bact="del" title="Delete" aria-label="Delete">${ICON.trash}</button>`;
     el.insertBefore(bb, el.firstChild);
@@ -327,6 +328,7 @@ function decorate() {
 function blockAction(path, act) {
   const listPath = path.replace(/\.\d+$/, ""), list = getAt(listPath), k = +path.split(".").pop(), b = list[k];
   if (act === "img") return pickImage(path + ".image");
+  if (act === "crop") return cropImage(path + ".image");
   if (act === "link") {
     const { el, close } = modal(`<div class="dialog-h"><h2>Button link</h2><button class="ib" data-x aria-label="Close">${ICON.x}</button></div>
       <form class="dialog-b"><div class="field"><label for="bl">Goes to</label><input id="bl" type="text" value="${esc(b.link)}" placeholder="https://… or #contact"><p class="help">A web address, or # and a section’s link name, like #contact.</p></div><div><button class="btn-p">Save</button></div></form>`, "small");
@@ -408,6 +410,7 @@ function bindFrame(d) {
   d.addEventListener("click", e => {
     const t = e.target;
     if (d.__suppressClick) { e.preventDefault(); e.stopPropagation(); return; }
+    if (t.closest(".ed-imgchip")) return;
     const a = t.closest("a"); if (a) e.preventDefault();
     const sec = t.closest("main > section"), i = sec ? +sec.dataset.section : null;
     const act = t.closest(".ed-bar button");
@@ -436,6 +439,28 @@ function resizable(img) {
   const v = getAt(img.dataset.img); return v && typeof v === "object";
 }
 function bindResize(d) {
+  const chip = d.createElement("div"); chip.className = "ed-imgchip"; chip.contentEditable = "false";
+  chip.innerHTML = '<button type="button" data-chip="replace">Replace</button><button type="button" data-chip="crop">Crop</button>';
+  d.body.appendChild(chip);
+  let chipFor = null;
+  const placeChip = () => {
+    if (!chipFor || !chipFor.isConnected) { chip.style.display = "none"; return; }
+    const r = chipFor.getBoundingClientRect();
+    if (r.width < 90 || r.height < 60 || r.bottom < 40 || r.top > d.defaultView.innerHeight) { chip.style.display = "none"; return; }
+    chip.style.display = "flex"; chip.style.left = (r.right - chip.offsetWidth - 10) + "px"; chip.style.top = Math.max(r.top + 10, 80) + "px";
+  };
+  d.addEventListener("mouseover", e => {
+    const img = e.target.closest && e.target.closest("img[data-img]");
+    if (img && !img.closest(".ticker")) { chipFor = img; placeChip(); }
+    else if (!e.target.closest(".ed-imgchip, .ed-resize")) { chipFor = null; placeChip(); }
+  });
+  d.addEventListener("scroll", () => { chipFor = null; placeChip(); }, true);
+  chip.addEventListener("click", e => {
+    const b = e.target.closest("[data-chip]"); if (!b || !chipFor) return;
+    e.preventDefault(); e.stopPropagation();
+    const p2 = chipFor.dataset.img; chipFor = null; placeChip();
+    b.dataset.chip === "crop" ? cropImage(p2) : pickImage(p2);
+  });
   const h = d.createElement("div"); h.className = "ed-resize"; h.title = "Drag to resize. Double-click to reset."; h.contentEditable = "false";
   h.innerHTML = '<span class="ed-size"></span>';
   d.body.appendChild(h);
@@ -660,6 +685,92 @@ async function processImage(file) {
   pending.set(path, { blob, url: URL.createObjectURL(blob) }); idb.put(path, blob);
   return { src: path, w: cv.width, h: cv.height };
 }
+/* crop a picture: drag a box, pick a shape, save as a new file */
+function cropImage(path) {
+  const cur = getAt(path), src = typeof cur === "string" ? cur : cur && cur.src;
+  if (!src) { toast("Add a picture first."); return; }
+  const url = /^(https?:|blob:|data:)/.test(resolve(src)) ? resolve(src) : "../" + src;
+  const RATIOS = [["Free", 0], ["Original", -1], ["Square", 1], ["4:3", 4 / 3], ["3:2", 3 / 2], ["16:9", 16 / 9], ["4:5", 4 / 5], ["9:16", 9 / 16]];
+  const { el, close } = modal(`<div class="dialog-h"><h2>Crop picture</h2><button class="ib" data-x aria-label="Close">${ICON.x}</button></div>
+    <div class="dialog-b">
+      <div class="crop-ratios" role="group" aria-label="Shape">${RATIOS.map(([n], k) => `<button type="button" class="mini${k ? "" : " on"}" data-r="${k}">${n}</button>`).join("")}</div>
+      <div class="crop-stage"><div class="crop-wrap"><img class="crop-img" alt="" crossorigin="anonymous"><b class="crop-shade"></b><b class="crop-shade"></b><b class="crop-shade"></b><b class="crop-shade"></b>
+        <div class="crop-box"><i data-h="nw"></i><i data-h="n"></i><i data-h="ne"></i><i data-h="e"></i><i data-h="se"></i><i data-h="s"></i><i data-h="sw"></i><i data-h="w"></i></div></div></div>
+      <p class="hint crop-info">Drag the box to move it, drag its edges or corners to resize. The original file isn’t changed.</p>
+    </div>
+    <div class="dialog-f"><button class="btn-s" data-reset>Reset</button><button class="btn-s" data-x>Cancel</button><button class="btn-p" data-save disabled>Save crop</button></div>`);
+  const img = $(".crop-img", el), box = $(".crop-box", el), wrap = $(".crop-wrap", el), info = $(".crop-info", el);
+  let W2 = 0, H2 = 0, r = { x: 0, y: 0, w: 0, h: 0 }, ratio = 0;
+  const draw = () => {
+    Object.assign(box.style, { left: r.x + "px", top: r.y + "px", width: r.w + "px", height: r.h + "px" });
+    const sh = $$(".crop-shade", el), px = v => Math.max(0, v) + "px";
+    Object.assign(sh[0].style, { left: 0, top: 0, width: px(W2), height: px(r.y) });
+    Object.assign(sh[1].style, { left: 0, top: px(r.y + r.h), width: px(W2), height: px(H2 - r.y - r.h) });
+    Object.assign(sh[2].style, { left: 0, top: px(r.y), width: px(r.x), height: px(r.h) });
+    Object.assign(sh[3].style, { left: px(r.x + r.w), top: px(r.y), width: px(W2 - r.x - r.w), height: px(r.h) });
+    const k = img.naturalWidth / W2;
+    info.textContent = `${Math.round(r.w * k)} × ${Math.round(r.h * k)} px`;
+  };
+  const fit = (a) => {
+    if (!a) { r = { x: 0, y: 0, w: W2, h: H2 }; return; }
+    let w = W2, h = w / a; if (h > H2) { h = H2; w = h * a; }
+    r = { x: (W2 - w) / 2, y: (H2 - h) / 2, w, h };
+  };
+  img.onload = () => {
+    const max = Math.min(760, el.querySelector(".dialog").clientWidth - 48), maxH = Math.min(innerHeight * .58, 620);
+    const k = Math.min(max / img.naturalWidth, maxH / img.naturalHeight, 1);
+    W2 = Math.round(img.naturalWidth * k); H2 = Math.round(img.naturalHeight * k);
+    img.style.width = W2 + "px"; img.style.height = H2 + "px"; wrap.style.width = W2 + "px"; wrap.style.height = H2 + "px";
+    fit(0); draw(); $("[data-save]", el).disabled = false;
+  };
+  img.onerror = () => { info.textContent = "Couldn’t open this picture for cropping."; };
+  img.src = url;
+  $$("[data-r]", el).forEach(b => b.onclick = () => {
+    $$("[data-r]", el).forEach(x => x.classList.toggle("on", x === b));
+    const v = RATIOS[+b.dataset.r][1]; ratio = v === -1 ? img.naturalWidth / img.naturalHeight : v; fit(ratio); draw();
+  });
+  $("[data-reset]", el).onclick = () => { ratio = 0; $$("[data-r]", el).forEach((x, k) => x.classList.toggle("on", !k)); fit(0); draw(); };
+  let drag = null;
+  box.addEventListener("pointerdown", e => { e.preventDefault(); box.setPointerCapture(e.pointerId); drag = { h: e.target.dataset.h || "move", x: e.clientX, y: e.clientY, r: { ...r } }; });
+  box.addEventListener("pointermove", e => {
+    if (!drag) return;
+    const dx = e.clientX - drag.x, dy = e.clientY - drag.y, o = drag.r, h = drag.h, min = 24;
+    let { x, y, w, h: hh } = o;
+    if (h === "move") { x = Math.max(0, Math.min(W2 - w, o.x + dx)); y = Math.max(0, Math.min(H2 - hh, o.y + dy)); }
+    else {
+      if (h.includes("e")) w = Math.max(min, Math.min(W2 - o.x, o.w + dx));
+      if (h.includes("s")) hh = Math.max(min, Math.min(H2 - o.y, o.h + dy));
+      if (h.includes("w")) { const nx = Math.max(0, Math.min(o.x + o.w - min, o.x + dx)); w = o.w + (o.x - nx); x = nx; }
+      if (h.includes("n")) { const ny = Math.max(0, Math.min(o.y + o.h - min, o.y + dy)); hh = o.h + (o.y - ny); y = ny; }
+      if (ratio) {
+        if (h === "n" || h === "s") w = hh * ratio; else hh = w / ratio;
+        if (x + w > W2) { w = W2 - x; hh = w / ratio; }
+        if (y + hh > H2) { hh = H2 - y; w = hh * ratio; }
+        if (h.includes("w")) x = o.x + o.w - w;
+        if (h.includes("n")) y = o.y + o.h - hh;
+      }
+    }
+    r = { x, y, w, h: hh }; draw();
+  });
+  const end = () => { drag = null; };
+  box.addEventListener("pointerup", end); box.addEventListener("pointercancel", end);
+  $("[data-save]", el).onclick = async () => {
+    const k = img.naturalWidth / W2, sx = Math.round(r.x * k), sy = Math.round(r.y * k), sw = Math.round(r.w * k), sh = Math.round(r.h * k);
+    const cv = document.createElement("canvas"); cv.width = sw; cv.height = sh;
+    try {
+      cv.getContext("2d").drawImage(img, sx, sy, sw, sh, 0, 0, sw, sh);
+      let blob = await new Promise(res => cv.toBlob(res, "image/webp", 0.9)), ext = "webp";
+      if (!blob || blob.type !== "image/webp") { blob = await new Promise(res => cv.toBlob(res, "image/jpeg", 0.9)); ext = "jpg"; }
+      const base = slugify(src.split("/").pop().replace(/\.[a-z0-9]+$/i, "")).slice(0, 36);
+      const np = `img/uploads/${base}-crop-${Math.random().toString(36).slice(2, 6)}.${ext}`;
+      pending.set(np, { blob, url: URL.createObjectURL(blob) }); idb.put(np, blob);
+      snap();
+      if (typeof cur === "string") setAt(path, np);
+      else { const o = { ...(cur || {}), src: np, w: sw, h: sh }; setAt(path, o); }
+      close(); changed({ side: true }); toast("Cropped. It goes live when you publish.");
+    } catch (x) { info.textContent = "This picture is hosted on another website, so it can’t be cropped here. Download it and upload it instead."; }
+  };
+}
 async function pickImage(path, { add = false } = {}) {
   const f = await pickFile($("#filePick")); if (!f) return;
   if (!/^image\//.test(f.type)) { toast("That isn’t an image file."); return; }
@@ -881,7 +992,7 @@ function field(obj, basePath, f) {
     case "image": {
       const t = thumbSrc(v);
       return `<div class="field"><span class="lab">${esc(f.label)}</span><div class="imgf">${t ? `<img class="th" src="${esc(t)}" alt="">` : `<span class="th"></span>`}
-        <div class="btns"><button type="button" class="mini" data-img="${path}">${t ? "Replace" : "Upload"}</button>${t && f.k != null ? `<button type="button" class="mini danger" data-imgclear="${path}">Remove</button>` : ""}</div></div>${help}</div>`;
+        <div class="btns"><button type="button" class="mini" data-img="${path}">${t ? "Replace" : "Upload"}</button>${t ? `<button type="button" class="mini" data-crop="${path}">Crop</button>` : ""}${t && f.k != null ? `<button type="button" class="mini danger" data-imgclear="${path}">Remove</button>` : ""}</div></div>${help}</div>`;
     }
     case "video": return `<div class="field"><span class="lab">${esc(f.label)}</span><div class="imgf"><span class="hint" style="flex:1;word-break:break-all">${esc(v ? String(v).split("/").pop() : "No video")}</span>
       <div class="btns"><button type="button" class="mini" data-vid="${path}">${v ? "Replace" : "Upload"}</button>${v ? `<button type="button" class="mini danger" data-imgclear="${path}">Remove</button>` : ""}</div></div>${help}</div>`;
@@ -903,7 +1014,7 @@ function field(obj, basePath, f) {
       return `<div class="field"><span class="lab">${esc(f.label)}</span>${help}<div class="list">${list.map((x, k) => {
         const ip = `${path}.${k}`, isOpen = open.has(ip);
         return `<div class="li" data-li="${path}" data-k="${k}" draggable="true"><div class="li-h" data-toggle="${ip}"><span class="grip" aria-hidden="true">${ICON.grip}</span><span class="t">${esc((f.title && f.title(x)) || f.item + " " + (k + 1))}</span>
-          <button type="button" data-lidup="${path}" data-k="${k}" aria-label="Duplicate" title="Duplicate">${ICON.copy}</button><button type="button" data-lidel="${path}" data-k="${k}" aria-label="Remove" title="Remove">${ICON.trash}</button></div>
+          ${f.addImage && x && x.src ? `<button type="button" data-crop="${path}.${k}" aria-label="Crop" title="Crop">${ICON.crop}</button>` : ""}<button type="button" data-lidup="${path}" data-k="${k}" aria-label="Duplicate" title="Duplicate">${ICON.copy}</button><button type="button" data-lidel="${path}" data-k="${k}" aria-label="Remove" title="Remove">${ICON.trash}</button></div>
           ${isOpen ? `<div class="li-b">${(f.fields || BLOCK_FIELDS).map(sf => field(x, ip, sf)).join("")}</div>` : ""}</div>`;
       }).join("")}</div>
       ${f.addBlocks ? `<button type="button" class="mini" data-addblkside="${path}">+ Add a piece</button>` : f.addImage ? `<button type="button" class="mini" data-imgadd="${path}">+ Upload a picture</button>` : `<button type="button" class="mini" data-liadd="${path}">+ Add ${esc(f.item.toLowerCase())}</button>`}</div>`;
@@ -949,6 +1060,7 @@ function bindSide(side) {
   });
   $$("[data-bg]", side).forEach(b => b.onclick = () => { snap(); setAt(b.dataset.bg, b.dataset.val); changed({ side: true }); });
   $$("[data-img]", side).forEach(b => b.onclick = () => pickImage(b.dataset.img));
+  $$("[data-crop]", side).forEach(b => b.onclick = () => cropImage(b.dataset.crop));
   $$("[data-vid]", side).forEach(b => b.onclick = () => pickVideo(b.dataset.vid));
   $$("[data-imgclear]", side).forEach(b => b.onclick = () => { snap(); const p = b.dataset.imgclear, cur = getAt(p); setAt(p, typeof cur === "string" ? "" : null); changed({ side: true }); });
   $$("[data-imgadd]", side).forEach(b => b.onclick = () => pickImage(b.dataset.imgadd, { add: true }));
