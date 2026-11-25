@@ -201,7 +201,7 @@
     {
       "id": "selected-work",
       "type": "featured",
-      "navLabel": "Work",
+      "navLabel": "Featured Work",
       "bg": "lilac",
       "headline": "Featured Work",
       "intro": "",
