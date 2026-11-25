@@ -766,7 +766,7 @@ function cropImage(path) {
       pending.set(np, { blob, url: URL.createObjectURL(blob) }); idb.put(np, blob);
       snap();
       if (typeof cur === "string") setAt(path, np);
-      else { const o = { ...(cur || {}), src: np, w: sw, h: sh }; setAt(path, o); }
+      else { const o = { ...(cur || {}), src: np, w: sw, h: sh }; delete o.dw; setAt(path, o); }
       close(); changed({ side: true }); toast("Cropped. It goes live when you publish.");
     } catch (x) { info.textContent = "This picture is hosted on another website, so it can’t be cropped here. Download it and upload it instead."; }
   };
@@ -781,7 +781,7 @@ async function pickImage(path, { add = false } = {}) {
   else {
     const cur = getAt(path);
     if (typeof cur === "string" || /\.(poster|thumb|shareImage)$/.test(path) || path === "site.shareImage") setAt(path, im.src);
-    else setAt(path, { ...(cur || {}), ...im });
+    else { const o = { ...(cur || {}), ...im }; delete o.dw; setAt(path, o); }
   }
   changed({ side: true }); toast("Image added. It goes live when you publish.");
 }
