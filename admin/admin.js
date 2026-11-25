@@ -919,6 +919,8 @@ const PROJECT_FIELDS = [
     fields: [...IMGITEM, { k: "heading", t: "text", label: "Heading above it (optional)" }, { k: "text", t: "textarea", label: "Text above it (optional)" }, { k: "link.url", t: "link", label: "Link (optional)" }, { k: "link.label", t: "text", label: "Link text" }] },
   { k: "thumb", t: "image", label: "Card picture (optional)", help: "Leave empty to use the first picture." },
   { g: "Video" },
+  { k: "embed", t: "link", label: "YouTube or Vimeo link", help: "Paste the video’s web address. It plays on the project page, in place of an uploaded video." },
+  { k: "embedCaption", t: "text", label: "Caption under the YouTube or Vimeo video" },
   { k: "video.src", t: "video", label: "Video file (MP4)" },
   { k: "video.poster", t: "image", label: "Still shown before it plays" },
   { k: "video.caption", t: "text", label: "Video caption" },

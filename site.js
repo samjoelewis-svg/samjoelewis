@@ -363,6 +363,14 @@ function startCurves() {
 }
 
 /* ---------- project pages ---------- */
+function embedURL(u) {
+  u = String(u || "").trim(); if (!u) return "";
+  let m = /(?:youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{11})/.exec(u);
+  if (m) return `https://www.youtube-nocookie.com/embed/${m[1]}?rel=0`;
+  m = /vimeo\.com\/(?:video\/)?(\d+)/.exec(u);
+  if (m) return `https://player.vimeo.com/video/${m[1]}`;
+  return "";
+}
 function projectOrder() {
   const seen = new Set(), list = [];
   for (const s of C.sections) {
@@ -388,7 +396,9 @@ function projectHTML(p) {
   const plain = imgs.map((im, k) => [im, k]).filter(([im]) => !im.heading && !im.text);
   const special = imgs.map((im, k) => [im, k]).filter(([im]) => im.heading || im.text);
   const fig = ([im, k], lazy = true) => `<figure style="--ar:${im.w && im.h ? (im.w / im.h).toFixed(3) : 1}">${IMG(`${B}.images.${k}`, im, "zoom", lazy ? ' loading="lazy"' : "", true)}${im.caption ? T("figcaption", `${B}.images.${k}.caption`, im.caption) : ""}</figure>`;
-  const vid = p.video && p.video.src ? `<figure><div class="vframe"><video controls playsinline preload="none" poster="${esc(resolve(p.video.poster || ""))}" aria-label="${esc(p.video.caption)}"><source src="${esc(resolve(p.video.src))}" type="video/mp4"></video></div>${p.video.caption ? T("figcaption", `${B}.video.caption`, p.video.caption) : ""}</figure>` : "";
+  const emb = embedURL(p.embed);
+  const vid = emb ? `<figure><div class="embed"><iframe src="${esc(emb)}" title="${esc(p.embedCaption || p.title)}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>${p.embedCaption || O.edit ? T("figcaption", `${B}.embedCaption`, p.embedCaption || "") : ""}</figure>`
+    : p.video && p.video.src ? `<figure><div class="vframe"><video controls playsinline preload="none" poster="${esc(resolve(p.video.poster || ""))}" aria-label="${esc(p.video.caption)}"><source src="${esc(resolve(p.video.src))}" type="video/mp4"></video></div>${p.video.caption ? T("figcaption", `${B}.video.caption`, p.video.caption) : ""}</figure>` : "";
   let side = "", rest = plain;
   if (vid) { side = vid + (plain.length === 1 ? fig(plain[0], false) : ""); if (plain.length === 1) rest = []; }
   else if (plain.length === 1) { side = fig(plain[0], false); rest = []; }

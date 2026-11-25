@@ -684,17 +684,13 @@
         "The film follows one boy, Mason, from the age of six to eighteen, with Patricia Arquette and Ethan Hawke as his parents. That process was what made the film unique, so the script had to explain it quickly, then let the footage do the emotional work as Mason grows up on screen.",
         "The trailer gained 5.5 million views on YouTube, and was also shown on TV in America."
       ],
-      "images": [
-        {
-          "src": "img/boyhood.jpg",
-          "caption": "Boyhood, Universal",
-          "w": 723,
-          "h": 424
-        }
-      ],
+      "images": [],
       "id": "boyhood-trailer",
       "page": 208,
-      "cardTitle": "Boyhood"
+      "cardTitle": "Boyhood",
+      "embed": "https://www.youtube.com/watch?v=Y0oX0xiwOv8",
+      "embedCaption": "Boyhood trailer, Universal",
+      "thumb": "img/boyhood.jpg"
     },
     {
       "title": "Mock the Week Print Ad for TLC",
