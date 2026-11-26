@@ -256,8 +256,8 @@
         {
           "project": "futurelearn-google-course-product-copy",
           "tag": "Product",
-          "title": "FutureLearn × Google",
-          "desc": "FutureLearn × Google for Education · Course landing page · Product copy",
+          "title": "FutureLearn — Product copy",
+          "desc": "FutureLearn · Course landing pages · Product copy",
           "image": null
         }
       ]
@@ -1033,17 +1033,18 @@
       "cardTitle": "FutureLearn course SEO & editorial"
     },
     {
-      "title": "FutureLearn × Google: Course Product Copy",
+      "title": "FutureLearn — Course landing pages",
       "tag": "Product",
-      "meta": "FutureLearn × Google for Education · Course landing page · Product copy",
+      "meta": "FutureLearn · Course landing pages · Product copy",
       "industry": "Education",
       "quote": "",
       "quote2": "",
       "cardQuote": "",
       "body": [
-        "At FutureLearn, I wrote product copy for courses made with partners like Google for Education.",
-        "The course is aimed at teachers, so I kept it practical. The title, ‘Google for Education: Staying Organised and Improving Communication’, says what’s on offer and was written with SEO in mind. The introduction focuses on what teachers get out of it: easier communication with staff, students and parents, and time saved.",
-        "Because it was a partner course, the copy needed to fit both FutureLearn’s tone of voice and Google’s."
+        "At FutureLearn, I wrote product copy for online courses across a wide range of subjects, working with universities, cultural institutions and companies such as Google and LEGO.",
+        "The challenge was to take often quite specialist subject matter and make it accessible to prospective learners, giving them a clear idea of what they would learn and why it might be useful to them.",
+        "I wrote course titles, descriptions and learning outcomes, taking into account SEO, FutureLearn’s tone of voice and the individual requirements of each partner.",
+        "Featured here is a course I wrote the landing page for in partnership with Google for Education."
       ],
       "images": [
         {
@@ -1057,7 +1058,7 @@
       },
       "id": "futurelearn-google-course-product-copy",
       "page": 305,
-      "cardTitle": "FutureLearn × Google"
+      "cardTitle": "FutureLearn — Product copy"
     },
     {
       "title": "HBO Max & TNT Sports Landing Pages",
