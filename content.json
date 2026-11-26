@@ -379,7 +379,12 @@
           "intro": "Search-led writing and long-form storytelling.",
           "projects": [
             "futurelearn-course-seo-and-editorial",
-            "music-and-film-journalism"
+            "toro-y-moi-interview",
+            "avey-tare-interview",
+            "slow-west-interview",
+            "julia-holter-interview",
+            "julianna-barwick-interview",
+            "mount-eerie-interview"
           ]
         }
       ]
@@ -1447,65 +1452,146 @@
       "cardTitle": "Leadership"
     },
     {
-      "id": "music-and-film-journalism",
-      "title": "Music & Film Journalism",
+      "id": "toro-y-moi-interview",
+      "title": "Toro y Moi: Interview",
+      "cardTitle": "Toro y Moi",
       "tag": "Journalism",
-      "meta": "The Skinny · Drowned in Sound · FutureLearn",
+      "meta": "The Skinny · Music interview",
       "industry": "Editorial",
       "quote": "",
       "quote2": "",
       "cardQuote": "",
       "body": [
-        "I started my writing career as a music and film journalist. For The Skinny, I interviewed filmmakers and musicians and wrote cover features and long-form profiles, including John Maclean on Slow West and Julia Holter on Loud City Song.",
-        "I interviewed musicians including <a href=\"https://www.theskinny.co.uk/music/interviews/in-the-loop-julianna-barwick-reveals-nepenthe\">Julianna Barwick</a>, <a href=\"https://theskinny.co.uk/music/interviews/toro-y-moi-talks-arthur-russell-and-astral-jazz\">Toro y Moi</a> and <a href=\"https://www.theskinny.co.uk/music/interviews/new-old-space-mount-eeries-phil-elverum-in-interview\">Phil Elverum of Mount Eerie</a> for The Skinny, and <a href=\"http://drownedinsound.com/in_depth/4141823-dis-meets-avey-tare-from-animal-collective\">Avey Tare of Animal Collective</a> for Drowned in Sound.",
-        "I later produced long-form editorial and interview pieces at FutureLearn, alongside my campaign work."
+        "I interviewed Toro y Moi for The Skinny. We talked about Arthur Russell and astral jazz.",
+        "<a href=\"https://theskinny.co.uk/music/interviews/toro-y-moi-talks-arthur-russell-and-astral-jazz\">Read the interview on The Skinny</a>"
       ],
       "images": [
         {
-          "src": "img/skinny-slow-west.jpg",
-          "caption": "Slow West · The Skinny",
-          "w": 1800,
-          "h": 1065,
-          "dw": 1171
-        },
-        {
-          "src": "img/skinny-julia-holter.jpg",
-          "caption": "Julia Holter · The Skinny",
-          "w": 1800,
-          "h": 1063,
-          "dw": 1174
-        },
-        {
-          "src": "img/skinny-julianna-barwick.jpg",
-          "caption": "Julianna Barwick · The Skinny",
-          "w": 1800,
-          "h": 1800,
-          "dw": 1000
-        },
-        {
           "src": "img/skinny-toro-y-moi.jpg",
-          "caption": "Toro y Moi · The Skinny",
+          "caption": "Toro y Moi, The Skinny",
           "w": 1600,
           "h": 1600,
           "dw": 800
-        },
-        {
-          "src": "img/skinny-mount-eerie.jpg",
-          "caption": "Mount Eerie · The Skinny",
-          "w": 1574,
-          "h": 1566,
-          "dw": 787
-        },
+        }
+      ]
+    },
+    {
+      "id": "avey-tare-interview",
+      "title": "Avey Tare: Interview",
+      "cardTitle": "Avey Tare",
+      "tag": "Journalism",
+      "meta": "Drowned in Sound · Music interview",
+      "industry": "Editorial",
+      "quote": "",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "I interviewed Avey Tare of Animal Collective for Drowned in Sound.",
+        "<a href=\"http://drownedinsound.com/in_depth/4141823-dis-meets-avey-tare-from-animal-collective\">Read the interview on Drowned in Sound</a>"
+      ],
+      "images": [
         {
           "src": "img/dis-animal-collective.jpg",
-          "caption": "Avey Tare · Drowned in Sound",
+          "caption": "Avey Tare, Drowned in Sound",
           "w": 1300,
           "h": 1300,
           "dw": 650
         }
+      ]
+    },
+    {
+      "id": "slow-west-interview",
+      "title": "Slow West: Interview",
+      "cardTitle": "Slow West",
+      "tag": "Journalism",
+      "meta": "The Skinny · Film interview",
+      "industry": "Editorial",
+      "quote": "",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "I interviewed director John Maclean about his first feature film, Slow West, for The Skinny."
       ],
-      "page": 800,
-      "cardTitle": "Music & film journalism"
+      "images": [
+        {
+          "src": "img/skinny-slow-west.jpg",
+          "caption": "The Skinny: Slow West",
+          "w": 1800,
+          "h": 1065,
+          "dw": 1171
+        }
+      ]
+    },
+    {
+      "id": "julia-holter-interview",
+      "title": "Julia Holter: Interview",
+      "cardTitle": "Julia Holter",
+      "tag": "Journalism",
+      "meta": "The Skinny · Music interview",
+      "industry": "Editorial",
+      "quote": "",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "I interviewed Julia Holter for The Skinny about her album Loud City Song."
+      ],
+      "images": [
+        {
+          "src": "img/skinny-julia-holter.jpg",
+          "caption": "The Skinny: Julia Holter",
+          "w": 1800,
+          "h": 1063,
+          "dw": 1174
+        }
+      ]
+    },
+    {
+      "id": "julianna-barwick-interview",
+      "title": "Julianna Barwick: Interview",
+      "cardTitle": "Julianna Barwick",
+      "tag": "Journalism",
+      "meta": "The Skinny · Music interview",
+      "industry": "Editorial",
+      "quote": "",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "I interviewed Julianna Barwick for The Skinny about her album Nepenthe.",
+        "<a href=\"https://www.theskinny.co.uk/music/interviews/in-the-loop-julianna-barwick-reveals-nepenthe\">Read the interview on The Skinny</a>"
+      ],
+      "images": [
+        {
+          "src": "img/skinny-julianna-barwick.jpg",
+          "caption": "Julianna Barwick, The Skinny",
+          "w": 1800,
+          "h": 1800,
+          "dw": 1000
+        }
+      ]
+    },
+    {
+      "id": "mount-eerie-interview",
+      "title": "Mount Eerie: Interview",
+      "cardTitle": "Mount Eerie",
+      "tag": "Journalism",
+      "meta": "The Skinny · Music interview",
+      "industry": "Editorial",
+      "quote": "",
+      "quote2": "",
+      "cardQuote": "",
+      "body": [
+        "I interviewed Phil Elverum of Mount Eerie for The Skinny.",
+        "<a href=\"https://www.theskinny.co.uk/music/interviews/new-old-space-mount-eeries-phil-elverum-in-interview\">Read the interview on The Skinny</a>"
+      ],
+      "images": [
+        {
+          "src": "img/skinny-mount-eerie.jpg",
+          "caption": "Mount Eerie, The Skinny",
+          "w": 1574,
+          "h": 1566,
+          "dw": 787
+        }
+      ]
     },
     {
       "id": "barbie-pre-premiere-campaign",
