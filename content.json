@@ -256,8 +256,8 @@
         {
           "project": "futurelearn-google-course-product-copy",
           "tag": "Product",
-          "title": "FutureLearn — Product copy",
-          "desc": "FutureLearn · Course landing pages · Product copy",
+          "title": "FutureLearn × Google",
+          "desc": "Course landing pages for Google, LEGO and other educational partners",
           "image": null
         }
       ]
@@ -1033,9 +1033,9 @@
       "cardTitle": "FutureLearn course SEO & editorial"
     },
     {
-      "title": "FutureLearn — Course landing pages",
+      "title": "FutureLearn — Product copy",
       "tag": "Product",
-      "meta": "FutureLearn · Course landing pages · Product copy",
+      "meta": "Course landing pages for Google, LEGO and other educational partners",
       "industry": "Education",
       "quote": "",
       "quote2": "",
@@ -1058,7 +1058,7 @@
       },
       "id": "futurelearn-google-course-product-copy",
       "page": 305,
-      "cardTitle": "FutureLearn — Product copy"
+      "cardTitle": "FutureLearn × Google"
     },
     {
       "title": "HBO Max & TNT Sports Landing Pages",
