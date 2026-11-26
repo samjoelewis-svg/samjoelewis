@@ -1431,7 +1431,7 @@ function visitorsSetup(errText = "") {
     <div><button class="btn-p">Connect</button></div></form>`, "small");
   $("#gcf", el).onsubmit = async e => {
     e.preventDefault(); const k = $("#gck", el).value.trim(), er = $("#gcerr", el); er.textContent = "Checking…";
-    try { await gcGet(k, "stats/total", {}); } catch (x) { er.textContent = x.status === 401 || x.status === 403 ? "GoatCounter didn’t accept that key. Check it has Read statistics ticked." : "Couldn’t reach GoatCounter: " + x.message; return; }
+    try { await gcGet(k, "stats/total", {}); } catch (x) { er.textContent = x.status === 401 || x.status === 403 ? "GoatCounter didn’t accept that key. Check it has Read statistics ticked." : (x instanceof TypeError ? "Your browser blocked the connection to GoatCounter. This is usually an ad or tracker blocker: allow samlewis.goatcounter.com in it (or pause it on this page), then try again." : "Couldn’t reach GoatCounter: " + x.message); return; }
     er.textContent = "Saving…";
     try { await gcKeySet(k); close(); visitors(); } catch (x) { er.textContent = "Couldn’t save: " + x.message; }
   };
@@ -1467,7 +1467,7 @@ async function visitors(days = 7) {
       <p class="muted">${homeN} landed on the home page. Counts are unique visitors. Your own visits aren’t counted on this browser. <a href="${GC}" target="_blank" rel="noopener">Full stats on GoatCounter →</a></p>`;
   } catch (x) {
     if (x.status === 401 || x.status === 403) return visitorsSetup("The saved key stopped working. Paste a new one.");
-    $("#visb", el).innerHTML = `<p class="err">Couldn’t load the stats: ${esc(x.message)}</p>`;
+    $("#visb", el).innerHTML = `<p class="err">${x instanceof TypeError ? "Your browser blocked the connection to GoatCounter. This is usually an ad or tracker blocker: allow samlewis.goatcounter.com in it, then reopen Visitors." : "Couldn’t load the stats: " + esc(x.message)}</p>`;
   }
 }
 function changePassword() {
