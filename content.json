@@ -523,7 +523,7 @@
       "images": [
         {
           "src": "img/kings-cross.jpg",
-          "caption": "King's Cross tunnel, London",
+          "caption": "King’s Cross tunnel · OOH",
           "w": 1800,
           "h": 984,
           "dw": 1152
@@ -533,7 +533,7 @@
           "w": 1020,
           "h": 1360,
           "dw": 510,
-          "caption": "Wall-to-Wall Westeros",
+          "caption": "Wall-to-Wall Westeros · OOH",
           "heading": "A new home for HBO",
           "text": "For years, British audiences had associated HBO’s biggest shows with Sky. Now they had a new home. Wall-to-Wall Westeros brought together all three series from the Game of Thrones universe in a single headline, selling both the breadth and exclusivity of the catalogue."
         },
@@ -596,7 +596,7 @@
       "images": [
         {
           "src": "img/watercooler.jpg",
-          "caption": "“Wall-to-Wall Watercooler” poster",
+          "caption": "Wall-to-Wall Watercooler · OOH",
           "w": 1800,
           "h": 1350,
           "dw": 1200
@@ -684,14 +684,14 @@
       "images": [
         {
           "src": "img/humans.jpg",
-          "caption": "Humans",
+          "caption": "Humans · Tagline",
           "w": 1800,
           "h": 1013,
           "dw": 1180
         },
         {
           "src": "img/halt-catch-fire.jpg",
-          "caption": "Halt and Catch Fire",
+          "caption": "Halt and Catch Fire · Tagline",
           "w": 1800,
           "h": 1269,
           "dw": 1179
@@ -778,7 +778,7 @@
       "page": 208,
       "cardTitle": "Boyhood",
       "embed": "https://www.youtube.com/watch?v=Y0oX0xiwOv8",
-      "embedCaption": "Boyhood trailer, Universal",
+      "embedCaption": "Boyhood · Trailer",
       "thumb": "img/boyhood.jpg"
     },
     {
@@ -795,7 +795,7 @@
       "images": [
         {
           "src": "img/mock-the-week.jpg",
-          "caption": "Print ad for TLC",
+          "caption": "TLC · Print ad",
           "w": 1800,
           "h": 1153,
           "dw": 1158
@@ -819,7 +819,7 @@
       "images": [
         {
           "src": "img/swallows-amazons.jpg",
-          "caption": "Swallows and Amazons",
+          "caption": "Swallows and Amazons · Tagline",
           "w": 1590,
           "h": 2356,
           "dw": 795
@@ -845,7 +845,7 @@
       "images": [
         {
           "src": "img/hbo-max-halloween.jpg",
-          "caption": "Display creative: “Fear hits home”",
+          "caption": "Fear hits home · Display ad",
           "w": 1200,
           "h": 930,
           "dw": 600
@@ -854,7 +854,7 @@
       "video": {
         "src": "video/hbo-max-halloween.mp4",
         "poster": "img/hbo-max-halloween-video.jpg",
-        "caption": "HBO Max Halloween 2026 trailer"
+        "caption": "Halloween 2026 trailer"
       },
       "id": "hbo-max-halloween-2026-campaign",
       "page": 211,
@@ -885,7 +885,7 @@
       "video": {
         "src": "video/knight-journey.mp4",
         "poster": "img/knight-journey-video.jpg",
-        "caption": "Episode challenge: take your vows"
+        "caption": "Episode quiz · Take your vows"
       },
       "id": "a-knight-of-the-seven-kingdoms-gamified-journey",
       "page": 212,
@@ -931,7 +931,7 @@
       "images": [
         {
           "src": "img/noodoll-ricespud-product-copy.webp",
-          "caption": "Ricespud product copy",
+          "caption": "Ricespud · Product copy",
           "w": 1650,
           "h": 817
         }
@@ -957,28 +957,28 @@
       "images": [
         {
           "src": "img/hbo-max-welcome-email.jpg",
-          "caption": "HBO Max UK welcome email",
+          "caption": "UK welcome email",
           "w": 1626,
           "h": 1764,
           "dw": 813
         },
         {
           "src": "img/hbo-max-so-back-email.jpg",
-          "caption": "‘We Are So Back’ email",
+          "caption": "We Are So Back · Email",
           "w": 1192,
           "h": 1906,
           "dw": 596
         },
         {
           "src": "img/hbo-max-joker-email.jpg",
-          "caption": "Joker: Folie à Deux email",
+          "caption": "Joker: Folie à Deux · Email",
           "w": 694,
           "h": 1258,
           "dw": 347
         },
         {
           "src": "img/hbo-max-australian-open-email.jpg",
-          "caption": "Australian Open CRM",
+          "caption": "Australian Open email",
           "w": 982,
           "h": 1092,
           "dw": 491
@@ -1011,7 +1011,7 @@
         },
         {
           "src": "img/futurelearn-editorial-rome.webp",
-          "caption": "Ancient Rome · Editorial",
+          "caption": "Ancient Rome · Editorial feature",
           "w": 1636,
           "h": 1646,
           "dw": 818
@@ -1198,7 +1198,7 @@
       "cardTitle": "Tate Modern",
       "embed": "https://youtu.be/F1pbMBGxvS4",
       "thumb": "img/world-goes-pop.jpg",
-      "embedCaption": "The World Goes Pop, Tate Modern"
+      "embedCaption": "The World Goes Pop · Trailer"
     },
     {
       "title": "Home, I’m Darling Trailer for the National Theatre",
@@ -1221,7 +1221,7 @@
       "page": 502,
       "cardTitle": "Home, I’m Darling",
       "embed": "https://www.youtube.com/watch?v=qjLuO_C_cg8",
-      "embedCaption": "Home, I’m Darling, National Theatre",
+      "embedCaption": "Home, I’m Darling · Trailer",
       "thumb": "img/national-theatre.jpg"
     },
     {
@@ -1268,7 +1268,7 @@
       "cardTitle": "Matilda the Musical",
       "embed": "https://www.youtube.com/watch?v=zW9_mmJbgdc",
       "thumb": "img/matilda.jpg",
-      "embedCaption": "Cast announcement film"
+      "embedCaption": "Cast announcement video"
     },
     {
       "title": "Westminster Abbey: Feel Wonder First Hand",
@@ -1285,14 +1285,14 @@
       "images": [
         {
           "src": "img/westminster-abbey.jpg",
-          "caption": "Westminster Abbey outdoor campaign",
+          "caption": "Westminster Abbey · OOH",
           "w": 1520,
           "h": 2366,
           "dw": 760
         },
         {
           "src": "img/westminster-abbey-bond-street.webp",
-          "caption": "Bond Street station",
+          "caption": "Bond Street station · OOH",
           "w": 1800,
           "h": 2401,
           "dw": 1100
@@ -1323,7 +1323,7 @@
         },
         {
           "src": "img/new-world-building.jpg",
-          "caption": "Sector-specific paid social",
+          "caption": "Sector-specific paid social ad",
           "w": 848,
           "h": 1392,
           "dw": 424
@@ -1350,7 +1350,7 @@
       "images": [
         {
           "src": "img/results-day.jpg",
-          "caption": "Digital outdoor campaign",
+          "caption": "Digital OOH campaign",
           "w": 1800,
           "h": 1800,
           "dw": 1048
@@ -1401,7 +1401,7 @@
       "video": {
         "src": "video/futurelearn-step.mp4",
         "poster": "img/futurelearn-step-video.jpg",
-        "caption": "Internal brand film"
+        "caption": "Internal brand video"
       },
       "page": 700,
       "related": [
@@ -1461,35 +1461,35 @@
       "images": [
         {
           "src": "img/skinny-slow-west.jpg",
-          "caption": "The Skinny: Slow West",
+          "caption": "Slow West · The Skinny",
           "w": 1800,
           "h": 1065,
           "dw": 1171
         },
         {
           "src": "img/skinny-julia-holter.jpg",
-          "caption": "The Skinny: Julia Holter",
+          "caption": "Julia Holter · The Skinny",
           "w": 1800,
           "h": 1063,
           "dw": 1174
         },
         {
           "src": "img/skinny-julianna-barwick.jpg",
-          "caption": "Julianna Barwick, The Skinny",
+          "caption": "Julianna Barwick · The Skinny",
           "w": 1800,
           "h": 1800,
           "dw": 1000
         },
         {
           "src": "img/skinny-toro-y-moi.jpg",
-          "caption": "Toro y Moi, The Skinny",
+          "caption": "Toro y Moi · The Skinny",
           "w": 1600,
           "h": 1600,
           "dw": 800
         },
         {
           "src": "img/skinny-mount-eerie.jpg",
-          "caption": "Mount Eerie, The Skinny",
+          "caption": "Mount Eerie · The Skinny",
           "w": 1574,
           "h": 1566,
           "dw": 787
@@ -1553,7 +1553,7 @@
       "images": [
         {
           "src": "img/feride-vs-the-world.jpg",
-          "caption": "Feride vs the World key art",
+          "caption": "Feride vs the World · Key art",
           "w": 960,
           "h": 1400,
           "dw": 480
@@ -1576,7 +1576,7 @@
       "images": [
         {
           "src": "img/hbo-max-first-five.jpg",
-          "caption": "First Five key art",
+          "caption": "First Five · Key art",
           "w": 1080,
           "h": 1600,
           "dw": 540
@@ -1625,14 +1625,14 @@
       "images": [
         {
           "src": "img/fl-scholarship-1.jpg",
-          "caption": "Scholarship launch social ad",
+          "caption": "Scholarship launch · Social ad",
           "w": 1800,
           "h": 1932,
           "dw": 1108
         },
         {
           "src": "img/fl-scholarship-2.jpg",
-          "caption": "Scholarship social ad",
+          "caption": "Scholarship · Social ad",
           "w": 1800,
           "h": 1803,
           "dw": 1096
@@ -1656,14 +1656,14 @@
       "images": [
         {
           "src": "img/fl-paid-social-hot.jpg",
-          "caption": "Hot ad · Existing customers",
+          "caption": "Paid social · Existing customers",
           "w": 1600,
           "h": 1594,
           "dw": 800
         },
         {
           "src": "img/fl-paid-social-warm.jpg",
-          "caption": "Warm audience targeting",
+          "caption": "Paid social · Warm audience",
           "w": 1410,
           "h": 2950,
           "dw": 705
@@ -1718,7 +1718,7 @@
         },
         {
           "src": "img/fl-tv-drama-social.jpg",
-          "caption": "Supporting paid social",
+          "caption": "Supporting paid social ad",
           "w": 1800,
           "h": 1800,
           "dw": 1080
@@ -1743,7 +1743,7 @@
       "images": [
         {
           "src": "img/fl-microcredentials.jpg",
-          "caption": "Microcredentials social ad",
+          "caption": "Microcredentials · Paid social ad",
           "w": 1600,
           "h": 1600
         }
@@ -1780,7 +1780,7 @@
         },
         {
           "src": "img/fl-experttracks-ad.jpg",
-          "caption": "ExpertTracks social ad",
+          "caption": "ExpertTracks · Paid social ad",
           "w": 814,
           "h": 812,
           "dw": 407
@@ -1804,7 +1804,7 @@
       "images": [
         {
           "src": "img/nice-fish.jpg",
-          "caption": "Nice Fish web copy",
+          "caption": "Nice Fish · Website copy",
           "w": 1288,
           "h": 900,
           "dw": 644
@@ -1828,14 +1828,14 @@
       "images": [
         {
           "src": "img/nhm-dino-escape.jpg",
-          "caption": "Dino Escape ‘breaking news’ video",
+          "caption": "Dino Escape · Social video",
           "w": 1800,
           "h": 1807,
           "dw": 1076
         },
         {
           "src": "img/nhm-dino-escape-2.jpg",
-          "caption": "‘Escaped dinosaur’ breaking news",
+          "caption": "Escaped dinosaur · Social video",
           "w": 1800,
           "h": 1798,
           "dw": 1064
@@ -1913,7 +1913,7 @@
       "images": [
         {
           "src": "img/donmar-berberian.jpg",
-          "caption": "Berberian Sound Studio social video",
+          "caption": "Berberian · Social video",
           "w": 1800,
           "h": 1789,
           "dw": 1004
@@ -1937,7 +1937,7 @@
       "images": [
         {
           "src": "img/view-from-the-shard.jpg",
-          "caption": "The View from The Shard website",
+          "caption": "The Shard · Website copy",
           "w": 1678,
           "h": 1674,
           "dw": 839
@@ -1992,7 +1992,7 @@
       "images": [
         {
           "src": "img/the-eastern-gate-s2.jpg",
-          "caption": "The Eastern Gate, season 2 key art",
+          "caption": "The Eastern Gate S2 · Key art",
           "w": 1288,
           "h": 1908
         }
