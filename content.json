@@ -196,7 +196,8 @@
           "logo": null
         }
       ],
-      "mono": true
+      "mono": true,
+      "name": "Clients strip"
     },
     {
       "id": "selected-work",

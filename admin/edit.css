@@ -51,7 +51,7 @@ main > section.ed-hover > .ed-add { opacity: 1; pointer-events: auto; }
 .ed-bbar button:hover { background: rgba(255,255,255,.16); }
 .ed-bbar svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
 .ed-addblk { align-self: flex-start; border: 1.5px dashed rgba(42,26,27,.35); background: rgba(255,255,255,.35); color: #2a1a1b; border-radius: 10px; padding: 10px 16px; cursor: pointer;
-  font: 600 13px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif; opacity: .55; transition: opacity .15s; }
+  font: 600 13px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif; opacity: 0; transition: opacity .15s; }
 main > section.ed-hover .ed-addblk, main > section.ed-sel .ed-addblk { opacity: 1; }
 .ed-addblk:hover { border-color: #2f6bff; color: #2f6bff; background: #fff; }
 .blocks:empty { display: flex !important; }
@@ -84,3 +84,5 @@ main > section.ed-hover .ed-addblk, main > section.ed-sel .ed-addblk { opacity: 
 .ed-fmt .ffd { font: 700 15px/1 Georgia, serif; } .ed-fmt .ffb { font: 400 15px/1 Georgia, serif; }
 .ed-fmt .hlm { background: #9fe5fb; color: #2a1a1b; padding: 1px 4px; border-radius: 3px; }
 .ed-formatting .ed-barwrap, .ed-formatting .ed-bbar { visibility: hidden; }
+
+.ed-addblk[data-bact] { opacity: 1; }

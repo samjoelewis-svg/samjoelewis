@@ -721,7 +721,7 @@ async function sectionAction(i, act) {
   }
 }
 function scrollToSection(i) { setTimeout(() => { const el = $(`main > section[data-section="${i}"]`, D()); el && el.scrollIntoView({ behavior: "smooth", block: "start" }); }, 60); }
-function sectionName(s) { const hb = (s.blocks || []).find(b => b.type === "heading" || b.type === "subheading"); return s.navLabel || s.headline || (s.type === "custom" && hb && hb.text) || s.text || s.quote || (s.type === "ticker" && (s.items || []).slice(0, 3).map(x => typeof x === "string" ? x : x.name).join(", ")) || (TYPES[s.type] || {}).name || s.type; }
+function sectionName(s) { const hb = (s.blocks || []).find(b => b.type === "heading" || b.type === "subheading"); return s.name || s.navLabel || s.headline || (s.type === "custom" && hb && hb.text) || s.text || s.quote || (TYPES[s.type] || {}).name || s.type; }
 function newSection(type) {
   const first = C.projects.slice(0, 3);
   const T = {
@@ -945,7 +945,7 @@ function mainPane() {
   }
   if (tab === "site") return tabs + `<div class="pane">${form(C.site, "site", SITE_FIELDS)}</div>`;
   return tabs + `<div class="pane">
-    <p class="hint">Click any words on the page to change them. Click a picture to replace it. Drag sections here to reorder them.</p>
+    <details class="hint"${(() => { try { return localStorage.getItem("ed-hint-seen") ? "" : " open"; } catch (e) { return " open"; } })()} ontoggle="try{localStorage.setItem('ed-hint-seen','1')}catch(e){}"><summary>How this works</summary>Click any words on the page to change them. Click a picture to replace it. Drag sections here to reorder them.</details>
     <div class="slist" data-slist>${C.sections.map((s, i) => `<div class="sitem${i === selSection ? " sel" : ""}${s.hidden ? " hid" : ""}" draggable="true" data-sidx="${i}">
       <span class="grip" title="Drag to reorder" aria-hidden="true">${ICON.grip}</span>
       <span class="swatch" style="background:${esc((C.site.colors || {})[s.bg] || "#fff")}"></span>
@@ -991,6 +991,7 @@ const COMMON_FIELDS = [
   { k: "blocks", t: "list", label: "Extra pieces in this section", item: "Piece", help: "Text, pictures and buttons added under the section’s main content. Drag to reorder.", addBlocks: true,
     title: b => (BLOCKS[b.type] || {}).name + (b.text || b.label ? ": " + (b.text || b.label) : b.paragraphs ? ": " + (b.paragraphs[0] || "") : "") },
   { g: "Section" },
+  { k: "name", t: "text", label: "Name in the editor", help: "Only you see this, in the list on the left." },
   { k: "navLabel", t: "text", label: "Show in the menu as", help: "Leave empty to keep this section out of the top menu." },
   { k: "bg", t: "bg", label: "Background colour" },
   { k: "id", t: "sectionid", label: "Link name", help: "Used for jump links, e.g. samlewis.fyi/#about" },
