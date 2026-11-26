@@ -68,7 +68,7 @@
       "imageSide": "left",
       "image": {
         "src": "img/kings-cross-hero.jpg",
-        "caption": "HBO Max UK launch: King's Cross tunnel takeover",
+        "caption": "King’s Cross takeover",
         "w": 1800,
         "h": 984,
         "dw": 1152
@@ -620,7 +620,7 @@
       "images": [
         {
           "src": "img/royal-roy.jpg",
-          "caption": "Instagram, @hbomaxuk × @hollyandbrookearehooked",
+          "caption": "Paid influencer collaboration",
           "w": 1032,
           "h": 1436,
           "dw": 516
@@ -645,21 +645,21 @@
       "images": [
         {
           "src": "img/tough-cases.jpg",
-          "caption": "Display ad, before market pricing was added",
+          "caption": "Display ad · Pre-localisation",
           "w": 1338,
           "h": 1340,
           "dw": 669
         },
         {
           "src": "img/final-destination-display.jpg",
-          "caption": "Final Destination display ad: ‘5 chilling movies. Not 1 accident.’",
+          "caption": "Final Destination display ad",
           "w": 558,
           "h": 572,
           "dw": 279
         },
         {
           "src": "img/hbo-max-christmas-card.jpg",
-          "caption": "HBO Max Christmas campaign",
+          "caption": "Christmas campaign",
           "w": 1800,
           "h": 1800,
           "dw": 1080
@@ -758,7 +758,7 @@
       "cardTitle": "Pogány Induló",
       "embed": "https://www.youtube.com/watch?v=NwIcsmX7ipA",
       "thumb": "img/pogany-indulo.jpg",
-      "embedCaption": "Pogány Induló: Vajon mit mondana anya, HBO Max"
+      "embedCaption": "Documentary trailer"
     },
     {
       "title": "Boyhood Trailer",
@@ -876,7 +876,7 @@
       "images": [
         {
           "src": "img/knight-journey.jpg",
-          "caption": "Result screen for getting every answer wrong",
+          "caption": "Quiz · All answers wrong",
           "w": 1536,
           "h": 2560,
           "dw": 768
@@ -906,7 +906,7 @@
       "images": [
         {
           "src": "img/atg-lyceum-b2b.webp",
-          "caption": "ATG Theatres LinkedIn ad for corporate venue hire, featuring the Lyceum Theatre",
+          "caption": "Lyceum Theatre · LinkedIn ad",
           "w": 1800,
           "h": 941,
           "dw": 1440
@@ -931,7 +931,7 @@
       "images": [
         {
           "src": "img/noodoll-ricespud-product-copy.webp",
-          "caption": "Noodoll Ricespud product page showing the plush and the product copy I wrote",
+          "caption": "Ricespud product copy",
           "w": 1650,
           "h": 817
         }
@@ -978,7 +978,7 @@
         },
         {
           "src": "img/hbo-max-australian-open-email.jpg",
-          "caption": "Australian Open email: ‘A Whole New Ball Game’",
+          "caption": "Australian Open CRM",
           "w": 982,
           "h": 1092,
           "dw": 491
@@ -1004,21 +1004,21 @@
       "images": [
         {
           "src": "img/futurelearn-course-seo.webp",
-          "caption": "FutureLearn course page: Power Dressing in the Zoom Era, showing search-informed course-title copy",
+          "caption": "SEO-led course title",
           "w": 1800,
           "h": 1796,
           "dw": 913
         },
         {
           "src": "img/futurelearn-editorial-rome.webp",
-          "caption": "FutureLearn long-form editorial article: Explore a virtual map of Ancient Rome",
+          "caption": "Ancient Rome · Editorial",
           "w": 1636,
           "h": 1646,
           "dw": 818
         },
         {
           "src": "img/fl-blog-africa-covid.jpg",
-          "caption": "How well has Africa managed COVID-19?, FutureLearn blog",
+          "caption": "COVID-19 · Editorial feature",
           "w": 1800,
           "h": 1372,
           "link": {
@@ -1049,7 +1049,7 @@
       "images": [
         {
           "src": "https://ugc.futurelearn.com/uploads/images/e4/98/header_e498abc1-1429-4c12-9941-a6746fa13efd.jpg",
-          "caption": "Google for Education course artwork used on the FutureLearn landing page"
+          "caption": "Google for Education"
         }
       ],
       "link": {
@@ -1096,7 +1096,7 @@
         },
         {
           "src": "img/hbo-checkout-flow-overview.webp",
-          "caption": "Figma canvas showing several HBO Max mobile checkout flows",
+          "caption": "Mobile checkout flows",
           "w": 1276,
           "h": 194,
           "heading": "Checkout flows in Figma",
@@ -1168,7 +1168,7 @@
       "images": [
         {
           "src": "img/milano-cortina.jpg",
-          "caption": "Pick-your-sports journey, Milano Cortina 2026",
+          "caption": "Sports preference journey",
           "w": 1800,
           "h": 964
         }
@@ -1243,7 +1243,7 @@
       "cardTitle": "Whales",
       "embed": "https://www.youtube.com/watch?v=z_ZonqO_Hn4",
       "thumb": "img/whales.jpg",
-      "embedCaption": "Whales: Beneath the Surface, Natural History Museum"
+      "embedCaption": "Exhibition trailer"
     },
     {
       "title": "Matilda the Musical Social, Video & Radio",
@@ -1268,7 +1268,7 @@
       "cardTitle": "Matilda the Musical",
       "embed": "https://www.youtube.com/watch?v=zW9_mmJbgdc",
       "thumb": "img/matilda.jpg",
-      "embedCaption": "Meet the Matildas, Matilda The Musical"
+      "embedCaption": "Cast announcement film"
     },
     {
       "title": "Westminster Abbey: Feel Wonder First Hand",
@@ -1292,7 +1292,7 @@
         },
         {
           "src": "img/westminster-abbey-bond-street.webp",
-          "caption": "The campaign at Bond Street station",
+          "caption": "Bond Street station",
           "w": 1800,
           "h": 2401,
           "dw": 1100
@@ -1350,7 +1350,7 @@
       "images": [
         {
           "src": "img/results-day.jpg",
-          "caption": "Results Day OOH",
+          "caption": "Digital outdoor campaign",
           "w": 1800,
           "h": 1800,
           "dw": 1048
@@ -1401,7 +1401,7 @@
       "video": {
         "src": "video/futurelearn-step.mp4",
         "poster": "img/futurelearn-step-video.jpg",
-        "caption": "FutureLearn staff values film: STEP"
+        "caption": "Internal brand film"
       },
       "page": 700,
       "related": [
@@ -1496,7 +1496,7 @@
         },
         {
           "src": "img/dis-animal-collective.jpg",
-          "caption": "Avey Tare of Animal Collective, Drowned in Sound",
+          "caption": "Avey Tare · Drowned in Sound",
           "w": 1300,
           "h": 1300,
           "dw": 650
@@ -1522,7 +1522,7 @@
       "images": [
         {
           "src": "img/barbie-pre-premiere.jpg",
-          "caption": "Barbie pre-premiere plan: emails and in-app message",
+          "caption": "Pre-premiere CRM journey",
           "w": 1584,
           "h": 878,
           "dw": 792
@@ -1600,7 +1600,7 @@
       "images": [
         {
           "src": "img/hbo-max-app-superman.jpg",
-          "caption": "HBO Max app: Superman title page",
+          "caption": "Superman · In-app title copy",
           "w": 1800,
           "h": 3246,
           "dw": 1098
@@ -1656,14 +1656,14 @@
       "images": [
         {
           "src": "img/fl-paid-social-hot.jpg",
-          "caption": "‘Hot’ ad, aimed at converting existing customers",
+          "caption": "Hot ad · Existing customers",
           "w": 1600,
           "h": 1594,
           "dw": 800
         },
         {
           "src": "img/fl-paid-social-warm.jpg",
-          "caption": "‘Warm’ ad, aimed at people already interested in FutureLearn",
+          "caption": "Warm audience targeting",
           "w": 1410,
           "h": 2950,
           "dw": 705
@@ -1687,7 +1687,7 @@
       "images": [
         {
           "src": "img/fl-upgrade.png",
-          "caption": "Upgrade options on a FutureLearn course page",
+          "caption": "Free-to-paid conversion",
           "w": 1248,
           "h": 3058,
           "dw": 624
@@ -1718,7 +1718,7 @@
         },
         {
           "src": "img/fl-tv-drama-social.jpg",
-          "caption": "Paid social ad for the same audience",
+          "caption": "Supporting paid social",
           "w": 1800,
           "h": 1800,
           "dw": 1080
@@ -1766,14 +1766,14 @@
       "images": [
         {
           "src": "img/fl-experttracks-1.jpg",
-          "caption": "‘Go from dreaming big to dream career’",
+          "caption": "Career development campaign",
           "w": 1800,
           "h": 2936,
           "dw": 1152
         },
         {
           "src": "img/fl-experttracks-2.jpg",
-          "caption": "‘From couch dreamer to classroom leader’",
+          "caption": "Classroom career campaign",
           "w": 1800,
           "h": 3200,
           "dw": 1152
@@ -1857,7 +1857,7 @@
       ],
       "images": [],
       "embed": "https://www.youtube.com/watch?v=N0R9TZJcaYs",
-      "embedCaption": "Sorolla: Spanish Master of Light, National Gallery",
+      "embedCaption": "Exhibition trailer",
       "thumb": "https://i.ytimg.com/vi/N0R9TZJcaYs/maxresdefault.jpg"
     },
     {
@@ -1875,7 +1875,7 @@
       ],
       "images": [],
       "embed": "https://www.youtube.com/watch?v=bruWH0-LBls",
-      "embedCaption": "Writing: Making Your Mark, British Library",
+      "embedCaption": "Exhibition trailer",
       "thumb": "img/british-library-writing.jpg"
     },
     {
@@ -1893,7 +1893,7 @@
       ],
       "images": [],
       "embed": "https://www.youtube.com/watch?v=7u0LBFf-fp8",
-      "embedCaption": "Labour of Love, Michael Grandage Company",
+      "embedCaption": "West End trailer",
       "thumb": "img/labour-of-love.jpg"
     },
     {
