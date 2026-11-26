@@ -49,6 +49,7 @@ svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width:
 .status.okk::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--ok); margin-right: 7px; }
 .lnk { color: var(--ink); text-decoration: none; padding: 8px 10px; border-radius: 8px; white-space: nowrap; }
 .lnk:hover { background: #f1ede9; }
+button.lnk { background: none; border: 0; font: inherit; cursor: pointer; }
 .btn-p { background: var(--accent); color: #fff; border: 0; border-radius: 999px; padding: 9px 20px; font-weight: 600; white-space: nowrap; }
 .btn-p:hover { filter: brightness(1.15); }
 .btn-p:disabled { opacity: .5; cursor: default; }
