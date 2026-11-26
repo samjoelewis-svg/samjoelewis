@@ -1381,7 +1381,6 @@ function wireChrome() {
     if (!previewing) { decorate(); renderSide(); }
     toast(previewing ? "Preview: this is how visitors see it. Click the eye again to keep editing." : "Back to editing.");
   };
-  $("#visBtn").onclick = () => visitors();
   const menu = $("#menu");
   $("#menuBtn").onclick = e => { e.stopPropagation(); menu.hidden = !menu.hidden; };
   document.addEventListener("click", e => { if (!e.target.closest("#menu")) menu.hidden = true; });
