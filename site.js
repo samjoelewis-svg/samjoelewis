@@ -450,6 +450,12 @@ function sectionOf(id) {
   return null;
 }
 
+// Count project views as their own pages in the visitor stats (the counter itself counts the home page).
+function track(id, title) {
+  if (O.edit) return;
+  let n = 0; const go = () => { const g = window.goatcounter; if (g && g.count) g.count({ path: "/work/" + id, title }); else if (n++ < 20) setTimeout(go, 500); };
+  go();
+}
 /* ---------- playful extras ---------- */
 // Results count up from zero the first time they scroll into view. Values like "1.5m", "+10 pts", "No. 1"; ranges are left alone.
 let countIO = null;
@@ -563,7 +569,7 @@ function openProject(id, fromHash) {
   const sec = sectionOf(id);
   el.className = "proj bg-" + (sec && sec.bg !== "ink" ? sec.bg : "cream");
   el.setAttribute("aria-label", p.title);
-  el.innerHTML = projectHTML(p); fixAmps(el); countUp(el);
+  el.innerHTML = projectHTML(p); fixAmps(el); countUp(el); track(p.id, p.title);
   el.scrollTop = 0;
   openId = id;
   document.body.classList.add("locked");

@@ -262,6 +262,7 @@ async function blobJSON(sha) { const b = await gh(`${RP()}/git/blobs/${sha}`); r
 
 /* ---------- start ---------- */
 async function start() {
+  try { localStorage.setItem("skipgc", "t"); } catch (e) {}
   $("#gate").innerHTML = `<div class="gate-card"><div class="lock">${ICON.lock}</div><h1>Opening…</h1><p>Loading your latest content.</p></div>`;
   try {
     const f = await gh(`${RP()}/contents/content.json?ref=${encodeURIComponent(REPO.branch)}`);
@@ -1379,6 +1380,7 @@ function wireChrome() {
     if (!previewing) { decorate(); renderSide(); }
     toast(previewing ? "Preview: this is how visitors see it. Click the eye again to keep editing." : "Back to editing.");
   };
+  $("#visBtn").onclick = () => visitors();
   const menu = $("#menu");
   $("#menuBtn").onclick = e => { e.stopPropagation(); menu.hidden = !menu.hidden; };
   document.addEventListener("click", e => { if (!e.target.closest("#menu")) menu.hidden = true; });
@@ -1392,6 +1394,7 @@ function wireChrome() {
       snap(); C = JSON.parse(base.json); pending.clear(); clearDraft(); dirty = false; selProject = null; selSection = null; status(); W().Site.closeProject(true); paint(); renderSide();
     }
     if (a.dataset.act === "password") changePassword();
+    if (a.dataset.act === "visitors") visitors();
     if (a.dataset.act === "help") modal(`<div class="dialog-h"><h2>How editing works</h2><button class="ib" data-x aria-label="Close">${ICON.x}</button></div><div class="dialog-b"><ul class="help-list">
       <li><b>Words:</b> click any text on the page and type. Press Enter to finish a line.</li>
       <li><b>Pictures:</b> click a picture to replace it. Big photos are shrunk automatically.</li>
@@ -1403,6 +1406,69 @@ function wireChrome() {
   };
   addEventListener("beforeunload", e => { if (publishing) { e.preventDefault(); e.returnValue = ""; } });
 }
+/* ---------- visitors (GoatCounter) ----------
+   The GoatCounter API key is stored in admin/auth.json, encrypted with a key made from the GitHub token,
+   so only someone who can unlock the editor can read it. */
+const GC = "https://samlewis.goatcounter.com";
+async function tokKey() { const h = await crypto.subtle.digest("SHA-256", new TextEncoder().encode("gc:" + token)); return crypto.subtle.importKey("raw", h, "AES-GCM", false, ["encrypt", "decrypt"]); }
+async function gcKeyGet() { if (!auth || !auth.gc) return null; try { return new TextDecoder().decode(await crypto.subtle.decrypt({ name: "AES-GCM", iv: unb64(auth.gc.iv) }, await tokKey(), unb64(auth.gc.data))); } catch (e) { return null; } }
+async function gcKeySet(key) {
+  const iv = crypto.getRandomValues(new Uint8Array(12)), data = await crypto.subtle.encrypt({ name: "AES-GCM", iv }, await tokKey(), new TextEncoder().encode(key));
+  const cur = JSON.parse(fromb64utf8((await gh(`${RP()}/contents/admin/auth.json?ref=${REPO.branch}`)).content));
+  cur.gc = { iv: b64(iv), data: b64(data) }; auth = cur;
+  await putFile("admin/auth.json", JSON.stringify(cur, null, 2) + "\n", "Connect the visitor counter");
+}
+async function gcGet(key, path, q) {
+  const r = await fetch(`${GC}/api/v0/${path}?${new URLSearchParams(q)}`, { headers: { Authorization: "Bearer " + key, "Content-Type": "application/json" } });
+  if (!r.ok) { const e = new Error("GoatCounter said " + r.status); e.status = r.status; throw e; }
+  return r.json();
+}
+function visitorsSetup(errText = "") {
+  const { el, close } = modal(`<div class="dialog-h"><h2>Connect your visitor counter</h2><button class="ib" data-x aria-label="Close">${ICON.x}</button></div>
+    <form class="dialog-b" id="gcf"><p style="margin:0">On <a href="${GC}" target="_blank" rel="noopener">samlewis.goatcounter.com</a>, click your username at the top, then <b>API</b>. Create a key with <b>Read statistics</b> ticked, and paste it here. It’s saved locked, so only you can use it.</p>
+    <div class="field"><label for="gck">API key</label><input id="gck" required autocomplete="off" spellcheck="false"></div><div class="err" id="gcerr">${esc(errText)}</div>
+    <div><button class="btn-p">Connect</button></div></form>`, "small");
+  $("#gcf", el).onsubmit = async e => {
+    e.preventDefault(); const k = $("#gck", el).value.trim(), er = $("#gcerr", el); er.textContent = "Checking…";
+    try { await gcGet(k, "stats/total", {}); } catch (x) { er.textContent = x.status === 401 || x.status === 403 ? "GoatCounter didn’t accept that key. Check it has Read statistics ticked." : "Couldn’t reach GoatCounter: " + x.message; return; }
+    er.textContent = "Saving…";
+    try { await gcKeySet(k); close(); visitors(); } catch (x) { er.textContent = "Couldn’t save: " + x.message; }
+  };
+}
+async function visitors(days = 7) {
+  try { localStorage.setItem("skipgc", "t"); } catch (e) {}
+  const key = await gcKeyGet(); if (!key) return visitorsSetup();
+  const { el } = modal(`<div class="dialog-h"><h2>Visitors</h2><div class="vis-range">${[[1, "Today"], [7, "7 days"], [30, "30 days"], [90, "90 days"]].map(([d, l]) => `<button data-d="${d}" class="${d === days ? "on" : ""}">${l}</button>`).join("")}</div><button class="ib" data-x aria-label="Close">${ICON.x}</button></div><div class="dialog-b vis" id="visb"><p class="muted">Loading…</p></div>`);
+  el.querySelectorAll("[data-d]").forEach(b => b.onclick = () => visitors(+b.dataset.d));
+  const hr = d => { d.setMinutes(0, 0, 0); return d.toISOString().replace(/\.\d+Z$/, "Z"); };
+  const end = new Date(); end.setHours(end.getHours() + 1);
+  const start = new Date(); if (days === 1) start.setHours(0); else start.setDate(start.getDate() - days);
+  const q = { start: hr(start), end: hr(end) };
+  try {
+    const [tot, hits, refs, locs, sizes] = await Promise.all([
+      gcGet(key, "stats/total", q), gcGet(key, "stats/hits", { ...q, limit: 30 }),
+      gcGet(key, "stats/toprefs", { ...q, limit: 8 }), gcGet(key, "stats/locations", { ...q, limit: 8 }), gcGet(key, "stats/sizes", { ...q, limit: 5 })]);
+    const title = path => { const m = path.match(/^\/work\/(.+)$/); if (m) { const p = (C.projects || []).find(x => x.id === m[1]); return p ? (p.cardTitle || p.title) : m[1]; } return path === "/" ? "Home page" : path; };
+    const list = (rows, name = r => r.name) => rows && rows.length ? `<ol class="vis-list">${rows.map(r => `<li><span>${esc(name(r) || "Unknown")}</span><b>${r.count}</b></li>`).join("")}</ol>` : `<p class="muted">Nothing yet.</p>`;
+    const daily = (tot.stats || []).map(s => ({ day: s.day, n: s.daily || 0 }));
+    const max = Math.max(1, ...daily.map(d => d.n));
+    const homeN = (hits.hits || []).filter(h => h.path === "/").reduce((a, h) => a + h.count, 0);
+    const work = (hits.hits || []).filter(h => h.path !== "/");
+    $("#visb", el).innerHTML = `
+      <div class="vis-big"><b>${tot.total || 0}</b> <span>${tot.total === 1 ? "visitor" : "visitors"} ${days === 1 ? "today" : `in the last ${days} days`}</span></div>
+      ${days > 1 ? `<div class="vis-bars" aria-hidden="true">${daily.map(d => `<i style="height:${Math.round(d.n / max * 100)}%" title="${esc(d.day)}: ${d.n}"></i>`).join("")}</div>` : ""}
+      <div class="vis-grid">
+        <section><h3>Projects opened</h3>${list(work, h => title(h.path))}</section>
+        <section><h3>Came from</h3>${list((refs.stats || refs.refs || []).map(r => ({ ...r, name: r.name || "Direct, or a link in an email or app" })))}</section>
+        <section><h3>Where</h3>${list(locs.stats || [])}</section>
+        <section><h3>Device</h3>${list(sizes.stats || [])}</section>
+      </div>
+      <p class="muted">${homeN} landed on the home page. Counts are unique visitors. Your own visits aren’t counted on this browser. <a href="${GC}" target="_blank" rel="noopener">Full stats on GoatCounter →</a></p>`;
+  } catch (x) {
+    if (x.status === 401 || x.status === 403) return visitorsSetup("The saved key stopped working. Paste a new one.");
+    $("#visb", el).innerHTML = `<p class="err">Couldn’t load the stats: ${esc(x.message)}</p>`;
+  }
+}
 function changePassword() {
   const { el, close } = modal(`<div class="dialog-h"><h2>Change password</h2><button class="ib" data-x aria-label="Close">${ICON.x}</button></div>
     <form class="dialog-b" id="cpf"><div class="field"><label for="cp1">New password</label><input type="password" id="cp1" minlength="10" required autocomplete="new-password"><p class="help">At least 10 characters.</p></div>
@@ -1413,7 +1479,7 @@ function changePassword() {
     if (a.length < 10) return er.textContent = "Please use at least 10 characters.";
     if (a !== b) return er.textContent = "Those don’t match.";
     er.textContent = "Saving…";
-    try { auth = await seal(token, a); await putFile("admin/auth.json", JSON.stringify(auth, null, 2) + "\n", "Change the editor password"); close(); toast("Password changed. Use the new one next time."); }
+    try { const gcKey = auth && auth.gc; auth = await seal(token, a); if (gcKey) auth.gc = gcKey; await putFile("admin/auth.json", JSON.stringify(auth, null, 2) + "\n", "Change the editor password"); close(); toast("Password changed. Use the new one next time."); }
     catch (x) { er.textContent = "Couldn’t save: " + x.message; }
   };
 }

@@ -201,3 +201,19 @@ svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width:
 .crop-box i[data-h="sw"] { left: -8px; bottom: -8px; cursor: nesw-resize; } .crop-box i[data-h="se"] { right: -8px; bottom: -8px; cursor: nwse-resize; }
 .crop-box i[data-h="n"] { left: calc(50% - 8px); top: -8px; cursor: ns-resize; } .crop-box i[data-h="s"] { left: calc(50% - 8px); bottom: -8px; cursor: ns-resize; }
 .crop-box i[data-h="w"] { top: calc(50% - 8px); left: -8px; cursor: ew-resize; } .crop-box i[data-h="e"] { top: calc(50% - 8px); right: -8px; cursor: ew-resize; }
+
+/* visitors */
+.vis-range { display: flex; gap: 4px; margin-left: auto; margin-right: 12px; }
+.vis-range button { border: 1px solid var(--line); background: #fff; border-radius: 99px; padding: 5px 11px; font: inherit; font-size: 13px; cursor: pointer; }
+.vis-range button.on { background: #46282a; color: #fff; border-color: #46282a; }
+.vis-big b { font-size: 44px; line-height: 1; }
+.vis-big span { font-size: 16px; opacity: .7; margin-left: 6px; }
+.vis-bars { display: flex; align-items: flex-end; gap: 3px; height: 70px; }
+.vis-bars i { flex: 1; background: #9fe5fb; border-radius: 3px 3px 0 0; min-height: 2px; }
+.vis-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 28px; }
+.vis-grid h3 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; opacity: .6; margin: 0 0 8px; }
+.vis-list { list-style: none; margin: 0; padding: 0; }
+.vis-list li { display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+.vis-list li span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.vis .muted, .dialog .muted { opacity: .65; font-size: 13px; margin: 0; }
+@media (max-width: 640px) { .vis-grid { grid-template-columns: 1fr; } .dialog-h { flex-wrap: wrap; } }
