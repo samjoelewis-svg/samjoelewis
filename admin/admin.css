@@ -218,3 +218,10 @@ button.lnk { background: none; border: 0; font: inherit; cursor: pointer; }
 .vis-list li span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .vis .muted, .dialog .muted { opacity: .65; font-size: 13px; margin: 0; }
 @media (max-width: 640px) { .vis-grid { grid-template-columns: 1fr; } .dialog-h { flex-wrap: wrap; } }
+/* section rows: actions float over the right edge on hover/selection so all four fit */
+.sitem { position: relative; }
+.s-act { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); opacity: 0; pointer-events: none; background: inherit; border-radius: 8px; padding-left: 4px; box-shadow: -18px 0 14px -6px #fff; }
+.sitem:hover .s-act, .sitem.sel .s-act, .sitem:focus-within .s-act { opacity: 1; pointer-events: auto; }
+.sitem:hover .s-act { box-shadow: -18px 0 14px -6px #f7f4f1; }
+.sitem.sel .s-act { box-shadow: -18px 0 14px -6px #f3f6ff; }
+@media (hover: none) { .s-act { opacity: 1; pointer-events: auto; } }
